@@ -37,8 +37,6 @@
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
-            opacity: 0;
-            transition: opacity 0.5s;
         }
 
         .container {
@@ -939,7 +937,6 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ===== ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ ===== */
         .gradient-text {
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
@@ -955,10 +952,6 @@
 
         .rounded-xl {
             border-radius: 20px;
-        }
-
-        .shadow-lg {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
         .mt-20 { margin-top: 20px; }
@@ -1016,7 +1009,7 @@
                 <p class="section-subtitle">Выбирайте лучшее — всё работает без VPN</p>
                 
                 <div class="cards">
-                    <!-- Яндекс GPT (работает в РФ) -->
+                    <!-- Яндекс GPT -->
                     <div class="card animate-fade-in">
                         <div class="card-header">
                             <div class="card-icon">
@@ -1042,20 +1035,18 @@
                             <small>В Яндекс 360 (первые 3 месяца бесплатно)</small>
                         </div>
                         
-                        <!-- ПАРТНЁРСКАЯ ССЫЛКА Яндекс -->
                         <a href="https://360.yandex.ru/gpt?utm_source=ai_catalog&utm_medium=referral&utm_campaign=ai_tools" 
                            target="_blank" 
-                           class="card-button"
-                           onclick="trackClick('yandex_gpt')">
+                           class="card-button">
                             <i class="fas fa-external-link-alt"></i>
                             Попробовать бесплатно
                         </a>
                         <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
-                            🔗 Партнёрская ссылка — помогаем развивать проект
+                            🔗 Партнёрская ссылка
                         </p>
                     </div>
 
-                    <!-- Kandinsky 3.0 (работает в РФ) -->
+                    <!-- Kandinsky 3.0 -->
                     <div class="card animate-fade-in">
                         <div class="card-header">
                             <div class="card-icon">
@@ -1081,16 +1072,14 @@
                             <small>До 100 изображений в день бесплатно</small>
                         </div>
                         
-                        <!-- ПАРТНЁРСКАЯ ССЫЛКА FusionBrain -->
                         <a href="https://fusionbrain.ai/diffusion?ref=ai_catalog_ru" 
                            target="_blank" 
-                           class="card-button"
-                           onclick="trackClick('kandinsky')">
+                           class="card-button">
                             <i class="fas fa-external-link-alt"></i>
                             Создать изображение
                         </a>
                         <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
-                            🔗 Партнёрская ссылка — помогаем развивать проект
+                            🔗 Партнёрская ссылка
                         </p>
                     </div>
 
@@ -1120,16 +1109,14 @@
                             <small>Для разработчиков и тестирования</small>
                         </div>
                         
-                        <!-- ПАРТНЁРСКАЯ ССЫЛКА Сбер -->
                         <a href="https://developers.sber.ru/gigachat?utm_source=ai_catalog&utm_medium=referral" 
                            target="_blank" 
-                           class="card-button"
-                           onclick="trackClick('gigachat')">
+                           class="card-button">
                             <i class="fas fa-external-link-alt"></i>
                             Для разработчиков
                         </a>
                         <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
-                            🔗 Партнёрская ссылка — помогаем развивать проект
+                            🔗 Партнёрская ссылка
                         </p>
                     </div>
                 </div>
@@ -1140,21 +1127,23 @@
                 <h3 class="section-title">🇷🇺 Российские AI-инструменты</h3>
                 <p class="section-subtitle">Работают без VPN и полностью на русском языке</p>
                 
-                <div class="alt-cards"> <div class="alt-card"> <h4><i class="fas fa-language"></i> DeepSeek</h4> <p>Российский AI-поисковик с нейросетями для сложных запросов</p> <a href="https://deepseek.ru/?ref=ai_catalog" target="_blank" onclick="trackClick('deepseek')"> Перейти <i class="fas fa-arrow-right"></i> </a> </div>
-                <div class="alt-card">
-                    <h4><i class="fas fa-microphone"></i> Салют GPT</h4>
-                    <p>Голосовой ассистент от Сбера с интеграцией в умный дом</p>
-                    <a href="https://salute.sber.ru/?utm_source=ai_catalog" target="_blank" onclick="trackClick('salute')">
-                        Перейти <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-                
-                <div class="alt-card">
-                    <h4><i class="fas fa-code"></i> CodeGPT</h4>
+                <div class="alt-cards">
+                    <div class="alt-card">
+                        <h4><i class="fas fa-language"></i> DeepSeek</h4>
+                        <p>Российский AI-поисковик с нейросетями для сложных запросов</p>
+                        <a href="https://deepseek.ru/?ref=ai_catalog" target="_blank">Перейти <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="alt-card">
+                        <h4><i class="fas fa-microphone"></i> Салют GPT</h4>
+                        <p>Голосовой ассистент от Сбера с интеграцией в умный дом</p>
+                        <a href="https://salute.sber.ru/?utm_source=ai_catalog" target="_blank">Перейти <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    
+                    <div class="alt-card">
+                                           <h4><i class="fas fa-code"></i> CodeGPT</h4>
                     <p>Русский AI для программистов и генерации кода</p>
-                    <a href="https://codegpt.ru/?ref=ai_catalog_ru" target="_blank" onclick="trackClick('codegpt')">
-                        Перейти <i class="fas fa-arrow-right"></i>
-                    </a>
+                    <a href="https://codegpt.ru/?ref=ai_catalog_ru" target="_blank">Перейти <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -1173,11 +1162,9 @@
                         <span class="feature">Без VPN</span>
                         <span class="feature">API доступ</span>
                     </div>
-                    <!-- Партнёрская ссылка на прокси-сервис -->
                     <a href="https://developers.sber.ru/gigachat/chatgpt-proxy?ref=ai_catalog" 
                        target="_blank" 
-                       class="card-button"
-                       onclick="trackClick('chatgpt_proxy')">
+                       class="card-button">
                         <i class="fas fa-external-link-alt"></i>
                         Доступ через GigaChat
                     </a>
@@ -1193,8 +1180,7 @@
                     </div>
                     <a href="https://fusionbrain.ai/diffusion?ref=ai_catalog_ru&promo=midjourney_alt" 
                        target="_blank" 
-                       class="card-button"
-                       onclick="trackClick('midjourney_alt')">
+                       class="card-button">
                         <i class="fas fa-external-link-alt"></i>
                         Альтернатива Midjourney
                     </a>
@@ -1210,8 +1196,7 @@
                     </div>
                     <a href="https://cloud.yandex.ru/services/claude-ai?utm_source=ai_catalog" 
                        target="_blank" 
-                       class="card-button"
-                       onclick="trackClick('claude_yandex')">
+                       class="card-button">
                         <i class="fas fa-external-link-alt"></i>
                         Claude через Яндекс
                     </a>
@@ -1330,37 +1315,35 @@
             <h3 class="section-title">💬 Отзывы пользователей</h3>
             <p class="section-subtitle">Что говорят те, кто уже использует наши рекомендации</p>
             
-            <div class="alt-cards">
-                <div class="testimonial-card">
-                    <p>"Наконец-то нашел работающие в России AI-инструменты! Яндекс GPT отлично заменяет ChatGPT для русских текстов."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">АС</div>
-                        <div class="author-info">
-                            <strong>Алексей Смирнов</strong>
-                            <small>Маркетолог, Москва</small>
-                        </div>
+            <div class="testimonial-card">
+                <p>"Наконец-то нашел работающие в России AI-инструменты! Яндекс GPT отлично заменяет ChatGPT для русских текстов."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">АС</div>
+                    <div class="author-info">
+                        <strong>Алексей Смирнов</strong>
+                        <small>Маркетолог, Москва</small>
                     </div>
                 </div>
-                
-                <div class="testimonial-card">
-                    <p>"Kandinsky 3.0 стал спасением! Раньше использовал Midjourney через VPN, теперь всё быстро и на русском."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">МК</div>
-                        <div class="author-info">
-                            <strong>Мария Ковалёва</strong>
-                            <small>Дизайнер, Санкт-Петербург</small>
-                        </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"Kandinsky 3.0 стал спасением! Раньше использовал Midjourney через VPN, теперь всё быстро и на русском."</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">МК</div>
+                    <div class="author-info">
+                        <strong>Мария Ковалёва</strong>
+                        <small>Дизайнер, Санкт-Петербург</small>
                     </div>
                 </div>
-                
-                <div class="testimonial-card">
-                    <p>"Благодаря промокодам сэкономил 5000 рублей на подписках. Рассылка действительно полезная!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ДИ</div>
-                        <div class="author-info">
-                            <strong>Дмитрий Иванов</strong>
-                            <small>Предприниматель, Екатеринбург</small>
-                        </div>
+            </div>
+            
+            <div class="testimonial-card">
+                <p>"Благодаря промокодам сэкономил 5000 рублей на подписках. Рассылка действительно полезная!"</p>
+                <div class="testimonial-author">
+                    <div class="author-avatar">ДИ</div>
+                    <div class="author-info">
+                        <strong>Дмитрий Иванов</strong>
+                        <small>Предприниматель, Екатеринбург</small>
                     </div>
                 </div>
             </div>
@@ -1455,16 +1438,16 @@
             <div class="footer-social">
                 <h5>Подпишитесь на нас</h5>
                 <div class="social-icons">
-                    <a href="https://t.me/ai_catalog_ru" target="_blank" title="Telegram" onclick="trackSocial('telegram')">
+                    <a href="https://t.me/ai_catalog_ru" target="_blank" title="Telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <a href="https://vk.com/ai_catalog" target="_blank" title="VK" onclick="trackSocial('vk')">
+                    <a href="https://vk.com/ai_catalog" target="_blank" title="VK">
                         <i class="fab fa-vk"></i>
                     </a>
-                    <a href="https://youtube.com/@ai-catalog" target="_blank" title="YouTube" onclick="trackSocial('youtube')">
+                    <a href="https://youtube.com/@ai-catalog" target="_blank" title="YouTube">
                         <i class="fab fa-youtube"></i>
                     </a>
-                    <a href="https://dzen.ru/ai_catalog" target="_blank" title="Дзен" onclick="trackSocial('dzen')">
+                    <a href="https://dzen.ru/ai_catalog" target="_blank" title="Дзен">
                         <i class="fab fa-yandex"></i>
                     </a>
                 </div>
@@ -1544,7 +1527,6 @@
     </div>
 </div>
 
-<!-- Telegram Bot & Analytics -->
 <script>
     // Конфигурация Telegram бота
     const TELEGRAM_BOT_TOKEN = '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys';
@@ -1615,25 +1597,14 @@
     document.addEventListener('DOMContentLoaded', function() {
         console.log('🚀 AI Catalog загружен!');
         
-        // Показываем сайт
-        setTimeout(() => {
-            document.body.style.opacity = '1';
-        }, 100);
-        
         // Инициализация форм
         initForms();
         
         // Инициализация FAQ
         initFAQ();
         
-        // Инициализация кнопок копирования
-        initCopyButtons();
-        
         // Трекинг
         trackPageView();
-        
-        // Создаем кнопки управления Telegram ботом
-        createTelegramButtons();
     });
     
     function initForms() {
@@ -1675,19 +1646,7 @@
                     localStorage.setItem('ai_subscribers', JSON.stringify(subscribers));
                     
                     // Отправляем в Telegram
-                    const telegramMessage = `
-🎯 <b>Новая подписка на AI Catalog!</b>
-
-👤 <b>Имя:</b> ${name}
-📧 <b>Email:</b> <code>${email}</code>
-🎯 <b>Интерес:</b> ${interest}
-📅 <b>Дата:</b> ${new Date().toLocaleString('ru-RU')}
-👥 <b>Всего подписчиков:</b> ${subscribers.length}
-
-💬 <b>Быстрые действия:</b>
-📧 <a href="mailto:${email}">Написать email</a>
-🤖 <a href="https://t.me/NeuraAI_Assistant_bot">Открыть бота</a>
-`;
+                    const telegramMessage = `🎯 <b>Новая подписка на AI Catalog!</b>\n\n👤 <b>Имя:</b> ${name}\n📧 <b>Email:</b> <code>${email}</code>\n🎯 <b>Интерес:</b> ${interest}\n📅 <b>Дата:</b> ${new Date().toLocaleString('ru-RU')}`;
                     await sendTelegramNotification(telegramMessage);
                     
                     // Показываем успех
@@ -1695,9 +1654,6 @@
                     
                     // Очищаем форму
                     subscribeForm.reset();
-                    
-                    // Обновляем статистику
-                    updateStats();
                     
                 } catch (error) {
                     console.error('Ошибка при обработке подписки:', error);
@@ -1720,16 +1676,7 @@
                 showLoader();
                 
                 try {
-                    const telegramMessage = `
-🤝 <b>Новая заявка на партнёрство!</b>
-
-👤 <b>Имя:</b> ${data.name || 'Не указано'}
-📧 <b>Email:</b> <code>${data.email || 'Не указано'}</code>
-📱 <b>Телефон:</b> ${data.tel || 'Не указано'}
-🏢 <b>Компания:</b> ${data.company || 'Не указано'}
-🤝 <b>Тип партнёрства:</b> ${data.type || 'Не указано'}
-📅 <b>Дата:</b> ${new Date().toLocaleString('ru-RU')}
-`;
+                    const telegramMessage = `🤝 <b>Новая заявка на партнёрство!</b>\n\n👤 <b>Имя:</b> ${data.name || 'Не указано'}\n📧 <b>Email:</b> <code>${data.email || 'Не указано'}</code>\n📱 <b>Телефон:</b> ${data.tel || 'Не указано'}\n🏢 <b>Компания:</b> ${data.company || 'Не указано'}`;
                     await sendTelegramNotification(telegramMessage);
                     
                     showNotification('🎉 Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
@@ -1759,36 +1706,15 @@
         element.classList.toggle('active');
     }
     
-    function initCopyButtons() {
-        // Копирование промокодов
-        document.querySelectorAll('.copy-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const codeElement = this.parentElement.querySelector('code');
-                const code = codeElement.textContent;
-                
-                copyPromoCode(codeElement.id, code);
-            });
-        });
-    }
-    
-    function copyPromoCode(elementId, code) {
-        if (!code) {
-            const element = document.getElementById(elementId);
-            code = element.textContent;
-        }
+    function copyPromoCode(elementId) {
+        const element = document.getElementById(elementId);
+        const code = element.textContent;
         
         navigator.clipboard.writeText(code).then(() => {
             showNotification(`✅ Промокод "${code}" скопирован!`);
             
             // Отправляем в Telegram
-            const telegramMessage = `
-
-📋 <b>Скопирован промокод!</b>
-
-🎁 <b>Промокод:</b> <code>${code}</code>
-📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-`;
+            const telegramMessage = `📋 <b>Скопирован промокод!</b>\n\n🎁 <b>Промокод:</b> <code>${code}</code>\n📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
             sendTelegramNotification(telegramMessage);
             
         }).catch(err => {
@@ -1819,27 +1745,14 @@
         localStorage.setItem('ai_clicks', JSON.stringify(clicks));
         
         // Отправляем в Telegram
-        const telegramMessage = `
-
-🖱️ <b>Клик по инструменту</b>
-
-🛠️ <b>Инструмент:</b> ${serviceName}
-📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-🌐 <b>Страница:</b> ${window.location.href}
-`;
+        const telegramMessage = `🖱️ <b>Клик по инструменту</b>\n\n🛠️ <b>Инструмент:</b> ${serviceName}\n📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
         sendTelegramNotification(telegramMessage);
     }
     
     function trackSocial(network) {
         console.log(`📱 Клик по социальной сети: ${network}`);
         
-        const telegramMessage = `
-
-📱 <b>Клик по социальной сети</b>
-
-🔗 <b>Сеть:</b> ${network}
-📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-`;
+        const telegramMessage = `📱 <b>Клик по социальной сети</b>\n\n🔗 <b>Сеть:</b> ${network}\n📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}`;
         sendTelegramNotification(telegramMessage);
     }
     
@@ -1856,31 +1769,13 @@
         pageViews.push(pageView);
         localStorage.setItem('ai_page_views', JSON.stringify(pageViews));
         
-        // Обновляем статистику
-        updateStats();
-        
         // Отправляем в Telegram при первом посещении
         if (!sessionStorage.getItem('first_visit')) {
             sessionStorage.setItem('first_visit', 'true');
             
-            const telegramMessage = `
-
-🌐 <b>Новый посетитель на сайте</b>
-
-📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-📱 <b>Устройство:</b> ${pageView.screen}
-🔗 <b>Реферер:</b> ${pageView.referrer || 'Прямой заход'}
-`;
+            const telegramMessage = `🌐 <b>Новый посетитель на сайте</b>\n\n📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}\n📱 <b>Устройство:</b> ${pageView.screen}`;
             sendTelegramNotification(telegramMessage);
         }
-    }
-    
-    function updateStats() {
-        // Обновляем количество подписчиков
-        const subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
-        const pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
-        
-        console.log(`📊 Статистика: ${subscribers.length} подписчиков, ${pageViews.length} просмотров`);
     }
     
     function showPartnershipForm() {
@@ -1892,300 +1787,21 @@
         return re.test(email);
     }
     
-    function createTelegramButtons() {
-        // Кнопка настройки бота
-        const setupButton = document.createElement('button');
-        setupButton.innerHTML = '⚙️ Настроить бота';
-        setupButton.style.cssText = `
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #0088cc;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            z-index: 9998;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(0,136,204,0.3);
-            font-family: 'Inter', sans-serif;
-        `;
-        setupButton.onclick = function() {
-            alert(`🤖 Настройка Telegram-бота:
-
-Текущий токен: ${TELEGRAM_BOT_TOKEN ? '******' + TELEGRAM_BOT_TOKEN.slice(-6) : 'не настроен'}
-Текущий chat_id: ${TELEGRAM_CHAT_ID || 'не настроен'}
-
-Бот уже настроен и работает!
-Уведомления приходят при:
-• Новых посетителях
-• Новых подписках
-• Кликах по ссылкам
-• Копировании промокодов`);
-};
-document.body.appendChild(setupButton);
-                    // Кнопка экспорта данных
-        const exportButton = document.createElement('button');
-        exportButton.innerHTML = '📊 Экспорт данных';
-        exportButton.style.cssText = `
-            position: fixed;
-            bottom: 60px;
-            right: 20px;
-            background: #10b981;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            z-index: 9998;
-            font-size: 14px;
-            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
-            font-family: 'Inter', sans-serif;
-        `;
-        exportButton.onclick = function() {
-            exportData();
-        };
-        document.body.appendChild(exportButton);
-    }
-    
-    function exportData() {
-        const data = {
-            subscribers:JSON.parse(localStorage.getItem('ai_subscribers') || '[]'),
-pageViews: JSON.parse(localStorage.getItem('ai_page_views') || '[]'),
-clicks: JSON.parse(localStorage.getItem('ai_clicks') || '[]'),
-exportDate: new Date().toISOString()
-};
-        const dataStr = JSON.stringify(data, null, 2);
-        const dataBlob = new Blob([dataStr], {type: 'application/json'});
-        const url = URL.createObjectURL(dataBlob);
-        
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `ai-catalog-data-${Date.now()}.json`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-        
-        showNotification('📊 Данные экспортированы!');
-        
-        // Отправляем в Telegram о экспорте
-        const telegramMessage = `
-        sendTelegramNotification(telegramMessage);
-    }
-    
-    // Автоматическая очистка старых данных (30 дней)
-    function cleanupOldData() {
-        const monthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
-        
-        ['ai_subscribers', 'ai_page_views', 'ai_clicks'].forEach(key => {
-            let data = JSON.parse(localStorage.getItem(key) || '[]');
-            data = data.filter(item => item.timestamp > monthAgo);
-            localStorage.setItem(key, JSON.stringify(data));
+    // Добавляем обработчики для всех партнёрских ссылок
+    document.querySelectorAll('a[href*="utm_source"], a[href*="ref="]').forEach(link => {
+        link.addEventListener('click', function() {
+            const serviceName = this.textContent.trim() || this.querySelector('i')?.nextSibling?.textContent?.trim() || 'Неизвестный сервис';
+            trackClick(serviceName);
         });
-        
-        console.log('🧹 Очищены старые данные');
-    }
+    });
     
-    // Запускаем очистку при загрузке
-    cleanupOldData();
-    
-    // Автоматический пинг в Telegram каждые 4 часа
-    function sendHeartbeat() {
-        if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-            const subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
-            const pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
-            
-            const heartbeatMessage = `
-
-📊 <b>Экспорт данных аналитики</b>
-
-📦 <b>Статистика:</b>
-• Подписчики: ${data.subscribers.length}
-• Просмотры: ${data.pageViews.length}
-• Клики: ${data.clicks.length}
-📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-`;
-        sendTelegramNotification(telegramMessage);
-    }
-    
-    // Автоматическая очистка старых данных (30 дней)
-    function cleanupOldData() {
-        const monthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
-        
-        ['ai_subscribers', 'ai_page_views', 'ai_clicks'].forEach(key => {
-            let data = JSON.parse(localStorage.getItem(key) || '[]');
-            data = data.filter(item => item.timestamp > monthAgo);
-            localStorage.setItem(key, JSON.stringify(data));
+    // Добавляем обработчики для социальных ссылок
+    document.querySelectorAll('.social-icons a').forEach(link => {
+        link.addEventListener('click', function() {
+            const network = this.title || 'Социальная сеть';
+            trackSocial(network);
         });
-        
-        console.log('🧹 Очищены старые данные');
-    }
-    
-    // Запускаем очистку при загрузке
-    cleanupOldData();
-    
-    // Автоматический пинг в Telegram каждые 4 часа
-    function sendHeartbeat() {
-        if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-            const subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
-            const pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
-            
-            const heartbeatMessage = `
-
-❤️ <b>Heartbeat - AI Catalog работает!</b>
-
-📊 <b>Статистика:</b>
-• Подписчики: ${subscribers.length}
-• Просмотры: ${pageViews.length}
-• Время работы: ${Math.floor((Date.now() - pageViews[0]?.timestamp || Date.now()) / 3600000)} ч
-📅 <b>Последнее обновление:</b> ${new Date().toLocaleString('ru-RU')}
-`;
-            sendTelegramNotification(heartbeatMessage);
-        }
-    }
-    
-    // Первый heartbeat через 5 минут
-    setTimeout(sendHeartbeat, 5 * 60 * 1000);
-    // Затем каждые 4 часа
-    setInterval(sendHeartbeat, 4 * 60 * 60 * 1000);
-    
-    // Добавляем функцию для проверки партнёрских ссылок
-    function checkAffiliateLinks() {
-        const links = document.querySelectorAll('a[href*="utm_source"], a[href*="ref="]');
-        console.log(`🔗 Найдено партнёрских ссылок: ${links.length}`);
-        
-        // Отправляем в Telegram статистику партнёрских ссылок
-        if (links.length > 0 && TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-            const linksMessage = `
-
-🔗 <b>Проверка партнёрских ссылок</b>
-
-📊 <b>На сайте:</b> ${links.length} партнёрских ссылок
-📅 <b>Время проверки:</b> ${new Date().toLocaleString('ru-RU')}
-💡 <b>Совет:</b> Обновляйте UTM-метки регулярно
-`;
-            sendTelegramNotification(linksMessage);
-        }
-    }
-    
-    // Проверяем ссылки через 10 секунд после загрузки
-    setTimeout(checkAffiliateLinks, 10000);
-    
-    // Создаем PDF-гайд для подписчиков
-    function createPDFGuide() {
-        const guideContent = `
-        🚀 15 лучших AI-инструментов 2024 для России
-        
-        1. 🔵 Яндекс GPT - лучший российский аналог ChatGPT
-        2. 🎨 Kandinsky 3.0 - генерация изображений на русском
-        3. 🏦 GigaChat - мощный AI от Сбера
-        4. 🔍 DeepSeek - российский AI-поисковик
-        5. 🎤 Салют GPT - голосовой ассистент
-        6. 💻 CodeGPT - AI для программистов
-        7. 🖼️ FusionBrain - платформа с несколькими моделями
-        8. 📊 Yandex DataSphere - анализ данных
-        9. 🎬 Sber video - генерация видео
-        10. 🎵 Mubert - генерация музыки
-        11. 📝 RuGPT - русскоязычная модель от SberDevices
-        12. 🎨 Artisto - AI для обработки фото
-        13. 📈 MindVerse - аналитика данных
-        14. 🔐 CryptoAI - AI для криптографии
-        15. 🏥 MedAI - медицинский AI
-        
-        💎 Промокоды:
-        • YANDEXAI2024PRO - 3 месяца Яндекс GPT
-        • FUSION100FREE - 100 бесплатных генераций
-        • GIGACHAT1000FREE - 1000 токенов API
-        
-        📞 Поддержка: contact@ai-catalog.ru
-        💰 Партнёрство: до 30% комиссии
-        `;
-        
-        // Сохраняем в localStorage для отправки по email
-        localStorage.setItem('ai_pdf_guide', guideContent);
-        return guideContent;
-    }
-    
-    // Создаем гайд при загрузке
-    createPDFGuide();
-    
-    // Функция для партнёрских UTM-меток
-    function addUTMParams(link, source = 'ai_catalog', medium = 'referral', campaign = 'ai_tools') {
-        try {
-            const url = new URL(link);
-            url.searchParams.set('utm_source', source);
-            url.searchParams.set('utm_medium', medium);
-            url.searchParams.set('utm_campaign', campaign);
-            url.searchParams.set('ref', 'ai_catalog_ru');
-            return url.toString();
-        } catch (e) {
-            return link;
-        }
-    }
-    
-    // Автоматически добавляем UTM-метки ко всем внешним ссылкам
-    function autoAddUTM() {
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            if (!link.href.includes(window.location.hostname)) {
-                link.href = addUTMParams(link.href);
-            }
-        });
-    }
-    
-    // Запускаем добавление UTM
-    setTimeout(autoAddUTM, 2000);
-    
-    // Функция для создания Telegram-канала
-    function setupTelegramChannel() {
-        const channelInfo = `
-
-📢 Как создать Telegram-канал для продвижения:
-
-Создайте канал "AI Инструменты | Промокоды"
-
-Добавьте описание с ссылкой на сайт
-
-Первые посты:
-• Обзор Яндекс GPT
-• Промокоды на Kandinsky
-• Как получить доступ к ChatGPT в РФ
-• Новые российские AI-инструменты
-
-Приглашайте подписчиков через:
-• Другие каналы
-• Социальные сети
-• Рассылку email
-
-Ссылка на ваш канал: https://t.me/ai_catalog_ru
-`;
-        return channelInfo;
-    }
-    
-    // Кнопка для создания Telegram-канала
-    const channelBtn = document.createElement('button');
-    channelBtn.innerHTML = '📢 Создать канал';
-    channelBtn.style.cssText = `
-        position: fixed;
-        bottom: 100px;
-        right: 20px;
-        background: #0088cc;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        border-radius: 10px;
-        cursor: pointer;
-        z-index: 9998;
-        font-size: 14px;
-        box-shadow: 0 4px 12px rgba(0,136,204,0.3);
-        font-family: 'Inter', sans-serif;
-    `;
-    channelBtn.onclick = function() {
-        alert(setupTelegramChannel());
-    };
-    document.body.appendChild(channelBtn);
-    
+    });
 </script>
 </body>
 </html>
