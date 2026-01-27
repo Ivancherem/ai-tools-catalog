@@ -1319,285 +1319,709 @@
         <div class="spinner"></div>
     </div>
 
-    <!-- Скрипты -->
+    <!-- Telegram Bot Integration -->
     <script>
-        // Все функции в одном файле
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('🚀 AI Catalog RU загружен!');
-            
-            // Добавляем класс для российских пользователей
-            document.body.classList.add('ru-user');
-            
-            // Инициализация анимаций
-            initAnimations();
-            
-            // Обработка формы подписки
-            initSubscriptionForm();
-            
-            // Инициализация FAQ
-            initFAQ();
-            
-            // Проверка геолокации
-            checkGeolocation();
-            
-            // Отслеживание кликов
-            initClickTracking();
-            
-            // Показываем сайт
-            document.body.style.opacity = '1';
-        });
+        // Конфигурация бота
+        const TELEGRAM_BOT_TOKEN = '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys';
+        const TELEGRAM_CHAT_ID = '2048092522';
         
-        function initAnimations() {
-            // Анимация появления элементов при скролле
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('animated');
-                    }
+        // Функция отправки уведомлений в Telegram
+        async function sendTelegramNotification(message) {
+            if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+                console.warn('Telegram токен или chat_id не настроены');
+                return;
+            }
+            
+            try {
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: message,
+                        parse_mode: 'HTML',
+                        disable_web_page_preview: true
+                    })
                 });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.card, .alt-card, .promo-card').forEach(el => {
-                observer.observe(el);
-            });
-        }
-        
-        function initSubscriptionForm() {
-            const form = document.getElementById('subscribe-form');
-            if (!form) return;
-            
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
                 
-                const name = document.getElementById('name-input').value;
-                const email = document.getElementById('email-input').value;
-                const interest = document.getElementById('interest-select').value;
+                const data = await response.json();
                 
-                if (!email) {
-                    showNotification('Пожалуйста, введите email', 'error');
-                    return;
+                if (data.ok) {
+                    console.log('✅ Уведомление отправлено в Telegram');
+                } else {
+                    console.error('❌ Ошибка Telegram:', data);
                 }
-                
-                // Показываем лоадер
-                showLoader();
-                
-                try {
-                    // Сохраняем в localStorage
-                    const subscriber = {
-                        name: name || 'Аноним',
-                        email: email,
-                        interest: interest,
-                        date: new Date().toLocaleString('ru-RU'),
-                        timestamp: Date.now()
-                    };
-                    
-                    let subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
-                    subscribers.push(subscriber);
-                    localStorage.setItem('ai_subscribers', JSON.stringify(subscribers));
-                    
-                    // Имитируем отправку на сервер
-                    await new Promise(resolve => setTimeout(resolve, 1000));
-                    
-                    // Показываем успешное сообщение
-                    showNotification(`🎉 Спасибо, ${name || 'друг'}! Гайд отправлен на ${email}`, 'success');
-                    
-                    // Сбрасываем форму
-                    form.reset();
-                    
-                    // Логируем подписку
-                    console.log('Новый подписчик:', subscriber);
-                    
-                } catch (error) {
-                    showNotification('Ошибка при отправке. Попробуйте позже.', 'error');
-                } finally {
-                    hideLoader();
-                }
-            });
-        }
-        
-        function initFAQ() {
-            // FAQ уже инициализирован через onclick
-        }
-        
-        function toggleFaq(element) {
-            const answer = element.querySelector('.faq-answer');
-            const icon = element.querySelector('.faq-question i');
-            
-            if (answer.style.display === 'block') {
-                answer.style.display = 'none';
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                answer.style.display = 'block';
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+            } catch (error) {
+                console.error('❌ Ошибка отправки в Telegram:', error);
             }
         }
         
-        function copyPromoCode(promoId) {
-            const codeElement = document.getElementById(promoId);
-            const code = codeElement.textContent;
+        // Получить ваш chat_id автоматически
+        async function setupTelegramBot() {
+            if (!TELEGRAM_BOT_TOKEN) {
+                console.warn('❌ Токен бота не настроен');
+                return;
+            }
             
-            navigator.clipboard.writeText(code).then(() => {
-                showNotification(`✅ Промокод "${code}" скопирован!`, 'success');
-                
-                // Отслеживаем копирование
-                trackEvent('promo_copy', { code: code });
-            }).catch(err => {
-                // Fallback для старых браузеров
-                const textArea = document.createElement('textarea');
-                textArea.value = code;
-                document.body.appendChild(textArea);
-                textArea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textArea);
-                
-                showNotification(`✅ Промокод "${code}" скопирован!`, 'success');
-                trackEvent('promo_copy', { code: code });
-            });
+            // Показываем инструкцию
+            const telegramSetup = `
+🤖 <b>Настройка Telegram-бота</b>
+
+Для привязки бота к сайту:
+
+1. <b>Получите токен:</b>
+   - Откройте @BotFather
+   - Напишите /mybots
+   - Выберите @NeuraAI_Assistant_bot
+   - Нажмите API Token
+   - Скопируйте токен
+
+2. <b>Получите chat_id:</b>
+   - Напишите боту @NeuraAI_Assistant_bot любое сообщение
+   - Нажмите кнопку ниже "Получить Chat ID"
+
+3. <b>Вставьте данные в код:</b>
+   - Замените TELEGRAM_BOT_TOKEN на ваш токен
+   - Замените TELEGRAM_CHAT_ID на ваш chat_id
+            `;
+            
+            alert(telegramSetup);
         }
         
-        function checkGeolocation() {
-            // Простая проверка по IP (информационная)
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.country === 'RU') {
-                        console.log('📍 Пользователь из России');
-                        document.body.classList.add('ru-location');
+        // Получить chat_id из Telegram API
+        async function getTelegramChatId() {
+            if (!TELEGRAM_BOT_TOKEN) {
+                alert('❌ Сначала настройте TELEGRAM_BOT_TOKEN в коде!');
+                return;
+            }
+            
+            try {
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`;
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.ok && data.result.length > 0) {
+                    const latestUpdate = data.result[data.result.length - 1];
+                    const chatId = latestUpdate.message?.chat?.id;
+                    
+                    if (chatId) {
+                        alert(`✅ Ваш Chat ID: ${chatId}\n\nСкопируйте его и вставьте в код вместо TELEGRAM_CHAT_ID`);
+                        return chatId;
                     }
-                })
-                .catch(() => {
-                    // Если API не доступен, предполагаем Россию
-                    document.body.classList.add('ru-location');
-                });
+                }
+                
+                alert('📱 Напишите боту @NeuraAI_Assistant_bot любое сообщение и обновите страницу');
+            } catch (error) {
+                console.error('Ошибка получения chat_id:', error);
+                alert('❌ Ошибка. Проверьте токен бота или попробуйте позже.');
+            }
         }
         
-        function initClickTracking() {
-            // Отслеживаем клики по кнопкам
-            document.querySelectorAll('.card-button, .alt-card a, .social-icons a').forEach(button => {
-                button.addEventListener('click', function(e) {
-                    const service = this.textContent.trim() || this.getAttribute('href') || 'unknown';
-                    trackEvent('button_click', { 
-                        service: service,
-                        url: this.href,
-                        text: this.textContent
-                    });
-                });
+        // Модифицируем форму подписки для отправки в Telegram
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('subscribe-form');
+    
+    if (form) {
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Получаем значения из формы
+            const name = this.querySelector('input[type="text"]').value || 'Аноним';
+            const email = this.querySelector('input[type="email"]').value; // Исправлено
+            const interest = this.querySelector('select')?.value || 'не указано';
+            
+            if (!email) {
+                alert('Пожалуйста, введите email');
+                return;
+            }
+            
+            // ... дальнейшая обработка данных
+        });
+    }
+});
+    <script>
+        // Дополнительные функции для улучшения функциональности
+
+        // Статистика посещений
+        function trackPageView() {
+            const pageView = {
+                page: window.location.pathname,
+                referrer: document.referrer,
+                timestamp: Date.now(),
+                userAgent: navigator.userAgent,
+                screen: `${window.screen.width}x${window.screen.height}`,
+                language: navigator.language
+            };
+
+            let pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
+            pageViews.push(pageView);
+            
+            // Храним только последние 1000 посещений
+            if (pageViews.length > 1000) {
+                pageViews = pageViews.slice(-1000);
+            }
+            
+            localStorage.setItem('ai_page_views', JSON.stringify(pageViews));
+            
+            // Отправляем в Telegram если настроен бот
+            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+                const telegramStats = `
+📊 <b>Новый посетитель на AI Catalog</b>
+
+🌐 <b>Страница:</b> ${pageView.page}
+📱 <b>Устройство:</b> ${pageView.screen}
+🌍 <b>Язык:</b> ${pageView.language}
+🕐 <b>Время:</b> ${new Date(pageView.timestamp).toLocaleString('ru-RU')}
+                `;
+                
+                sendTelegramNotification(telegramStats);
+            }
+            
+            console.log('📈 Page view tracked:', pageView);
+        }
+
+        // Таймер нахождения на сайте
+        function initSessionTimer() {
+            const sessionStart = Date.now();
+            
+            window.addEventListener('beforeunload', function() {
+                const sessionDuration = Date.now() - sessionStart;
+                const minutes = Math.floor(sessionDuration / 60000);
+                const seconds = Math.floor((sessionDuration % 60000) / 1000);
+                
+                const sessionData = {
+                    duration: sessionDuration,
+                    pages: JSON.parse(localStorage.getItem('ai_page_views') || '[]').length,
+                    timestamp: sessionStart
+                };
+                
+                let sessions = JSON.parse(localStorage.getItem('ai_sessions') || '[]');
+                sessions.push(sessionData);
+                
+                if (sessions.length > 100) {
+                    sessions = sessions.slice(-100);
+                }
+                
+                localStorage.setItem('ai_sessions', JSON.stringify(sessions));
+                
+                // Отправляем статистику сессии в Telegram
+                if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID && minutes > 1) {
+                    const sessionMessage = `
+⏱️ <b>Завершена сессия на сайте</b>
+
+⏰ <b>Длительность:</b> ${minutes} мин ${seconds} сек
+📄 <b>Просмотрено страниц:</b> ${sessionData.pages}
+🕐 <b>Начало:</b> ${new Date(sessionStart).toLocaleString('ru-RU')}
+                    `;
+                    
+                    sendTelegramNotification(sessionMessage);
+                }
             });
         }
-        
-        function trackClick(serviceName) {
-            trackEvent('service_click', { service: serviceName });
+
+        // Аналитика кликов по элементам
+        function initHeatmapTracking() {
+            // Отслеживаем клики по всем интерактивным элементам
+            document.addEventListener('click', function(e) {
+                const target = e.target;
+                const clickData = {
+                    x: e.clientX,
+                    y: e.clientY,
+                    tag: target.tagName,
+                    className: target.className,
+                    id: target.id,
+                    text: target.textContent?.substring(0, 50),
+                    timestamp: Date.now(),
+                    url: window.location.href
+                };
+                
+                let clicks = JSON.parse(localStorage.getItem('ai_clicks') || '[]');
+                clicks.push(clickData);
+                
+                if (clicks.length > 500) {
+                    clicks = clicks.slice(-500);
+                }
+                
+                localStorage.setItem('ai_clicks', JSON.stringify(clicks));
+                
+                // Для важных кликов отправляем в Telegram
+                if (target.classList.contains('card-button') || 
+                    target.classList.contains('copy-button') ||
+                    target.classList.contains('submit-button')) {
+                    
+                    const clickMessage = `
+🎯 <b>Важный клик на сайте</b>
+
+🏷️ <b>Элемент:</b> ${target.tagName}
+📝 <b>Текст:</b> ${target.textContent?.substring(0, 30)}
+📍 <b>Координаты:</b> X:${e.clientX}, Y:${e.clientY}
+🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+                    `;
+                    
+                    sendTelegramNotification(clickMessage);
+                }
+            });
         }
-        
-        function trackSocial(socialNetwork) {
-            trackEvent('social_click', { network: socialNetwork });
+
+        // Показ случайного промокода при загрузке
+        function showRandomPromo() {
+            const promoCodes = [
+                { code: 'AIWELCOME2024', discount: '10% на все подписки', expires: '31.12.2024' },
+                { code: 'NEURONSALE', discount: '3 месяца Яндекс GPT бесплатно', expires: '30.11.2024' },
+                { code: 'RUSSIANAI', discount: 'Бесплатные токены GigaChat', expires: '15.12.2024' }
+            ];
+            
+            const randomPromo = promoCodes[Math.floor(Math.random() * promoCodes.length)];
+            
+            // Показываем всплывающее окно с промокодом через 10 секунд
+            setTimeout(() => {
+                if (Math.random() > 0.5 && !localStorage.getItem('promo_shown')) {
+                    const promoModal = document.createElement('div');
+                    promoModal.style.cssText = `
+                        position: fixed;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        background: linear-gradient(135deg, #667eea, #764ba2);
+                        color: white;
+                        padding: 30px;
+                        border-radius: 20px;
+                        z-index: 9999;
+                        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                        max-width: 400px;
+                        text-align: center;
+                    `;
+                    
+                    promoModal.innerHTML = `
+                        <div style="position: absolute; top: 10px; right: 10px;">
+                            <button onclick="this.parentElement.parentElement.remove(); localStorage.setItem('promo_shown', 'true')" 
+                                    style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button>
+                        </div>
+                        <h3 style="margin-bottom: 15px;">🎁 Специальный промокод для вас!</h3>
+                        <div style="background: white; color: #667eea; padding: 15px; border-radius: 10px; margin: 15px 0; font-family: monospace; font-size: 1.2rem;">
+                            ${randomPromo.code}
+                        </div>
+                        <p style="margin-bottom: 10px;"><strong>${randomPromo.discount}</strong></p>
+                        <p style="font-size: 0.9rem; opacity: 0.8;">Действует до: ${randomPromo.expires}</p>
+                        <button onclick="copyToClipboard('${randomPromo.code}'); this.parentElement.parentElement.remove(); localStorage.setItem('promo_shown', 'true')" 
+                                style="background: white; color: #667eea; border: none; padding: 12px 30px; border-radius: 10px; margin-top: 15px; cursor: pointer; font-weight: bold;">
+                            Скопировать промокод
+                        </button>
+                    `;
+                    
+                    document.body.appendChild(promoModal);
+                    
+                    // Затемнение фона
+                    const overlay = document.createElement('div');
+                    overlay.style.cssText = `
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        background: rgba(0,0,0,0.7);
+                        z-index: 9998;
+                    `;
+                    document.body.appendChild(overlay);
+                    
+                    // Закрытие по клику на overlay
+                    overlay.addEventListener('click', function() {
+                        promoModal.remove();
+                        this.remove();
+                        localStorage.setItem('promo_shown', 'true');
+                    });
+                }
+            }, 10000);
         }
-        
-        function trackEvent(eventName, data = {}) {
-            // Здесь можно добавить отправку в аналитику
-            const eventData = {
-                event: eventName,
-                timestamp: Date.now(),
-                url: window.location.href,
-                userAgent: navigator.userAgent,
-                ...data
+
+        // Функция для копирования в буфер обмена
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification(`✅ Промокод "${text}" скопирован!`, 'success');
+            });
+        }
+
+        // Инициализация темной/светлой темы
+        function initThemeSwitcher() {
+            const savedTheme = localStorage.getItem('ai_theme') || 'light';
+            document.body.classList.add(`${savedTheme}-theme`);
+            
+            // Создаем кнопку переключения темы
+            const themeButton = document.createElement('button');
+            themeButton.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
+            themeButton.style.cssText = `
+                position: fixed;
+                bottom: 100px;
+                right: 20px;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                background: var(--primary);
+                color: white;
+                border: none;
+                cursor: pointer;
+                z-index: 1000;
+                font-size: 1.2rem;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            themeButton.onclick = function() {
+                if (document.body.classList.contains('dark-theme')) {
+                    document.body.classList.remove('dark-theme');
+                    document.body.classList.add('light-theme');
+                    localStorage.setItem('ai_theme', 'light');
+                    this.innerHTML = '🌙';
+                } else {
+                    document.body.classList.remove('light-theme');
+                    document.body.classList.add('dark-theme');
+                    localStorage.setItem('ai_theme', 'dark');
+                    this.innerHTML = '☀️';
+                }
             };
             
-            console.log('📊 Event:', eventData);
-            
-            // Сохраняем в localStorage для статистики
-            let events = JSON.parse(localStorage.getItem('ai_events') || '[]');
-            events.push(eventData);
-            localStorage.setItem('ai_events', JSON.stringify(events.slice(-100))); // Храним последние 100 событий
+            document.body.appendChild(themeButton);
         }
-        
-        function showNotification(message, type = 'info') {
-            const notification = document.getElementById('notification');
-            const text = document.getElementById('notification-text');
-            
-            text.textContent = message;
-            notification.style.display = 'block';
-            
-            // Цвет в зависимости от типа
-            if (type === 'success') {
-                notification.style.background = '#10b981';
-            } else if (type === 'error') {
-                notification.style.background = '#ef4444';
-            } else {
-                notification.style.background = '#6366f1';
+
+        // Стили для темной темы
+        const darkThemeStyles = `
+            .dark-theme {
+                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+                color: #e0e0e0;
             }
             
-            // Автоскрытие через 5 секунд
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 5000);
-        }
-        
-        function showLoader() {
-            document.getElementById('loader').style.display = 'flex';
-        }
-        
-        function hideLoader() {
-            document.getElementById('loader').style.display = 'none';
-        }
-        
-        // Стили для FAQ
-        const style = document.createElement('style');
-        style.textContent = `
-            .faq-item {
-                background: rgba(255,255,255,0.05);
-                border-radius: 10px;
-                margin-bottom: 10px;
-                overflow: hidden;
-                cursor: pointer;
-                transition: all 0.3s;
+            .dark-theme .card {
+                background: rgba(30, 30, 46, 0.95);
+                color: #e0e0e0;
+                border: 1px solid rgba(255, 255, 255, 0.1);
             }
             
-            .faq-item:hover {
-                background: rgba(255,255,255,0.1);
+            .dark-theme .card-title {
+                color: #ffffff;
             }
             
-            .faq-question {
-                padding: 15px 20px;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                color: white;
+            .dark-theme .card-description {
+                color: #b0b0b0;
             }
             
-            .faq-answer {
-                padding: 0 20px;
-                display: none;
-                color: rgba(255,255,255,0.8);
-                line-height: 1.6;
-                padding-bottom: 15px;
+            .dark-theme .feature {
+                background: rgba(99, 102, 241, 0.2);
+                color: #a5b4fc;
             }
             
-            .animated {
-                animation: fadeInUp 0.6s ease-out;
+            .dark-theme .card-price span {
+                color: #ffffff;
             }
             
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(20px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
+            .dark-theme .card-price small {
+                color: #b0b0b0;
             }
             
-            .partner-badges {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 5px;
-                margin-top: 10px;
+            .dark-theme .promo-card {
+                background: rgba(30, 30, 46, 0.95);
+                color: #e0e0e0;
+            }
+            
+            .dark-theme .promo-code {
+                background: rgba(255, 255, 255, 0.1);
+            }
+            
+            .dark-theme .promo-code code {
+                color: #a5b4fc;
             }
         `;
-        document.head.appendChild(style);
+
+        // Добавляем стили для темной темы
+        const themeStyle = document.createElement('style');
+        themeStyle.textContent = darkThemeStyles;
+        document.head.appendChild(themeStyle);
+
+        // Инициализация всех функций при загрузке
+        window.addEventListener('load', function() {
+            // Отслеживаем просмотр страницы
+            trackPageView();
+            
+            // Запускаем таймер сессии
+            initSessionTimer();
+            
+            // Инициализируем трекинг кликов для тепловой карты
+            initHeatmapTracking();
+            
+            // Показываем случайный промокод
+            showRandomPromo();
+            
+            // Инициализируем переключатель темы
+            initThemeSwitcher();
+            
+            // Проверяем время суток для автоматической темы
+            const hour = new Date().getHours();
+            if (hour >= 20 || hour < 6) {
+                document.body.classList.add('dark-theme');
+                document.body.classList.remove('light-theme');
+                localStorage.setItem('ai_theme', 'dark');
+            }
+            
+            // Аналитика источников трафика
+            trackTrafficSource();
+            
+            // Показываем уведомление о cookies
+            showCookieConsent();
+        });
+
+        // Отслеживание источника трафика
+        function trackTrafficSource() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const source = urlParams.get('utm_source') || 'direct';
+            const medium = urlParams.get('utm_medium') || 'none';
+            const campaign = urlParams.get('utm_campaign') || 'none';
+            
+            const trafficData = {
+                source: source,
+                medium: medium,
+                campaign: campaign,
+                timestamp: Date.now(),
+                referrer: document.referrer
+            };
+            
+            let traffic = JSON.parse(localStorage.getItem('ai_traffic') || '[]');
+            traffic.push(trafficData);
+            localStorage.setItem('ai_traffic', JSON.stringify(traffic));
+            
+            // Отправляем в Telegram если это рекламная кампания
+            if (source !== 'direct') {
+                const trafficMessage = `
+📈 <b>Новый пользователь с рекламы</b>
+
+📊 <b>Источник:</b> ${source}
+🎯 <b>Канал:</b> ${medium}
+🏷️ <b>Кампания:</b> ${campaign}
+🔗 <b>Реферер:</b> ${document.referrer || 'прямой заход'}
+🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+                `;
+                
+                sendTelegramNotification(trafficMessage);
+            }
+        }
+
+        // Согласие на использование cookies
+        function showCookieConsent() {
+            if (!localStorage.getItem('cookies_accepted')) {
+                setTimeout(() => {
+                    const cookieBanner = document.createElement('div');
+                    cookieBanner.style.cssText = `
+                        position: fixed;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        background: rgba(30, 30, 46, 0.95);
+                        color: white;
+                        padding: 20px;
+                        z-index: 9999;
+                        border-top: 1px solid rgba(255, 255, 255, 0.1);
+                        backdrop-filter: blur(10px);
+                    `;
+                    
+                    cookieBanner.innerHTML = `
+                        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                            <div style="flex: 1;">
+                                <p style="margin: 0; font-size: 0.9rem;">
+                                    Мы используем cookies для улучшения работы сайта и аналитики. 
+                                    Продолжая использовать сайт, вы соглашаетесь с <a href="#privacy" style="color: #a5b4fc;">Политикой конфиденциальности</a>
+                                </p>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <button onclick="acceptCookies(); this.parentElement.parentElement.parentElement.remove();" 
+                                        style="background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500;">
+                                    Принять
+                                </button>
+                                <button onclick="localStorage.setItem('cookies_accepted', 'false'); this.parentElement.parentElement.parentElement.remove();" 
+                                        style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500;">
+                                    Отклонить
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    document.body.appendChild(cookieBanner);
+                }, 2000);
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookies_accepted', 'true');
+            
+            // Отправляем уведомление о принятии cookies
+            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+                const cookiesMessage = `
+🍪 <b>Пользователь принял Cookies</b>
+
+✅ <b>Статус:</b> Cookies приняты
+🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+🌐 <b>Страница:</b> ${window.location.pathname}
+                `;
+                
+                sendTelegramNotification(cookiesMessage);
+            }
+        }
+
+        // Счетчик онлайн пользователей (упрощенный)
+        function initOnlineCounter() {
+            const onlineKey = 'ai_online_users';
+            const userId = 'user_' + Math.random().toString(36).substr(2, 9);
+            
+            // Сохраняем пользователя как онлайн
+            let onlineUsers = JSON.parse(localStorage.getItem(onlineKey) || '{}');
+            onlineUsers[userId] = Date.now();
+            
+            // Удаляем старых пользователей (более 5 минут)
+            for (let id in onlineUsers) {
+                if (Date.now() - onlineUsers[id] > 300000) { // 5 минут
+                    delete onlineUsers[id];
+                }
+            }
+            
+            localStorage.setItem(onlineKey, JSON.stringify(onlineUsers));
+            
+            // Показываем количество онлайн
+            const onlineCount = Object.keys(onlineUsers).length;
+            
+            // Создаем индикатор онлайн
+            const onlineIndicator = document.createElement('div');
+            onlineIndicator.style.cssText = `
+                position: fixed;
+                bottom: 160px;
+                right: 20px;
+                background: #10b981;
+                color: white;
+                padding: 8px 15px;
+                border-radius: 20px;
+                z-index: 1000;
+                font-size: 0.9rem;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+                box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+            `;
+            onlineIndicator.innerHTML = `<span class="online-dot" style="width: 8px; height: 8px; background: white; border-radius: 50%; display: inline-block;"></span> Онлайн: ${onlineCount}`;
+            document.body.appendChild(onlineIndicator);
+            
+            // Обновляем каждую минуту
+            setInterval(() => {
+                onlineUsers = JSON.parse(localStorage.getItem(onlineKey) || '{}');
+                onlineUsers[userId] = Date.now();
+                
+                // Очищаем старых
+                for (let id in onlineUsers) {
+                    if (Date.now() - onlineUsers[id] > 300000) {
+                        delete onlineUsers[id];
+                    }
+                }
+                
+                localStorage.setItem(onlineKey, JSON.stringify(onlineUsers));
+                onlineIndicator.innerHTML = `<span class="online-dot" style="width: 8px; height: 8px; background: white; border-radius: 50%; display: inline-block;"></span> Онлайн: ${Object.keys(onlineUsers).length}`;
+            }, 60000);
+            
+            // Удаляем при закрытии страницы
+            window.addEventListener('beforeunload', function() {
+                onlineUsers = JSON.parse(localStorage.getItem(onlineKey) || '{}');
+                delete onlineUsers[userId];
+                localStorage.setItem(onlineKey, JSON.stringify(onlineUsers));
+            });
+        }
+
+        // Инициализация счетчика онлайн
+        setTimeout(initOnlineCounter, 3000);
+
+        // Экспорт данных для администратора
+        function exportAnalyticsData() {
+            const analyticsData = {
+                subscribers: JSON.parse(localStorage.getItem('ai_subscribers') || '[]'),
+                events: JSON.parse(localStorage.getItem('ai_events') || '[]'),
+                pageViews: JSON.parse(localStorage.getItem('ai_page_views') || '[]'),
+                sessions: JSON.parse(localStorage.getItem('ai_sessions') || '[]'),
+                clicks: JSON.parse(localStorage.getItem('ai_clicks') || '[]'),
+                traffic: JSON.parse(localStorage.getItem('ai_traffic') || '[]'),
+                exportDate: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(analyticsData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            
+            // Создаем ссылку для скачивания
+            const downloadLink = document.createElement('a');
+            downloadLink.href = URL.createObjectURL(dataBlob);
+            downloadLink.download = `ai-analytics-${Date.now()}.json`;
+            downloadLink.click();
+            
+            // Отправляем уведомление о экспорте
+            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+                const exportMessage = `
+📊 <b>Экспорт данных аналитики</b>
+
+🗂️ <b>Файл:</b> ${downloadLink.download}
+📦 <b>Данные:</b>
+   • Подписчики: ${analyticsData.subscribers.length}
+   • События: ${analyticsData.events.length}
+   • Просмотры: ${analyticsData.pageViews.length}
+   • Сессии: ${analyticsData.sessions.length}
+   • Клики: ${analyticsData.clicks.length}
+🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+                `;
+                
+                sendTelegramNotification(exportMessage);
+            }
+        }
+
+        // Кнопка для экспорта данных (только для админа)
+        const exportButton = document.createElement('button');
+        exportButton.innerHTML = '📊 Экспорт данных';
+        exportButton.style.cssText = `
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: #8b5cf6;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 1000;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        `;
+        exportButton.onclick = exportAnalyticsData;
+        document.body.appendChild(exportButton);
+
+        // Автоматическая очистка старых данных
+        function cleanupOldData() {
+            const now = Date.now();
+            const monthAgo = now - (30 * 24 * 60 * 60 * 1000);
+            
+            // Очищаем старые события
+            let events = JSON.parse(localStorage.getItem('ai_events') || '[]');
+            events = events.filter(event => event.timestamp > monthAgo);
+            localStorage.setItem('ai_events', JSON.stringify(events));
+            
+            // Очищаем старые клики
+            let clicks = JSON.parse(localStorage.getItem('ai_clicks') || '[]');
+            clicks = clicks.filter(click => click.timestamp > monthAgo);
+            localStorage.setItem('ai_clicks', JSON.stringify(clicks));
+            
+            console.log('🧹 Очищены старые данные аналитики');
+        }
+
+        // Запускаем очистку раз в день
+        setInterval(cleanupOldData, 24 * 60 * 60 * 1000);
+        
+        // Первая очистка через 10 секунд после загрузки
+        setTimeout(cleanupOldData, 10000);
+
     </script>
 </body>
 </html>
