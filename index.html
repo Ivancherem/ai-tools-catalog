@@ -12,7 +12,7 @@
     <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Стили прямо в файле -->
+    <!-- Стили -->
     <style>
         /* ===== ОСНОВНЫЕ СТИЛИ ===== */
         * {
@@ -37,6 +37,8 @@
             color: var(--dark);
             line-height: 1.6;
             min-height: 100vh;
+            opacity: 0;
+            transition: opacity 0.5s;
         }
 
         .container {
@@ -93,10 +95,12 @@
             justify-content: center;
             gap: 40px;
             margin-top: 30px;
+            flex-wrap: wrap;
         }
 
         .stat {
             text-align: center;
+            min-width: 120px;
         }
 
         .stat-number {
@@ -127,6 +131,7 @@
             color: rgba(255, 255, 255, 0.8);
             text-align: center;
             margin-bottom: 40px;
+            font-size: 1.1rem;
         }
 
         .cards {
@@ -171,6 +176,17 @@
             display: flex;
             align-items: center;
             gap: 5px;
+        }
+
+        .ru-badge {
+            display: inline-block;
+            background: #ff3333;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            margin-left: 10px;
+            font-weight: 600;
         }
 
         .card-title {
@@ -248,6 +264,7 @@
             padding: 40px;
             margin: 40px 0;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         .alt-cards {
@@ -262,6 +279,12 @@
             padding: 20px;
             border-radius: 15px;
             border-left: 4px solid #4f46e5;
+            transition: transform 0.3s;
+        }
+
+        .alt-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
         }
 
         .alt-card h4 {
@@ -276,6 +299,7 @@
             color: rgba(255, 255, 255, 0.8);
             margin-bottom: 15px;
             font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .alt-card a {
@@ -286,6 +310,36 @@
 
         .alt-card a:hover {
             text-decoration: underline;
+        }
+
+        /* ===== ПАРТНЁРСКАЯ ПРОГРАММА ===== */
+        .partnership {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            color: white;
+            text-align: center;
+        }
+
+        .partner-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 20px;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .partner-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
         }
 
         /* ===== ФОРМА ПОДПИСКИ ===== */
@@ -315,11 +369,32 @@
             border-radius: 12px;
             font-size: 1rem;
             transition: border-color 0.3s;
+            font-family: 'Inter', sans-serif;
         }
 
         .form-input:focus {
             outline: none;
             border-color: var(--primary);
+            background: white;
+        }
+
+        .checkbox-group {
+            margin: 20px 0;
+        }
+
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .checkbox-label input {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--secondary);
         }
 
         .submit-button {
@@ -337,6 +412,7 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
+            font-family: 'Inter', sans-serif;
         }
 
         .submit-button:hover {
@@ -348,6 +424,7 @@
             color: rgba(255, 255, 255, 0.8);
             margin-top: 15px;
             font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         /* ===== ПРОМОКОДЫ ===== */
@@ -369,6 +446,12 @@
             padding: 25px;
             position: relative;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
         .promo-badge {
@@ -392,6 +475,7 @@
         .promo-card p {
             color: var(--gray);
             margin-bottom: 20px;
+            line-height: 1.5;
         }
 
         .promo-code {
@@ -405,10 +489,11 @@
 
         .promo-code code {
             flex: 1;
-            font-family: monospace;
+            font-family: 'Courier New', monospace;
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary-dark);
+            letter-spacing: 1px;
         }
 
         .copy-button {
@@ -427,6 +512,130 @@
 
         .copy-button:hover {
             background: var(--primary-dark);
+        }
+
+        /* ===== ОТЗЫВЫ ===== */
+        .testimonials {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #10b981;
+            transition: transform 0.3s;
+        }
+
+        .testimonial-card:hover {
+            transform: translateX(5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .testimonial-card p {
+            color: rgba(255, 255, 255, 0.9);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .author-avatar {
+            width: 40px;
+            height: 40px;
+            background: #4f46e5;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-info strong {
+            display: block;
+            color: white;
+            margin-bottom: 2px;
+        }
+
+        .author-info small {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .faq-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 20px 20px;
+            max-height: 500px;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
         }
 
         /* ===== ФУТЕР ===== */
@@ -469,6 +678,7 @@
             gap: 10px;
             margin-bottom: 8px;
             font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         .footer-links h5,
@@ -487,10 +697,12 @@
             align-items: center;
             gap: 10px;
             transition: color 0.3s;
+            padding: 5px 0;
         }
 
         .footer-links a:hover {
             color: white;
+            transform: translateX(5px);
         }
 
         .social-icons {
@@ -509,12 +721,27 @@
             border-radius: 50%;
             color: white;
             font-size: 1.2rem;
-            transition: background 0.3s;
+            transition: all 0.3s;
         }
 
         .social-icons a:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
+        }
+
+        .partner-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .partner-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.8);
         }
 
         .footer-bottom {
@@ -531,6 +758,28 @@
         .disclaimer {
             font-size: 0.9rem;
             opacity: 0.6;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        .footer-legal {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-legal a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-legal a:hover {
+            color: white;
         }
 
         /* ===== АДАПТИВНОСТЬ ===== */
@@ -544,7 +793,6 @@
             }
             
             .stats {
-                flex-direction: column;
                 gap: 20px;
             }
             
@@ -552,16 +800,16 @@
                 grid-template-columns: 1fr;
             }
             
-            .subscribe {
+            .subscribe, .russian-alternatives, .testimonials, .faq-section {
+                padding: 25px;
+            }
+            
+            .partnership {
                 padding: 30px 20px;
             }
             
             .promo-cards {
                 grid-template-columns: 1fr;
-            }
-            
-            .russian-alternatives {
-                padding: 25px;
             }
             
             .footer-content {
@@ -583,7 +831,11 @@
                 font-size: 1.8rem;
             }
             
-            .card, .alt-card {
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .card, .alt-card, .promo-card {
                 padding: 20px;
             }
             
@@ -591,12 +843,18 @@
                 font-size: 1.5rem;
             }
             
-            .footer-links a {
-                font-size: 0.9rem;
-            }
-            
             .section-title {
                 font-size: 1.6rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: 10px;
             }
         }
 
@@ -612,65 +870,21 @@
             }
         }
 
-        .card, .alt-card, .promo-card {
-            animation: fadeInUp 0.6s ease-out;
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
-        /* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ===== */
-        .hero-description {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 20px auto;
+        .animate-fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
         }
 
-        .ru-badge {
-            display: inline-block;
-            background: #ff3333;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.8rem;
-            margin-left: 10px;
-            font-weight: 600;
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
-        .testimonials {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 40px;
-            border-radius: 20px;
-            margin: 40px 0;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
-            border-radius: 15px;
-            margin: 20px 0;
-            border-left: 4px solid #10b981;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 15px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .author-avatar {
-            width: 40px;
-            height: 40px;
-            background: #4f46e5;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        /* ===== СТИЛИ ДЛЯ ВСПЛЫВАЮЩИХ УВЕДОМЛЕНИЙ ===== */
+        /* ===== УВЕДОМЛЕНИЯ ===== */
         .notification {
             position: fixed;
             top: 20px;
@@ -680,9 +894,10 @@
             padding: 15px 25px;
             border-radius: 10px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 1000;
+            z-index: 10000;
             display: none;
             animation: slideIn 0.3s ease-out;
+            max-width: 400px;
         }
 
         @keyframes slideIn {
@@ -696,71 +911,8 @@
             }
         }
 
-        /* ===== СТИЛИ ДЛЯ ПАРТНЁРСКОЙ ПРОГРАММЫ ===== */
-        .partnership {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 50px;
-            border-radius: 20px;
-            margin: 40px 0;
-            color: white;
-            text-align: center;
-        }
-
-        .partner-button {
-            display: inline-block;
-            background: white;
-            color: #667eea;
-            padding: 15px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-top: 20px;
-            transition: transform 0.3s;
-        }
-
-        .partner-button:hover {
-            transform: translateY(-3px);
-        }
-
-        /* ===== СТИЛИ ДЛЯ МОБИЛЬНОГО МЕНЮ ===== */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-                position: absolute;
-                right: 20px;
-                top: 20px;
-            }
-            
-            .nav-menu {
-                display: none;
-                flex-direction: column;
-                position: absolute;
-                top: 70px;
-                left: 0;
-                right: 0;
-                background: rgba(0,0,0,0.9);
-                padding: 20px;
-                border-radius: 10px;
-                z-index: 100;
-            }
-            
-            .nav-menu.active {
-                display: flex;
-            }
-        }
-
-        /* ===== СТИЛИ ДЛЯ ЗАГРУЗКИ ===== */
+        /* ===== ЗАГРУЗЧИК ===== */
         .loader {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -771,6 +923,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            display: none;
         }
 
         .spinner {
@@ -786,54 +939,7 @@
             to { transform: rotate(360deg); }
         }
 
-        /* ===== СТИЛИ ДЛЯ РОССИЙСКИХ ПОЛЬЗОВАТЕЛЕЙ ===== */
-        body.ru-user .card {
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-        }
-
-        body.ru-user .card-button {
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
-        }
-
-        /* ===== ДОПОЛНИТЕЛЬНЫЕ ЭФФЕКТЫ ===== */
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        .shadow-lg {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-        }
-
-        .hover-lift {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        /* ===== ПРОЗРАЧНОСТЬ ДЛЯ ЭФФЕКТОВ ===== */
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .glass-dark {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* ===== ГРАДИЕНТНЫЕ ТЕКСТЫ ===== */
+        /* ===== ДОПОЛНИТЕЛЬНЫЕ ЭЛЕМЕНТЫ ===== */
         .gradient-text {
             background: linear-gradient(135deg, #667eea, #764ba2);
             -webkit-background-clip: text;
@@ -841,36 +947,26 @@
             background-clip: text;
         }
 
-        /* ===== СТИЛИ ДЛЯ ИКОНОК ===== */
-        .icon-large {
-            font-size: 3rem;
-            margin-bottom: 20px;
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
-        .icon-spin {
-            animation: spin 2s linear infinite;
+        .rounded-xl {
+            border-radius: 20px;
         }
 
-        /* ===== ДОПОЛНИТЕЛЬНЫЕ КЛАССЫ ДЛЯ УТИЛИТ ===== */
-        .text-center { text-align: center; }
+        .shadow-lg {
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
         .mt-20 { margin-top: 20px; }
         .mb-20 { margin-bottom: 20px; }
         .mt-40 { margin-top: 40px; }
         .mb-40 { margin-bottom: 40px; }
-        .p-20 { padding: 20px; }
-        .p-40 { padding: 40px; }
-        .rounded-lg { border-radius: 15px; }
-        .rounded-xl { border-radius: 20px; }
-        .w-full { width: 100%; }
-        .hidden { display: none; }
-        .block { display: block; }
-        .flex { display: flex; }
-        .items-center { align-items: center; }
-        .justify-center { justify-content: center; }
-        .gap-10 { gap: 10px; }
-        .gap-20 { gap: 20px; }
-        .flex-col { flex-direction: column; }
-        .flex-wrap { flex-wrap: wrap; }
+        .text-center { text-align: center; }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
@@ -893,9 +989,9 @@
                 <h2>🚀 Лучшие AI-инструменты 2024</h2>
                 <p class="hero-subtitle">Работающие в России нейросети + промокоды</p>
                 
-                <div class="hero-description">
+                <div style="max-width: 700px; margin: 20px auto; color: rgba(255,255,255,0.9); line-height: 1.6;">
                     Самый полный каталог искусственного интеллекта для русскоязычных пользователей. 
-                    Все инструменты проверены на работу в России.
+                    Все инструменты проверены на работу в России. Партнёрские ссылки помогают развивать проект.
                 </div>
                 
                 <div class="stats">
@@ -921,7 +1017,7 @@
                 
                 <div class="cards">
                     <!-- Яндекс GPT (работает в РФ) -->
-                    <div class="card hover-lift">
+                    <div class="card animate-fade-in">
                         <div class="card-header">
                             <div class="card-icon">
                                 <i class="fab fa-yandex"></i>
@@ -946,18 +1042,21 @@
                             <small>В Яндекс 360 (первые 3 месяца бесплатно)</small>
                         </div>
                         
-                        <!-- Ссылка на Яндекс GPT -->
-                        <a href="https://360.yandex.ru/gpt" 
+                        <!-- ПАРТНЁРСКАЯ ССЫЛКА Яндекс -->
+                        <a href="https://360.yandex.ru/gpt?utm_source=ai_catalog&utm_medium=referral&utm_campaign=ai_tools" 
                            target="_blank" 
-                           class="card-button pulse"
+                           class="card-button"
                            onclick="trackClick('yandex_gpt')">
                             <i class="fas fa-external-link-alt"></i>
                             Попробовать бесплатно
                         </a>
+                        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
+                            🔗 Партнёрская ссылка — помогаем развивать проект
+                        </p>
                     </div>
 
                     <!-- Kandinsky 3.0 (работает в РФ) -->
-                    <div class="card hover-lift">
+                    <div class="card animate-fade-in">
                         <div class="card-header">
                             <div class="card-icon">
                                 <i class="fas fa-paint-brush"></i>
@@ -982,18 +1081,21 @@
                             <small>До 100 изображений в день бесплатно</small>
                         </div>
                         
-                        <!-- Ссылка на Kandinsky -->
-                        <a href="https://fusionbrain.ai/diffusion" 
+                        <!-- ПАРТНЁРСКАЯ ССЫЛКА FusionBrain -->
+                        <a href="https://fusionbrain.ai/diffusion?ref=ai_catalog_ru" 
                            target="_blank" 
-                           class="card-button pulse"
+                           class="card-button"
                            onclick="trackClick('kandinsky')">
                             <i class="fas fa-external-link-alt"></i>
                             Создать изображение
                         </a>
+                        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
+                            🔗 Партнёрская ссылка — помогаем развивать проект
+                        </p>
                     </div>
 
                     <!-- GigaChat от Сбера -->
-                    <div class="card hover-lift">
+                    <div class="card animate-fade-in">
                         <div class="card-header">
                             <div class="card-icon">
                                 <i class="fas fa-comment"></i>
@@ -1018,1010 +1120,1072 @@
                             <small>Для разработчиков и тестирования</small>
                         </div>
                         
-                        <!-- Ссылка на GigaChat -->
-                        <a href="https://developers.sber.ru/gigachat" 
+                        <!-- ПАРТНЁРСКАЯ ССЫЛКА Сбер -->
+                        <a href="https://developers.sber.ru/gigachat?utm_source=ai_catalog&utm_medium=referral" 
                            target="_blank" 
-                           class="card-button pulse"
+                           class="card-button"
                            onclick="trackClick('gigachat')">
                             <i class="fas fa-external-link-alt"></i>
                             Для разработчиков
                         </a>
+                        <p style="margin-top: 10px; font-size: 0.8rem; color: var(--gray);">
+                            🔗 Партнёрская ссылка — помогаем развивать проект
+                        </p>
                     </div>
                 </div>
             </section>
 
             <!-- Российские альтернативы -->
-            <section class="russian-alternatives glass rounded-xl">
+            <section class="russian-alternatives glass">
                 <h3 class="section-title">🇷🇺 Российские AI-инструменты</h3>
                 <p class="section-subtitle">Работают без VPN и полностью на русском языке</p>
                 
-                <div class="alt-cards">
-                    <div class="alt-card hover-lift">
-                        <h4><i class="fas fa-language icon-large"></i> DeepSeek</h4>
-                        <p>Российский AI-поисковик с нейросетями для сложных запросов</p>
-                        <a href="https://deepseek.ru/" target="_blank" onclick="trackClick('deepseek')">Перейти →</a>
-                    </div>
-                    
-                    <div class="alt-card hover-lift">
-                        <h4><i class="fas fa-microphone icon-large"></i> Салют GPT</h4>
-                        <p>Голосовой ассистент от Сбера с интеграцией в умный дом</p>
-                        <a href="https://salute.sber.ru/" target="_blank" onclick="trackClick('salute')">Перейти →</a>
-                    </div>
-                    
-                    <div class="alt-card hover-lift">
-                        <h4><i class="fas fa-code icon-large"></i> CodeGPT</h4>
-                        <p>Русский AI для программистов и генерации кода</p>
-                        <a href="https://codegpt.ru/" target="_blank" onclick="trackClick('codegpt')">Перейти →</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Партнёрская программа -->
-            <section class="partnership rounded-xl">
-                <h3 class="section-title">🤝 Зарабатывайте с нами!</h3>
-                <p class="section-subtitle">Станьте партнёром и получайте до 30% с каждой продажи</p>
-                <p>Приводите клиентов на AI-сервисы через наш каталог и зарабатывайте на партнёрских комиссиях</p>
-                <a href="#partnership-form" class="partner-button hover-lift">
-                    <i class="fas fa-handshake"></i>
-                    Стать партнёром
-                </a>
-            </section>
-
-            <!-- Форма подписки -->
-            <section class="subscribe glass rounded-xl">
-                <h3 class="section-title">💌 Получать новые инструменты</h3>
-                <p class="section-subtitle">Работающие в России AI + инструкции по обходу блокировок + эксклюзивные промокоды</p>
-                
-                <form class="subscribe-form" id="subscribe-form">
-                    <div class="form-group">
-                        <input type="text" placeholder="Ваше имя" class="form-input" id="name-input">
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="Ваш email" required class="form-input" id="email-input">
-                    </div>
-                    <div class="form-group">
-                        <select class="form-input" id="interest-select">
-                            <option value="">Что вас интересует?</option>
-                            <option value="russian">Российские AI</option>
-                            <option value="international">Международные AI</option>
-                            <option value="business">AI для бизнеса</option>
-                            <option value="development">AI для разработки</option>
-                            <option value="all">Всё подряд</option>
-                        </select>
-                    <div class="form-group">
-                        <label style="color: white; display: block; margin-bottom: 10px;">
-                            <input type="checkbox" id="newsletter-check" checked>
-                            Получать weekly-дайджест новых AI-инструментов
-                        </label>
-                        <label style="color: white; display: block;">
-                            <input type="checkbox" id="promo-check" checked>
-                            Получать эксклюзивные промокоды и скидки
-                        </label>
-                    </div>
-                    
-                    <button type="submit" class="submit-button hover-lift">
-                        <i class="fas fa-paper-plane icon-spin"></i>
-                        Подписаться на рассылку
-                    </button>
-                    <p class="form-note">
-                        <i class="fas fa-gift"></i>
-                        + бесплатный PDF-гайд "15 лучших AI-инструментов 2024 для России"
-                    </p>
-                </form>
-            </section>
-
-            <!-- Промокоды -->
-            <section class="promocodes">
-                <h3 class="section-title">🎁 Активные промокоды</h3>
-                <p class="section-subtitle">Действительные скидки и бонусы для наших пользователей</p>
-                
-                <div class="promo-cards">
-                    <div class="promo-card hover-lift shadow-lg">
-                        <div class="promo-badge pulse">HOT</div>
-                        <h4 class="gradient-text">Яндекс 360 PRO</h4>
-                        <p>3 месяца Яндекс GPT + Облако + Переводчик бесплатно</p>
-                        <div class="promo-code">
-                            <code id="promo1">YANDEXAI2024PRO</code>
-                            <button class="copy-button" onclick="copyPromoCode('promo1')">
-                                <i class="far fa-copy"></i>
-                            </button>
-                        </div>
-                        <p class="text-center mt-20"><small>Действует до: 31.12.2024</small></p>
-                    </div>
-                    
-                    <div class="promo-card hover-lift shadow-lg">
-                        <div class="promo-badge">NEW</div>
-                        <h4 class="gradient-text">FusionBrain PRO</h4>
-                        <p>+100 бесплатных генераций изображений в Kandinsky 3.0</p>
-                        <div class="promo-code">
-                            <code id="promo2">FUSION100FREE</code>
-                            <button class="copy-button" onclick="copyPromoCode('promo2')">
-                                <i class="far fa-copy"></i>
-                            </button>
-                        </div>
-                        <p class="text-center mt-20"><small>Без ограничения по времени</small></p>
-                    </div>
-                    
-                    <div class="promo-card hover-lift shadow-lg">
-                        <div class="promo-badge">VIP</div>
-                        <h4 class="gradient-text">GigaChat API</h4>
-                        <p>Бесплатные 1000 токенов для тестирования API</p>
-                        <div class="promo-code">
-                            <code id="promo3">GIGACHAT1000FREE</code>
-                            <button class="copy-button" onclick="copyPromoCode('promo3')">
-                                <i class="far fa-copy"></i>
-                            </button>
-                        </div>
-                        <p class="text-center mt-20"><small>Только для новых разработчиков</small></p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Отзывы -->
-            <section class="testimonials glass rounded-xl">
-                <h3 class="section-title">💬 Отзывы пользователей</h3>
-                <p class="section-subtitle">Что говорят те, кто уже использует наши рекомендации</p>
-                
-                <div class="alt-cards">
-                    <div class="testimonial-card hover-lift">
-                        <p>"Наконец-то нашел работающие в России AI-инструменты! Яндекс GPT отлично заменяет ChatGPT для русских текстов."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">АС</div>
-                            <div>
-                                <strong>Алексей Смирнов</strong><br>
-                                <small>Маркетолог, Москва</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card hover-lift">
-                        <p>"Kandinsky 3.0 стал спасением! Раньше использовал Midjourney через VPN, теперь всё быстро и на русском."</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">МК</div>
-                            <div>
-                                <strong>Мария Ковалёва</strong><br>
-                                <small>Дизайнер, Санкт-Петербург</small>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="testimonial-card hover-lift">
-                        <p>"Благодаря промокодам сэкономил 5000 рублей на подписках. Рассылка действительно полезная!"</p>
-                        <div class="testimonial-author">
-                            <div class="author-avatar">ДИ</div>
-                            <div>
-                                <strong>Дмитрий Иванов</strong><br>
-                                <small>Предприниматель, Екатеринбург</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ -->
-            <section class="subscribe glass-dark rounded-xl">
-                <h3 class="section-title">❓ Частые вопросы</h3>
-                
-                <div class="faq-list">
-                    <div class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            <strong>Все ли инструменты работают в России без VPN?</strong>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Да! Все инструменты в разделе "Российские AI" работают без VPN и полностью на русском языке. Мы тестируем каждый сервис перед добавлением в каталог.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            <strong>Как я могу заработать с вашим каталогом?</strong>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Через партнёрские программы. Когда пользователи переходят по вашим ссылкам и покупают подписки, вы получаете комиссию (до 30%). Также можно стать нашим партнёром и получать доход от продаж через ваш сайт/канал.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="faq-item" onclick="toggleFaq(this)">
-                        <div class="faq-question">
-                            <strong>Как часто обновляется каталог?</strong>
-                            <i class="fas fa-chevron-down"></i>
-                        </div>
-                        <div class="faq-answer">
-                            <p>Еженедельно! Мы добавляем новые инструменты, проверяем промокоды и актуализируем информацию. Подписчики получают обновления каждую пятницу.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </main>
-
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-info">
-                    <h4><i class="fas fa-robot"></i> AI Catalog RU</h4>
-                    <p>Самый полный каталог AI-инструментов, работающих в России. Промокоды, отзывы, инструкции, партнёрская программа.</p>
-                    
-                    <div class="contacts">
-                        <p><i class="fas fa-envelope"></i> contact@ai-catalog.ru</p>
-                        <p><i class="fas fa-phone"></i> 8 (800) AI-CATALOG</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Россия, Москва</p>
-                    </div>
+                <div class="alt-cards"> <div class="alt-card"> <h4><i class="fas fa-language"></i> DeepSeek</h4> <p>Российский AI-поисковик с нейросетями для сложных запросов</p> <a href="https://deepseek.ru/?ref=ai_catalog" target="_blank" onclick="trackClick('deepseek')"> Перейти <i class="fas fa-arrow-right"></i> </a> </div>
+                <div class="alt-card">
+                    <h4><i class="fas fa-microphone"></i> Салют GPT</h4>
+                    <p>Голосовой ассистент от Сбера с интеграцией в умный дом</p>
+                    <a href="https://salute.sber.ru/?utm_source=ai_catalog" target="_blank" onclick="trackClick('salute')">
+                        Перейти <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
                 
-                <div class="footer-links">
-                    <h5>Разделы</h5>
-                    <a href="#russian"><i class="fas fa-flag"></i> Российские AI</a>
-                    <a href="#international"><i class="fas fa-globe"></i> Международные AI</a>
-                    <a href="#promo"><i class="fas fa-gift"></i> Промокоды</a>
-                    <a href="#reviews"><i class="fas fa-star"></i> Отзывы</a>
-                    <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
-                    <a href="#partnership"><i class="fas fa-handshake"></i> Партнёрство</a>
-                </div>
-                
-                <div class="footer-social">
-                    <h5>Подпишитесь на нас</h5>
-                    <div class="social-icons">
-                        <a href="https://t.me/ai_catalog_ru" target="_blank" title="Telegram" onclick="trackSocial('telegram')">
-                            <i class="fab fa-telegram"></i>
-                        </a>
-                        <a href="https://vk.com/ai_catalog" target="_blank" title="VK" onclick="trackSocial('vk')">
-                            <i class="fab fa-vk"></i>
-                        </a>
-                        <a href="https://youtube.com/@ai-catalog" target="_blank" title="YouTube" onclick="trackSocial('youtube')">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://dzen.ru/ai_catalog" target="_blank" title="Дзен" onclick="trackSocial('dzen')">
-                            <i class="fab fa-yandex"></i>
-                        </a>
-                        <a href="https://github.com/ai-catalog" target="_blank" title="GitHub" onclick="trackSocial('github')">
-                            <i class="fab fa-github"></i>
-                        </a>
-                    </div>
-                    
-                    <div class="mt-20">
-                        <h5>Партнёрские программы</h5>
-                        <div class="partner-badges">
-                            <img src="https://img.shields.io/badge/Яндекс-партнёр-FFCC00" alt="Яндекс партнёр" style="height: 20px; margin: 5px;">
-                            <img src="https://img.shields.io/badge/Сбер-партнёр-21A038" alt="Сбер партнёр" style="height: 20px; margin: 5px;">
-                            <img src="https://img.shields.io/badge/FusionBrain-партнёр-7C3AED" alt="FusionBrain партнёр" style="height: 20px; margin: 5px;">
-                        </div>
-                    </div>
+                <div class="alt-card">
+                    <h4><i class="fas fa-code"></i> CodeGPT</h4>
+                    <p>Русский AI для программистов и генерации кода</p>
+                    <a href="https://codegpt.ru/?ref=ai_catalog_ru" target="_blank" onclick="trackClick('codegpt')">
+                        Перейти <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
+        </section>
+
+        <!-- Международные AI через прокси-сервисы -->
+        <section class="subscribe glass rounded-xl">
+            <h3 class="section-title">🌍 Международные AI (работают через российские прокси)</h3>
+            <p class="section-subtitle">Доступ к мировым нейросетям через российские сервисы-посредники</p>
             
-            <div class="footer-bottom">
-                <p>© 2024 AI Catalog RU. Все инструменты проверены на работу в России.</p>
-                <p class="disclaimer">
-                    <i class="fas fa-info-circle"></i>
-                    Мы официальные партнёры сервисов. При переходе по ссылкам можем получать комиссию. Все цены актуальны на момент публикации.
+            <div class="cards" style="margin-top: 30px;">
+                <div class="card">
+                    <h4 class="gradient-text">🤖 ChatGPT через GigaChat</h4>
+                    <p>Полный функционал ChatGPT через российский прокси-сервис. Без VPN, работает в РФ.</p>
+                    <div class="card-features">
+                        <span class="feature">Русский язык</span>
+                        <span class="feature">Без VPN</span>
+                        <span class="feature">API доступ</span>
+                    </div>
+                    <!-- Партнёрская ссылка на прокси-сервис -->
+                    <a href="https://developers.sber.ru/gigachat/chatgpt-proxy?ref=ai_catalog" 
+                       target="_blank" 
+                       class="card-button"
+                       onclick="trackClick('chatgpt_proxy')">
+                        <i class="fas fa-external-link-alt"></i>
+                        Доступ через GigaChat
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <h4 class="gradient-text">🎨 Midjourney через Kandinsky</h4>
+                    <p>Альтернатива Midjourney с похожим качеством. Генерация изображений на русском.</p>
+                    <div class="card-features">
+                        <span class="feature">Русские промты</span>
+                        <span class="feature">Быстрая генерация</span>
+                        <span class="feature">Без блокировок</span>
+                    </div>
+                    <a href="https://fusionbrain.ai/diffusion?ref=ai_catalog_ru&promo=midjourney_alt" 
+                       target="_blank" 
+                       class="card-button"
+                       onclick="trackClick('midjourney_alt')">
+                        <i class="fas fa-external-link-alt"></i>
+                        Альтернатива Midjourney
+                    </a>
+                </div>
+                
+                <div class="card">
+                    <h4 class="gradient-text">🚀 Claude через Яндекс</h4>
+                    <p>Доступ к Claude AI через Яндекс.Облако с поддержкой русского языка.</p>
+                    <div class="card-features">
+                        <span class="feature">Контекст 100K</span>
+                        <span class="feature">Файлы PDF/Word</span>
+                        <span class="feature">Русский интерфейс</span>
+                    </div>
+                    <a href="https://cloud.yandex.ru/services/claude-ai?utm_source=ai_catalog" 
+                       target="_blank" 
+                       class="card-button"
+                       onclick="trackClick('claude_yandex')">
+                        <i class="fas fa-external-link-alt"></i>
+                        Claude через Яндекс
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Партнёрская программа -->
+        <section class="partnership rounded-xl">
+            <h3 class="section-title">🤝 Зарабатывайте с нами!</h3>
+            <p class="section-subtitle">Станьте партнёром и получайте до 30% с каждой продажи</p>
+            <p>Приводите клиентов на AI-сервисы через наш каталог и зарабатывайте на партнёрских комиссиях</p>
+            <button class="partner-button" onclick="showPartnershipForm()">
+                <i class="fas fa-handshake"></i>
+                Стать партнёром
+            </button>
+        </section>
+
+        <!-- Форма подписки -->
+        <section class="subscribe glass rounded-xl">
+            <h3 class="section-title">💌 Получать новые инструменты</h3>
+            <p class="section-subtitle">Работающие в России AI + инструкции по обходу блокировок + эксклюзивные промокоды</p>
+            
+            <form class="subscribe-form" id="subscribe-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Ваше имя" class="form-input" id="name-input">
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" placeholder="Ваш email" required class="form-input" id="email-input">
+                </div>
+                
+                <div class="form-group">
+                    <select class="form-input" id="interest-select">
+                        <option value="">Что вас интересует?</option>
+                        <option value="russian">Российские AI</option>
+                        <option value="international">Международные AI</option>
+                        <option value="business">AI для бизнеса</option>
+                        <option value="development">AI для разработки</option>
+                        <option value="all">Всё подряд</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="newsletter-check" checked>
+                        Получать weekly-дайджест новых AI-инструментов
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="promo-check" checked>
+                        Получать эксклюзивные промокоды и скидки
+                    </label>
+                </div>
+                
+                <button type="submit" class="submit-button">
+                    <i class="fas fa-paper-plane"></i>
+                    Подписаться на рассылку
+                </button>
+                
+                <p class="form-note">
+                    <i class="fas fa-gift"></i>
+                    + бесплатный PDF-гайд "15 лучших AI-инструментов 2024 для России"
                 </p>
-                <div class="footer-legal mt-20">
-                    <a href="#privacy" style="color: rgba(255,255,255,0.7); margin: 0 10px;">Политика конфиденциальности</a>
-                    <a href="#terms" style="color: rgba(255,255,255,0.7); margin: 0 10px;">Условия использования</a>
-                    <a href="#cookies" style="color: rgba(255,255,255,0.7); margin: 0 10px;">Cookie</a>
-                    <a href="#sitemap" style="color: rgba(255,255,255,0.7); margin: 0 10px;">Карта сайта</a>
+            </form>
+        </section>
+
+        <!-- Промокоды -->
+        <section class="promocodes">
+            <h3 class="section-title">🎁 Активные промокоды</h3>
+            <p class="section-subtitle">Действительные скидки и бонусы для наших пользователей</p>
+            
+            <div class="promo-cards">
+                <div class="promo-card">
+                    <div class="promo-badge pulse">HOT</div>
+                    <h4 class="gradient-text">Яндекс 360 PRO</h4>
+                    <p>3 месяца Яндекс GPT + Облако + Переводчик бесплатно</p>
+                    <div class="promo-code">
+                        <code id="promo1">YANDEXAI2024PRO</code>
+                        <button class="copy-button" onclick="copyPromoCode('promo1')">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="text-center mt-20"><small>Действует до: 31.12.2024</small></p>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">NEW</div>
+                    <h4 class="gradient-text">FusionBrain PRO</h4>
+                    <p>+100 бесплатных генераций изображений в Kandinsky 3.0</p>
+                    <div class="promo-code">
+                        <code id="promo2">FUSION100FREE</code>
+                        <button class="copy-button" onclick="copyPromoCode('promo2')">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="text-center mt-20"><small>Без ограничения по времени</small></p>
+                </div>
+                
+                <div class="promo-card">
+                    <div class="promo-badge">VIP</div>
+                    <h4 class="gradient-text">GigaChat API</h4>
+                    <p>Бесплатные 1000 токенов для тестирования API</p>
+                    <div class="promo-code">
+                        <code id="promo3">GIGACHAT1000FREE</code>
+                        <button class="copy-button" onclick="copyPromoCode('promo3')">
+                            <i class="far fa-copy"></i>
+                        </button>
+                    </div>
+                    <p class="text-center mt-20"><small>Только для новых разработчиков</small></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Отзывы -->
+        <section class="testimonials glass rounded-xl">
+            <h3 class="section-title">💬 Отзывы пользователей</h3>
+            <p class="section-subtitle">Что говорят те, кто уже использует наши рекомендации</p>
+            
+            <div class="alt-cards">
+                <div class="testimonial-card">
+                    <p>"Наконец-то нашел работающие в России AI-инструменты! Яндекс GPT отлично заменяет ChatGPT для русских текстов."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">АС</div>
+                        <div class="author-info">
+                            <strong>Алексей Смирнов</strong>
+                            <small>Маркетолог, Москва</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"Kandinsky 3.0 стал спасением! Раньше использовал Midjourney через VPN, теперь всё быстро и на русском."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">МК</div>
+                        <div class="author-info">
+                            <strong>Мария Ковалёва</strong>
+                            <small>Дизайнер, Санкт-Петербург</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p>"Благодаря промокодам сэкономил 5000 рублей на подписках. Рассылка действительно полезная!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">ДИ</div>
+                        <div class="author-info">
+                            <strong>Дмитрий Иванов</strong>
+                            <small>Предприниматель, Екатеринбург</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section">
+            <h3 class="section-title">❓ Частые вопросы</h3>
+            
+            <div class="faq-list">
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <strong>Все ли инструменты работают в России без VPN?</strong>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Да! Все инструменты в разделе "Российские AI" работают без VPN и полностью на русском языке. Международные сервисы доступны через российские прокси-сервисы.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <strong>Как я могу заработать с вашим каталогом?</strong>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>1. Используйте наши партнёрские ссылки - мы получаем комиссию<br>
+                        2. Станьте нашим партнёром - приводите клиентов и получайте до 30%<br>
+                        3. Рекомендуйте наш каталог - за каждую регистрацию по вашей ссылке</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <strong>Как часто обновляется каталог?</strong>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Еженедельно! Мы добавляем новые инструменты, проверяем промокоды и актуализируем информацию. Подписчики получают обновления каждую пятницу.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" onclick="toggleFaq(this)">
+                    <div class="faq-question">
+                        <strong>Как получить доступ к ChatGPT в России?</strong>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Через российские прокси-сервисы: GigaChat API предоставляет доступ к ChatGPT. Также Яндекс GPT - отличная альтернатива с полной поддержкой русского языка.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Telegram канал -->
+        <section class="partnership" style="background: linear-gradient(135deg, #0088cc 0%, #00acee 100%);">
+            <h3 class="section-title">📢 Присоединяйтесь к нашему Telegram-каналу!</h3>
+            <p class="section-subtitle">Ежедневные обновления: новые AI-инструменты, промокоды, инструкции</p>
+            <a href="https://t.me/ai_catalog_ru" target="_blank" class="partner-button" style="background: white; color: #0088cc;">
+                <i class="fab fa-telegram"></i>
+                Подписаться на канал
+            </a>
+        </section>
+    </div>
+</main>
+
+<!-- Футер -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-info">
+                <h4><i class="fas fa-robot"></i> AI Catalog RU</h4>
+                <p>Самый полный каталог AI-инструментов, работающих в России. Промокоды, отзывы, инструкции, партнёрская программа.</p>
+                
+                <div class="contacts">
+                    <p><i class="fas fa-envelope"></i> contact@ai-catalog.ru</p>
+                    <p><i class="fas fa-phone"></i> 8 (800) AI-CATALOG</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Россия, Москва</p>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <h5>Разделы</h5>
+                <a href="#"><i class="fas fa-flag"></i> Российские AI</a>
+                <a href="#"><i class="fas fa-globe"></i> Международные AI</a>
+                <a href="#"><i class="fas fa-gift"></i> Промокоды</a>
+                <a href="#"><i class="fas fa-star"></i> Отзывы</a>
+                <a href="#"><i class="fas fa-question-circle"></i> FAQ</a>
+                <a href="#"><i class="fas fa-handshake"></i> Партнёрство</a>
+            </div>
+            
+            <div class="footer-social">
+                <h5>Подпишитесь на нас</h5>
+                <div class="social-icons">
+                    <a href="https://t.me/ai_catalog_ru" target="_blank" title="Telegram" onclick="trackSocial('telegram')">
+                        <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://vk.com/ai_catalog" target="_blank" title="VK" onclick="trackSocial('vk')">
+                        <i class="fab fa-vk"></i>
+                    </a>
+                    <a href="https://youtube.com/@ai-catalog" target="_blank" title="YouTube" onclick="trackSocial('youtube')">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://dzen.ru/ai_catalog" target="_blank" title="Дзен" onclick="trackSocial('dzen')">
+                        <i class="fab fa-yandex"></i>
+                    </a>
+                </div>
+                
+                <div class="mt-20">
+                    <h5>Наши партнёры</h5>
+                    <div class="partner-badges">
+                        <span class="partner-badge">Яндекс</span>
+                        <span class="partner-badge">Сбер</span>
+                        <span class="partner-badge">FusionBrain</span>
+                        <span class="partner-badge">DeepSeek</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Уведомление -->
-    <div id="notification" class="notification hidden">
-        <span id="notification-text"></span>
+        
+        <div class="footer-bottom">
+            <p>© 2024 AI Catalog RU. Все инструменты проверены на работу в России.</p>
+            <p class="disclaimer">
+                <i class="fas fa-info-circle"></i>
+                Мы официальные партнёры сервисов. При переходе по партнёрским ссылкам можем получать комиссию. Это помогает развивать проект.
+            </p>
+            <div class="footer-legal">
+                <a href="#privacy">Политика конфиденциальности</a>
+                <a href="#terms">Условия использования</a>
+                <a href="#cookies">Cookie</a>
+                <a href="#sitemap">Карта сайта</a>
+            </div>
+        </div>
     </div>
+</footer>
 
-    <!-- Лоадер -->
-    <div id="loader" class="loader hidden">
-        <div class="spinner"></div>
+<!-- Уведомление -->
+<div id="notification" class="notification hidden">
+    <span id="notification-text"></span>
+</div>
+
+<!-- Лоадер -->
+<div id="loader" class="loader hidden">
+    <div class="spinner"></div>
+</div>
+
+<!-- Модальное окно партнёрства -->
+<div id="partnership-modal" class="hidden" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: white; border-radius: 20px; padding: 40px; max-width: 500px; width: 100%; max-height: 90vh; overflow-y: auto;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <h3 style="color: var(--dark); font-size: 1.8rem;">🤝 Стать партнёром</h3>
+            <button onclick="document.getElementById('partnership-modal').classList.add('hidden')" style="background: none; border: none; font-size: 24px; cursor: pointer; color: var(--gray);">×</button>
+        </div>
+        <form id="partnership-form">
+            <div class="form-group">
+                <input type="text" placeholder="Имя и фамилия" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <input type="email" placeholder="Email" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <input type="tel" placeholder="Телефон" class="form-input" required>
+            </div>
+            <div class="form-group">
+                <input type="text" placeholder="Название компании/сайта" class="form-input">
+            </div>
+            <div class="form-group">
+                <select class="form-input" required>
+                    <option value="">Тип партнёрства</option>
+                    <option value="affiliate">Партнёрская программа</option>
+                    <option value="content">Контент-партнёрство</option>
+                    <option value="advertising">Рекламное партнёрство</option>
+                    <option value="other">Другое</option>
+                </select>
+            </div>
+            <button type="submit" class="submit-button" style="margin-top: 20px;">
+                <i class="fas fa-paper-plane"></i>
+                Отправить заявку
+            </button>
+        </form>
     </div>
+</div>
 
-    <!-- Telegram Bot Integration -->
-    <script>
-        // Конфигурация бота
-        const TELEGRAM_BOT_TOKEN = '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys';
-        const TELEGRAM_CHAT_ID = '2048092522';
-        
-        // Функция отправки уведомлений в Telegram
-        async function sendTelegramNotification(message) {
-            if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-                console.warn('Telegram токен или chat_id не настроены');
-                return;
-            }
-            
-            try {
-                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
-                
-                const response = await fetch(url, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        chat_id: TELEGRAM_CHAT_ID,
-                        text: message,
-                        parse_mode: 'HTML',
-                        disable_web_page_preview: true
-                    })
-                });
-                
-                const data = await response.json();
-                
-                if (data.ok) {
-                    console.log('✅ Уведомление отправлено в Telegram');
-                } else {
-                    console.error('❌ Ошибка Telegram:', data);
-                }
-            } catch (error) {
-                console.error('❌ Ошибка отправки в Telegram:', error);
-            }
-        }
-        
-        // Получить ваш chat_id автоматически
-        async function setupTelegramBot() {
-            if (!TELEGRAM_BOT_TOKEN) {
-                console.warn('❌ Токен бота не настроен');
-                return;
-            }
-            
-            // Показываем инструкцию
-            const telegramSetup = `
-🤖 <b>Настройка Telegram-бота</b>
-
-Для привязки бота к сайту:
-
-1. <b>Получите токен:</b>
-   - Откройте @BotFather
-   - Напишите /mybots
-   - Выберите @NeuraAI_Assistant_bot
-   - Нажмите API Token
-   - Скопируйте токен
-
-2. <b>Получите chat_id:</b>
-   - Напишите боту @NeuraAI_Assistant_bot любое сообщение
-   - Нажмите кнопку ниже "Получить Chat ID"
-
-3. <b>Вставьте данные в код:</b>
-   - Замените TELEGRAM_BOT_TOKEN на ваш токен
-   - Замените TELEGRAM_CHAT_ID на ваш chat_id
-            `;
-            
-            alert(telegramSetup);
-        }
-        
-        // Получить chat_id из Telegram API
-        async function getTelegramChatId() {
-            if (!TELEGRAM_BOT_TOKEN) {
-                alert('❌ Сначала настройте TELEGRAM_BOT_TOKEN в коде!');
-                return;
-            }
-            
-            try {
-                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getUpdates`;
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                if (data.ok && data.result.length > 0) {
-                    const latestUpdate = data.result[data.result.length - 1];
-                    const chatId = latestUpdate.message?.chat?.id;
-                    
-                    if (chatId) {
-                        alert(`✅ Ваш Chat ID: ${chatId}\n\nСкопируйте его и вставьте в код вместо TELEGRAM_CHAT_ID`);
-                        return chatId;
-                    }
-                }
-                
-                alert('📱 Напишите боту @NeuraAI_Assistant_bot любое сообщение и обновите страницу');
-            } catch (error) {
-                console.error('Ошибка получения chat_id:', error);
-                alert('❌ Ошибка. Проверьте токен бота или попробуйте позже.');
-            }
-        }
-        
-        // Модифицируем форму подписки для отправки в Telegram
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('subscribe-form');
+<!-- Telegram Bot & Analytics -->
+<script>
+    // Конфигурация Telegram бота
+    const TELEGRAM_BOT_TOKEN = '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys';
+    const TELEGRAM_CHAT_ID = '2048092522';
     
-    if (form) {
-        form.addEventListener('submit', async function(e) {
-            e.preventDefault();
+    // Основные функции
+    function showNotification(message, type = 'success') {
+        const notification = document.getElementById('notification');
+        const text = document.getElementById('notification-text');
+        
+        text.textContent = message;
+        notification.style.background = type === 'error' ? '#ef4444' : 
+                                      type === 'warning' ? '#f59e0b' : '#10b981';
+        notification.style.display = 'block';
+        
+        setTimeout(() => {
+            notification.style.display = 'none';
+        }, 5000);
+    }
+    
+    function showLoader() {
+        document.getElementById('loader').style.display = 'flex';
+    }
+    
+    function hideLoader() {
+        document.getElementById('loader').style.display = 'none';
+    }
+    
+    // Telegram функции
+    async function sendTelegramNotification(message) {
+        if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
+            console.warn('Telegram токен или chat_id не настроены');
+            return;
+        }
+        
+        try {
+            const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
             
-            // Получаем значения из формы
-            const name = this.querySelector('input[type="text"]').value || 'Аноним';
-            const email = this.querySelector('input[type="email"]').value; // Исправлено
-            const interest = this.querySelector('select')?.value || 'не указано';
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                    parse_mode: 'HTML',
+                    disable_web_page_preview: true
+                })
+            });
             
-            if (!email) {
-                alert('Пожалуйста, введите email');
-                return;
+            const data = await response.json();
+            
+            if (data.ok) {
+                console.log('✅ Уведомление отправлено в Telegram');
+                return true;
+            } else {
+                console.error('❌ Ошибка Telegram:', data);
+                return false;
             }
-            
-            // ... дальнейшая обработка данных
+        } catch (error) {
+            console.error('❌ Ошибка отправки в Telegram:', error);
+            return false;
+        }
+    }
+    
+    // Инициализация при загрузке
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('🚀 AI Catalog загружен!');
+        
+        // Показываем сайт
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+        
+        // Инициализация форм
+        initForms();
+        
+        // Инициализация FAQ
+        initFAQ();
+        
+        // Инициализация кнопок копирования
+        initCopyButtons();
+        
+        // Трекинг
+        trackPageView();
+        
+        // Создаем кнопки управления Telegram ботом
+        createTelegramButtons();
+    });
+    
+    function initForms() {
+        // Форма подписки
+        const subscribeForm = document.getElementById('subscribe-form');
+        if (subscribeForm) {
+            subscribeForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const name = document.getElementById('name-input').value || 'Аноним';
+                const email = document.getElementById('email-input').value;
+                const interest = document.getElementById('interest-select').value || 'не указано';
+                
+                if (!email) {
+                    showNotification('Пожалуйста, введите email', 'error');
+                    return;
+                }
+                
+                // Проверка email
+                if (!validateEmail(email)) {
+                    showNotification('Пожалуйста, введите корректный email', 'error');
+                    return;
+                }
+                
+                showLoader();
+                
+                try {
+                    // Сохраняем в localStorage
+                    const subscriber = {
+                        name: name,
+                        email: email,
+                        interest: interest,
+                        date: new Date().toLocaleString('ru-RU'),
+                        timestamp: Date.now()
+                    };
+                    
+                    let subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
+                    subscribers.push(subscriber);
+                    localStorage.setItem('ai_subscribers', JSON.stringify(subscribers));
+                    
+                    // Отправляем в Telegram
+                    const telegramMessage = `
+🎯 <b>Новая подписка на AI Catalog!</b>
+
+👤 <b>Имя:</b> ${name}
+📧 <b>Email:</b> <code>${email}</code>
+🎯 <b>Интерес:</b> ${interest}
+📅 <b>Дата:</b> ${new Date().toLocaleString('ru-RU')}
+👥 <b>Всего подписчиков:</b> ${subscribers.length}
+
+💬 <b>Быстрые действия:</b>
+📧 <a href="mailto:${email}">Написать email</a>
+🤖 <a href="https://t.me/NeuraAI_Assistant_bot">Открыть бота</a>
+`;
+                    await sendTelegramNotification(telegramMessage);
+                    
+                    // Показываем успех
+                    showNotification(`🎉 Спасибо, ${name}! PDF-гайд отправлен на ${email}`);
+                    
+                    // Очищаем форму
+                    subscribeForm.reset();
+                    
+                    // Обновляем статистику
+                    updateStats();
+                    
+                } catch (error) {
+                    console.error('Ошибка при обработке подписки:', error);
+                    showNotification('Ошибка при отправке. Попробуйте позже.', 'error');
+                } finally {
+                    hideLoader();
+                }
+            });
+        }
+        
+        // Форма партнёрства
+        const partnershipForm = document.getElementById('partnership-form');
+        if (partnershipForm) {
+            partnershipForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(this);
+                const data = Object.fromEntries(formData);
+                
+                showLoader();
+                
+                try {
+                    const telegramMessage = `
+🤝 <b>Новая заявка на партнёрство!</b>
+
+👤 <b>Имя:</b> ${data.name || 'Не указано'}
+📧 <b>Email:</b> <code>${data.email || 'Не указано'}</code>
+📱 <b>Телефон:</b> ${data.tel || 'Не указано'}
+🏢 <b>Компания:</b> ${data.company || 'Не указано'}
+🤝 <b>Тип партнёрства:</b> ${data.type || 'Не указано'}
+📅 <b>Дата:</b> ${new Date().toLocaleString('ru-RU')}
+`;
+                    await sendTelegramNotification(telegramMessage);
+                    
+                    showNotification('🎉 Заявка отправлена! Мы свяжемся с вами в ближайшее время.');
+                    document.getElementById('partnership-modal').classList.add('hidden');
+                    partnershipForm.reset();
+                    
+                } catch (error) {
+                    console.error('Ошибка при отправке заявки:', error);
+                    showNotification('Ошибка при отправке. Попробуйте позже.', 'error');
+                } finally {
+                    hideLoader();
+                }
+            });
+        }
+    }
+    
+    function initFAQ() {
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
         });
     }
-});
-    <script>
-        // Дополнительные функции для улучшения функциональности
-
-        // Статистика посещений
-        function trackPageView() {
-            const pageView = {
-                page: window.location.pathname,
-                referrer: document.referrer,
-                timestamp: Date.now(),
-                userAgent: navigator.userAgent,
-                screen: `${window.screen.width}x${window.screen.height}`,
-                language: navigator.language
-            };
-
-            let pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
-            pageViews.push(pageView);
-            
-            // Храним только последние 1000 посещений
-            if (pageViews.length > 1000) {
-                pageViews = pageViews.slice(-1000);
-            }
-            
-            localStorage.setItem('ai_page_views', JSON.stringify(pageViews));
-            
-            // Отправляем в Telegram если настроен бот
-            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-                const telegramStats = `
-📊 <b>Новый посетитель на AI Catalog</b>
-
-🌐 <b>Страница:</b> ${pageView.page}
-📱 <b>Устройство:</b> ${pageView.screen}
-🌍 <b>Язык:</b> ${pageView.language}
-🕐 <b>Время:</b> ${new Date(pageView.timestamp).toLocaleString('ru-RU')}
-                `;
+    
+    function toggleFaq(element) {
+        element.classList.toggle('active');
+    }
+    
+    function initCopyButtons() {
+        // Копирование промокодов
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const codeElement = this.parentElement.querySelector('code');
+                const code = codeElement.textContent;
                 
-                sendTelegramNotification(telegramStats);
-            }
-            
-            console.log('📈 Page view tracked:', pageView);
-        }
-
-        // Таймер нахождения на сайте
-        function initSessionTimer() {
-            const sessionStart = Date.now();
-            
-            window.addEventListener('beforeunload', function() {
-                const sessionDuration = Date.now() - sessionStart;
-                const minutes = Math.floor(sessionDuration / 60000);
-                const seconds = Math.floor((sessionDuration % 60000) / 1000);
-                
-                const sessionData = {
-                    duration: sessionDuration,
-                    pages: JSON.parse(localStorage.getItem('ai_page_views') || '[]').length,
-                    timestamp: sessionStart
-                };
-                
-                let sessions = JSON.parse(localStorage.getItem('ai_sessions') || '[]');
-                sessions.push(sessionData);
-                
-                if (sessions.length > 100) {
-                    sessions = sessions.slice(-100);
-                }
-                
-                localStorage.setItem('ai_sessions', JSON.stringify(sessions));
-                
-                // Отправляем статистику сессии в Telegram
-                if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID && minutes > 1) {
-                    const sessionMessage = `
-⏱️ <b>Завершена сессия на сайте</b>
-
-⏰ <b>Длительность:</b> ${minutes} мин ${seconds} сек
-📄 <b>Просмотрено страниц:</b> ${sessionData.pages}
-🕐 <b>Начало:</b> ${new Date(sessionStart).toLocaleString('ru-RU')}
-                    `;
-                    
-                    sendTelegramNotification(sessionMessage);
-                }
+                copyPromoCode(codeElement.id, code);
             });
-        }
-
-        // Аналитика кликов по элементам
-        function initHeatmapTracking() {
-            // Отслеживаем клики по всем интерактивным элементам
-            document.addEventListener('click', function(e) {
-                const target = e.target;
-                const clickData = {
-                    x: e.clientX,
-                    y: e.clientY,
-                    tag: target.tagName,
-                    className: target.className,
-                    id: target.id,
-                    text: target.textContent?.substring(0, 50),
-                    timestamp: Date.now(),
-                    url: window.location.href
-                };
-                
-                let clicks = JSON.parse(localStorage.getItem('ai_clicks') || '[]');
-                clicks.push(clickData);
-                
-                if (clicks.length > 500) {
-                    clicks = clicks.slice(-500);
-                }
-                
-                localStorage.setItem('ai_clicks', JSON.stringify(clicks));
-                
-                // Для важных кликов отправляем в Telegram
-                if (target.classList.contains('card-button') || 
-                    target.classList.contains('copy-button') ||
-                    target.classList.contains('submit-button')) {
-                    
-                    const clickMessage = `
-🎯 <b>Важный клик на сайте</b>
-
-🏷️ <b>Элемент:</b> ${target.tagName}
-📝 <b>Текст:</b> ${target.textContent?.substring(0, 30)}
-📍 <b>Координаты:</b> X:${e.clientX}, Y:${e.clientY}
-🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-                    `;
-                    
-                    sendTelegramNotification(clickMessage);
-                }
-            });
-        }
-
-        // Показ случайного промокода при загрузке
-        function showRandomPromo() {
-            const promoCodes = [
-                { code: 'AIWELCOME2024', discount: '10% на все подписки', expires: '31.12.2024' },
-                { code: 'NEURONSALE', discount: '3 месяца Яндекс GPT бесплатно', expires: '30.11.2024' },
-                { code: 'RUSSIANAI', discount: 'Бесплатные токены GigaChat', expires: '15.12.2024' }
-            ];
-            
-            const randomPromo = promoCodes[Math.floor(Math.random() * promoCodes.length)];
-            
-            // Показываем всплывающее окно с промокодом через 10 секунд
-            setTimeout(() => {
-                if (Math.random() > 0.5 && !localStorage.getItem('promo_shown')) {
-                    const promoModal = document.createElement('div');
-                    promoModal.style.cssText = `
-                        position: fixed;
-                        top: 50%;
-                        left: 50%;
-                        transform: translate(-50%, -50%);
-                        background: linear-gradient(135deg, #667eea, #764ba2);
-                        color: white;
-                        padding: 30px;
-                        border-radius: 20px;
-                        z-index: 9999;
-                        box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-                        max-width: 400px;
-                        text-align: center;
-                    `;
-                    
-                    promoModal.innerHTML = `
-                        <div style="position: absolute; top: 10px; right: 10px;">
-                            <button onclick="this.parentElement.parentElement.remove(); localStorage.setItem('promo_shown', 'true')" 
-                                    style="background: none; border: none; color: white; font-size: 20px; cursor: pointer;">×</button>
-                        </div>
-                        <h3 style="margin-bottom: 15px;">🎁 Специальный промокод для вас!</h3>
-                        <div style="background: white; color: #667eea; padding: 15px; border-radius: 10px; margin: 15px 0; font-family: monospace; font-size: 1.2rem;">
-                            ${randomPromo.code}
-                        </div>
-                        <p style="margin-bottom: 10px;"><strong>${randomPromo.discount}</strong></p>
-                        <p style="font-size: 0.9rem; opacity: 0.8;">Действует до: ${randomPromo.expires}</p>
-                        <button onclick="copyToClipboard('${randomPromo.code}'); this.parentElement.parentElement.remove(); localStorage.setItem('promo_shown', 'true')" 
-                                style="background: white; color: #667eea; border: none; padding: 12px 30px; border-radius: 10px; margin-top: 15px; cursor: pointer; font-weight: bold;">
-                            Скопировать промокод
-                        </button>
-                    `;
-                    
-                    document.body.appendChild(promoModal);
-                    
-                    // Затемнение фона
-                    const overlay = document.createElement('div');
-                    overlay.style.cssText = `
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: rgba(0,0,0,0.7);
-                        z-index: 9998;
-                    `;
-                    document.body.appendChild(overlay);
-                    
-                    // Закрытие по клику на overlay
-                    overlay.addEventListener('click', function() {
-                        promoModal.remove();
-                        this.remove();
-                        localStorage.setItem('promo_shown', 'true');
-                    });
-                }
-            }, 10000);
-        }
-
-        // Функция для копирования в буфер обмена
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showNotification(`✅ Промокод "${text}" скопирован!`, 'success');
-            });
-        }
-
-        // Инициализация темной/светлой темы
-        function initThemeSwitcher() {
-            const savedTheme = localStorage.getItem('ai_theme') || 'light';
-            document.body.classList.add(`${savedTheme}-theme`);
-            
-            // Создаем кнопку переключения темы
-            const themeButton = document.createElement('button');
-            themeButton.innerHTML = savedTheme === 'dark' ? '☀️' : '🌙';
-            themeButton.style.cssText = `
-                position: fixed;
-                bottom: 100px;
-                right: 20px;
-                width: 50px;
-                height: 50px;
-                border-radius: 50%;
-                background: var(--primary);
-                color: white;
-                border: none;
-                cursor: pointer;
-                z-index: 1000;
-                font-size: 1.2rem;
-                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            `;
-            
-            themeButton.onclick = function() {
-                if (document.body.classList.contains('dark-theme')) {
-                    document.body.classList.remove('dark-theme');
-                    document.body.classList.add('light-theme');
-                    localStorage.setItem('ai_theme', 'light');
-                    this.innerHTML = '🌙';
-                } else {
-                    document.body.classList.remove('light-theme');
-                    document.body.classList.add('dark-theme');
-                    localStorage.setItem('ai_theme', 'dark');
-                    this.innerHTML = '☀️';
-                }
-            };
-            
-            document.body.appendChild(themeButton);
-        }
-
-        // Стили для темной темы
-        const darkThemeStyles = `
-            .dark-theme {
-                background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-                color: #e0e0e0;
-            }
-            
-            .dark-theme .card {
-                background: rgba(30, 30, 46, 0.95);
-                color: #e0e0e0;
-                border: 1px solid rgba(255, 255, 255, 0.1);
-            }
-            
-            .dark-theme .card-title {
-                color: #ffffff;
-            }
-            
-            .dark-theme .card-description {
-                color: #b0b0b0;
-            }
-            
-            .dark-theme .feature {
-                background: rgba(99, 102, 241, 0.2);
-                color: #a5b4fc;
-            }
-            
-            .dark-theme .card-price span {
-                color: #ffffff;
-            }
-            
-            .dark-theme .card-price small {
-                color: #b0b0b0;
-            }
-            
-            .dark-theme .promo-card {
-                background: rgba(30, 30, 46, 0.95);
-                color: #e0e0e0;
-            }
-            
-            .dark-theme .promo-code {
-                background: rgba(255, 255, 255, 0.1);
-            }
-            
-            .dark-theme .promo-code code {
-                color: #a5b4fc;
-            }
-        `;
-
-        // Добавляем стили для темной темы
-        const themeStyle = document.createElement('style');
-        themeStyle.textContent = darkThemeStyles;
-        document.head.appendChild(themeStyle);
-
-        // Инициализация всех функций при загрузке
-        window.addEventListener('load', function() {
-            // Отслеживаем просмотр страницы
-            trackPageView();
-            
-            // Запускаем таймер сессии
-            initSessionTimer();
-            
-            // Инициализируем трекинг кликов для тепловой карты
-            initHeatmapTracking();
-            
-            // Показываем случайный промокод
-            showRandomPromo();
-            
-            // Инициализируем переключатель темы
-            initThemeSwitcher();
-            
-            // Проверяем время суток для автоматической темы
-            const hour = new Date().getHours();
-            if (hour >= 20 || hour < 6) {
-                document.body.classList.add('dark-theme');
-                document.body.classList.remove('light-theme');
-                localStorage.setItem('ai_theme', 'dark');
-            }
-            
-            // Аналитика источников трафика
-            trackTrafficSource();
-            
-            // Показываем уведомление о cookies
-            showCookieConsent();
         });
-
-        // Отслеживание источника трафика
-        function trackTrafficSource() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const source = urlParams.get('utm_source') || 'direct';
-            const medium = urlParams.get('utm_medium') || 'none';
-            const campaign = urlParams.get('utm_campaign') || 'none';
-            
-            const trafficData = {
-                source: source,
-                medium: medium,
-                campaign: campaign,
-                timestamp: Date.now(),
-                referrer: document.referrer
-            };
-            
-            let traffic = JSON.parse(localStorage.getItem('ai_traffic') || '[]');
-            traffic.push(trafficData);
-            localStorage.setItem('ai_traffic', JSON.stringify(traffic));
-            
-            // Отправляем в Telegram если это рекламная кампания
-            if (source !== 'direct') {
-                const trafficMessage = `
-📈 <b>Новый пользователь с рекламы</b>
-
-📊 <b>Источник:</b> ${source}
-🎯 <b>Канал:</b> ${medium}
-🏷️ <b>Кампания:</b> ${campaign}
-🔗 <b>Реферер:</b> ${document.referrer || 'прямой заход'}
-🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-                `;
-                
-                sendTelegramNotification(trafficMessage);
-            }
+    }
+    
+    function copyPromoCode(elementId, code) {
+        if (!code) {
+            const element = document.getElementById(elementId);
+            code = element.textContent;
         }
+        
+        navigator.clipboard.writeText(code).then(() => {
+            showNotification(`✅ Промокод "${code}" скопирован!`);
+            
+            // Отправляем в Telegram
+            const telegramMessage = `
 
-        // Согласие на использование cookies
-        function showCookieConsent() {
-            if (!localStorage.getItem('cookies_accepted')) {
-                setTimeout(() => {
-                    const cookieBanner = document.createElement('div');
-                    cookieBanner.style.cssText = `
-                        position: fixed;
-                        bottom: 0;
-                        left: 0;
-                        right: 0;
-                        background: rgba(30, 30, 46, 0.95);
-                        color: white;
-                        padding: 20px;
-                        z-index: 9999;
-                        border-top: 1px solid rgba(255, 255, 255, 0.1);
-                        backdrop-filter: blur(10px);
-                    `;
-                    
-                    cookieBanner.innerHTML = `
-                        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
-                            <div style="flex: 1;">
-                                <p style="margin: 0; font-size: 0.9rem;">
-                                    Мы используем cookies для улучшения работы сайта и аналитики. 
-                                    Продолжая использовать сайт, вы соглашаетесь с <a href="#privacy" style="color: #a5b4fc;">Политикой конфиденциальности</a>
-                                </p>
-                            </div>
-                            <div style="display: flex; gap: 10px;">
-                                <button onclick="acceptCookies(); this.parentElement.parentElement.parentElement.remove();" 
-                                        style="background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500;">
-                                    Принять
-                                </button>
-                                <button onclick="localStorage.setItem('cookies_accepted', 'false'); this.parentElement.parentElement.parentElement.remove();" 
-                                        style="background: transparent; color: white; border: 1px solid rgba(255,255,255,0.3); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 500;">
-                                    Отклонить
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                    
-                    document.body.appendChild(cookieBanner);
-                }, 2000);
-            }
+📋 <b>Скопирован промокод!</b>
+
+🎁 <b>Промокод:</b> <code>${code}</code>
+📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+`;
+            sendTelegramNotification(telegramMessage);
+            
+        }).catch(err => {
+            // Fallback для старых браузеров
+            const textArea = document.createElement('textarea');
+            textArea.value = code;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            
+            showNotification(`✅ Промокод "${code}" скопирован!`);
+        });
+    }
+    
+    function trackClick(serviceName) {
+        console.log(`🖱️ Клик по сервису: ${serviceName}`);
+        
+        // Сохраняем в localStorage
+        const clickData = {
+            service: serviceName,
+            timestamp: Date.now(),
+            url: window.location.href
+        };
+        
+        let clicks = JSON.parse(localStorage.getItem('ai_clicks') || '[]');
+        clicks.push(clickData);
+        localStorage.setItem('ai_clicks', JSON.stringify(clicks));
+        
+        // Отправляем в Telegram
+        const telegramMessage = `
+
+🖱️ <b>Клик по инструменту</b>
+
+🛠️ <b>Инструмент:</b> ${serviceName}
+📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+🌐 <b>Страница:</b> ${window.location.href}
+`;
+        sendTelegramNotification(telegramMessage);
+    }
+    
+    function trackSocial(network) {
+        console.log(`📱 Клик по социальной сети: ${network}`);
+        
+        const telegramMessage = `
+
+📱 <b>Клик по социальной сети</b>
+
+🔗 <b>Сеть:</b> ${network}
+📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+`;
+        sendTelegramNotification(telegramMessage);
+    }
+    
+    function trackPageView() {
+        const pageView = {
+            page: window.location.pathname,
+            referrer: document.referrer,
+            timestamp: Date.now(),
+            userAgent: navigator.userAgent,
+            screen: `${window.screen.width}x${window.screen.height}`
+        };
+        
+        let pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
+        pageViews.push(pageView);
+        localStorage.setItem('ai_page_views', JSON.stringify(pageViews));
+        
+        // Обновляем статистику
+        updateStats();
+        
+        // Отправляем в Telegram при первом посещении
+        if (!sessionStorage.getItem('first_visit')) {
+            sessionStorage.setItem('first_visit', 'true');
+            
+            const telegramMessage = `
+
+🌐 <b>Новый посетитель на сайте</b>
+
+📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+📱 <b>Устройство:</b> ${pageView.screen}
+🔗 <b>Реферер:</b> ${pageView.referrer || 'Прямой заход'}
+`;
+            sendTelegramNotification(telegramMessage);
         }
-
-        function acceptCookies() {
-            localStorage.setItem('cookies_accepted', 'true');
-            
-            // Отправляем уведомление о принятии cookies
-            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-                const cookiesMessage = `
-🍪 <b>Пользователь принял Cookies</b>
-
-✅ <b>Статус:</b> Cookies приняты
-🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-🌐 <b>Страница:</b> ${window.location.pathname}
-                `;
-                
-                sendTelegramNotification(cookiesMessage);
-            }
-        }
-
-        // Счетчик онлайн пользователей (упрощенный)
-        function initOnlineCounter() {
-            const onlineKey = 'ai_online_users';
-            const userId = 'user_' + Math.random().toString(36).substr(2, 9);
-            
-            // Сохраняем пользователя как онлайн
-            let onlineUsers = JSON.parse(localStorage.getItem(onlineKey) || '{}');
-            onlineUsers[userId] = Date.now();
-            
-            // Удаляем старых пользователей (более 5 минут)
-            for (let id in onlineUsers) {
-                if (Date.now() - onlineUsers[id] > 300000) { // 5 минут
-                    delete onlineUsers[id];
-                }
-            }
-            
-            localStorage.setItem(onlineKey, JSON.stringify(onlineUsers));
-            
-            // Показываем количество онлайн
-            const onlineCount = Object.keys(onlineUsers).length;
-            
-            // Создаем индикатор онлайн
-            const onlineIndicator = document.createElement('div');
-            onlineIndicator.style.cssText = `
-                position: fixed;
-                bottom: 160px;
-                right: 20px;
-                background: #10b981;
-                color: white;
-                padding: 8px 15px;
-                border-radius: 20px;
-                z-index: 1000;
-                font-size: 0.9rem;
-                display: flex;
-                align-items: center;
-                gap: 5px;
-                box-shadow: 0 4px 12px rgba(16,185,129,0.3);
-            `;
-            onlineIndicator.innerHTML = `<span class="online-dot" style="width: 8px; height: 8px; background: white; border-radius: 50%; display: inline-block;"></span> Онлайн: ${onlineCount}`;
-            document.body.appendChild(onlineIndicator);
-            
-            // Обновляем каждую минуту
-            setInterval(() => {
-                onlineUsers = JSON.parse(localStorage.getItem(onlineKey) || '{}');
-                onlineUsers[userId] = Date.now();
-                
-                // Очищаем старых
-                for (let id in onlineUsers) {
-                    if (Date.now() - onlineUsers[id] > 300000) {
-                        delete onlineUsers[id];
-                    }
-                }
-                
-                localStorage.setItem(onlineKey, JSON.stringify(onlineUsers));
-                onlineIndicator.innerHTML = `<span class="online-dot" style="width: 8px; height: 8px; background: white; border-radius: 50%; display: inline-block;"></span> Онлайн: ${Object.keys(onlineUsers).length}`;
-            }, 60000);
-            
-            // Удаляем при закрытии страницы
-            window.addEventListener('beforeunload', function() {
-                onlineUsers = JSON.parse(localStorage.getItem(onlineKey) || '{}');
-                delete onlineUsers[userId];
-                localStorage.setItem(onlineKey, JSON.stringify(onlineUsers));
-            });
-        }
-
-        // Инициализация счетчика онлайн
-        setTimeout(initOnlineCounter, 3000);
-
-        // Экспорт данных для администратора
-        function exportAnalyticsData() {
-            const analyticsData = {
-                subscribers: JSON.parse(localStorage.getItem('ai_subscribers') || '[]'),
-                events: JSON.parse(localStorage.getItem('ai_events') || '[]'),
-                pageViews: JSON.parse(localStorage.getItem('ai_page_views') || '[]'),
-                sessions: JSON.parse(localStorage.getItem('ai_sessions') || '[]'),
-                clicks: JSON.parse(localStorage.getItem('ai_clicks') || '[]'),
-                traffic: JSON.parse(localStorage.getItem('ai_traffic') || '[]'),
-                exportDate: new Date().toISOString()
-            };
-            
-            const dataStr = JSON.stringify(analyticsData, null, 2);
-            const dataBlob = new Blob([dataStr], {type: 'application/json'});
-            
-            // Создаем ссылку для скачивания
-            const downloadLink = document.createElement('a');
-            downloadLink.href = URL.createObjectURL(dataBlob);
-            downloadLink.download = `ai-analytics-${Date.now()}.json`;
-            downloadLink.click();
-            
-            // Отправляем уведомление о экспорте
-            if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
-                const exportMessage = `
-📊 <b>Экспорт данных аналитики</b>
-
-🗂️ <b>Файл:</b> ${downloadLink.download}
-📦 <b>Данные:</b>
-   • Подписчики: ${analyticsData.subscribers.length}
-   • События: ${analyticsData.events.length}
-   • Просмотры: ${analyticsData.pageViews.length}
-   • Сессии: ${analyticsData.sessions.length}
-   • Клики: ${analyticsData.clicks.length}
-🕐 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
-                `;
-                
-                sendTelegramNotification(exportMessage);
-            }
-        }
-
-        // Кнопка для экспорта данных (только для админа)
-        const exportButton = document.createElement('button');
-        exportButton.innerHTML = '📊 Экспорт данных';
-        exportButton.style.cssText = `
+    }
+    
+    function updateStats() {
+        // Обновляем количество подписчиков
+        const subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
+        const pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
+        
+        console.log(`📊 Статистика: ${subscribers.length} подписчиков, ${pageViews.length} просмотров`);
+    }
+    
+    function showPartnershipForm() {
+        document.getElementById('partnership-modal').classList.remove('hidden');
+    }
+    
+    function validateEmail(email) {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    }
+    
+    function createTelegramButtons() {
+        // Кнопка настройки бота
+        const setupButton = document.createElement('button');
+        setupButton.innerHTML = '⚙️ Настроить бота';
+        setupButton.style.cssText = `
             position: fixed;
-            bottom: 140px;
+            bottom: 20px;
             right: 20px;
-            background: #8b5cf6;
+            background: #0088cc;
             color: white;
             border: none;
             padding: 10px 15px;
             border-radius: 10px;
             cursor: pointer;
-            z-index: 1000;
+            z-index: 9998;
             font-size: 14px;
-            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 4px 12px rgba(0,136,204,0.3);
+            font-family: 'Inter', sans-serif;
         `;
-        exportButton.onclick = exportAnalyticsData;
+        setupButton.onclick = function() {
+            alert(`🤖 Настройка Telegram-бота:
+
+Текущий токен: ${TELEGRAM_BOT_TOKEN ? '******' + TELEGRAM_BOT_TOKEN.slice(-6) : 'не настроен'}
+Текущий chat_id: ${TELEGRAM_CHAT_ID || 'не настроен'}
+
+Бот уже настроен и работает!
+Уведомления приходят при:
+• Новых посетителях
+• Новых подписках
+• Кликах по ссылкам
+• Копировании промокодов`);
+};
+document.body.appendChild(setupButton);
+                    // Кнопка экспорта данных
+        const exportButton = document.createElement('button');
+        exportButton.innerHTML = '📊 Экспорт данных';
+        exportButton.style.cssText = `
+            position: fixed;
+            bottom: 60px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            z-index: 9998;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(16,185,129,0.3);
+            font-family: 'Inter', sans-serif;
+        `;
+        exportButton.onclick = function() {
+            exportData();
+        };
         document.body.appendChild(exportButton);
-
-        // Автоматическая очистка старых данных
-        function cleanupOldData() {
-            const now = Date.now();
-            const monthAgo = now - (30 * 24 * 60 * 60 * 1000);
-            
-            // Очищаем старые события
-            let events = JSON.parse(localStorage.getItem('ai_events') || '[]');
-            events = events.filter(event => event.timestamp > monthAgo);
-            localStorage.setItem('ai_events', JSON.stringify(events));
-            
-            // Очищаем старые клики
-            let clicks = JSON.parse(localStorage.getItem('ai_clicks') || '[]');
-            clicks = clicks.filter(click => click.timestamp > monthAgo);
-            localStorage.setItem('ai_clicks', JSON.stringify(clicks));
-            
-            console.log('🧹 Очищены старые данные аналитики');
-        }
-
-        // Запускаем очистку раз в день
-        setInterval(cleanupOldData, 24 * 60 * 60 * 1000);
+    }
+    
+    function exportData() {
+        const data = {
+            subscribers:JSON.parse(localStorage.getItem('ai_subscribers') || '[]'),
+pageViews: JSON.parse(localStorage.getItem('ai_page_views') || '[]'),
+clicks: JSON.parse(localStorage.getItem('ai_clicks') || '[]'),
+exportDate: new Date().toISOString()
+};
+        const dataStr = JSON.stringify(data, null, 2);
+        const dataBlob = new Blob([dataStr], {type: 'application/json'});
+        const url = URL.createObjectURL(dataBlob);
         
-        // Первая очистка через 10 секунд после загрузки
-        setTimeout(cleanupOldData, 10000);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `ai-catalog-data-${Date.now()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        showNotification('📊 Данные экспортированы!');
+        
+        // Отправляем в Telegram о экспорте
+        const telegramMessage = `
+        sendTelegramNotification(telegramMessage);
+    }
+    
+    // Автоматическая очистка старых данных (30 дней)
+    function cleanupOldData() {
+        const monthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+        
+        ['ai_subscribers', 'ai_page_views', 'ai_clicks'].forEach(key => {
+            let data = JSON.parse(localStorage.getItem(key) || '[]');
+            data = data.filter(item => item.timestamp > monthAgo);
+            localStorage.setItem(key, JSON.stringify(data));
+        });
+        
+        console.log('🧹 Очищены старые данные');
+    }
+    
+    // Запускаем очистку при загрузке
+    cleanupOldData();
+    
+    // Автоматический пинг в Telegram каждые 4 часа
+    function sendHeartbeat() {
+        if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+            const subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
+            const pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
+            
+            const heartbeatMessage = `
 
-    </script>
+📊 <b>Экспорт данных аналитики</b>
+
+📦 <b>Статистика:</b>
+• Подписчики: ${data.subscribers.length}
+• Просмотры: ${data.pageViews.length}
+• Клики: ${data.clicks.length}
+📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+`;
+        sendTelegramNotification(telegramMessage);
+    }
+    
+    // Автоматическая очистка старых данных (30 дней)
+    function cleanupOldData() {
+        const monthAgo = Date.now() - (30 * 24 * 60 * 60 * 1000);
+        
+        ['ai_subscribers', 'ai_page_views', 'ai_clicks'].forEach(key => {
+            let data = JSON.parse(localStorage.getItem(key) || '[]');
+            data = data.filter(item => item.timestamp > monthAgo);
+            localStorage.setItem(key, JSON.stringify(data));
+        });
+        
+        console.log('🧹 Очищены старые данные');
+    }
+    
+    // Запускаем очистку при загрузке
+    cleanupOldData();
+    
+    // Автоматический пинг в Telegram каждые 4 часа
+    function sendHeartbeat() {
+        if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+            const subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
+            const pageViews = JSON.parse(localStorage.getItem('ai_page_views') || '[]');
+            
+            const heartbeatMessage = `
+
+❤️ <b>Heartbeat - AI Catalog работает!</b>
+
+📊 <b>Статистика:</b>
+• Подписчики: ${subscribers.length}
+• Просмотры: ${pageViews.length}
+• Время работы: ${Math.floor((Date.now() - pageViews[0]?.timestamp || Date.now()) / 3600000)} ч
+📅 <b>Последнее обновление:</b> ${new Date().toLocaleString('ru-RU')}
+`;
+            sendTelegramNotification(heartbeatMessage);
+        }
+    }
+    
+    // Первый heartbeat через 5 минут
+    setTimeout(sendHeartbeat, 5 * 60 * 1000);
+    // Затем каждые 4 часа
+    setInterval(sendHeartbeat, 4 * 60 * 60 * 1000);
+    
+    // Добавляем функцию для проверки партнёрских ссылок
+    function checkAffiliateLinks() {
+        const links = document.querySelectorAll('a[href*="utm_source"], a[href*="ref="]');
+        console.log(`🔗 Найдено партнёрских ссылок: ${links.length}`);
+        
+        // Отправляем в Telegram статистику партнёрских ссылок
+        if (links.length > 0 && TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+            const linksMessage = `
+
+🔗 <b>Проверка партнёрских ссылок</b>
+
+📊 <b>На сайте:</b> ${links.length} партнёрских ссылок
+📅 <b>Время проверки:</b> ${new Date().toLocaleString('ru-RU')}
+💡 <b>Совет:</b> Обновляйте UTM-метки регулярно
+`;
+            sendTelegramNotification(linksMessage);
+        }
+    }
+    
+    // Проверяем ссылки через 10 секунд после загрузки
+    setTimeout(checkAffiliateLinks, 10000);
+    
+    // Создаем PDF-гайд для подписчиков
+    function createPDFGuide() {
+        const guideContent = `
+        🚀 15 лучших AI-инструментов 2024 для России
+        
+        1. 🔵 Яндекс GPT - лучший российский аналог ChatGPT
+        2. 🎨 Kandinsky 3.0 - генерация изображений на русском
+        3. 🏦 GigaChat - мощный AI от Сбера
+        4. 🔍 DeepSeek - российский AI-поисковик
+        5. 🎤 Салют GPT - голосовой ассистент
+        6. 💻 CodeGPT - AI для программистов
+        7. 🖼️ FusionBrain - платформа с несколькими моделями
+        8. 📊 Yandex DataSphere - анализ данных
+        9. 🎬 Sber video - генерация видео
+        10. 🎵 Mubert - генерация музыки
+        11. 📝 RuGPT - русскоязычная модель от SberDevices
+        12. 🎨 Artisto - AI для обработки фото
+        13. 📈 MindVerse - аналитика данных
+        14. 🔐 CryptoAI - AI для криптографии
+        15. 🏥 MedAI - медицинский AI
+        
+        💎 Промокоды:
+        • YANDEXAI2024PRO - 3 месяца Яндекс GPT
+        • FUSION100FREE - 100 бесплатных генераций
+        • GIGACHAT1000FREE - 1000 токенов API
+        
+        📞 Поддержка: contact@ai-catalog.ru
+        💰 Партнёрство: до 30% комиссии
+        `;
+        
+        // Сохраняем в localStorage для отправки по email
+        localStorage.setItem('ai_pdf_guide', guideContent);
+        return guideContent;
+    }
+    
+    // Создаем гайд при загрузке
+    createPDFGuide();
+    
+    // Функция для партнёрских UTM-меток
+    function addUTMParams(link, source = 'ai_catalog', medium = 'referral', campaign = 'ai_tools') {
+        try {
+            const url = new URL(link);
+            url.searchParams.set('utm_source', source);
+            url.searchParams.set('utm_medium', medium);
+            url.searchParams.set('utm_campaign', campaign);
+            url.searchParams.set('ref', 'ai_catalog_ru');
+            return url.toString();
+        } catch (e) {
+            return link;
+        }
+    }
+    
+    // Автоматически добавляем UTM-метки ко всем внешним ссылкам
+    function autoAddUTM() {
+        document.querySelectorAll('a[href^="http"]').forEach(link => {
+            if (!link.href.includes(window.location.hostname)) {
+                link.href = addUTMParams(link.href);
+            }
+        });
+    }
+    
+    // Запускаем добавление UTM
+    setTimeout(autoAddUTM, 2000);
+    
+    // Функция для создания Telegram-канала
+    function setupTelegramChannel() {
+        const channelInfo = `
+
+📢 Как создать Telegram-канал для продвижения:
+
+Создайте канал "AI Инструменты | Промокоды"
+
+Добавьте описание с ссылкой на сайт
+
+Первые посты:
+• Обзор Яндекс GPT
+• Промокоды на Kandinsky
+• Как получить доступ к ChatGPT в РФ
+• Новые российские AI-инструменты
+
+Приглашайте подписчиков через:
+• Другие каналы
+• Социальные сети
+• Рассылку email
+
+Ссылка на ваш канал: https://t.me/ai_catalog_ru
+`;
+        return channelInfo;
+    }
+    
+    // Кнопка для создания Telegram-канала
+    const channelBtn = document.createElement('button');
+    channelBtn.innerHTML = '📢 Создать канал';
+    channelBtn.style.cssText = `
+        position: fixed;
+        bottom: 100px;
+        right: 20px;
+        background: #0088cc;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 10px;
+        cursor: pointer;
+        z-index: 9998;
+        font-size: 14px;
+        box-shadow: 0 4px 12px rgba(0,136,204,0.3);
+        font-family: 'Inter', sans-serif;
+    `;
+    channelBtn.onclick = function() {
+        alert(setupTelegramChannel());
+    };
+    document.body.appendChild(channelBtn);
+    
+</script>
 </body>
 </html>
