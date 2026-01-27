@@ -3,49 +3,265 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог AI-инструментов 2024</title>
+    <title>Каталог AI-инструментов 2024 | Промокоды на нейросети</title>
+    <meta name="description" content="Топ AI-инструменты: ChatGPT, Midjourney, Runway ML. Рабочие промокоды, отзывы, сравнение.">
+    
+    <!-- Стили -->
     <link rel="stylesheet" href="style.css">
+    
+    <!-- Иконки -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Шрифты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>🚀 Лучшие AI-инструменты</h1>
-        <p>Проверенные нейросети + промокоды</p>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <h1 class="site-title">
+                <i class="fas fa-robot"></i>
+                AI Catalog
+            </h1>
+            <p class="site-tagline">Каталог лучших AI-инструментов с промокодами</p>
+        </div>
     </header>
-    
-    <main>
-        <section class="tools">
-            <div class="tool">
-                <h3>🤖 ChatGPT</h3>
-                <p>Общение с ИИ, написание текстов</p>
-                <a href="#" class="btn">Попробовать →</a>
-            </div>
-            
-            <div class="tool">
-                <h3>🎨 Midjourney</h3>
-                <p>Создание изображений по запросу</p>
-                <a href="#" class="btn">Попробовать →</a>
-            </div>
-            
-            <div class="tool">
-                <h3>📹 Runway ML</h3>
-                <p>Генерация видео и анимации</p>
-                <a href="#" class="btn">Попробовать →</a>
-            </div>
-        </section>
-        
-        <section class="subscribe">
-            <h2>💌 Получать новые инструменты</h2>
-            <form id="email-form">
-                <input type="email" placeholder="Ваш email" required>
-                <button type="submit">Подписаться</button>
-            </form>
-        </section>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <div class="container">
+            <!-- Герой-секция -->
+            <section class="hero">
+                <h2>🚀 Лучшие AI-инструменты 2024</h2>
+                <p class="hero-subtitle">Проверенные нейросети + эксклюзивные промокоды</p>
+                
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">инструментов</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">⭐ 4.8</span>
+                        <span class="stat-label">рейтинг</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Каталог -->
+            <section class="catalog">
+                <h3 class="section-title">🔥 Топ-3 AI инструмента</h3>
+                
+                <div class="cards">
+                    <!-- ChatGPT -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fab fa-openai"></i>
+                            </div>
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i> 4.7
+                            </div>
+                        </div>
+                        <h4 class="card-title">🤖 ChatGPT</h4>
+                        <p class="card-description">Общение с ИИ, написание текстов, решение задач</p>
+                        
+                        <div class="card-features">
+                            <span class="feature">Текст</span>
+                            <span class="feature">Код</span>
+                            <span class="feature">Анализ</span>
+                        </div>
+                        
+                        <div class="card-price">
+                            <span>От $20/мес</span>
+                            <small>Есть бесплатный план</small>
+                        </div>
+                        
+                        <a href="https://chat.openai.com/?ref=AI_CATALOG" 
+                           target="_blank" 
+                           class="card-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            Попробовать бесплатно
+                        </a>
+                    </div>
+
+                    <!-- Midjourney -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i> 5.0
+                            </div>
+                        </div>
+                        <h4 class="card-title">🎨 Midjourney</h4>
+                        <p class="card-description">Создание изображений через Discord</p>
+                        
+                        <div class="card-features">
+                            <span class="feature">Арт</span>
+                            <span class="feature">Дизайн</span>
+                            <span class="feature">Иллюстрации</span>
+                        </div>
+                        
+                        <div class="card-price">
+                            <span>От $10/мес</span>
+                            <small>25 изображений бесплатно</small>
+                        </div>
+                        
+                        <a href="https://www.midjourney.com/?ref=AI_CATALOG" 
+                           target="_blank" 
+                           class="card-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            Начать создавать
+                        </a>
+                    </div>
+
+                    <!-- Runway ML -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-icon">
+                                <i class="fas fa-video"></i>
+                            </div>
+                            <div class="card-rating">
+                                <i class="fas fa-star"></i> 4.9
+                            </div>
+                        </div>
+                        <h4 class="card-title">📹 Runway ML</h4>
+                        <p class="card-description">Генерация видео и анимации</p>
+                        
+                        <div class="card-features">
+                            <span class="feature">Видео</span>
+                            <span class="feature">Анимация</span>
+                            <span class="feature">Эффекты</span>
+                        </div>
+                        
+                        <div class="card-price">
+                            <span>От $15/мес</span>
+                            <small>125 кредитов бесплатно</small>
+                        </div>
+                        
+                        <a href="https://runwayml.com/?ref=AI_CATALOG" 
+                           target="_blank" 
+                           class="card-button">
+                            <i class="fas fa-external-link-alt"></i>
+                            Создать видео
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Форма подписки -->
+            <section class="subscribe">
+                <h3 class="section-title">💌 Получать новые инструменты</h3>
+                <p class="section-subtitle">Раз в неделю присылаем подборку + промокоды</p>
+                
+                <form class="subscribe-form" id="subscribe-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя" class="form-input">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Ваш email" required class="form-input">
+                    </div>
+                    <button type="submit" class="submit-button">
+                        <i class="fas fa-paper-plane"></i>
+                        Подписаться на рассылку
+                    </button>
+                    <p class="form-note">+ бесплатный PDF-гайд "10 лучших AI-инструментов"</p>
+                </form>
+            </section>
+
+            <!-- Промокоды -->
+            <section class="promocodes">
+                <h3 class="section-title">🎁 Активные промокоды</h3>
+                
+                <div class="promo-cards">
+                    <div class="promo-card">
+                        <div class="promo-badge">HOT</div>
+                        <h4>ChatGPT Plus</h4>
+                        <p>Скидка 20% на первый месяц</p>
+                        <div class="promo-code">
+                            <code>AI2024SPECIAL</code>
+                            <button class="copy-button">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="promo-card">
+                        <div class="promo-badge">NEW</div>
+                        <h4>Midjourney</h4>
+                        <p>+5 бесплатных генераций</p>
+                        <div class="promo-code">
+                            <code>MIDJOURNEYFREE5</code>
+                            <button class="copy-button">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
     </main>
-    
-    <footer>
-        <p>© 2024 Каталог AI-инструментов</p>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4><i class="fas fa-robot"></i> AI Catalog</h4>
+                    <p>Каталог лучших AI-инструментов с промокодами и отзывами.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <a href="#"><i class="fab fa-telegram"></i> Telegram</a>
+                    <a href="#"><i class="fab fa-vk"></i> VK</a>
+                    <a href="#"><i class="fab fa-youtube"></i> YouTube</a>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>© 2024 Каталог AI-инструментов</p>
+                <p class="disclaimer">Мы партнёр сервисов. При переходе по ссылкам можем получать комиссию.</p>
+            </div>
+        </div>
     </footer>
-    
+
+    <!-- Скрипты -->
     <script src="script.js"></script>
+    
+    <!-- Простой скрипт для старта -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Форма подписки
+        const form = document.getElementById('subscribe-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const email = this.querySelector('input[type="email"]').value;
+                if (email) {
+                    alert('🎉 Спасибо за подписку! PDF-гайд отправлен на ' + email);
+                    this.reset();
+                    
+                    // Сохраняем в localStorage
+                    let subscribers = JSON.parse(localStorage.getItem('ai_subscribers') || '[]');
+                    subscribers.push({email: email, date: new Date().toISOString()});
+                    localStorage.setItem('ai_subscribers', JSON.stringify(subscribers));
+                }
+            });
+        }
+        
+        // Копирование промокодов
+        document.querySelectorAll('.copy-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const code = this.parentElement.querySelector('code').textContent;
+                navigator.clipboard.writeText(code).then(() => {
+                    alert('Промокод "' + code + '" скопирован!');
+                });
+            });
+        });
+        
+        console.log('AI Catalog готов к работе! 🚀');
+    });
+    </script>
 </body>
 </html>
