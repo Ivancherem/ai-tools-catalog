@@ -1,0 +1,176 @@
+const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
+
+const userSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+    unique: true,
+    lowercase: true,
+    trim: true
+  },
+  password: {
+    type: String,
+    required: true
+  },
+  name: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  avatar: {
+    type: String,
+    default: '/assets/default-avatar.png'
+  },
+  tier: {
+    type: String,
+    enum: ['bronze', 'silver', 'gold', 'platinum'],
+    default: 'bronze'
+  },
+  balance: {
+    type: Number,
+    default: 0
+  },
+  totalRevenue: {
+    type: Number,
+    default: 0
+  },
+  referralCode: {
+    type: String,
+    unique: true
+  },
+  referredBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User'
+  },
+  stats: {
+    totalClicks: { type: Number, default: 0 },
+    totalConversions: { type: Number, default: 0 },
+    conversionRate: { type: Number, default: 0 },
+    lastActive: { type: Date, default: Date.now }
+  },
+  settings: {
+    emailNotifications: { type: Boolean, default: true },
+    twoFactorAuth: { type: Boolean, default: false },
+    language: { type: String, default: 'ru' }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Хэширование пароля перед сохранением
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('password')) return next();
+  this.password = await bcrypt.hash(this.password, 12);
+  next();
+});
+
+// Метод проверки пароля
+userSchema.methods.comparePassword = async function(candidatePassword) {
+  return await bcrypt.compare(candidatePassword, this.password);
+};
+
+// Генерация referral кода
+userSchema.pre('save', function(next) {
+  if (!this.referralCode) {
+    this.referralCode = Math.random().toString(36).substr(2, 8).toUpperCase();
+  }
+  next();
+});
+
+module.exports = mongoose.model('User', userSchema);
+const mongoose = require('mongoose');
+
+const partnerLinkSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  service: {
+    type: String,
+    required: true,
+    enum: ['yandex-gpt', 'kandinsky', 'gigachat', 'deepseek', 'midjourney', 'stable-diffusion']
+  },
+  originalUrl: {
+    type: String,
+    required: true
+  },
+  shortCode: {
+    type: String,
+    unique: true,
+    sparse: true
+  },
+  utmSource: {
+    type: String,
+    default: 'partner'
+  },
+  utmMedium: {
+    type: String,
+    default: 'cpc'
+  },
+  utmCampaign: {
+    type: String
+  },
+  utmContent: {
+    type: String
+  },
+  clicks: [{
+    ip: String,
+    userAgent: String,
+    referrer: String,
+    country: String,
+    city: String,
+    device: String,
+    timestamp: { type: Date, default: Date.now },
+    converted: { type: Boolean, default: false },
+    conversionValue: Number
+  }],
+  stats: {
+    totalClicks: { type: Number, default: 0 },
+    uniqueClicks: { type: Number, default: 0 },
+    conversions: { type: Number, default: 0 },
+    conversionRate: { type: Number, default: 0 },
+    revenue: { type: Number, default: 0 },
+    lastClick: Date
+  },
+  isActive: {
+    type: Boolean,
+    default: true
+  },
+  qrCode: String,
+  createdAt: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+// Виртуальное поле для короткой ссылки
+partnerLinkSchema.virtual('shortUrl').get(function() {
+  return `${process.env.BASE_URL}/l/${this.shortCode}`;
+});
+
+// Обновление статистики
+partnerLinkSchema.methods.updateStats = function() {
+  this.stats.totalClicks = this.clicks.length;
+  this.stats.uniqueClicks = new Set(this.clicks.map(c => c.ip)).size;
+  this.stats.conversions = this.clicks.filter(c => c.converted).length;
+  this.stats.conversionRate = this.stats.totalClicks > 0 
+    ? (this.stats.conversions / this.stats.totalClicks * 100) 
+    : 0;
+  this.stats.revenue = this.clicks
+    .filter(c => c.converted)
+    .reduce((sum, c) => sum + (c.conversionValue || 0), 0);
+  
+  if (this.clicks.length > 0) {
+    this.stats.lastClick = this.clicks[this.clicks.length - 1].timestamp;
+  }
+};
+
+module.exports = mongoose.model('PartnerLink', partnerLinkSchema);
