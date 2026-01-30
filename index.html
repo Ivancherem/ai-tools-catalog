@@ -641,6 +641,107 @@ DeepSeek: https://deepseek.ru?ref=AI_PLATFORM
             
             console.log('AI Affiliate Platform загружен!');
         });
+       <script>
+// Динамическое обновление статистики
+function updateLiveStats() {
+    // Пример увеличения статистики
+    const revenueElem = document.getElementById('totalRevenue');
+    const clicksElem = document.getElementById('totalClicks');
+    
+    // Получаем текущие значения
+    let revenue = parseInt(revenueElem.textContent.replace(/\D/g, ''));
+    let clicks = parseInt(clicksElem.textContent.replace(/\D/g, ''));
+    
+    // Небольшое увеличение (имитация активности)
+    if (Math.random() > 0.7) {
+        clicks += Math.floor(Math.random() * 3);
+        revenue += Math.floor(Math.random() * 1000);
+        
+        // Обновляем на странице
+        clicksElem.textContent = clicks.toLocaleString();
+        revenueElem.textContent = revenue.toLocaleString() + ' ₽';
+        
+        // Сохраняем
+        localStorage.setItem('affiliate_stats', JSON.stringify({
+            revenue: revenue,
+            clicks: clicks,
+            lastUpdate: new Date().toISOString()
+        }));
+    }
+}
+
+// Загружаем сохранённую статистику
+function loadSavedStats() {
+    const saved = localStorage.getItem('affiliate_stats');
+    if (saved) {
+        const stats = JSON.parse(saved);
+        document.getElementById('totalRevenue').textContent = 
+            stats.revenue.toLocaleString() + ' ₽';
+        document.getElementById('totalClicks').textContent = 
+            stats.clicks.toLocaleString();
+    }
+}
+
+// Запускаем при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+    loadSavedStats();
+    setInterval(updateLiveStats, 30000); // Обновлять каждые 30 секунд
+}); 
+        // Генерация отчёта
+function generateReport() {
+    const stats = {
+        date: new Date().toLocaleDateString('ru-RU'),
+        revenue: document.getElementById('totalRevenue').textContent,
+        clicks: document.getElementById('totalClicks').textContent,
+        conversion: document.getElementById('conversionRate').textContent,
+        partners: document.getElementById('activePartners').textContent
+    };
+    
+    const report = `
+Отчёт AI Affiliate Platform
+===========================
+Дата: ${stats.date}
+
+Статистика:
+• Общий доход: ${stats.revenue}
+• Переходы: ${stats.clicks}
+• Конверсия: ${stats.conversion}
+• Активные партнёры: ${stats.partners}
+
+Топ сервисы:
+1. Яндекс GPT (30% комиссия)
+2. GigaChat (25% комиссия)
+3. Kandinsky AI (20% комиссия)
+
+Сгенерировано автоматически.
+    `;
+    
+    // Создаём и скачиваем файл
+    const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `affiliate-report-${new Date().getTime()}.txt`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+    
+    alert('Отчёт успешно сгенерирован и скачан!');
+}
+
+// Копирование всех ссылок
+function copyAllLinks() {
+    const links = `
+Яндекс GPT: https://360.yandex.ru/gpt?ref=AI_PLATFORM
+GigaChat: https://developers.sber.ru/gigachat?partner_id=AI_PLATFORM
+Kandinsky AI: https://fusionbrain.ai/diffusion?ref=AI_PLATFORM
+    `.trim();
+    
+    navigator.clipboard.writeText(links)
+        .then(() => alert('Все партнёрские ссылки скопированы в буфер обмена!'))
+        .catch(() => alert('Ошибка копирования'));
+}
     </script>
 </body>
 </html>
