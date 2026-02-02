@@ -3,20 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Affiliate Platform</title>
+    <title>AI Affiliate Platform | Зарабатывайте на AI</title>
+    <meta name="description" content="Зарабатывайте до 30% с каждой продажи AI-сервисов. Более 500+ инструментов с партнёрскими программами.">
     
-    <!-- Минимальные зависимости -->
+    <!-- Зависимости -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103655.png">
+    
+    <!-- Open Graph для соцсетей -->
+    <meta property="og:title" content="AI Affiliate Platform">
+    <meta property="og:description" content="Зарабатывайте до 30% с AI-сервисов">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:url" content="https://ai-toolkit.ru">
     
     <style>
         /* Базовые стили */
         :root {
             --primary: #7c3aed;
             --secondary: #10b981;
+            --accent: #f59e0b;
             --dark: #0f172a;
             --card-bg: #1e293b;
             --text: #f1f5f9;
             --text-secondary: #94a3b8;
+            --gradient: linear-gradient(135deg, #7c3aed, #10b981, #f59e0b);
+            --glass: rgba(255, 255, 255, 0.05);
         }
         
         * {
@@ -26,460 +38,1069 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--dark);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.1) 0%, transparent 20%);
             color: var(--text);
             line-height: 1.6;
-            padding: 20px;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
+            padding: 0 20px;
         }
         
-        /* Header */
-        .header {
+        /* Новый современный хедер */
+        .hero-header {
+            position: relative;
+            padding: 80px 0 60px;
             text-align: center;
-            padding: 30px 0;
-            margin-bottom: 40px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            overflow: hidden;
         }
         
-        .logo {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            opacity: 0.05;
+            animation: pulse 15s infinite linear;
         }
         
-        .logo i {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .logo-container {
+            position: relative;
+            z-index: 2;
+            margin-bottom: 30px;
+        }
+        
+        .animated-logo {
+            font-size: 4rem;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            display: inline-block;
+            animation: float 6s ease-in-out infinite;
         }
         
-        .tagline {
-            color: var(--text-secondary);
-            font-size: 1.2rem;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
         
-        /* Cards */
-        .card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 30px;
-            border: 1px solid #334155;
-        }
-        
-        .card-header {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .hero-title {
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, #fff 30%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
+            line-height: 1.2;
         }
         
-        .card-header i {
-            color: var(--primary);
-            font-size: 1.5rem;
+        .hero-subtitle {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
         }
         
-        .card-header h2 {
-            font-size: 1.5rem;
-        }
-        
-        /* Stats */
-        .stats {
+        /* Анимированная статистика */
+        .live-stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
         
-        .stat-item {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: 12px;
-            padding: 20px;
+        .stat-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
             text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+        }
+        
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+        
+        .stat-card:hover::before {
+            left: 100%;
         }
         
         .stat-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            font-family: 'SF Mono', monospace;
         }
         
         .stat-label {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        /* Services */
-        .services {
+        /* Стили для карточек сервисов */
+        .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 25px 0;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
         }
         
-        .service-card {
-            background: #334155;
-            border-radius: 12px;
-            padding: 20px;
-            transition: transform 0.3s;
+        .service-card-enhanced {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 30px;
+            border: 2px solid transparent;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
         }
         
-        .service-card:hover {
-            transform: translateY(-5px);
+        .service-card-enhanced::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card-enhanced:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+        
+        .service-card-enhanced:hover::after {
+            transform: scaleX(1);
         }
         
         .service-header {
             display: flex;
             align-items: center;
-            gap: 15px;
-            margin-bottom: 15px;
+            gap: 20px;
+            margin-bottom: 25px;
         }
         
-        .service-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 10px;
+        .service-icon-wrapper {
+            width: 70px;
+            height: 70px;
+            border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 2rem;
+            background: var(--glass);
+            border: 2px solid;
         }
         
-        .service-name {
+        .service-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: bold;
+            animation: pulse-glow 2s infinite;
         }
         
-        .service-commission {
-            background: rgba(16, 185, 129, 0.2);
-            color: #10b981;
-            padding: 3px 10px;
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 10px var(--primary); }
+            50% { box-shadow: 0 0 20px var(--primary); }
+        }
+        
+        .service-image {
+            width: 100%;
+            height: 200px;
+            border-radius: 15px;
+            object-fit: cover;
+            margin: 20px 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card-enhanced:hover .service-image {
+            transform: scale(1.05);
+        }
+        
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .feature-tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--primary);
+            padding: 6px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            display: inline-block;
-            margin-top: 10px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(124, 58, 237, 0.3);
         }
         
-        /* Buttons */
-        .btn {
+        /* Видео блок */
+        .video-section {
+            margin: 80px 0;
+            text-align: center;
+        }
+        
+        .video-container {
+            position: relative;
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(124, 58, 237, 0.3), rgba(16, 185, 129, 0.3));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-container:hover .video-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .play-button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Галерея успеха */
+        .success-gallery {
+            margin: 80px 0;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .success-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .success-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--secondary);
+        }
+        
+        .success-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 3px solid var(--secondary);
+        }
+        
+        .success-quote {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin: 15px 0;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .success-quote::before {
+            content: '"';
+            position: absolute;
+            left: 0;
+            top: -10px;
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.3;
+        }
+        
+        /* Кнопки улучшенные */
+        .btn-gradient {
+            background: var(--gradient);
+            color: white;
+            padding: 18px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            text-decoration: none;
-            border-radius: 10px;
-            font-weight: 600;
+            gap: 12px;
             border: none;
             cursor: pointer;
-            transition: opacity 0.3s;
-            margin: 5px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            font-size: 1.1rem;
         }
         
-        .btn:hover {
-            opacity: 0.9;
+        .btn-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
         }
         
-        .btn-outline {
+        .btn-gradient:hover::before {
+            left: 100%;
+        }
+        
+        .btn-gradient:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.3);
+        }
+        
+        .btn-outline-glow {
             background: transparent;
             border: 2px solid var(--primary);
             color: var(--primary);
+            padding: 16px 32px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
         }
         
-        /* Responsive */
+        .btn-outline-glow:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 0 30px rgba(124, 58, 237, 0.5);
+            transform: translateY(-3px);
+        }
+        
+        /* Анимации */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Футер */
+        .footer {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 60px 0 30px;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        /* Мобильная адаптация */
         @media (max-width: 768px) {
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .services {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
             
-            .btn {
+            .live-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .btn-gradient, .btn-outline-glow {
                 width: 100%;
                 justify-content: center;
-                margin: 5px 0;
             }
         }
         
         @media (max-width: 480px) {
-            .stats {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .live-stats {
                 grid-template-columns: 1fr;
             }
             
-            .card {
-                padding: 15px;
+            .animated-logo {
+                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <i class="fas fa-robot"></i>
-            </div>
-            <h1>AI Affiliate Platform</h1>
-            <p class="tagline">Зарабатывайте на партнёрских программах AI-сервисов</p>
-        </header>
-
-        <!-- Stats Card -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-chart-line"></i>
-                <h2>Ваша статистика</h2>
-            </div>
-            <div class="stats">
-                <div class="stat-item">
-                    <div class="stat-value" id="totalRevenue">0 ₽</div>
-                    <div class="stat-label">Общий доход</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="totalClicks">0</div>
-                    <div class="stat-label">Переходы</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="conversionRate">0%</div>
-                    <div class="stat-label">Конверсия</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-value" id="activePartners">0</div>
-                    <div class="stat-label">Активные партнёры</div>
+    <!-- Новый хедер -->
+    <header class="hero-header">
+        <div class="container">
+            <div class="logo-container">
+                <div class="animated-logo">
+                    <i class="fas fa-robot"></i>
                 </div>
             </div>
+            <h1 class="hero-title animate__animated animate__fadeIn">
+                Зарабатывайте на <span class="gradient-text">AI-революции</span>
+            </h1>
+            <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">
+                Подключайтесь к партнёрским программам ведущих AI-сервисов и получайте 
+                <span class="accent-text">до 30% комиссии</span> с каждой продажи
+            </p>
+            
+            <!-- Анимированная статистика -->
+            <div class="live-stats">
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-value" id="totalEarners">5,248+</div>
+                    <div class="stat-label">Партнёров зарабатывают</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-value" id="totalPayouts">₽42.7М</div>
+                    <div class="stat-label">Выплачено партнёрам</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-value" id="activeServices">127</div>
+                    <div class="stat-label">AI -сервисов</div>
+                </div>
+                <div class="stat-card animate-on-scroll">
+                    <div class="stat-value" id="avgCommission">27%</div>
+                    <div class="stat-label">Средняя комиссия</div>
+                </div>
+            </div>
+            
+            <a href="#services" class="btn-gradient animate__animated animate__pulse animate__infinite">
+                <i class="fas fa-rocket"></i> Начать зарабатывать
+                <i class="fas fa-arrow-right"></i>
+            </a>
         </div>
+    </header>
 
-        <!-- Services Card -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-link"></i>
-                <h2>Партнёрские программы</h2>
-            </div>
-            <div class="services">
-                <!-- Яндекс GPT -->
-                <div class="service-card">
+    <div class="container">
+        <!-- Улучшенные карточки сервисов -->
+        <section id="services" class="animate-on-scroll">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🔥 ТОП AI-сервисы с высокими комиссиями
+            </h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 50px; font-size: 1.2rem;">
+                Выбирайте из 500+ AI-инструментов с партнёрскими программами
+            </p>
+            
+            <div class="services-grid">
+                <!-- Яндекс GPT карточка -->
+                <div class="service-card-enhanced animate-on-scroll">
+                    <div class="service-badge">
+                        <i class="fas fa-crown"></i> ТОП-1
+                    </div>
                     <div class="service-header">
-                        <div class="service-icon" style="background: rgba(255, 51, 51, 0.2); color: #ff3333;">
+                        <div class="service-icon-wrapper" style="border-color: #ff3333; color: #ff3333;">
                             <i class="fab fa-yandex"></i>
                         </div>
                         <div>
-                            <div class="service-name">Яндекс GPT</div>
-                            <div class="service-commission">Комиссия 30%</div>
-                        </div>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">
-                        Русскоязычный AI ассистент от Яндекса
-                    </p>
-                    <a href="https://360.yandex.ru/gpt?utm_source=affiliate_platform&utm_medium=referral&utm_campaign=ai_tools" 
-                       target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Подключиться
-                    </a>
-                </div>
-
-                <!-- GigaChat -->
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon" style="background: rgba(16, 185, 129, 0.2); color: #10b981;">
-                            <i class="fas fa-comment-dots"></i>
-                        </div>
-                        <div>
-                            <div class="service-name">GigaChat</div>
-                            <div class="service-commission">Комиссия 25%</div>
-                        </div>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">
-                        AI от Сбера для бизнеса и разработки
-                    </p>
-                    <a href="https://developers.sber.ru/gigachat?partner_id=AI_PLATFORM&ref=affiliate" 
-                       target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Подключиться
-                    </a>
-                </div>
-
-                <!-- Kandinsky -->
-                <div class="service-card">
-                    <div class="service-header">
-                        <div class="service-icon" style="background: rgba(124, 58, 237, 0.2); color: #7c3aed;">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div>
-                            <div class="service-name">Kandinsky AI</div>
-                            <div class="service-commission">Комиссия 20%</div>
-                        </div>
-                    </div>
-                    <p style="color: var(--text-secondary); margin-bottom: 15px; font-size: 0.9rem;">
-                        Генерация изображений на русском языке
-                    </p>
-                    <a href="https://fusionbrain.ai/diffusion?ref=AI_PLATFORM" 
-                       target="_blank" class="btn">
-                        <i class="fas fa-external-link-alt"></i> Подключиться
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tools Card -->
-        <div class="card">
-            <div class="card-header">
-                <i class="fas fa-tools"></i>
-                <h2>Инструменты</h2>
-            </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                <button onclick="generateReport()" class="btn btn-outline">
-                    <i class="fas fa-file-pdf"></i> Создать отчёт
-                </button>
-                <button onclick="copyAllLinks()" class="btn btn-outline">
-                    <i class="fas fa-copy"></i> Копировать ссылки
-                </button>
-                <button onclick="showQRCode()" class="btn btn-outline">
-                    <i class="fas fa-qrcode"></i> QR-коды
-                </button>
-                <button onclick="showStats()" class="btn btn-outline">
-                    <i class="fas fa-chart-bar"></i> Статистика
-                </button>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div style="text-align: center; margin-top: 50px; color: var(--text-secondary); padding: 20px;">
-            <p>© 2024 AI Affiliate Platform. Все права защищены.</p>
-            <p style="font-size: 0.9rem; margin-top: 10px;">
-                <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px;">Конфиденциальность</a>
-                <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px;">Условия</a>
-                <a href="#" style="color: var(--text-secondary); text-decoration: none; margin: 0 10px;">Контакты</a>
-            </p>
-        </div>
-    </div>
-
-    <script>
-        // Инициализация данных
-        const platformData = {
-            totalRevenue: 154200,
-            totalClicks: 8920,
-            conversionRate: 3.2,
-            activePartners: 156
-        };
-
-        // Обновление статистики
-        function updateStats() {
-            document.getElementById('totalRevenue').textContent = formatCurrency(platformData.totalRevenue);
-            document.getElementById('totalClicks').textContent = platformData.totalClicks.toLocaleString();
-            document.getElementById('conversionRate').textContent = platformData.conversionRate.toFixed(1) + '%';
-            document.getElementById('activePartners').textContent = platformData.activePartners;
-        }
-
-        // Форматирование валюты
-        function formatCurrency(amount) {
-            return amount.toLocaleString('ru-RU', {
-                style: 'currency',
-                currency: 'RUB',
-                minimumFractionDigits: 0
-            });
-        }
-
-        // Генерация отчёта
-        function generateReport() {
-            const report = `
-Отчёт AI Affiliate Platform
-===========================
-Дата: ${new Date().toLocaleDateString('ru-RU')}
-
-Статистика:
-• Общий доход: ${formatCurrency(platformData.totalRevenue)}
-• Переходы: ${platformData.totalClicks}
-• Конверсия: ${platformData.conversionRate}%
-• Активные партнёры: ${platformData.activePartners}
-
-Топ сервисы:
-1. Яндекс GPT (30% комиссия)
-2. GigaChat (25% комиссия)
-3. Kandinsky AI (20% комиссия)
-
-Рекомендации:
-• Используйте UTM-метки для отслеживания
-• Тестируйте разные призывы к действию
-• Добавляйте отзывы и кейсы
-            `;
-
-            // Скачивание файла
-            const blob = new Blob([report], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `affiliate-report-${Date.now()}.txt`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-
-            showNotification('Отчёт успешно сгенерирован!');
-        }
-
-        // Копирование всех ссылок
-        function copyAllLinks() {
-            const links = `
-Яндекс GPT: https://360.yandex.ru/gpt?utm_source=affiliate_platform&ref=AI_PLATFORM
-GigaChat: https://developers.sber.ru/gigachat?partner_id=AI_PLATFORM&ref=affiliate
-Kandinsky AI: https://fusionbrain.ai/diffusion?ref=AI_PLATFORM
-DeepSeek: https://deepseek.ru?ref=AI_PLATFORM
-            `.trim();
-
-            navigator.clipboard.writeText(links)
-                .then(() => showNotification('Все ссылки скопированы!'))
-                .catch(() => showNotification('Ошибка копирования'));
-        }
-
-        // Показ QR-кода
-        function showQRCode() {
-            const modal = document.createElement('div');
-            modal.style.cssText = `
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: rgba(0,0,0,0.8);
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                z-index: 1000;
-            `;
-
-            modal.innerHTML = `
-                <div style="background: #1e293b; border-radius: 15px; padding: 30px; text-align: center; max-width: 400px; width: 90%;">
-                    <h3 style="margin-bottom: 20px; color: #f8fafc;">QR-код для Яндекс GPT</h3>
-                    <div style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; display: inline-block;">
-                        <div style="width: 200px; height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border-radius: 5px;">
-                            <div style="text-align: center; color: #666; font-size: 14px;">
-                                <i class="fas fa-qrcode" style="font-size: 48px; margin-bottom: 10px; display: block;"></i>
-                                QR-код Яндекс GPT
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Яндекс GPT</h3>
+                            <div style="background: rgba(255, 51, 51, 0.2); color: #ff3333; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold;">
+                                <i class="fas fa-gem"></i> Комиссия 30%
                             </div>
                         </div>
                     </div>
-                    <p style="color: #94a3b8; margin-bottom: 20px; font-size: 14px;">
-                        Отсканируйте для быстрого доступа
+                    
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Яндекс GPT AI" class="service-image" 
+                         onerror="this.src='https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    
+                    <p style="color: var(--text-secondary); margin: 20px 0; line-height: 1.7;">
+                        Самый популярный русскоязычный AI-ассистент. Выплаты каждую неделю, 
+                        реферальная программа 2-го уровня.
                     </p>
-                    <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" 
-                            style="padding: 10px 20px; background: #7c3aed; color: white; border: none; border-radius: 10px; cursor: pointer;">
-                        Закрыть
+                    
+                    <div class="service-features">
+                        <span class="feature-tag"><i class="fas fa-bolt"></i> Высокая конверсия</span>
+                        <span class="feature-tag"><i class="fas fa-clock"></i> Мгновенные выплаты</span>
+                        <span class="feature-tag"><i class="fas fa-chart-line"></i> Детальная аналитика</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <a href="https://360.yandex.ru/gpt?utm_source=affiliate_platform&utm_medium=referral&utm_campaign=ai_tools" 
+                           target="_blank" class="btn-gradient" style="flex: 1; text-align: center;">
+                            <i class="fas fa-external-link-alt"></i> Подключить
+                        </a>
+                        <button onclick="showDemo('yandex-gpt')" class="btn-outline-glow" style="flex: 1;">
+                            <i class="fas fa-play-circle"></i> Демо
+                        </button>
+                    </div>
+                </div>
+
+                <!-- GigaChat карточка -->
+                <div class="service-card-enhanced animate-on-scroll">
+                    <div class="service-badge">
+                        <i class="fas fa-trending-up"></i> Быстрый рост
+                    </div>
+                    <div class="service-header">
+                        <div class="service-icon-wrapper" style="border-color: #10b981; color: #10b981;">
+                            <i class="fas fa-comment-dots"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">GigaChat Pro</h3>
+                            <div style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold;">
+                                <i class="fas fa-chart-line"></i> Комиссия 25%
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1676299081936-5a87ef5a4b1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="GigaChat AI" class="service-image"
+                         onerror="this.src='https://images.unsplash.com/photo-1676299081936-5a87ef5a4b1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    
+                    <p style="color: var(--text-secondary); margin: 20px 0; line-height: 1.7;">
+                        AI от Сбера для бизнеса. Эксклюзивные условия для партнёров, 
+                        бонусы за volume.
+                    </p>
+                    
+                    <div class="service-features">
+                        <span class="feature-tag"><i class="fas fa-building"></i> Для бизнеса</span>
+                        <span class="feature-tag"><i class="fas fa-code"></i> API доступ</span>
+                        <span class="feature-tag"><i class="fas fa-gift"></i> Бонусы за объём</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <a href="https://developers.sber.ru/gigachat?partner_id=AI_PLATFORM&ref=affiliate" 
+                           target="_blank" class="btn-gradient" style="flex: 1; text-align: center;">
+                            <i class="fas fa-external-link-alt"></i> Подключить
+                        </a>
+                        <button onclick="showDemo('gigachat')" class="btn-outline-glow" style="flex: 1;">
+                            <i class="fas fa-video"></i> Кейс
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Kandinsky карточка -->
+                <div class="service-card-enhanced animate-on-scroll">
+                    <div class="service-badge">
+                        <i class="fas fa-fire"></i> Популярно
+                    </div>
+                    <div class="service-header">
+                        <div class="service-icon-wrapper" style="border-color: #7c3aed; color: #7c3aed;">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Kandinsky 3.0</h3>
+                            <div style="background: rgba(124, 58, 237, 0.2); color: #7c3aed; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold;">
+                                <i class="fas fa-paint-brush"></i> Комиссия 20%
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1682686580391-615b1f28e5ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="AI Генерация изображений" class="service-image"
+                         onerror="this.src='https://images.unsplash.com/photo-1682686580391-615b1f28e5ee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'">
+                    
+                    <p style="color: var(--text-secondary); margin: 20px 0; line-height: 1.7;">
+                        Лучшая генерация изображений на русском. Высокий средний чек, 
+                        востребовано дизайнерами и маркетологами.
+                    </p>
+                    
+                    <div class="service-features">
+                        <span class="feature-tag"><i class="fas fa-image"></i> Генерация изображений</span>
+                        <span class="feature-tag"><i class="fas fa-language"></i> Русский язык</span>
+                        <span class="feature-tag"><i class="fas fa-users"></i> Для команды</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <a href="https://fusionbrain.ai/diffusion?ref=AI_PLATFORM" 
+                           target="_blank" class="btn-gradient" style="flex: 1; text-align: center;">
+                            <i class="fas fa-external-link-alt"></i> Подключить
+                        </a>
+                        <button onclick="showGallery('kandinsky')" class="btn-outline-glow" style="flex: 1;">
+                            <i class="fas fa-images"></i> Галерея
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Видео блок -->
+        <section class="video-section animate-on-scroll">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🎥 Как работает партнёрская программа?
+            </h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                Посмотрите 2-минутное видео и узнайте, как начать зарабатывать уже сегодня
+            </p>
+            
+            <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                     alt="Видео о партнёрской программе" style="width: 100%; height: 500px; object-fit: cover;">
+                <div class="video-overlay">
+                    <div class="play-button" onclick="playVideo()">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">1</div>
+                    <h3 style="margin-bottom: 10px;">Регистрируетесь</h3>
+                    <p style="color: var(--text-secondary);">Бесплатная регистрация за 2 минуты</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">2</div>
+                    <h3 style="margin-bottom: 10px;">Получаете ссылки</h3>
+                    <p style="color: var(--text-secondary);">Уникальные партнёрские ссылки</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">3</div>
+                    <h3 style="margin-bottom: 10px;">Привлекаете клиентов</h3>
+                    <p style="color: var(--text-secondary);">Через соцсети, блог, YouTube</p>
+                </div>
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; color: var(--primary); margin-bottom: 15px;">4</div>
+                    <h3 style="margin-bottom: 10px;">Получаете доход</h3>
+                    <p style="color: var(--text-secondary);">Выплаты на карту или крипто</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Галерея успеха -->
+        <section class="success-gallery animate-on-scroll">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                💪 Истории успеха наших партнёров
+            </h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 50px;">
+                Присоединяйтесь к тысячам партнёров, которые уже зарабатывают на AI
+            </p>
+            
+            <div class="gallery-grid">
+                <div class="success-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Алексей" class="success-avatar">
+                    <h3>Алексей, Москва</h3>
+                    <div style="color: var(--secondary); font-weight: bold; margin: 10px 0;">
+                        <i class="fas fa-ruble-sign"></i> 284,500 за месяц
+                    </div>
+                    <p class="success-quote">
+                        "Продвигаю AI-инструменты через Telegram-канал. 
+                        Яндекс GPT даёт стабильные 30% с каждой подписки."
+                    </p>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <i class="fas fa-calendar"></i> В партнёрстве 8 месяцев
+                    </div>
+                </div>
+                
+                <div class="success-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Екатерина" class="success-avatar">
+                    <h3>Екатерина, СПб</h3>
+                    <div style="color: var(--secondary); font-weight: bold; margin: 10px 0;">
+                        <i class="fas fa-ruble-sign"></i> 152,000 за месяц
+                    </div>
+                    <p class="success-quote">
+                        "Веду блог про AI для дизайнеров. Kandinsky отлично 
+                        конвертируется - дизайнеры готовы платить за качество."
+                    </p>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <i class="fas fa-calendar"></i> В партнёрстве 5 месяцев
+                    </div>
+                </div>
+                
+                <div class="success-card">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Дмитрий" class="success-avatar">
+                    <h3>Дмитрий, Казань</h3>
+                    <div style="color: var(--secondary); font-weight: bold; margin: 10px 0;">
+                        <i class="fas fa-ruble-sign"></i> 427,000 за месяц
+                    </div>
+                    <p class="success-quote">
+                        "Создал YouTube-канал об AI для бизнеса. GigaChat от Сбера 
+                        - хитом продаж, особенно среди предпринимателей."
+                    </p>
+                    <div style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <i class="fas fa-calendar"></i> В партнёрстве 11 месяцев
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA секция -->
+        <section class="animate-on-scroll" style="text-align: center; margin: 100px 0; padding: 80px 40px; background: var(--gradient); border-radius: 40px; position: relative; overflow: hidden;">
+                        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.1);"></div>
+            <div style="position: relative; z-index: 2;">
+                <h2 style="font-size: 3rem; margin-bottom: 20px; color: white;">
+                    🚀 Начните зарабатывать прямо сейчас!
+                </h2>
+                <p style="font-size: 1.4rem; margin-bottom: 40px; color: rgba(255,255,255,0.9); max-width: 700px; margin-left: auto; margin-right: auto;">
+                    Присоединяйтесь к 5,248+ партнёрам и получайте пассивный доход от AI-революции
+                </p>
+                
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px;">
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">0 ₽</div>
+                        <div>Стартовый взнос</div>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">24/7</div>
+                        <div>Поддержка</div>
+                    </div>
+                    <div style="text-align: center; color: white;">
+                        <div style="font-size: 2.5rem; font-weight: bold; margin-bottom: 10px;">1 день</div>
+                        <div>До первой выплаты</div>
+                    </div>
+                </div>
+                
+                <a href="#start" onclick="startRegistration()" class="btn-gradient" style="background: white; color: var(--primary); font-size: 1.3rem; padding: 22px 50px;">
+                    <i class="fas fa-user-plus"></i> Бесплатная регистрация
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                
+                <p style="color: rgba(255,255,255,0.7); margin-top: 30px; font-size: 0.9rem;">
+                    <i class="fas fa-lock"></i> Без скрытых платежей • Первые 10 партнёров получат бонус +5% к комиссии
+                </p>
+            </div>
+        </section>
+
+        <!-- Новые инструменты -->
+        <section class="animate-on-scroll" style="margin: 100px 0;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🛠️ Мощные инструменты для партнёров
+            </h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;">
+                <!-- Инструмент 1 -->
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--primary);">
+                    <div style="width: 60px; height: 60px; background: rgba(124, 58, 237, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.8rem; color: var(--primary);">
+                        <i class="fas fa-chart-network"></i>
+                    </div>
+                    <h3 style="margin-bottom: 15px;">Умная аналитика</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                        AI-прогнозы доходов, тепловые карты кликов, автоматические отчёты
+                    </p>
+                    <button onclick="openAnalytics()" class="btn-outline-glow" style="width: 100%;">
+                        <i class="fas fa-external-link-alt"></i> Открыть демо
                     </button>
                 </div>
-            `;
+                
+                <!-- Инструмент 2 -->
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--secondary);">
+                    <div style="width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.8rem; color: var(--secondary);">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3 style="margin-bottom: 15px;">Генератор ссылок</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                        Создавайте умные UTM-ссылки, QR-коды, реферальные промокоды
+                    </p>
+                    <button onclick="generateSmartLink()" class="btn-outline-glow" style="width: 100%;">
+                        <i class="fas fa-magic"></i> Создать ссылку
+                    </button>
+                </div>
+                
+                <!-- Инструмент 3 -->
+                <div style="background: var(--card-bg); padding: 30px; border-radius: 20px; border-left: 5px solid var(--accent);">
+                    <div style="width: 60px; height: 60px; background: rgba(245, 158, 11, 0.1); border-radius: 15px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 1.8rem; color: var(--accent);">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3 style="margin-bottom: 15px;">Игровые механики</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
+                        Уровни, достижения, ежедневные награды, таблица лидеров
+                    </p>
+                    <button onclick="showLeaderboard()" class="btn-outline-glow" style="width: 100%;">
+                        <i class="fas fa-crown"></i> Таблица лидеров
+                    </button>
+                </div>
+            </div>
+        </section>
 
-            document.body.appendChild(modal);
+        <!-- FAQ секция -->
+        <section class="animate-on-scroll" style="margin: 100px 0;">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                ❓ Частые вопросы
+            </h2>
+            
+            <div style="max-width: 800px; margin: 50px auto;">
+                <!-- FAQ 1 -->
+                <div style="background: var(--card-bg); margin-bottom: 15px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                    <button onclick="toggleFAQ(1)" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; color: var(--text); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer;">
+                        <span>Сколько стоит регистрация и есть ли ежемесячная плата?</span>
+                        <i class="fas fa-chevron-down" id="faq-icon-1"></i>
+                    </button>
+                    <div id="faq-content-1" style="padding: 0 25px 25px; display: none; color: var(--text-secondary);">
+                        <p>Регистрация абсолютно бесплатна и без ежемесячных платежей. Вы платите только когда зарабатываете - мы получаем процент от вашей комиссии. Первые 3 месяца комиссия снижена на 50% для новых партнёров.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 2 -->
+                <div style="background: var(--card-bg); margin-bottom: 15px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                    <button onclick="toggleFAQ(2)" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; color: var(--text); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer;">
+                        <span>Как быстро приходят выплаты и какие способы доступны?</span>
+                        <i class="fas fa-chevron-down" id="faq-icon-2"></i>
+                    </button>
+                    <div id="faq-content-2" style="padding: 0 25px 25px; display: none; color: var(--text-secondary);">
+                        <p>Выплаты осуществляются каждую неделю по понедельникам. Доступные способы: банковская карта (Тинькофф, Сбер, Альфа), ЮMoney, Qiwi, USDT (TRC20/ERC20). Минимальная сумма для вывода: 1,000 ₽.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 3 -->
+                <div style="background: var(--card-bg); margin-bottom: 15px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                    <button onclick="toggleFAQ(3)" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; color: var(--text); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer;">
+                        <span>Нужен ли мне сайт или большая аудитория для старта?</span>
+                        <i class="fas fa-chevron-down" id="faq-icon-3"></i>
+                    </button>
+                    <div id="faq-content-3" style="padding: 0 25px 25px; display: none; color: var(--text-secondary);">
+                        <p>Нет! Вы можете начать с любой аудитории: Telegram-канал, Instagram, YouTube, личные рекомендации. Мы предоставляем готовые материалы для продвижения: баннеры, тексты, видеообзоры.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ 4 -->
+                <div style="background: var(--card-bg); margin-bottom: 15px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
+                    <button onclick="toggleFAQ(4)" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; color: var(--text); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer;">
+                        <span>Можно ли работать из других стран?</span>
+                        <i class="fas fa-chevron-down" id="faq-icon-4"></i>
+                    </button>
+                    <div id="faq-content-4" style="padding: 0 25px 25px; display: none; color: var(--text-secondary);">
+                        <p>Да! Платформа доступна из любой страны. Выплаты осуществляются в рублях, долларах или криптовалюте. Поддержка работает на русском и английском языках 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 style="margin-bottom: 20px; font-size: 1.5rem;">
+                        <i class="fas fa-robot"></i> AI Affiliate Platform
+                    </h3>
+                    <p style="color: var(--text-secondary); line-height: 1.7;">
+                        Ведущая платформа для заработка на партнёрских программах AI-сервисов. 
+                        Более 500+ инструментов, 5,248+ партнёров, ₽42.7М выплат.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-vk"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px;">Популярные сервисы</h4>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Яндекс GPT (30%)</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">GigaChat Pro (25%)</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Kandinsky 3.0 (20%)</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Midjourney (15-30%)</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">ChatGPT Plus (20%)</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px;">Инструменты</h4>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Генератор ссылок</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Аналитика доходов</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Материалы для продвижения</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">API для разработчиков</a></li>
+                        <li style="margin-bottom: 10px;"><a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Мобильное приложение</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 20px;">Контакты</h4>
+                    <ul style="list-style: none; color: var(--text-secondary);">
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-envelope" style="color: var(--primary);"></i>
+                            <span>partners@ai-toolkit.ru</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-phone" style="color: var(--primary);"></i>
+                            <span>8-800- AI-TOOLS</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-clock" style="color: var(--primary);"></i>
+                            <span>Поддержка 24/7</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-map-marker-alt" style="color: var(--primary);"></i>
+                            <span>Россия, для партнёров worldwide</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="border-top: 1px solid rgba(255,255,255,0.1); padding-top: 30px; text-align: center; color: var(--text-secondary);">
+                <p style="margin-bottom: 20px;">© 2024 AI Affiliate Platform. Все права защищены.</p>
+                <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; font-size: 0.9rem;">
+                    <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Конфиденциальность</a>
+                    <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Условия использования</a>
+                    <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Партнёрское соглашение</a>
+                    <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Карта сайта</a>
+                    <a href="#" style="color: var(--text-secondary); text-decoration: none; transition: color 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-secondary)'">Вакансии</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Анимация при скролле
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
         }
 
-        // Показ статистики
-        function showStats() {
+        // Анимированные счетчики
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.floor(current).toLocaleString() + 
+                            (counter.id === 'totalPayouts' ? 'М' : 
+                             counter.id === 'avgCommission' ? '%' : 
+                             counter.id === 'totalEarners' ? '+' : '');
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target.toLocaleString() + 
+                            (counter.id === 'totalPayouts' ? 'М' : 
+                             counter.id === 'avgCommission' ? '%' : 
+                             counter.id === 'totalEarners' ? '+' : '');
+                    }
+                };
+                
+                updateCounter();
+            });
+        }
+
+        // FAQ функционал
+        function toggleFAQ(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
+
+        // Демо функции
+        function showDemo(service) {
+            const demos = {
+                'yandex-gpt': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                'gigachat': 'https://www.youtube.com/embed/dQw4w9WgXcQ',
+                'kandinsky': 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+            };
+            
             const modal = document.createElement('div');
             modal.style.cssText = `
                 position: fixed;
@@ -487,262 +1108,621 @@ DeepSeek: https://deepseek.ru?ref=AI_PLATFORM
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(0,0,0,0.8);
+                background: rgba(0,0,0,0.9);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                z-index: 1000;
+                z-index: 9999;
+                padding: 20px;
             `;
-
-            const chartData = {
-                labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн'],
-                datasets: [{
-                    label: 'Доход (₽)',
-                    data: [25000, 32000, 41000, 38500, 45000, 52000],
-                    borderColor: '#7c3aed',
-                    backgroundColor: 'rgba(124, 58, 237, 0.1)',
-                    fill: true
-                }]
-            };
-
+            
             modal.innerHTML = `
-                <div style="background: #1e293b; border-radius: 15px; padding: 30px; max-width: 600px; width: 90%; max-height: 90vh; overflow-y: auto;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                        <h3 style="color: #f8fafc;">Детальная статистика</h3>
-                        <button onclick="this.closest('div[style*=\"position: fixed\"]').remove()" 
-                                style="background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer;">
+                <div style="background: #1e293b; border-radius: 20px; padding: 30px; max-width: 900px; width: 100%; position: relative;">
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #94a3b8; font-size: 24px; cursor: pointer; z-index: 2;">
+                        ×
+                    </button>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden;">
+                        <iframe src="${demos[service]}" 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px; color: #f8fafc;">
+                        <h3>Демонстрация работы ${service}</h3>
+                        <p style="color: #94a3b8;">Как максимально эффективно продвигать этот сервис</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function showGallery(service) {
+            const images = [
+                'https://images.unsplash.com/photo-1682686580391-615b1f28e5ee',
+                'https://images.unsplash.com/photo-1682687982502-1529b3b33f85',
+                'https://images.unsplash.com/photo-1682687982501-1e58ab814714'
+            ];
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1e293b; border-radius: 20px; padding: 30px; max-width: 1200px; width: 100%; max-height: 90vh; overflow-y: auto;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h3 style="color: #f8fafc; font-size: 1.8rem;">Галерея работ Kandinsky AI</h3>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                                style="background: none; border: none; color: #94a3b8; font-size: 28px; cursor: pointer;">
                             ×
                         </button>
                     </div>
                     
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 30px;">
-                        <div style="background: rgba(124, 58, 237, 0.1); padding: 15px; border-radius: 10px;">
-                            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 5px;">Средний чек</div>
-                            <div style="font-size: 24px; font-weight: bold; color: #7c3aed;">1,240 ₽</div>
-                        </div>
-                        <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 10px;">
-                            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 5px;">Рост за месяц</div>
-                            <div style="font-size: 24px; font-weight: bold; color: #10b981;">+24%</div>
-                        </div>
-                        <div style="background: rgba(59, 130, 246, 0.1); padding: 15px; border-radius: 10px;">
-                            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 5px;">Новых партнёров</div>
-                            <div style="font-size: 24px; font-weight: bold; color: #3b82f6;">18</div>
-                        </div>
-                        <div style="background: rgba(245, 158, 11, 0.1); padding: 15px; border-radius: 10px;">
-                            <div style="font-size: 12px; color: #94a3b8; margin-bottom: 5px;">ROI</div>
-                            <div style="font-size: 24px; font-weight: bold; color: #f59e0b;">3.2x</div>
-                        </div>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;">
+                        ${images.map(img => `
+                            <div style="background: #334155; border-radius: 15px; overflow: hidden; transition: transform 0.3s ease;" 
+                                 onmouseover="this.style.transform='scale(1.02)'" 
+                                 onmouseout="this.style.transform='scale(1)'">
+                                <img src="${img}?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                     alt="AI Generated Art" 
+                                     style="width: 100%; height: 250px; object-fit: cover;">
+                                <div style="padding: 20px;">
+                                    <div style="color: #f8fafc; font-weight: bold; margin-bottom: 10px;">Сгенерировано Kandinsky</div>
+                                    <div style="color: #94a3b8; font-size: 0.9rem;">Промпт: "космический пейзаж в стиле импрессионизма"</div>
+                                </div>
+                            </div>
+                        `).join('')}
                     </div>
                     
-                    <div style="background: #334155; padding: 20px; border-radius: 10px; margin-bottom: 20px;">
-                        <div style="color: #f8fafc; margin-bottom: 15px; font-weight: bold;">Динамика дохода</div>
-                        <div style="height: 200px; position: relative;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; display: flex; align-items: flex-end; justify-content: space-around; height: 100%;">
-                                ${chartData.datasets[0].data.map((value, index) => {
-                                    const height = (value / 60000) * 100;
-                                    return `<div style="width: 30px; background: linear-gradient(to top, #7c3aed, #a78bfa); border-radius: 5px 5px 0 0; height: ${height}%; position: relative;">
-                                        <div style="position: absolute; top: -25px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #94a3b8;">${chartData.labels[index]}</div>
-                                        <div style="position: absolute; bottom: -25px; left: 50%; transform: translateX(-50%); font-size: 12px; color: #f8fafc;">${(value/1000).toFixed(0)}k</div>
-                                    </div>`;
-                                }).join('')}
+                    <div style="margin-top: 30px; text-align: center;">
+                        <p style="color: #94a3b8; margin-bottom: 20px;">
+                            Эти изображения были созданы пользователями Kandinsky AI. 
+                            Каждую неделю мы проводим конкурсы с призами до 50,000 ₽.
+                        </p>
+                        <a href="https://fusionbrain.ai/diffusion?ref=AI_PLATFORM" 
+                           target="_blank" 
+                           class="btn-gradient" 
+                           style="display: inline-flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-paint-brush"></i> Начать создавать
+                        </a>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function playVideo() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1e293b; border-radius: 20px; padding: 30px; max-width: 1000px; width: 100%; position: relative;">
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: 15px; right: 15px; background: none; border: none; color: #94a3b8; font-size: 28px; cursor: pointer; z-index: 2;">
+                        ×
+                    </button>
+                    <div style="position: relative; padding-bottom: 56.25%; height: 0; border-radius: 15px; overflow: hidden;">
+                        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div style="text-align: center; margin-top: 20px;">
+                        <h3 style="color: #f8fafc; margin-bottom: 10px;">Как заработать 100,000 ₽ на AI за первый месяц</h3>
+                        <p style="color: #94a3b8;">Полный гайд от топового партнёра</p>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function startRegistration() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1e293b; border-radius: 25px; padding: 40px; max-width: 500px; width: 100%; position: relative;">
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: #94a3b8; font-size: 28px; cursor: pointer;">
+                        ×
+                    </button>
+                    
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white;">
+                            <i class="fas fa-user-plus"></i>
+                        </div>
+                        <h3 style="color: #f8fafc; font-size: 1.8rem; margin-bottom: 10px;">Быстрая регистрация</h3>
+                        <p style="color: #94a3b8;">Заполните форму и получите доступ к 500+ AI-сервисам</p>
+                    </div>
+                    
+                    <form id="registrationForm" style="display: flex; flex-direction: column; gap: 20px;">
+                        <div>
+                            <label style="display: block; color: #f8fafc; margin-bottom: 8px; font-size: 0.9rem;">Имя</label>
+                            <input type="text" 
+                                   required 
+                                   style="width: 100%; padding: 15px; background: #334155; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 1rem; transition: border-color 0.3s;"
+                                   onfocus="this.style.borderColor='var(--primary)'"
+                                   onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+                                   placeholder="Алексей">
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; color: #f8fafc; margin-bottom: 8px; font-size: 0.9rem;">Email</label>
+                            <input type="email" 
+                                   required 
+                                   style="width: 100%; padding: 15px; background: #334155; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 1rem; transition: border-color 0.3s;"
+                                   onfocus="this.style.borderColor='var(--primary)'"
+                                   onblur="this.style.borderColor='rgba(255,255,255,0.1)'"
+                                   placeholder="alexey@example.com">
+                        </div>
+                        
+                        <div>
+                            <label style="display: block; color: #f8fafc; margin-bottom: 8px; font-size: 0.9rem;">Платформа продвижения</label>
+                            <select style="width: 100%; padding: 15px; background: #334155; border: 2px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 1rem;">
+                                <option value="">Выберите платформу</option>
+                                <option value="telegram">Telegram</option>
+                                <option value="instagram">Instagram</option>
+                                <option value="youtube">YouTube</option>
+                                <option value="website">Сайт/Блог</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 12px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                            <div style="display: flex; align-items: center; gap: 10px; color: #10b981; margin-bottom: 10px;">
+                                <i class="fas fa-gift"></i>
+                                <span style="font-weight: bold;">Бонус для новых партнёров</span>
+                            </div>
+                            <p style="color: #94a3b8; font-size: 0.9rem;">
+                                +5% к комиссии на первые 3 месяца<br>
+                                Готовые материалы для продвижения<br>
+                                Персональный менеджер
+                            </p>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="btn-gradient" 
+                                style="width: 100%; padding: 18px; font-size: 1.1rem; margin-top: 10px;">
+                            <i class="fas fa-rocket"></i> Начать зарабатывать
+                        </button>
+                        
+                                                    <p style="text-align: center; color: #94a3b8; font-size: 0.8rem; margin-top: 10px;">
+                                Нажимая кнопку, вы соглашаетесь с <a href="#" style="color: var(--primary); text-decoration: none;">условиями использования</a>
+                            </p>
+                    </form>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // Обработка формы
+            document.getElementById('registrationForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Показать успешную регистрацию
+                modal.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="width: 100px; height: 100px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 30px; font-size: 3rem; color: white; animation: pulse 2s infinite;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 style="color: #f8fafc; font-size: 2rem; margin-bottom: 20px;">Добро пожаловать!</h3>
+                        <p style="color: #94a3b8; margin-bottom: 30px; font-size: 1.1rem; line-height: 1.6;">
+                            Регистрация успешно завершена!<br>
+                            На вашу почту отправлено письмо с доступом к партнёрской панели.
+                        </p>
+                        <div style="background: rgba(124, 58, 237, 0.1); padding: 20px; border-radius: 15px; margin: 30px 0; border: 2px solid var(--primary);">
+                            <div style="color: var(--primary); font-weight: bold; margin-bottom: 10px;">
+                                <i class="fas fa-star"></i> Ваш партнёрский ID: AP${Date.now().toString().slice(-6)}
+                            </div>
+                            <div style="color: #f8fafc; font-family: monospace; font-size: 1.2rem; background: #0f172a; padding: 10px; border-radius: 8px; margin: 10px 0;">
+                                https://ai-toolkit.ru/?ref=AP${Date.now().toString().slice(-6)}
+                            </div>
+                            <button onclick="copyRefLink()" class="btn-outline-glow" style="width: 100%; margin-top: 15px;">
+                                <i class="fas fa-copy"></i> Скопировать реферальную ссылку
+                            </button>
+                        </div>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                                class="btn-gradient" 
+                                style="width: 100%; padding: 18px; font-size: 1.1rem;">
+                            <i class="fas fa-chart-line"></i> Перейти в партнёрскую панель
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        function generateSmartLink() {
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.9);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1e293b; border-radius: 25px; padding: 40px; max-width: 600px; width: 100%;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h3 style="color: #f8fafc; font-size: 1.8rem;">
+                            <i class="fas fa-magic"></i> Умный генератор ссылок
+                        </h3>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                                style="background: none; border: none; color: #94a3b8; font-size: 28px; cursor: pointer;">
+                            ×
+                        </button>
+                    </div>
+                    
+                    <div style="background: #334155; padding: 25px; border-radius: 15px; margin-bottom: 25px;">
+                        <div style="color: #f8fafc; margin-bottom: 15px; font-weight: bold;">
+                            Выберите AI-сервис:
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                            <button onclick="selectService('yandex')" 
+                                    class="btn-outline-glow" 
+                                    style="text-align: left; padding: 15px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fab fa-yandex" style="color: #ff3333;"></i>
+                                    <span>Яндекс GPT</span>
+                                </div>
+                            </button>
+                            <button onclick="selectService('giga')" 
+                                    class="btn-outline-glow" 
+                                    style="text-align: left; padding: 15px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-comment-dots" style="color: #10b981;"></i>
+                                    <span>GigaChat</span>
+                                </div>
+                            </button>
+                            <button onclick="selectService('kandinsky')" 
+                                    class="btn-outline-glow" 
+                                    style="text-align: left; padding: 15px;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-palette" style="color: #7c3aed;"></i>
+                                    <span>Kandinsky</span>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <div id="generatedLink" style="display: none;">
+                            <div style="color: #f8fafc; margin-bottom: 10px; font-weight: bold;">
+                                Ваша ссылка:
+                            </div>
+                            <div style="background: #0f172a; padding: 15px; border-radius: 10px; border: 1px solid var(--primary); margin-bottom: 20px;">
+                                <div style="color: #f8fafc; font-family: monospace; font-size: 0.9rem; word-break: break-all;" id="linkOutput">
+                                    https://ai-toolkit.ru/ref/AP123456
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 15px;">
+                                <button onclick="copyLink()" class="btn-gradient" style="flex: 1;">
+                                    <i class="fas fa-copy"></i> Копировать
+                                </button>
+                                <button onclick="generateQR()" class="btn-outline-glow" style="flex: 1;">
+                                    <i class="fas fa-qrcode"></i> QR-код
+                                </button>
                             </div>
                         </div>
                     </div>
                     
-                    <div style="background: rgba(16, 185, 129, 0.1); padding: 15px; border-radius: 10px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 15px; border: 1px solid rgba(16, 185, 129, 0.3);">
                         <div style="color: #10b981; font-weight: bold; margin-bottom: 10px;">
-                            <i class="fas fa-lightbulb"></i> Рекомендация
+                            <i class="fas fa-lightbulb"></i> Советы по продвижению
                         </div>
-                        <div style="color: #f1f5f9; font-size: 14px;">
-                            Увеличьте активность в соцсетях на 20% для роста дохода на 35%.
+                        <ul style="color: #94a3b8; padding-left: 20px; margin: 0;">
+                            <li style="margin-bottom: 8px;">Используйте UTM-метки для отслеживания</li>
+                            <li style="margin-bottom: 8px;">Тестируйте разные призывы к действию (CTA)</li>
+                            <li style="margin-bottom: 8px;">Добавляйте отзывы и кейсы использования</li>
+                            <li>Создавайте ограниченные по времени предложения</li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function selectService(service) {
+            const services = {
+                'yandex': {
+                    name: 'Яндекс GPT',
+                    link: 'https://360.yandex.ru/gpt?utm_source=ai_platform&utm_medium=referral&utm_campaign=partner&ref=AP' + Date.now().toString().slice(-6),
+                    color: '#ff3333'
+                },
+                'giga': {
+                    name: 'GigaChat Pro',
+                    link: 'https://developers.sber.ru/gigachat?partner_id=AI_PLATFORM&utm_source=partner&ref=AP' + Date.now().toString().slice(-6),
+                    color: '#10b981'
+                },
+                'kandinsky': {
+                    name: 'Kandinsky 3.0',
+                    link: 'https://fusionbrain.ai/diffusion?utm_source=ai_partner&ref=AP' + Date.now().toString().slice(-6),
+                    color: '#7c3aed'
+                }
+            };
+            
+            const selected = services[service];
+            document.getElementById('linkOutput').textContent = selected.link;
+            document.getElementById('linkOutput').style.color = selected.color;
+            document.getElementById('generatedLink').style.display = 'block';
+            
+            // Прокрутить к результату
+            document.getElementById('generatedLink').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function copyLink() {
+            const link = document.getElementById('linkOutput').textContent;
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Ссылка скопирована в буфер обмена!');
+            });
+        }
+
+        function generateQR() {
+            const link = document.getElementById('linkOutput').textContent;
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1e293b; border-radius: 25px; padding: 40px; max-width: 400px; width: 100%; text-align: center;">
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: #94a3b8; font-size: 28px; cursor: pointer;">
+                        ×
+                    </button>
+                    
+                    <h3 style="color: #f8fafc; margin-bottom: 30px;">
+                        <i class="fas fa-qrcode"></i> QR-код для партнёрской ссылки
+                    </h3>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 15px; display: inline-block; margin-bottom: 30px;">
+                        <div style="width: 200px; height: 200px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border-radius: 10px; margin: 0 auto;">
+                            <div style="text-align: center; color: #666;">
+                                <i class="fas fa-qrcode" style="font-size: 80px; margin-bottom: 10px; display: block; color: #7c3aed;"></i>
+                                QR-код
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <p style="color: #94a3b8; margin-bottom: 20px; font-size: 0.9rem;">
+                        Отсканируйте QR-код для быстрого доступа к партнёрской программе.
+                        Идеально подходит для социальных сетей и печатных материалов.
+                    </p>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center;">
+                        <button onclick="downloadQR()" class="btn-gradient">
+                            <i class="fas fa-download"></i> Скачать PNG
+                        </button>
+                        <button onclick="shareQR()" class="btn-outline-glow">
+                            <i class="fas fa-share-alt"></i> Поделиться
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        function showLeaderboard() {
+            const leaders = [
+                { name: 'Алексей К.', earnings: '₽427,800', level: 25, avatar: '👑' },
+                { name: 'Мария С.', earnings: '₽384,200', level: 23, avatar: '🚀' },
+                { name: 'Дмитрий П.', earnings: '₽351,500', level: 22, avatar: '⭐' },
+                { name: 'Екатерина Л.', earnings: '₽298,700', level: 20, avatar: '🔥' },
+                { name: 'Иван М.', earnings: '₽267,400', level: 19, avatar: '⚡' }
+            ];
+            
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.95);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+            
+            modal.innerHTML = `
+                <div style="background: #1e293b; border-radius: 25px; padding: 40px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <h3 style="color: #f8fafc; font-size: 2rem;">
+                            <i class="fas fa-crown"></i> Топ партнёров
+                        </h3>
+                        <button onclick="this.parentElement.parentElement.parentElement.remove()" 
+                                style="background: none; border: none; color: #94a3b8; font-size: 28px; cursor: pointer;">
+                            ×
+                        </button>
+                    </div>
+                    
+                    <div style="background: rgba(124, 58, 237, 0.1); padding: 25px; border-radius: 20px; margin-bottom: 30px; border: 2px solid var(--primary);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                            <div>
+                                <div style="color: var(--primary); font-weight: bold; margin-bottom: 5px;">Ваша позиция</div>
+                                <div style="font-size: 2.5rem; color: #f8fafc; font-weight: bold;">#147</div>
+                            </div>
+                            <div style="text-align: right;">
+                                <div style="color: var(--primary); font-weight: bold; margin-bottom: 5px;">Ваш доход</div>
+                                <div style="font-size: 2rem; color: #f8fafc; font-weight: bold;">₽42,800</div>
+                            </div>
+                        </div>
+                        <div style="background: #334155; height: 10px; border-radius: 5px; overflow: hidden;">
+                            <div style="width: 65%; height: 100%; background: var(--gradient); border-radius: 5px;"></div>
+                        </div>
+                        <div style="color: #94a3b8; font-size: 0.9rem; margin-top: 10px;">
+                            До следующего уровня: ₽7,200
+                        </div>
+                    </div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="color: #f8fafc; margin-bottom: 20px; font-size: 1.3rem;">🏆 Лучшие за этот месяц</h4>
+                        <div style="display: flex; flex-direction: column; gap: 15px;">
+                            ${leaders.map((leader, index) => `
+                                <div style="background: #334155; padding: 20px; border-radius: 15px; display: flex; align-items: center; gap: 20px; border: ${index === 0 ? '2px solid gold' : index < 3 ? '2px solid silver' : '1px solid rgba(255,255,255,0.1)'}">
+                                    <div style="font-size: 2rem; width: 50px;">${leader.avatar}</div>
+                                    <div style="flex: 1;">
+                                        <div style="color: #f8fafc; font-weight: bold; margin-bottom: 5px;">${index + 1}. ${leader.name}</div>
+                                        <div style="display: flex; gap: 20px; color: #94a3b8; font-size: 0.9rem;">
+                                            <span>Уровень ${leader.level}</span>
+                                            <span>${leader.earnings}</span>
+                                        </div>
+                                    </div>
+                                    <div style="color: ${index === 0 ? 'gold' : index === 1 ? 'silver' : index === 2 ? '#cd7f32' : 'var(--primary)'}; font-weight: bold;">
+                                        ${index === 0 ? '👑 Чемпион' : index === 1 ? '🥈 Второе место' : index === 2 ? '🥉 Третье место' : 'Топ-5'}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(16, 185, 129, 0.1); padding: 20px; border-radius: 15px; border: 1px solid rgba(16, 185, 129, 0.3);">
+                        <div style="color: #10b981; font-weight: bold; margin-bottom: 15px;">
+                            <i class="fas fa-trophy"></i> Награды месяца
+                        </div>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px;">
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">🏆</div>
+                                <div style="color: #f8fafc; font-weight: bold;">1 место</div>
+                                <div style="color: #94a3b8; font-size: 0.9rem;">+₽50,000 бонус</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">🥈</div>
+                                <div style="color: #f8fafc; font-weight: bold;">2 место</div>
+                                <div style="color: #94a3b8; font-size: 0.9rem;">+₽25,000 бонус</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">🥉</div>
+                                <div style="color: #f8fafc; font-weight: bold;">3 место</div>
+                                <div style="color: #94a3b8; font-size: 0.9rem;">+₽10,000 бонус</div>
+                            </div>
+                            <div style="text-align: center;">
+                                <div style="font-size: 2rem; margin-bottom: 10px;">🚀</div>
+                                <div style="color: #f8fafc; font-weight: bold;">Топ-10</div>
+                                <div style="color: #94a3b8; font-size: 0.9rem;">+5% к комиссии</div>
+                            </div>
                         </div>
                     </div>
                 </div>
             `;
-
+            
             document.body.appendChild(modal);
         }
 
-        // Уведомления
-        function showNotification(message, type = 'info') {
-            // Удаляем старые уведомления
-            const oldNotification = document.querySelector('.notification');
-            if (oldNotification) oldNotification.remove();
-
-            const notification = document.createElement('div');
-            notification.className = 'notification';
-            notification.style.cssText = `
-                position: fixed;
-                bottom: 20px;
-                right: 20px;
-                background: ${type === 'error' ? '#ef4444' : '#10b981'};
-                color: white;
-                padding: 15px 20px;
-                border-radius: 10px;
-                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-                z-index: 1000;
-                animation: slideIn 0.3s ease;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                max-width: 400px;
-            `;
-
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'error' ? 'exclamation-circle' : 'check-circle'}"></i>
-                <span>${message}</span>
-            `;
-
-            document.body.appendChild(notification);
-
-            setTimeout(() => {
-                notification.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
+        function openAnalytics() {
+            window.open('https://analytics.ai-toolkit.ru', '_blank');
         }
 
-        // Добавляем CSS анимации
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes slideIn {
-                from { transform: translateX(100px); opacity: 0; }
-                to { transform: translateX(0); opacity: 1; }
-            }
-            
-            @keyframes slideOut {
-                from { transform: translateX(0); opacity: 1; }
-                to { transform: translateX(100px); opacity: 0; }
-            }
-        `;
-        document.head.appendChild(style);
+        function copyRefLink() {
+            const link = 'https://ai-toolkit.ru/?ref=AP' + Date.now().toString().slice(-6);
+            navigator.clipboard.writeText(link).then(() => {
+                alert('Реферальная ссылка скопирована!');
+            });
+        }
 
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            updateStats();
+            // Запуск анимаций
+            setTimeout(animateCounters, 1000);
             
-            // Обновляем статистику каждые 30 секунд
+            // Отслеживание скролла для анимаций
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); // Проверить при загрузке
+            
+            // Автоматическое обновление статистики
             setInterval(() => {
-                platformData.totalClicks += Math.floor(Math.random() * 5);
-                platformData.totalRevenue += Math.floor(Math.random() * 1000);
-                updateStats();
+                const earners = document.getElementById('totalEarners');
+                const current = parseInt(earners.textContent);
+                earners.textContent = (current + Math.floor(Math.random() * 3)) + '+';
             }, 30000);
             
-            // Отслеживание кликов по ссылкам
-            document.querySelectorAll('a[href*="utm_source"]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const service = this.closest('.service-card').querySelector('.service-name').textContent;
-                    showNotification(`Клик по ${service} зафиксирован!`);
-                    
-                    // Обновляем статистику
-                    platformData.totalClicks++;
-                    updateStats();
+            // Интерактивность для карточек сервисов
+            document.querySelectorAll('.service-card-enhanced').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.service-icon-wrapper i');
+                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.service-icon-wrapper i');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
                 });
             });
             
-            console.log('AI Affiliate Platform загружен!');
+            console.log('🚀 AI Affiliate Platform загружен!');
         });
-       <script>
-// Динамическое обновление статистики
-function updateLiveStats() {
-    // Пример увеличения статистики
-    const revenueElem = document.getElementById('totalRevenue');
-    const clicksElem = document.getElementById('totalClicks');
-    
-    // Получаем текущие значения
-    let revenue = parseInt(revenueElem.textContent.replace(/\D/g, ''));
-    let clicks = parseInt(clicksElem.textContent.replace(/\D/g, ''));
-    
-    // Небольшое увеличение (имитация активности)
-    if (Math.random() > 0.7) {
-        clicks += Math.floor(Math.random() * 3);
-        revenue += Math.floor(Math.random() * 1000);
-        
-        // Обновляем на странице
-        clicksElem.textContent = clicks.toLocaleString();
-        revenueElem.textContent = revenue.toLocaleString() + ' ₽';
-        
-        // Сохраняем
-        localStorage.setItem('affiliate_stats', JSON.stringify({
-            revenue: revenue,
-            clicks: clicks,
-            lastUpdate: new Date().toISOString()
-        }));
-    }
-}
 
-// Загружаем сохранённую статистику
-function loadSavedStats() {
-    const saved = localStorage.getItem('affiliate_stats');
-    if (saved) {
-        const stats = JSON.parse(saved);
-        document.getElementById('totalRevenue').textContent = 
-            stats.revenue.toLocaleString() + ' ₽';
-        document.getElementById('totalClicks').textContent = 
-            stats.clicks.toLocaleString();
-    }
-}
-
-// Запускаем при загрузке
-document.addEventListener('DOMContentLoaded', function() {
-    loadSavedStats();
-    setInterval(updateLiveStats, 30000); // Обновлять каждые 30 секунд
-}); 
-        // Генерация отчёта
-function generateReport() {
-    const stats = {
-        date: new Date().toLocaleDateString('ru-RU'),
-        revenue: document.getElementById('totalRevenue').textContent,
-        clicks: document.getElementById('totalClicks').textContent,
-        conversion: document.getElementById('conversionRate').textContent,
-        partners: document.getElementById('activePartners').textContent
-    };
-    
-    const report = `
-Отчёт AI Affiliate Platform
-===========================
-Дата: ${stats.date}
-
-Статистика:
-• Общий доход: ${stats.revenue}
-• Переходы: ${stats.clicks}
-• Конверсия: ${stats.conversion}
-• Активные партнёры: ${stats.partners}
-
-Топ сервисы:
-1. Яндекс GPT (30% комиссия)
-2. GigaChat (25% комиссия)
-3. Kandinsky AI (20% комиссия)
-
-Сгенерировано автоматически.
-    `;
-    
-    // Создаём и скачиваем файл
-    const blob = new Blob([report], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `affiliate-report-${new Date().getTime()}.txt`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    URL.revokeObjectURL(url);
-    
-    alert('Отчёт успешно сгенерирован и скачан!');
-}
-
-// Копирование всех ссылок
-function copyAllLinks() {
-    const links = `
-Яндекс GPT: https://360.yandex.ru/gpt?ref=AI_PLATFORM
-GigaChat: https://developers.sber.ru/gigachat?partner_id=AI_PLATFORM
-Kandinsky AI: https://fusionbrain.ai/diffusion?ref=AI_PLATFORM
-    `.trim();
-    
-    navigator.clipboard.writeText(links)
-        .then(() => alert('Все партнёрские ссылки скопированы в буфер обмена!'))
-        .catch(() => alert('Ошибка копирования'));
-}
-    <script src="script.js"></script>
+        // Анимация для чисел
+        function animateValue(element, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                element.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+    </script>
 </body>
 </html>
-
