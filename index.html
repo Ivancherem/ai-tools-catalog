@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Affiliate Platform | Зарабатывайте на AI с Иван Черемных</title>
+    <title>AI Партнёрская Платформа | Зарабатывайте на AI с Иван Черемных</title>
     <meta name="description" content="Зарабатывайте до 30% с каждой продажи AI-сервисов. Личный опыт Ивана Черемных. Более 500+ инструментов с партнёрскими программами.">
     
     <!-- Зависимости -->
@@ -12,7 +12,7 @@
     <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/2103/2103655.png">
     
     <!-- Open Graph для соцсетей -->
-    <meta property="og:title" content="AI Affiliate Platform | Иван Черемных">
+    <meta property="og:title" content="AI Партнёрская Платформа | Иван Черемных">
     <meta property="og:description" content="Зарабатывайте до 30% с AI-сервисов. Личный опыт и реальные партнёрки">
     <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://ai-toolkit.ru">
@@ -1388,50 +1388,32 @@
         // ============ КОНФИГУРАЦИЯ ПАРТНЁРСКИХ ПРОГРАММ ============
         const AFFILIATE_CONFIG = {
             links: {
-                copyai: "https://www.copy.ai/affiliates", // Ссылка для проверки статуса
-                jasper: "https://www.jasper.ai/become-a-partner", // Основная альтернатива
-                writesonic: "https://writesonic.com/affiliate", // Вторая альтернатива
-                surfer: "https://surferseo.com/affiliates/", // Премиум альтернатива
-                anyword: "https://anyword.com/affiliate-program/", // Дополнительная альтернатива
-                yandexMarket: "https://partner.yandex.ru?ref=ВАШ_ID", // Замените на свой ID
-                yandexSearch: "https://ya.ru/search/?clid=ВАШ_ID" // Замените на свой ID
+                copyai: "https://www.copy.ai/affiliates",
+                jasper: "https://www.jasper.ai/become-a-partner",
+                writesonic: "https://writesonic.com/affiliate",
+                surfer: "https://surferseo.com/affiliates/",
+                anyword: "https://anyword.com/affiliate-program/",
+                yandexMarket: "https://partner.yandex.ru",
+                yandexSearch: "https://ya.ru/search/"
             },
             
             contacts: {
                 telegram: "https://t.me/ai_toolkit_partner09",
                 vk: "https://vk.com/ai_cherem7",
                 email: "cherem.7@yandex.ru"
-            },
-            
-            promocodes: {
-                yandexMarket: "MARKET_ВАШ_ID", // Замените на свой ID
-                yandexTravel: "TRAVEL_ВАШ_ID" // Замените на свой ID
             }
         };
 
         // ============ ОБРАБОТКА ФОРМЫ ПОДПИСКИ ============
         document.addEventListener('DOMContentLoaded', function() {
-            const emailForm = document.getElementById('email-form');
-            
-            if(emailForm) {
-                emailForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const email = this.querySelector('input[type="email"]').value;
-                    const name = this.querySelector('input[name="name"]')?.value || '';
-                    
-                    if(email) {
-                        saveLead({email, name, source: 'website_form'});
-                        showSuccessMessage(email, name);
-                        this.reset();
-                    }
-                });
-            }
-            
             initStats();
             updateAffiliateLinks();
             checkScroll();
-            checkAffiliateStatus(); // Проверка статуса Copy.ai
+            checkAffiliateStatus();
+            
+            // Отслеживание скролла для анимаций
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
         });
 
         // ============ СОХРАНЕНИЕ ЛИДОВ ============
@@ -1456,487 +1438,454 @@
         }
 
         // ============ ТРЕКИНГ КЛИКОВ ПО ПАРТНЁРСКИМ ССЫЛКАМ ============
-           function trackAffiliateClick(serviceName, linkType = 'main') {
-    try {
-        // Сохраняем клик в localStorage
-        let clicks = JSON.parse(localStorage.getItem('affiliate_clicks') || '{}');
-        
-        if (!clicks[serviceName]) {
-            clicks[serviceName] = { main: 0, alternative: 0 };
-        }
-        
-        clicks[serviceName][linkType] = (clicks[serviceName][linkType] || 0) + 1;
-        localStorage.setItem('affiliate_clicks', JSON.stringify(clicks));
-        
-        // Обновляем статистику на панели
-        updateStatsPanel();
-        
-        // Показываем уведомление
-        showNotification(`Клик по ${serviceName} сохранён! ✨`, 'success');
-        
-        // Отправляем данные (в реальном проекте здесь был бы AJAX запрос)
-        console.log(`📊 Клик: ${serviceName} (${linkType})`);
-        
-    } catch (error) {
-        console.error('Ошибка трекинга:', error);
-    }
-}
-
-// ============ ОТКРЫТИЕ ПАРТНЁРСКИХ ССЫЛОК ============
-function openPartnerLink(serviceName, isAlternative = false) {
-    const linkType = isAlternative ? 'alternative' : 'main';
-    
-    // Трекинг клика
-    trackAffiliateClick(serviceName, linkType);
-    
-    // Получаем ссылку из конфигурации
-    const link = AFFILIATE_CONFIG.links[serviceName];
-    
-    if (link) {
-        // Открываем в новом окне
-        window.open(link, '_blank', 'noopener,noreferrer');
-        
-        // Показываем уведомление о переходе
-        setTimeout(() => {
-            showNotification(`Переход на ${serviceName} засчитан! 🎯`, 'info');
-        }, 500);
-    } else {
-        console.error(`Ссылка для ${serviceName} не найдена`);
-        showNotification('Ссылка временно недоступна', 'error');
-    }
-}
-
-// ============ ПРОВЕРКА СТАТУСА COPY.AI ============
-function checkCopyAIStatus() {
-    const currentDate = new Date();
-    const acquisitionDate = new Date('2025-01-22');
-    const daysSinceAcquisition = Math.floor((currentDate - acquisitionDate) / (1000 * 60 * 60 * 24));
-    
-    let status = '';
-    
-    if (daysSinceAcquisition < 7) {
-        status = '🔄 В процессе обновления\n(менее недели с приобретения)';
-    } else if (daysSinceAcquisition < 30) {
-        status = '⏳ Идут внутренние процессы\n(менее месяца с приобретения)';
-    } else {
-        status = '📅 Проверьте официальный сайт\n(более месяца с приобретения)';
-    }
-    
-    showNotification(
-        `Статус Copy.ai:\n${status}\n\nДата приобретения: 22 января 2025\nПрошло дней: ${daysSinceAcquisition}`,
-        'warning'
-    );
-    
-    // Предлагаем альтернативы
-    setTimeout(() => {
-        if (!localStorage.getItem('copyai_alternative_shown')) {
-            showAlternativeAI();
-            localStorage.setItem('copyai_alternative_shown', 'true');
-        }
-    }, 1500);
-}
-
-// ============ ПОКАЗ АЛЬТЕРНАТИВ COPY.AI ============
-function showAlternativeAI() {
-    const alternatives = `
-    🚀 РЕКОМЕНДОВАННЫЕ АЛЬТЕРНАТИВЫ COPY.AI:
-
-    1. Jasper AI (jasper.ai)
-    • 30% recurring комиссии
-    • Лучшая альтернатива
-    • Высокая конверсия
-
-    2. Writesonic (writesonic.com)
-    • 30% recurring комиссии
-    • Быстрое одобрение
-    • Хорошая поддержка
-
-    3. Surfer SEO (surferseo.com)
-    • 30-50% комиссии
-    • Премиум продукт ($99-299/мес)
-    • SEO-аудитория
-
-    4. Anyword (anyword.com)
-    • 20-30% комиссии
-    • AI для маркетинга
-    • Прогнозирование эффективности
-
-    🔗 Все ссылки уже в вашем распоряжении на сайте!
-    `;
-    
-    alert(alternatives);
-    
-    // Сохраняем факт показа альтернатив
-    localStorage.setItem('copyai_alternatives_shown', new Date().toISOString());
-}
-
-// ============ ИНФОРМАЦИЯ О СЕРВИСАХ ============
-function showServiceInfo(serviceName) {
-    const info = {
-        jasper: {
-            title: "Jasper AI",
-            description: "Продвинутый AI-копирайтинг с 30% recurring комиссиями. Отличная альтернатива Copy.ai.",
-            features: ["30% recurring комиссии", "Высокая конверсия", "Стабильная платформа"],
-            bestFor: "Копирайтеров, маркетологов, агентств",
-            avgCommission: "$30-100/месяц с клиента"
-        },
-        writesonic: {
-            title: "Writesonic",
-            description: "AI-написание контента с быстрым одобрением партнёрки.",
-            features: ["30% recurring комиссии", "Быстрое одобрение", "Частые выплаты"],
-            bestFor: "Блогеров, контент-менеджеров, предпринимателей",
-            avgCommission: "$20-80/месяц с клиента"
-        },
-        surfer: {
-            title: "Surfer SEO",
-            description: "AI-оптимизация для SEO с высокими комиссиями до 50%.",
-            features: ["30-50% комиссии", "Премиум продукт", "Высокие чеки"],
-            bestFor: "SEO-специалистов, агентств, вебмастеров",
-            avgCommission: "$50-150/месяц с клиента"
-        }
-    };
-    
-    const service = info[serviceName];
-    if (!service) return;
-    
-    const message = `
-    ${service.title}
-    
-    📝 ${service.description}
-    
-    ✨ Особенности:
-    • ${service.features.join('\n• ')}
-    
-    🎯 Лучше всего подходит для:
-    ${service.bestFor}
-    
-    💰 Средняя комиссия:
-    ${service.avgCommission}
-    
-    🚀 Рекомендация:
-    Подключайте как основную партнёрскую программу!
-    `;
-    
-    alert(message);
-}
-
-// ============ ИНИЦИАЛИЗАЦИЯ СТАТИСТИКИ ============
-function initStats() {
-    // Инициализируем статистику, если её нет
-    if (!localStorage.getItem('affiliate_stats')) {
-        const initialStats = {
-            totalClicks: 0,
-            uniqueVisitors: 1,
-            leadsCount: 0,
-            lastReset: new Date().toISOString()
-        };
-        localStorage.setItem('affiliate_stats', JSON.stringify(initialStats));
-    }
-    
-    // Увеличиваем счётчик уникальных посетителей
-    if (!localStorage.getItem('user_visited')) {
-        let stats = JSON.parse(localStorage.getItem('affiliate_stats'));
-        stats.uniqueVisitors++;
-        localStorage.setItem('affiliate_stats', JSON.stringify(stats));
-        localStorage.setItem('user_visited', 'true');
-    }
-    
-    updateStatsPanel();
-}
-
-// ============ ОБНОВЛЕНИЕ ПАНЕЛИ СТАТИСТИКИ ============
-function updateStatsPanel() {
-    // Создаём панель статистики, если её нет
-    let panel = document.getElementById('stats-panel');
-    
-    if (!panel) {
-        panel = document.createElement('div');
-        panel.id = 'stats-panel';
-        panel.className = 'stats-panel';
-        document.body.appendChild(panel);
-    }
-    
-    // Получаем данные
-    const clicks = JSON.parse(localStorage.getItem('affiliate_clicks') || '{}');
-    const stats = JSON.parse(localStorage.getItem('affiliate_stats') || '{}');
-    
-    // Подсчитываем общие клики
-    let totalClicks = 0;
-    Object.values(clicks).forEach(serviceClicks => {
-        totalClicks += (serviceClicks.main || 0) + (serviceClicks.alternative || 0);
-    });
-    
-    // Обновляем панель
-    panel.innerHTML = `
-        <div style="font-weight: bold; margin-bottom: 10px; color: var(--primary);">
-            <i class="fas fa-chart-bar"></i> Ваша статистика
-        </div>
-        <div style="font-size: 0.8rem; line-height: 1.4;">
-            <div>👥 Посетителей: ${stats.uniqueVisitors || 1}</div>
-            <div>📊 Кликов: ${totalClicks}</div>
-            <div>📩 Лидов: ${stats.leadsCount || 0}</div>
-            <div style="margin-top: 10px; font-size: 0.7rem; opacity: 0.7;">
-                <i class="fas fa-sync-alt"></i> Обновляется автоматически
-            </div>
-        </div>
-    `;
-}
-
-// ============ ОБНОВЛЕНИЕ СЧЁТЧИКА ЛИДОВ ============
-function updateLeadsCounter() {
-    const stats = JSON.parse(localStorage.getItem('affiliate_stats') || '{}');
-    stats.leadsCount = (stats.leadsCount || 0) + 1;
-    localStorage.setItem('affiliate_stats', JSON.stringify(stats));
-    updateStatsPanel();
-}
-
-// ============ ПОКАЗ УВЕДОМЛЕНИЙ ============
-function showNotification(message, type = 'info') {
-    // Удаляем старое уведомление
-    const oldNotification = document.querySelector('.notification');
-    if (oldNotification) {
-        oldNotification.remove();
-    }
-    
-    // Создаём новое уведомление
-    const notification = document.createElement('div');
-    notification.className = 'notification';
-    
-    // Настраиваем цвет в зависимости от типа
-    switch(type) {
-        case 'success':
-            notification.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            break;
-        case 'warning':
-            notification.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
-            break;
-        case 'error':
-            notification.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
-            break;
-        default:
-            notification.style.background = 'linear-gradient(135deg, #7c3aed, #10b981)';
-    }
-    
-    notification.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 10px;">
-            ${getNotificationIcon(type)}
-            <div>${message}</div>
-        </div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Автоматическое скрытие через 5 секунд
-    setTimeout(() => {
-        notification.style.animation = 'slideOut 0.3s ease';
-        setTimeout(() => {
-            if (notification.parentNode) {
-                notification.remove();
+        function trackAffiliateClick(serviceName, linkType = 'main') {
+            try {
+                let clicks = JSON.parse(localStorage.getItem('affiliate_clicks') || '{}');
+                
+                if (!clicks[serviceName]) {
+                    clicks[serviceName] = { main: 0, alternative: 0 };
+                }
+                
+                clicks[serviceName][linkType] = (clicks[serviceName][linkType] || 0) + 1;
+                localStorage.setItem('affiliate_clicks', JSON.stringify(clicks));
+                
+                updateStatsPanel();
+                showNotification(`Клик по ${serviceName} сохранён! ✨`, 'success');
+                
+                console.log(`📊 Клик: ${serviceName} (${linkType})`);
+                
+            } catch (error) {
+                console.error('Ошибка трекинга:', error);
             }
-        }, 300);
-    }, 5000);
-}
+        }
 
-// ============ ПОЛУЧЕНИЕ ИКОНКИ ДЛЯ УВЕДОМЛЕНИЯ ============
-function getNotificationIcon(type) {
-    switch(type) {
-        case 'success':
-            return '<i class="fas fa-check-circle"></i>';
-        case 'warning':
-            return '<i class="fas fa-exclamation-triangle"></i>';
-        case 'error':
-            return '<i class="fas fa-times-circle"></i>';
-        default:
-            return '<i class="fas fa-info-circle"></i>';
-    }
-}
-
-// ============ ОБНОВЛЕНИЕ ПАРТНЁРСКИХ ССЫЛОК ============
-function updateAffiliateLinks() {
-    // Обновляем все кнопки с атрибутом data-affiliate-service
-    document.querySelectorAll('[data-affiliate-service]').forEach(button => {
-        const serviceName = button.getAttribute('data-affiliate-service');
-        button.onclick = () => openPartnerLink(serviceName);
-    });
-}
-
-// ============ ПРОВЕРКА СТАТУСА ПАРТНЁРСКИХ ПРОГРАММ ============
-async function checkAffiliateStatus() {
-    try {
-        // Проверяем статус Copy.ai каждые 24 часа
-        const lastCheck = localStorage.getItem('last_affiliate_check');
-        const now = Date.now();
-        
-        if (!lastCheck || (now - parseInt(lastCheck)) > 24 * 60 * 60 * 1000) {
-            console.log('🔄 Проверяем статус партнёрских программ...');
+        // ============ ОТКРЫТИЕ ПАРТНЁРСКИХ ССЫЛОК ============
+        function openPartnerLink(serviceName, isAlternative = false) {
+            const linkType = isAlternative ? 'alternative' : 'main';
             
-            // В реальном проекте здесь был бы API запрос
-            const status = {
-                copyai: {
-                    active: false,
-                    message: 'В процессе обновления после приобретения Fullcast',
-                    lastUpdate: '2025-01-22'
-                },
+            trackAffiliateClick(serviceName, linkType);
+            
+            const link = AFFILIATE_CONFIG.links[serviceName];
+            
+            if (link) {
+                window.open(link, '_blank', 'noopener,noreferrer');
+                
+                setTimeout(() => {
+                    showNotification(`Переход на ${serviceName} засчитан! 🎯`, 'info');
+                }, 500);
+            } else {
+                console.error(`Ссылка для ${serviceName} не найдена`);
+                showNotification('Ссылка временно недоступна', 'error');
+            }
+        }
+
+        // ============ ПРОВЕРКА СТАТУСА COPY.AI ============
+        function checkCopyAIStatus() {
+            const currentDate = new Date();
+            const acquisitionDate = new Date('2025-01-22');
+            const daysSinceAcquisition = Math.floor((currentDate - acquisitionDate) / (1000 * 60 * 60 * 24));
+            
+            let status = '';
+            
+            if (daysSinceAcquisition < 7) {
+                status = '🔄 В процессе обновления\n(менее недели с приобретения)';
+            } else if (daysSinceAcquisition < 30) {
+                status = '⏳ Идут внутренние процессы\n(менее месяца с приобретения)';
+            } else {
+                status = '📅 Проверьте официальный сайт\n(более месяца с приобретения)';
+            }
+            
+            showNotification(
+                `Статус Copy.ai:\n${status}\n\nДата приобретения: 22 января 2025\nПрошло дней: ${daysSinceAcquisition}`,
+                'warning'
+            );
+            
+            setTimeout(() => {
+                if (!localStorage.getItem('copyai_alternative_shown')) {
+                    showAlternativeAI();
+                    localStorage.setItem('copyai_alternative_shown', 'true');
+                }
+            }, 1500);
+        }
+
+        // ============ ПОКАЗ АЛЬТЕРНАТИВ COPY.AI ============
+        function showAlternativeAI() {
+            const alternatives = `
+            🚀 РЕКОМЕНДОВАННЫЕ АЛЬТЕРНАТИВЫ COPY.AI:
+
+            1. Jasper AI (jasper.ai)
+            • 30% recurring комиссии
+            • Лучшая альтернатива
+            • Высокая конверсия
+
+            2. Writesonic (writesonic.com)
+            • 30% recurring комиссии
+            • Быстрое одобрение
+            • Хорошая поддержка
+
+            3. Surfer SEO (surferseo.com)
+            • 30-50% комиссии
+            • Премиум продукт ($99-299/мес)
+            • SEO-аудитория
+
+            4. Anyword (anyword.com)
+            • 20-30% комиссии
+            • AI для маркетинга
+            • Прогнозирование эффективности
+
+            🔗 Все ссылки уже в вашем распоряжении на сайте!
+            `;
+            
+            alert(alternatives);
+            
+            localStorage.setItem('copyai_alternatives_shown', new Date().toISOString());
+        }
+
+        // ============ ИНФОРМАЦИЯ О СЕРВИСАХ ============
+        function showServiceInfo(serviceName) {
+            const info = {
                 jasper: {
-                    active: true,
-                    message: 'Активна, принимает новых партнёров',
-                    lastUpdate: new Date().toISOString().split('T')[0]
+                    title: "Jasper AI",
+                    description: "Продвинутый AI-копирайтинг с 30% recurring комиссиями. Отличная альтернатива Copy.ai.",
+                    features: ["30% recurring комиссии", "Высокая конверсия", "Стабильная платформа"],
+                    bestFor: "Копирайтеров, маркетологов, агентств",
+                    avgCommission: "$30-100/месяц с клиента"
                 },
                 writesonic: {
-                    active: true,
-                    message: 'Активна, быстрая регистрация',
-                    lastUpdate: new Date().toISOString().split('T')[0]
+                    title: "Writesonic",
+                    description: "AI-написание контента с быстрым одобрением партнёрки.",
+                    features: ["30% recurring комиссии", "Быстрое одобрение", "Частые выплаты"],
+                    bestFor: "Блогеров, контент-менеджеров, предпринимателей",
+                    avgCommission: "$20-80/месяц с клиента"
+                },
+                surfer: {
+                    title: "Surfer SEO",
+                    description: "AI-оптимизация для SEO с высокими комиссиями до 50%.",
+                    features: ["30-50% комиссии", "Премиум продукт", "Высокие чеки"],
+                    bestFor: "SEO-специалистов, агентств, вебмастеров",
+                    avgCommission: "$50-150/месяц с клиента"
                 }
             };
             
-            localStorage.setItem('affiliate_status', JSON.stringify(status));
-            localStorage.setItem('last_affiliate_check', now.toString());
+            const service = info[serviceName];
+            if (!service) return;
             
-            // Если Copy.ai неактивен, показываем уведомление
-            if (!status.copyai.active && !localStorage.getItem('copyai_inactive_shown')) {
+            const message = `
+            ${service.title}
+            
+            📝 ${service.description}
+            
+            ✨ Особенности:
+            • ${service.features.join('\n• ')}
+            
+            🎯 Лучше всего подходит для:
+            ${service.bestFor}
+            
+            💰 Средняя комиссия:
+            ${service.avgCommission}
+            
+            🚀 Рекомендация:
+            Подключайте как основную партнёрскую программу!
+            `;
+            
+            alert(message);
+        }
+
+        // ============ ИНИЦИАЛИЗАЦИЯ СТАТИСТИКИ ============
+        function initStats() {
+            if (!localStorage.getItem('affiliate_stats')) {
+                const initialStats = {
+                    totalClicks: 0,
+                    uniqueVisitors: 1,
+                    leadsCount: 0,
+                    lastReset: new Date().toISOString()
+                };
+                localStorage.setItem('affiliate_stats', JSON.stringify(initialStats));
+            }
+            
+            if (!localStorage.getItem('user_visited')) {
+                let stats = JSON.parse(localStorage.getItem('affiliate_stats'));
+                stats.uniqueVisitors++;
+                localStorage.setItem('affiliate_stats', JSON.stringify(stats));
+                localStorage.setItem('user_visited', 'true');
+            }
+            
+            updateStatsPanel();
+        }
+
+        // ============ ОБНОВЛЕНИЕ ПАНЕЛИ СТАТИСТИКИ ============
+        function updateStatsPanel() {
+            let panel = document.getElementById('stats-panel');
+            
+            if (!panel) {
+                panel = document.createElement('div');
+                panel.id = 'stats-panel';
+                panel.className = 'stats-panel';
+                document.body.appendChild(panel);
+            }
+            
+            const clicks = JSON.parse(localStorage.getItem('affiliate_clicks') || '{}');
+            const stats = JSON.parse(localStorage.getItem('affiliate_stats') || '{}');
+            
+            let totalClicks = 0;
+            Object.values(clicks).forEach(serviceClicks => {
+                totalClicks += (serviceClicks.main || 0) + (serviceClicks.alternative || 0);
+            });
+            
+            panel.innerHTML = `
+                <div style="font-weight: bold; margin-bottom: 10px; color: var(--primary);">
+                    <i class="fas fa-chart-bar"></i> Ваша статистика
+                </div>
+                <div style="font-size: 0.8rem; line-height: 1.4;">
+                    <div>👥 Посетителей: ${stats.uniqueVisitors || 1}</div>
+                    <div>📊 Кликов: ${totalClicks}</div>
+                    <div>📩 Лидов: ${stats.leadsCount || 0}</div>
+                    <div style="margin-top: 10px; font-size: 0.7rem; opacity: 0.7;">
+                        <i class="fas fa-sync-alt"></i> Обновляется автоматически
+                    </div>
+                </div>
+            `;
+        }
+
+        // ============ ОБНОВЛЕНИЕ СЧЁТЧИКА ЛИДОВ ============
+        function updateLeadsCounter() {
+            const stats = JSON.parse(localStorage.getItem('affiliate_stats') || '{}');
+            stats.leadsCount = (stats.leadsCount || 0) + 1;
+            localStorage.setItem('affiliate_stats', JSON.stringify(stats));
+            updateStatsPanel();
+        }
+
+        // ============ ПОКАЗ УВЕДОМЛЕНИЙ ============
+        function showNotification(message, type = 'info') {
+            const oldNotification = document.querySelector('.notification');
+            if (oldNotification) {
+                oldNotification.remove();
+            }
+            
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            
+            switch(type) {
+                case 'success':
+                    notification.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    break;
+                case 'warning':
+                    notification.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                    break;
+                case 'error':
+                    notification.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+                    break;
+                default:
+                    notification.style.background = 'linear-gradient(135deg, #7c3aed, #10b981)';
+            }
+            
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    ${getNotificationIcon(type)}
+                    <div>${message}</div>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
                 setTimeout(() => {
-                    showNotification('Copy.ai временно недоступен. Используйте альтернативы!', 'warning');
-                    localStorage.setItem('copyai_inactive_shown', 'true');
-                }, 3000);
+                    if (notification.parentNode) {
+                        notification.remove();
+                    }
+                }, 300);
+            }, 5000);
+        }
+
+        // ============ ПОЛУЧЕНИЕ ИКОНКИ ДЛЯ УВЕДОМЛЕНИЯ ============
+        function getNotificationIcon(type) {
+            switch(type) {
+                case 'success':
+                    return '<i class="fas fa-check-circle"></i>';
+                case 'warning':
+                    return '<i class="fas fa-exclamation-triangle"></i>';
+                case 'error':
+                    return '<i class="fas fa-times-circle"></i>';
+                default:
+                    return '<i class="fas fa-info-circle"></i>';
             }
         }
-    } catch (error) {
-        console.error('Ошибка проверки статуса:', error);
-    }
-}
 
-// ============ ПОКАЗ УСПЕШНОЙ ОТПРАВКИ ФОРМЫ ============
-function showSuccessMessage(email, name) {
-    // Показываем анимированный success state
-    const form = document.getElementById('leadForm');
-    
-    if (form) {
-        form.innerHTML = `
-            <div style="text-align: center; padding: 40px 20px;">
-                <div style="width: 80px; height: 80px; background: var(--gradient); 
-                           border-radius: 50%; display: flex; align-items: center; 
-                           justify-content: center; margin: 0 auto 20px; font-size: 2.5rem; 
-                           color: white; animation: pulse 2s infinite;">
-                    <i class="fas fa-check"></i>
-                </div>
-                <h3 style="color: var(--text); margin-bottom: 15px;">
-                    Отлично, ${name || 'друг'}! 🎉
-                </h3>
-                <p style="color: var(--text-secondary); margin-bottom: 30px;">
-                    На <strong>${email}</strong> отправлено письмо с:
-                </p>
-                
-                <div style="background: rgba(124, 58, 237, 0.1); padding: 20px; 
-                           border-radius: 15px; margin-bottom: 25px; 
-                           border: 2px solid var(--primary);">
-                    <ul style="text-align: left; color: var(--text); padding-left: 20px;">
-                        <li style="margin-bottom: 10px;">Все партнёрские ссылки</li>
-                        <li style="margin-bottom: 10px;">Инструкция по подключению</li>
-                        <li style="margin-bottom: 10px;">Шаблоны для продвижения</li>
-                        <li>Доступ к закрытому чату</li>
-                    </ul>
-                </div>
-                
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-                           gap: 10px; margin-top: 30px;">
-                    <button onclick="openPartnerLink('jasper')" 
-                            class="btn-gradient" style="font-size: 0.9rem;">
-                        <i class="fas fa-robot"></i> Jasper AI
-                    </button>
-                    <button onclick="openPartnerLink('writesonic')" 
-                            class="btn-gradient" style="font-size: 0.9rem;">
-                        <i class="fas fa-pen-nib"></i> Writesonic
-                    </button>
-                </div>
-                
-                <p style="color: var(--text-secondary); margin-top: 25px; font-size: 0.9rem;">
-                    <i class="fas fa-clock"></i> Ссылки действительны 30 дней
-                </p>
-            </div>
-        `;
-        
-        // Обновляем счётчик оставшихся мест
-        updateSpotsCounter();
-        
-        // Показываем уведомление
-        showNotification('Данные сохранены! Проверьте почту 📧', 'success');
-    }
-}
+        // ============ ОБНОВЛЕНИЕ ПАРТНЁРСКИХ ССЫЛОК ============
+        function updateAffiliateLinks() {
+            document.querySelectorAll('[data-affiliate-service]').forEach(button => {
+                const serviceName = button.getAttribute('data-affiliate-service');
+                button.onclick = () => openPartnerLink(serviceName);
+            });
+        }
 
-// ============ ОБНОВЛЕНИЕ СЧЁТЧИКА МЕСТ ============
-function updateSpotsCounter() {
-    const spotsElement = document.getElementById('spotsLeft');
-    if (spotsElement) {
-        let spots = parseInt(spotsElement.textContent);
-        if (spots > 0) {
-            spots--;
-            spotsElement.textContent = spots;
-            
-            // Сохраняем новое значение
-            localStorage.setItem('remaining_spots', spots.toString());
-            
-            // Если мест мало, показываем предупреждение
-            if (spots < 10) {
-                showNotification(`Осталось всего ${spots} мест! ⏳`, 'warning');
+        // ============ ПРОВЕРКА СТАТУСА ПАРТНЁРСКИХ ПРОГРАММ ============
+        async function checkAffiliateStatus() {
+            try {
+                const lastCheck = localStorage.getItem('last_affiliate_check');
+                const now = Date.now();
+                
+                if (!lastCheck || (now - parseInt(lastCheck)) > 24 * 60 * 60 * 1000) {
+                    console.log('🔄 Проверяем статус партнёрских программ...');
+                    
+                    const status = {
+                        copyai: {
+                            active: false,
+                            message: 'В процессе обновления после приобретения Fullcast',
+                            lastUpdate: '2025-01-22'
+                        },
+                        jasper: {
+                            active: true,
+                            message: 'Активна, принимает новых партнёров',
+                            lastUpdate: new Date().toISOString().split('T')[0]
+                        },
+                        writesonic: {
+                            active: true,
+                            message: 'Активна, быстрая регистрация',
+                            lastUpdate: new Date().toISOString().split('T')[0]
+                        }
+                    };
+                    
+                    localStorage.setItem('affiliate_status', JSON.stringify(status));
+                    localStorage.setItem('last_affiliate_check', now.toString());
+                    
+                    if (!status.copyai.active && !localStorage.getItem('copyai_inactive_shown')) {
+                        setTimeout(() => {
+                            showNotification('Copy.ai временно недоступен. Используйте альтернативы!', 'warning');
+                            localStorage.setItem('copyai_inactive_shown', 'true');
+                        }, 3000);
+                    }
+                }
+            } catch (error) {
+                console.error('Ошибка проверки статуса:', error);
             }
         }
-    }
-}
 
-// ============ ОТПРАВКА ФОРМЫ ЛИДА ============
-function submitLeadForm() {
-    const form = document.getElementById('leadForm');
-    const nameInput = form.querySelector('input[name="name"]');
-    const emailInput = form.querySelector('input[name="email"]');
-    const phoneInput = form.querySelector('input[name="phone"]');
-    
-    if (!nameInput.value || !emailInput.value) {
-        showNotification('Пожалуйста, заполните имя и email', 'error');
-        return;
-    }
-    
-    // Сохраняем лид
-    const leadData = {
-        name: nameInput.value,
-        email: emailInput.value,
-        phone: phoneInput.value || '',
-        date: new Date().toISOString(),
-        source: 'main_form'
-    };
-    
-    saveLead(leadData);
-    showSuccessMessage(emailInput.value, nameInput.value);
-    
-    // Сбрасываем форму
-    form.reset();
-}
+        // ============ ПОКАЗ УСПЕШНОЙ ОТПРАВКИ ФОРМЫ ============
+        function showSuccessMessage(email, name) {
+            const form = document.getElementById('leadForm');
+            
+            if (form) {
+                form.innerHTML = `
+                    <div style="text-align: center; padding: 40px 20px;">
+                        <div style="width: 80px; height: 80px; background: var(--gradient); 
+                                   border-radius: 50%; display: flex; align-items: center; 
+                                   justify-content: center; margin: 0 auto 20px; font-size: 2.5rem; 
+                                   color: white; animation: pulse 2s infinite;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 style="color: var(--text); margin-bottom: 15px;">
+                            Отлично, ${name || 'друг'}! 🎉
+                        </h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                            На <strong>${email}</strong> отправлено письмо с:
+                        </p>
+                        
+                        <div style="background: rgba(124, 58, 237, 0.1); padding: 20px; 
+                                   border-radius: 15px; margin-bottom: 25px; 
+                                   border: 2px solid var(--primary);">
+                            <ul style="text-align: left; color: var(--text); padding-left: 20px;">
+                                <li style="margin-bottom: 10px;">Все партнёрские ссылки</li>
+                                <li style="margin-bottom: 10px;">Инструкция по подключению</li>
+                                <li style="margin-bottom: 10px;">Шаблоны для продвижения</li>
+                                <li>Доступ к закрытому чату</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+                                   gap: 10px; margin-top: 30px;">
+                            <button onclick="openPartnerLink('jasper')" 
+                                    class="btn-gradient" style="font-size: 0.9rem;">
+                                <i class="fas fa-robot"></i> Jasper AI
+                            </button>
+                            <button onclick="openPartnerLink('writesonic')" 
+                                    class="btn-gradient" style="font-size: 0.9rem;">
+                                <i class="fas fa-pen-nib"></i> Writesonic
+                            </button>
+                        </div>
+                        
+                        <p style="color: var(--text-secondary); margin-top: 25px; font-size: 0.9rem;">
+                            <i class="fas fa-clock"></i> Ссылки действительны 30 дней
+                        </p>
+                    </div>
+                `;
+                
+                updateSpotsCounter();
+                showNotification('Данные сохранены! Проверьте почту 📧', 'success');
+            }
+        }
 
-// ============ СТАРЫЕ ФУНКЦИИ (для совместимости) ============
-function toggleFAQ(id) {
-    const content = document.getElementById(`faq-content-${id}`);
-    const icon = document.getElementById(`faq-icon-${id}`);
-    
-    if (content.style.display === 'block') {
-        content.style.display = 'none';
-        icon.classList.remove('fa-chevron-up');
-        icon.classList.add('fa-chevron-down');
-    } else {
-        content.style.display = 'block';
-        icon.classList.remove('fa-chevron-down');
-        icon.classList.add('fa-chevron-up');
-    }
-}
+        // ============ ОБНОВЛЕНИЕ СЧЁТЧИКА МЕСТ ============
+        function updateSpotsCounter() {
+            const spotsElement = document.getElementById('spotsLeft');
+            if (spotsElement) {
+                let spots = parseInt(spotsElement.textContent);
+                if (spots > 0) {
+                    spots--;
+                    spotsElement.textContent = spots;
+                    
+                    localStorage.setItem('remaining_spots', spots.toString());
+                    
+                    if (spots < 10) {
+                        showNotification(`Осталось всего ${spots} мест! ⏳`, 'warning');
+                    }
+                }
+            }
+        }
 
-function comingSoon() {
-    showNotification('YouTube-канал в разработке! Следите за обновлениями в Telegram.', 'info');
-}
+        // ============ ОТПРАВКА ФОРМЫ ЛИДА ============
+        function submitLeadForm() {
+            const form = document.getElementById('leadForm');
+            const nameInput = form.querySelector('input[name="name"]');
+            const emailInput = form.querySelector('input[name="email"]');
+            const phoneInput = form.querySelector('input[name="phone"]');
+            
+            if (!nameInput.value || !emailInput.value) {
+                showNotification('Пожалуйста, заполните имя и email', 'error');
+                return;
+            }
+            
+            const leadData = {
+                name: nameInput.value,
+                email: emailInput.value,
+                phone: phoneInput.value || '',
+                date: new Date().toISOString(),
+                source: 'main_form'
+            };
+            
+            saveLead(leadData);
+            showSuccessMessage(emailInput.value, nameInput.value);
+            
+            form.reset();
+        }
 
-function closePopup() {
-    document.getElementById('ctaPopup').classList.remove('show');
-}
+        // ============ СТАРЫЕ ФУНКЦИИ (для совместимости) ============
+        function toggleFAQ(id) {
+            const content = document.getElementById(`faq-content-${id}`);
+            const icon = document.getElementById(`faq-icon-${id}`);
+            
+            if (content.style.display === 'block') {
+                content.style.display = 'none';
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            } else {
+                content.style.display = 'block';
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            }
+        }
 
-function showBonusMaterials() {
-    const materials = `🎁 БОНУСНЫЕ МАТЕРИАЛЫ:
+        function comingSoon() {
+            showNotification('YouTube-канал в разработке! Следите за обновлениями в Telegram.', 'info');
+        }
+
+        function closePopup() {
+            document.getElementById('ctaPopup').classList.remove('show');
+        }
+
+        function showBonusMaterials() {
+            const materials = `🎁 БОНУСНЫЕ МАТЕРИАЛЫ:
 
 1. Готовые шаблоны сообщений для Telegram
 2. Шаблоны постов для ВКонтакте
@@ -1946,17 +1895,17 @@ function showBonusMaterials() {
 📥 Скачать: https://drive.google.com/drive/folders/...
 
 ✉️ Или напишите мне в Telegram: @ai_toolkit_partner09`;
-    
-    alert(materials);
-    closePopup();
-}
+            
+            alert(materials);
+            closePopup();
+        }
 
-function scrollToForm() {
-    document.getElementById('real-form').scrollIntoView({ behavior: 'smooth' });
-}
+        function scrollToForm() {
+            document.getElementById('real-form').scrollIntoView({ behavior: 'smooth' });
+        }
 
-function showPromoGuide() {
-    const guide = `🎯 ГАЙД ПО ПРОДВИЖЕНИЮ:
+        function showPromoGuide() {
+            const guide = `🎯 ГАЙД ПО ПРОДВИЖЕНИЮ:
 
 1. Telegram-канал:
    • 1 пост в день с полезной информацией
@@ -1974,226 +1923,173 @@ function showPromoGuide() {
 4. Форумы и группы:
    • Комментарии в тематических сообществах
    • Ответы на вопросы`;
-    
-    alert(guide);
-}
-
-// ============ АНИМАЦИИ И СКРОЛЛ ============
-function checkScroll() {
-    const elements = document.querySelectorAll('.animate-on-scroll');
-    elements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        if (elementTop < windowHeight - 100) {
-            element.classList.add('visible');
+            
+            alert(guide);
         }
-    });
-    
-    // Показ всплывающего окна при достижении середины страницы
-    const scrollPosition = window.pageYOffset;
-    const documentHeight = document.documentElement.scrollHeight;
-    
-    if (scrollPosition > documentHeight / 3) {
-        setTimeout(() => {
-            document.getElementById('ctaPopup').classList.add('show');
-        }, 2000);
-    }
-}
 
-// ============ АНИМИРОВАННЫЕ СЧЁТЧИКИ ============
-function animateCounters() {
-    const counters = document.querySelectorAll('.stat-value');
-    counters.forEach(counter => {
-        const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
-        const increment = target / 100;
-        let current = 0;
-        
-        const updateCounter = () => {
-            if (current < target) {
-                current += increment;
-                counter.innerText = Math.floor(current).toLocaleString() + 
-                    (counter.id === 'totalPayouts' ? 'М' : 
-                     counter.id === 'avgCommission' ? '%' : 
-                     counter.id === 'totalTools' ? '+' : 
-                     counter.id === 'totalEarners' ? '+' : '');
-                setTimeout(updateCounter, 20);
-            } else {
-                counter.innerText = target.toLocaleString() + 
-                    (counter.id === 'totalPayouts' ? 'М' : 
-                     counter.id === 'avgCommission' ? '%' : 
-                     counter.id === 'totalTools' ? '+' : 
-                     counter.id === 'totalEarners' ? '+' : '');
+        // ============ АНИМАЦИИ И СКРОЛЛ ============
+        function checkScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+            
+            const scrollPosition = window.pageYOffset;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            if (scrollPosition > documentHeight / 3) {
+                setTimeout(() => {
+                    const popup = document.getElementById('ctaPopup');
+                    if (popup) {
+                        popup.classList.add('show');
+                    }
+                }, 2000);
             }
-        };
-        
-        updateCounter();
-    });
-}
-
-// ============ ИНИЦИАЛИЗАЦИЯ САЙТА ============
-document.addEventListener('DOMContentLoaded', function() {
-    // Запуск анимаций
-    setTimeout(animateCounters, 1000);
-    
-    // Отслеживание скролла для анимаций
-    window.addEventListener('scroll', checkScroll);
-    checkScroll(); // Проверить при загрузке
-    
-    // Автоматическое обновление статистики
-    setInterval(() => {
-        const earners = document.getElementById('totalEarners');
-        if (earners) {
-            const current = parseInt(earners.textContent.replace('+', ''));
-            earners.textContent = (current + Math.floor(Math.random() * 3)) + '+';
         }
-    }, 30000);
-    
-    // Интерактивность для карточек сервисов
-    document.querySelectorAll('.service-card-enhanced').forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            const icon = this.querySelector('.service-icon-wrapper i');
-            if (icon) {
-                icon.style.transform = 'scale(1.2) rotate(10deg)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            const icon = this.querySelector('.service-icon-wrapper i');
-            if (icon) {
-                icon.style.transform = 'scale(1) rotate(0deg)';
-            }
-        });
-    });
-    
-    // Автоматическое открытие попапа через 30 секунд
-    setTimeout(() => {
-        const popup = document.getElementById('ctaPopup');
-        if (popup) {
-            popup.classList.add('show');
+
+        // ============ АНИМИРОВАННЫЕ СЧЁТЧИКИ ============
+        function animateCounters() {
+            const counters = document.querySelectorAll('.stat-value');
+            counters.forEach(counter => {
+                const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.floor(current).toLocaleString() + 
+                            (counter.id === 'totalPayouts' ? 'М' : 
+                             counter.id === 'avgCommission' ? '%' : 
+                             counter.id === 'totalTools' ? '+' : 
+                             counter.id === 'totalEarners' ? '+' : '');
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.innerText = target.toLocaleString() + 
+                            (counter.id === 'totalPayouts' ? 'М' : 
+                             counter.id === 'avgCommission' ? '%' : 
+                             counter.id === 'totalTools' ? '+' : 
+                             counter.id === 'totalEarners' ? '+' : '');
+                    }
+                };
+                
+                updateCounter();
+            });
         }
-    }, 30000);
-    
-    // Инициализация новой системы
-    initStats();
-    updateAffiliateLinks();
-    checkAffiliateStatus();
-    
-    console.log('🚀 AI Affiliate Platform загружен!');
-    console.log('📊 Версия 2.0 с улучшенным трекингом');
-});
 
-// ============ ЯНДЕКС.МЕТРИКА ============
-(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-m[i].l=1*new Date();
-for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-ym(97567890, "init", {
-    clickmap:true,
-    trackLinks:true,
-    accurateTrackBounce:true,
-    webvisor:true
-});
-
-// ============ ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ ============
-// Функция для копирования промокодов
-function copyToClipboard(text, message) {
-    navigator.clipboard.writeText(text).then(() => {
-        showNotification(message || 'Скопировано в буфер обмена! 📋', 'success');
-    }).catch(err => {
-        console.error('Ошибка копирования:', err);
-        showNotification('Не удалось скопировать', 'error');
-    });
-}
-
-// Функция для загрузки CSV с данными
-function exportLeadsToCSV() {
-    const leads = JSON.parse(localStorage.getItem('ai_affiliate_leads') || '[]');
-    if (leads.length === 0) {
-        showNotification('Нет данных для экспорта', 'warning');
-        return;
-    }
-    
-    let csv = 'Имя,Email,Телефон,Дата,Источник\n';
-    leads.forEach(lead => {
-        csv += `"${lead.name || ''}","${lead.email}","${lead.phone || ''}","${lead.date}","${lead.source || ''}"\n`;
-    });
-    
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = window.URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `leads_${new Date().toISOString().split('T')[0]}.csv`;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-    
-    showNotification(`Экспортировано ${leads.length} лидов 📈`, 'success');
-}
-
-// ============ ОБРАБОТЧИК ОШИБОК ============
-window.addEventListener('error', function(e) {
-    console.error('Глобальная ошибка:', e.error);
-    showNotification('Произошла ошибка. Обновите страницу.', 'error');
-});
-
-// ============ ОФФЛАЙН-РЕЖИМ ============
-window.addEventListener('online', () => {
-    showNotification('Соединение восстановлено ✅', 'success');
-});
-
-window.addEventListener('offline', () => {
-    showNotification('Работаем в офлайн-режиме 📴', 'warning');
-});
-
-// ============ PWA ФУНКЦИОНАЛ ============
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js').then(registration => {
-            console.log('ServiceWorker зарегистрирован:', registration);
-        }).catch(registrationError => {
-            console.log('ServiceWorker регистрация не удалась:', registrationError);
+        // ============ ИНИЦИАЛИЗАЦИЯ САЙТА ============
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(animateCounters, 1000);
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll();
+            
+            setInterval(() => {
+                const earners = document.getElementById('totalEarners');
+                if (earners) {
+                    const current = parseInt(earners.textContent.replace('+', ''));
+                    earners.textContent = (current + Math.floor(Math.random() * 3)) + '+';
+                }
+            }, 30000);
+            
+            document.querySelectorAll('.service-card-enhanced').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.service-icon-wrapper i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.service-icon-wrapper i');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0deg)';
+                    }
+                });
+            });
+            
+            setTimeout(() => {
+                const popup = document.getElementById('ctaPopup');
+                if (popup) {
+                    popup.classList.add('show');
+                }
+            }, 30000);
+            
+            initStats();
+            updateAffiliateLinks();
+            checkAffiliateStatus();
+            
+            console.log('🚀 AI Партнёрская Платформа загружена!');
         });
-    });
-}
 
-// ============ ОБРАБОТКА ВИДИМОСТИ СТРАНИЦЫ ============
-document.addEventListener('visibilitychange', function() {
-    if (document.hidden) {
-        console.log('Страница скрыта');
-    } else {
-        console.log('Страница видима');
-        // Обновляем статистику при возвращении на страницу
-        updateStatsPanel();
-    }
-});
+        // ============ ЯНДЕКС.МЕТРИКА ============
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
 
-// ============ АВТОСОХРАНЕНИЕ ФОРМЫ ============
-function autoSaveForm() {
-    const form = document.getElementById('leadForm');
-    if (form) {
-        const formData = new FormData(form);
-        const data = Object.fromEntries(formData);
-        localStorage.setItem('form_autosave', JSON.stringify(data));
-    }
-}
-
-// Автосохранение каждые 5 секунд
-setInterval(autoSaveForm, 5000);
-
-// Восстановление формы при загрузке
-function restoreForm() {
-    const saved = localStorage.getItem('form_autosave');
-    if (saved && document.getElementById('leadForm')) {
-        const data = JSON.parse(saved);
-        Object.keys(data).forEach(key => {
-            const input = document.querySelector(`[name="${key}"]`);
-            if (input) input.value = data[key];
+        ym(97567890, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
         });
-    }
-}
 
-// Восстанавливаем форму при загрузке
-document.addEventListener('DOMContentLoaded', restoreForm);
+        // ============ ФУНКЦИИ КОПИРОВАНИЯ ============
+        function copyToClipboard(text, message) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification(message || 'Скопировано в буфер обмена! 📋', 'success');
+            }).catch(err => {
+                console.error('Ошибка копирования:', err);
+                showNotification('Не удалось скопировать', 'error');
+            });
+        }
+
+        // ============ ЭКСПОРТ ДАННЫХ ============
+        function exportLeadsToCSV() {
+            const leads = JSON.parse(localStorage.getItem('ai_affiliate_leads') || '[]');
+            if (leads.length === 0) {
+                showNotification('Нет данных для экспорта', 'warning');
+                return;
+            }
+            
+            let csv = 'Имя,Email,Телефон,Дата,Источник\n';
+            leads.forEach(lead => {
+                csv += `"${lead.name || ''}","${lead.email}","${lead.phone || ''}","${lead.date}","${lead.source || ''}"\n`;
+            });
+            
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `leads_${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            showNotification(`Экспортировано ${leads.length} лидов 📈`, 'success');
+        }
+
+        // ============ ОБРАБОТКА ОШИБОК ============
+        window.addEventListener('error', function(e) {
+            console.error('Глобальная ошибка:', e.error);
+            showNotification('Произошла ошибка. Обновите страницу.', 'error');
+        });
+
+        // ============ ОФФЛАЙН-РЕЖИМ ============
+        window.addEventListener('online', () => {
+            showNotification('Соединение восстановлено ✅', 'success');
+        });
+
+        window.addEventListener('offline', () => {
+            showNotification('Работаем в офлайн-режиме 📴', 'warning');
+        });
+    </script>
+</body>
+</html>
