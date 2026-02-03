@@ -648,6 +648,58 @@
             0% { width: 0%; }
             100% { width: 100%; }
         }
+        
+        /* Панель статистики */
+        .stats-panel {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: rgba(30, 41, 59, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            color: white;
+            font-size: 0.9rem;
+            z-index: 9998;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #7c3aed, #10b981);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+            font-weight: bold;
+        }
+        
+        /* Предупреждение о Copy.ai */
+        .status-alert {
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            padding: 25px;
+            border-radius: 20px;
+            margin: 30px 0;
+            border-left: 5px solid #dc2626;
+        }
+        
+        /* Стили для уведомлений */
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -60%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
     </style>
 </head>
 <body>
@@ -698,6 +750,42 @@
     </header>
 
     <div class="container">
+        <!-- Важное уведомление о Copy.ai -->
+        <div class="status-alert animate-on-scroll">
+            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 15px;">
+                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #dc2626;">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <div>
+                    <h3 style="color: white; margin-bottom: 5px;">🚨 ВАЖНОЕ ОБНОВЛЕНИЕ</h3>
+                    <p style="color: rgba(255,255,255,0.9);">Copy.ai был приобретён Fullcast (22 января 2025)</p>
+                </div>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 15px; margin-bottom: 15px;">
+                <p style="color: white; margin-bottom: 10px;">
+                    <strong>Статус партнёрской программы:</strong> Проверяется<br>
+                    <strong>Вебинар:</strong> 22 января 2025, 12:00 по Москве<br>
+                    <strong>Рекомендация:</strong> Подключайте альтернативные партнёрки
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+                <button onclick="window.open('https://www.jasper.ai/become-a-partner', '_blank')" 
+                        style="padding: 12px; background: white; color: #dc2626; border: none; border-radius: 10px; font-weight: bold;">
+                    Jasper AI
+                </button>
+                <button onclick="window.open('https://writesonic.com/affiliate', '_blank')" 
+                        style="padding: 12px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 10px;">
+                    Writesonic
+                </button>
+                <button onclick="window.open('https://surferseo.com/affiliates/', '_blank')" 
+                        style="padding: 12px; background: rgba(255,255,255,0.2); color: white; border: 2px solid white; border-radius: 10px;">
+                    Surfer SEO
+                </button>
+            </div>
+        </div>
+
         <!-- Бонусное предложение -->
         <section class="bonus-offer animate-on-scroll">
             <div class="bonus-badge">БОНУС!</div>
@@ -723,115 +811,191 @@
             </p>
             
             <div class="services-grid">
-                <!-- Сервис 1 -->
+                <!-- Сервис 1: Copy.ai (с предупреждением) -->
                 <div class="service-card-enhanced">
-                    <div class="service-badge">30% комиссия</div>
+                    <div class="service-badge" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">В процессе обновления</div>
                     <div class="service-header">
-                        <div class="service-icon-wrapper" style="border-color: #ff3333;">
-                            <i class="fas fa-shopping-cart" style="color: #ff3333;"></i>
+                        <div class="service-icon-wrapper" style="border-color: #f59e0b;">
+                            <i class="fas fa-copy" style="color: #f59e0b;"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Яндекс Маркет</h3>
-                            <p style="color: var(--text-secondary);">Продажи для бизнеса</p>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Copy.ai</h3>
+                            <p style="color: var(--text-secondary);">
+                                <span style="color: #f59e0b; font-weight: bold;">
+                                    <i class="fas fa-exclamation-triangle"></i> Приобретён Fullcast
+                                </span>
+                            </p>
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Яндекс Маркет" class="service-image">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Copy.ai" class="service-image">
                     
                     <p style="margin-bottom: 20px; color: var(--text-secondary);">
-                        <strong>15,000 ₽ за каждого подключившегося продавца.</strong> 
-                        Рекомендую предпринимателям, которые хотят продавать на маркетплейсе.
+                        <strong>Обновление партнёрской программы:</strong> В процессе после приобретения Fullcast.<br>
+                        <em>Рекомендую параллельно подключить альтернативы.</em>
                     </p>
                     
                     <div class="service-features">
-                        <span class="feature-tag">Высокая конверсия</span>
-                        <span class="feature-tag">Быстрые выплаты</span>
-                        <span class="feature-tag">Поддержка 24/7</span>
+                        <span class="feature-tag">Изменения после 22.01.2025</span>
+                        <span class="feature-tag">Проверяем обновления</span>
+                        <span class="feature-tag">Альтернативы доступны</span>
                     </div>
                     
                     <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button onclick="copyPromocode()" class="btn-gradient" style="flex: 1;">
-                            <i class="fas fa-copy"></i> Скопировать промокод
+                        <button onclick="checkCopyAIStatus()" 
+                                class="btn-gradient" style="flex: 1; background: linear-gradient(135deg, #f59e0b, #ef4444);">
+                            <i class="fas fa-sync-alt"></i> Проверить статус
                         </button>
-                        <button onclick="showYandexMarketInfo()" class="btn-outline-glow" style="flex: 1;">
+                        <button onclick="showAlternativeAI()" class="btn-outline-glow" style="flex: 1; border-color: #f59e0b; color: #f59e0b;">
+                            <i class="fas fa-exchange-alt"></i> Альтернативы
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Сервис 2: Jasper AI (основная альтернатива) -->
+                <div class="service-card-enhanced">
+                    <div class="service-badge">30% комиссия</div>
+                    <div class="service-header">
+                        <div class="service-icon-wrapper" style="border-color: #000;">
+                            <i class="fas fa-robot" style="color: #000;"></i>
+                        </div>
+                        <div>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Jasper AI</h3>
+                            <p style="color: var(--text-secondary);">Продвинутый AI-копирайтинг</p>
+                        </div>
+                    </div>
+                    
+                    <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Jasper AI" class="service-image">
+                    
+                    <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                        <strong>30% recurring комиссии.</strong> 
+                        Аналог Copy.ai с высокой конверсией. Рекомендую как основную альтернативу.
+                    </p>
+                    
+                    <div class="service-features">
+                        <span class="feature-tag">Лучшая альтернатива</span>
+                        <span class="feature-tag">Recurring доход</span>
+                        <span class="feature-tag">Стабильная платформа</span>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <button data-affiliate-service="jasper" onclick="openPartnerLink('jasper')" 
+                                class="btn-gradient" style="flex: 1;">
+                            <i class="fas fa-external-link-alt"></i> Перейти к Jasper
+                        </button>
+                        <button onclick="showServiceInfo('jasper')" class="btn-outline-glow" style="flex: 1;">
                             <i class="fas fa-info-circle"></i> Подробнее
                         </button>
                     </div>
                 </div>
                 
-                <!-- Сервис 2 -->
+                <!-- Сервис 3: Writesonic -->
                 <div class="service-card-enhanced">
-                    <div class="service-badge">15% комиссия</div>
+                    <div class="service-badge">30% комиссия</div>
                     <div class="service-header">
-                        <div class="service-icon-wrapper" style="border-color: #10b981;">
-                            <i class="fas fa-search" style="color: #10b981;"></i>
+                        <div class="service-icon-wrapper" style="border-color: #f59e0b;">
+                            <i class="fas fa-pen-nib" style="color: #f59e0b;"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Поиск Яндекс</h3>
-                            <p style="color: var(--text-secondary);">Поисковая реклама</p>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Writesonic</h3>
+                            <p style="color: var(--text-secondary);">AI-написание контента</p>
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Поиск Яндекс" class="service-image">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Writesonic" class="service-image">
                     
                     <p style="margin-bottom: 20px; color: var(--text-secondary);">
-                        <strong>15% с рекламных бюджетов.</strong> 
-                        Идеально для владельцев сайтов, блогеров, медиа.
+                        <strong>30% recurring комиссии.</strong> 
+                        Быстрое одобрение партнёрки. Отличная альтернатива Copy.ai.
                     </p>
                     
                     <div class="service-features">
-                        <span class="feature-tag">Пассивный доход</span>
-                        <span class="feature-tag">Стабильные выплаты</span>
-                        <span class="feature-tag">Простая интеграция</span>
+                        <span class="feature-tag">Быстрое одобрение</span>
+                        <span class="feature-tag">Хорошая поддержка</span>
+                        <span class="feature-tag">Частые выплаты</span>
                     </div>
                     
                     <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button onclick="copySearchLink()" class="btn-gradient" style="flex: 1;">
-                            <i class="fas fa-copy"></i> Скопировать ссылку
+                        <button data-affiliate-service="writesonic" onclick="openPartnerLink('writesonic')" 
+                                class="btn-gradient" style="flex: 1;">
+                            <i class="fas fa-external-link-alt"></i> Перейти к Writesonic
                         </button>
-                        <button onclick="showSearchWidget()" class="btn-outline-glow" style="flex: 1;">
-                            <i class="fas fa-code"></i> Виджет для сайта
+                        <button onclick="showServiceInfo('writesonic')" class="btn-outline-glow" style="flex: 1;">
+                            <i class="fas fa-info-circle"></i> Подробнее
                         </button>
                     </div>
                 </div>
                 
-                <!-- Сервис 3 -->
+                <!-- Сервис 4: Surfer SEO -->
                 <div class="service-card-enhanced">
-                    <div class="service-badge">За установки</div>
+                    <div class="service-badge">До 50% комиссия</div>
                     <div class="service-header">
-                        <div class="service-icon-wrapper" style="border-color: #7c3aed;">
-                            <i class="fab fa-yandex" style="color: #7c3aed;"></i>
+                        <div class="service-icon-wrapper" style="border-color: #3b82f6;">
+                            <i class="fas fa-chart-line" style="color: #3b82f6;"></i>
                         </div>
                         <div>
-                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Яндекс Браузер</h3>
-                            <p style="color: var(--text-secondary);">Корпоративные установки</p>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Surfer SEO</h3>
+                            <p style="color: var(--text-secondary);">AI-оптимизация для SEO</p>
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Яндекс Браузер" class="service-image">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Surfer SEO" class="service-image">
                     
                     <p style="margin-bottom: 20px; color: var(--text-secondary);">
-                        <strong>Вознаграждение за каждую установку.</strong> 
-                        Рекомендую IT-специалистам, системным администраторам.
+                        <strong>30-50% комиссии.</strong> 
+                        Высокие чеки ($99-299/месяц). Отличный выбор для SEO-специалистов.
                     </p>
                     
                     <div class="service-features">
-                        <span class="feature-tag">Массовые установки</span>
-                        <span class="feature-tag">Корпоративный сегмент</span>
-                        <span class="feature-tag">Техническая поддержка</span>
+                        <span class="feature-tag">Премиум продукт</span>
+                        <span class="feature-tag">Высокие чеки</span>
+                        <span class="feature-tag">SEO-аудитория</span>
                     </div>
                     
                     <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button onclick="copyBrowserLink()" class="btn-gradient" style="flex: 1;">
-                            <i class="fas fa-copy"></i> Скопировать ссылку
+                        <button data-affiliate-service="surfer" onclick="openPartnerLink('surfer')" 
+                                class="btn-gradient" style="flex: 1;">
+                            <i class="fas fa-external-link-alt"></i> Перейти к Surfer SEO
                         </button>
-                        <button onclick="showBrowserInfo()" class="btn-outline-glow" style="flex: 1;">
-                            <i class="fas fa-building"></i> Для организаций
+                        <button onclick="showServiceInfo('surfer')" class="btn-outline-glow" style="flex: 1;">
+                            <i class="fas fa-info-circle"></i> Подробнее
                         </button>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- БЫСТРЫЕ ССЫЛКИ ПОСЛЕ ФОРМЫ -->
+        <section class="animate-on-scroll" style="margin: 60px 0;">
+            <div style="background: rgba(124, 58, 237, 0.1); padding: 30px; border-radius: 25px; border: 2px solid var(--primary);">
+                <h3 style="text-align: center; margin-bottom: 25px; color: var(--text);">
+                    <i class="fas fa-bolt"></i> Быстрые партнёрские ссылки
+                </h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <button onclick="checkCopyAIStatus()" 
+                            class="btn-outline-glow" style="width: 100%; border-color: #f59e0b; color: #f59e0b;">
+                        <i class="fas fa-exclamation-triangle"></i> Copy.ai (проверить)
+                    </button>
+                    
+                    <button data-affiliate-service="jasper" onclick="openPartnerLink('jasper')" 
+                            class="btn-outline-glow" style="width: 100%;">
+                        <i class="fas fa-robot"></i> Jasper AI (30%)
+                    </button>
+                    
+                    <button data-affiliate-service="writesonic" onclick="openPartnerLink('writesonic')" 
+                            class="btn-outline-glow" style="width: 100%;">
+                        <i class="fas fa-pen-nib"></i> Writesonic (30%)
+                    </button>
+                    
+                    <button data-affiliate-service="surfer" onclick="openPartnerLink('surfer')" 
+                            class="btn-outline-glow" style="width: 100%;">
+                        <i class="fas fa-chart-line"></i> Surfer SEO (до 50%)
+                    </button>
                 </div>
             </div>
         </section>
@@ -933,7 +1097,7 @@
                     </div>
                     <p class="success-quote">
                         "Начал с нуля: без сайта, без аудитории. Просто зарегистрировался в Яндекс.Дистрибуции как самозанятый. 
-                        Первые партнёрки подключил за 15 минут. Сейчас тестирую Яндекс.Путешествия, Яндекс.Браузер и Яндекс Маркет."
+                        Первые партнёрки подключил за 15 минут. Сейчас тестирую новые AI-партнёрки после изменений Copy.ai."
                     </p>
                     <div style="color: var(--text-secondary); font-size: 0.9rem;">
                         <i class="fas fa-calendar"></i> В партнёрстве 1 месяц
@@ -967,7 +1131,7 @@
                     </div>
                     <p class="success-quote">
                         "1. Привлечь 1000 подписчиков в Telegram и ВК
-                        2. Получить первые 10 бронирований через Яндекс.Путешествия
+                        2. Подключить 5 новых AI-партнёрок
                         3. Заработать первые 50,000 ₽ на партнёрках
                         4. Создать полноценный AI-хаб"
                     </p>
@@ -1039,25 +1203,22 @@
                 <!-- FAQ 1 -->
                 <div style="background: var(--card-bg); margin-bottom: 15px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
                     <button onclick="toggleFAQ(1)" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; color: var(--text); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer;">
-                        <span>Нужны ли вложения для старта?</span>
+                        <span>Что с Copy.ai после приобретения?</span>
                         <i class="fas fa-chevron-down" id="faq-icon-1"></i>
                     </button>
                     <div id="faq-content-1" style="padding: 0 25px 25px; display: none; color: var(--text-secondary);">
-                        <p><strong>Нет, не нужны!</strong> Я начал без вложений. Всё, что нужно: регистрация самозанятого (бесплатно) и доступ в Яндекс.Дистрибуцию (бесплатно). Партнёрские программы не требуют оплаты за подключение.</p>
+                        <p><strong>Copy.ai был приобретён Fullcast 22 января 2025.</strong> Партнёрская программа проверяется на изменения. Рекомендую подключить альтернативы: Jasper AI, Writesonic, Surfer SEO. Вебинар о будущем платформы: 22 января, 12:00 по Москве.</p>
                     </div>
                 </div>
                 
                 <!-- FAQ 2 -->
                 <div style="background: var(--card-bg); margin-bottom: 15px; border-radius: 15px; overflow: hidden; border: 1px solid rgba(255,255,255,0.1);">
                     <button onclick="toggleFAQ(2)" style="width: 100%; padding: 25px; text-align: left; background: none; border: none; color: var(--text); font-size: 1.1rem; display: flex; justify-content: space-between; cursor: pointer;">
-                        <span>Когда придут первые деньги?</span>
+                        <span>Нужны ли вложения для старта?</span>
                         <i class="fas fa-chevron-down" id="faq-icon-2"></i>
                     </button>
                     <div id="faq-content-2" style="padding: 0 25px 25px; display: none; color: var(--text-secondary);">
-                        <p>Зависит от партнёрки:<br>
-                        • Яндекс.Путешествия: через 7-14 дней после выселения гостя из отеля<br>
-                        • Яндекс Маркет: после оплаты продавцом подключения<br>
-                        • Яндекс.Браузер: после подтверждения установки</p>
+                        <p><strong>Нет, не нужны!</strong> Я начал без вложений. Всё, что нужно: регистрация самозанятого (бесплатно) и доступ в Яндекс.Дистрибуцию (бесплатно). Партнёрские программы не требуют оплаты за подключение.</p>
                     </div>
                 </div>
                 
@@ -1139,20 +1300,31 @@
                     <h4 style="margin-bottom: 20px;">Мои партнёрки</h4>
                     <ul style="list-style: none; color: var(--text-secondary);">
                         <li style="margin-bottom: 10px;">
-                            <i class="fas fa-shopping-cart" style="color: #ff3333;"></i>
-                            Яндекс Маркет (15,000₽)
+                            <button onclick="checkCopyAIStatus()" 
+                                    style="background: none; border: none; color: #f59e0b; cursor: pointer; text-align: left; width: 100%; padding: 5px 0;">
+                                <i class="fas fa-exclamation-triangle"></i> Copy.ai (проверить)
+                            </button>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <i class="fas fa-search" style="color: #10b981;"></i>
-                            Поиск Яндекс (15%)
+                            <button data-affiliate-service="jasper" onclick="openPartnerLink('jasper')" 
+                                    style="background: none; border: none; color: var(--text-secondary); 
+                                           cursor: pointer; text-align: left; width: 100%; padding: 5px 0;">
+                                <i class="fas fa-robot" style="color: #000;"></i> Jasper AI (30%)
+                            </button>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <i class="fab fa-yandex" style="color: #7c3aed;"></i>
-                            Яндекс Браузер (установки)
+                            <button data-affiliate-service="writesonic" onclick="openPartnerLink('writesonic')" 
+                                    style="background: none; border: none; color: var(--text-secondary); 
+                                           cursor: pointer; text-align: left; width: 100%; padding: 5px 0;">
+                                <i class="fas fa-pen-nib" style="color: #f59e0b;"></i> Writesonic (30%)
+                            </button>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <i class="fas fa-hotel" style="color: #f59e0b;"></i>
-                            Яндекс.Путешествия (9%)
+                            <button data-affiliate-service="surfer" onclick="openPartnerLink('surfer')" 
+                                    style="background: none; border: none; color: var(--text-secondary); 
+                                           cursor: pointer; text-align: left; width: 100%; padding: 5px 0;">
+                                <i class="fas fa-chart-line" style="color: #3b82f6;"></i> Surfer SEO (до 50%)
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -1213,214 +1385,584 @@
     </footer>
 
     <script>
-        // Анимация при скролле
-        function checkScroll() {
-            const elements = document.querySelectorAll('.animate-on-scroll');
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                if (elementTop < windowHeight - 100) {
-                    element.classList.add('visible');
-                }
-            });
+        // ============ КОНФИГУРАЦИЯ ПАРТНЁРСКИХ ПРОГРАММ ============
+        const AFFILIATE_CONFIG = {
+            links: {
+                copyai: "https://www.copy.ai/affiliates", // Ссылка для проверки статуса
+                jasper: "https://www.jasper.ai/become-a-partner", // Основная альтернатива
+                writesonic: "https://writesonic.com/affiliate", // Вторая альтернатива
+                surfer: "https://surferseo.com/affiliates/", // Премиум альтернатива
+                anyword: "https://anyword.com/affiliate-program/", // Дополнительная альтернатива
+                yandexMarket: "https://partner.yandex.ru?ref=ВАШ_ID", // Замените на свой ID
+                yandexSearch: "https://ya.ru/search/?clid=ВАШ_ID" // Замените на свой ID
+            },
             
-            // Показ всплывающего окна при достижении середины страницы
-            const scrollPosition = window.pageYOffset;
-            const windowHeight = window.innerHeight;
-            const documentHeight = document.documentElement.scrollHeight;
+            contacts: {
+                telegram: "https://t.me/ai_toolkit_partner09",
+                vk: "https://vk.com/ai_cherem7",
+                email: "cherem.7@yandex.ru"
+            },
             
-            if (scrollPosition > documentHeight / 3) {
-                setTimeout(() => {
-                    document.getElementById('ctaPopup').classList.add('show');
-                }, 2000);
+            promocodes: {
+                yandexMarket: "MARKET_ВАШ_ID", // Замените на свой ID
+                yandexTravel: "TRAVEL_ВАШ_ID" // Замените на свой ID
             }
-        }
+        };
 
-        // Анимированные счетчики
-        function animateCounters() {
-            const counters = document.querySelectorAll('.stat-value');
-            counters.forEach(counter => {
-                const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
-                const increment = target / 100;
-                let current = 0;
-                
-                const updateCounter = () => {
-                    if (current < target) {
-                        current += increment;
-                        counter.innerText = Math.floor(current).toLocaleString() + 
-                            (counter.id === 'totalPayouts' ? 'М' : 
-                             counter.id === 'avgCommission' ? '%' : 
-                             counter.id === 'totalTools' ? '+' : 
-                             counter.id === 'totalEarners' ? '+' : '');
-                        setTimeout(updateCounter, 20);
-                    } else {
-                        counter.innerText = target.toLocaleString() + 
-                            (counter.id === 'totalPayouts' ? 'М' : 
-                             counter.id === 'avgCommission' ? '%' : 
-                             counter.id === 'totalTools' ? '+' : 
-                             counter.id === 'totalEarners' ? '+' : '');
+        // ============ ОБРАБОТКА ФОРМЫ ПОДПИСКИ ============
+        document.addEventListener('DOMContentLoaded', function() {
+            const emailForm = document.getElementById('email-form');
+            
+            if(emailForm) {
+                emailForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const email = this.querySelector('input[type="email"]').value;
+                    const name = this.querySelector('input[name="name"]')?.value || '';
+                    
+                    if(email) {
+                        saveLead({email, name, source: 'website_form'});
+                        showSuccessMessage(email, name);
+                        this.reset();
                     }
-                };
+                });
+            }
+            
+            initStats();
+            updateAffiliateLinks();
+            checkScroll();
+            checkAffiliateStatus(); // Проверка статуса Copy.ai
+        });
+
+        // ============ СОХРАНЕНИЕ ЛИДОВ ============
+        function saveLead(data) {
+            try {
+                let leads = JSON.parse(localStorage.getItem('ai_affiliate_leads') || '[]');
                 
-                updateCounter();
-            });
-        }
-
-        // FAQ функционал
-        function toggleFAQ(id) {
-            const content = document.getElementById(`faq-content-${id}`);
-            const icon = document.getElementById(`faq-icon-${id}`);
-            
-            if (content.style.display === 'block') {
-                content.style.display = 'none';
-                icon.classList.remove('fa-chevron-up');
-                icon.classList.add('fa-chevron-down');
-            } else {
-                content.style.display = 'block';
-                icon.classList.remove('fa-chevron-down');
-                icon.classList.add('fa-chevron-up');
+                data.date = new Date().toISOString();
+                data.id = Date.now();
+                
+                leads.push(data);
+                localStorage.setItem('ai_affiliate_leads', JSON.stringify(leads));
+                
+                console.log('✅ Лид сохранён:', data.email);
+                updateLeadsCounter();
+                
+                return true;
+            } catch (error) {
+                console.error('❌ Ошибка сохранения лида:', error);
+                return false;
             }
         }
 
-        // Копирование промокодов и ссылок
-        function copyPromocode() {
-            const promocode = "MARKET_14628864";
-            navigator.clipboard.writeText(promocode).then(() => {
-                alert('Промокод скопирован: ' + promocode + '\n\nИспользуйте его при регистрации продавцов на Яндекс.Маркете');
-            });
+        // ============ ТРЕКИНГ КЛИКОВ ПО ПАРТНЁРСКИМ ССЫЛКАМ ============
+           function trackAffiliateClick(serviceName, linkType = 'main') {
+    try {
+        // Сохраняем клик в localStorage
+        let clicks = JSON.parse(localStorage.getItem('affiliate_clicks') || '{}');
+        
+        if (!clicks[serviceName]) {
+            clicks[serviceName] = { main: 0, alternative: 0 };
         }
+        
+        clicks[serviceName][linkType] = (clicks[serviceName][linkType] || 0) + 1;
+        localStorage.setItem('affiliate_clicks', JSON.stringify(clicks));
+        
+        // Обновляем статистику на панели
+        updateStatsPanel();
+        
+        // Показываем уведомление
+        showNotification(`Клик по ${serviceName} сохранён! ✨`, 'success');
+        
+        // Отправляем данные (в реальном проекте здесь был бы AJAX запрос)
+        console.log(`📊 Клик: ${serviceName} (${linkType})`);
+        
+    } catch (error) {
+        console.error('Ошибка трекинга:', error);
+    }
+}
 
-        function copySearchLink() {
-            const link = "https://ya.ru/search/?clid=14628860&text=";
-            navigator.clipboard.writeText(link).then(() => {
-                alert('Ссылка на поиск скопирована!\n\nДобавьте её на свой сайт для заработка 15% с рекламы');
-            });
+// ============ ОТКРЫТИЕ ПАРТНЁРСКИХ ССЫЛОК ============
+function openPartnerLink(serviceName, isAlternative = false) {
+    const linkType = isAlternative ? 'alternative' : 'main';
+    
+    // Трекинг клика
+    trackAffiliateClick(serviceName, linkType);
+    
+    // Получаем ссылку из конфигурации
+    const link = AFFILIATE_CONFIG.links[serviceName];
+    
+    if (link) {
+        // Открываем в новом окне
+        window.open(link, '_blank', 'noopener,noreferrer');
+        
+        // Показываем уведомление о переходе
+        setTimeout(() => {
+            showNotification(`Переход на ${serviceName} засчитан! 🎯`, 'info');
+        }, 500);
+    } else {
+        console.error(`Ссылка для ${serviceName} не найдена`);
+        showNotification('Ссылка временно недоступна', 'error');
+    }
+}
+
+// ============ ПРОВЕРКА СТАТУСА COPY.AI ============
+function checkCopyAIStatus() {
+    const currentDate = new Date();
+    const acquisitionDate = new Date('2025-01-22');
+    const daysSinceAcquisition = Math.floor((currentDate - acquisitionDate) / (1000 * 60 * 60 * 24));
+    
+    let status = '';
+    
+    if (daysSinceAcquisition < 7) {
+        status = '🔄 В процессе обновления\n(менее недели с приобретения)';
+    } else if (daysSinceAcquisition < 30) {
+        status = '⏳ Идут внутренние процессы\n(менее месяца с приобретения)';
+    } else {
+        status = '📅 Проверьте официальный сайт\n(более месяца с приобретения)';
+    }
+    
+    showNotification(
+        `Статус Copy.ai:\n${status}\n\nДата приобретения: 22 января 2025\nПрошло дней: ${daysSinceAcquisition}`,
+        'warning'
+    );
+    
+    // Предлагаем альтернативы
+    setTimeout(() => {
+        if (!localStorage.getItem('copyai_alternative_shown')) {
+            showAlternativeAI();
+            localStorage.setItem('copyai_alternative_shown', 'true');
         }
+    }, 1500);
+}
 
-        function copyBrowserLink() {
-            const link = "https://browser.yandex.ru/corp/builds?refid=14628861";
-            navigator.clipboard.writeText(link).then(() => {
-                alert('Партнёрская ссылка Яндекс.Браузера скопирована!\n\nОтправляйте организациям для установки');
-            });
+// ============ ПОКАЗ АЛЬТЕРНАТИВ COPY.AI ============
+function showAlternativeAI() {
+    const alternatives = `
+    🚀 РЕКОМЕНДОВАННЫЕ АЛЬТЕРНАТИВЫ COPY.AI:
+
+    1. Jasper AI (jasper.ai)
+    • 30% recurring комиссии
+    • Лучшая альтернатива
+    • Высокая конверсия
+
+    2. Writesonic (writesonic.com)
+    • 30% recurring комиссии
+    • Быстрое одобрение
+    • Хорошая поддержка
+
+    3. Surfer SEO (surferseo.com)
+    • 30-50% комиссии
+    • Премиум продукт ($99-299/мес)
+    • SEO-аудитория
+
+    4. Anyword (anyword.com)
+    • 20-30% комиссии
+    • AI для маркетинга
+    • Прогнозирование эффективности
+
+    🔗 Все ссылки уже в вашем распоряжении на сайте!
+    `;
+    
+    alert(alternatives);
+    
+    // Сохраняем факт показа альтернатив
+    localStorage.setItem('copyai_alternatives_shown', new Date().toISOString());
+}
+
+// ============ ИНФОРМАЦИЯ О СЕРВИСАХ ============
+function showServiceInfo(serviceName) {
+    const info = {
+        jasper: {
+            title: "Jasper AI",
+            description: "Продвинутый AI-копирайтинг с 30% recurring комиссиями. Отличная альтернатива Copy.ai.",
+            features: ["30% recurring комиссии", "Высокая конверсия", "Стабильная платформа"],
+            bestFor: "Копирайтеров, маркетологов, агентств",
+            avgCommission: "$30-100/месяц с клиента"
+        },
+        writesonic: {
+            title: "Writesonic",
+            description: "AI-написание контента с быстрым одобрением партнёрки.",
+            features: ["30% recurring комиссии", "Быстрое одобрение", "Частые выплаты"],
+            bestFor: "Блогеров, контент-менеджеров, предпринимателей",
+            avgCommission: "$20-80/месяц с клиента"
+        },
+        surfer: {
+            title: "Surfer SEO",
+            description: "AI-оптимизация для SEO с высокими комиссиями до 50%.",
+            features: ["30-50% комиссии", "Премиум продукт", "Высокие чеки"],
+            bestFor: "SEO-специалистов, агентств, вебмастеров",
+            avgCommission: "$50-150/месяц с клиента"
         }
+    };
+    
+    const service = info[serviceName];
+    if (!service) return;
+    
+    const message = `
+    ${service.title}
+    
+    📝 ${service.description}
+    
+    ✨ Особенности:
+    • ${service.features.join('\n• ')}
+    
+    🎯 Лучше всего подходит для:
+    ${service.bestFor}
+    
+    💰 Средняя комиссия:
+    ${service.avgCommission}
+    
+    🚀 Рекомендация:
+    Подключайте как основную партнёрскую программу!
+    `;
+    
+    alert(message);
+}
 
-        // Форма сбора лидов
-        function submitLeadForm() {
-            const name = document.querySelector('input[name="name"]').value;
-            const email = document.querySelector('input[name="email"]').value;
-            const phone = document.querySelector('input[name="phone"]').value;
-            const subscribe = document.querySelector('input[name="subscribe"]').checked;
-            const telegram = document.querySelector('input[name="telegram"]').checked;
-            const vk = document.querySelector('input[name="vk"]').checked;
-            
-            if (!name || !email) {
-                alert('Пожалуйста, заполните имя и email');
-                return;
+// ============ ИНИЦИАЛИЗАЦИЯ СТАТИСТИКИ ============
+function initStats() {
+    // Инициализируем статистику, если её нет
+    if (!localStorage.getItem('affiliate_stats')) {
+        const initialStats = {
+            totalClicks: 0,
+            uniqueVisitors: 1,
+            leadsCount: 0,
+            lastReset: new Date().toISOString()
+        };
+        localStorage.setItem('affiliate_stats', JSON.stringify(initialStats));
+    }
+    
+    // Увеличиваем счётчик уникальных посетителей
+    if (!localStorage.getItem('user_visited')) {
+        let stats = JSON.parse(localStorage.getItem('affiliate_stats'));
+        stats.uniqueVisitors++;
+        localStorage.setItem('affiliate_stats', JSON.stringify(stats));
+        localStorage.setItem('user_visited', 'true');
+    }
+    
+    updateStatsPanel();
+}
+
+// ============ ОБНОВЛЕНИЕ ПАНЕЛИ СТАТИСТИКИ ============
+function updateStatsPanel() {
+    // Создаём панель статистики, если её нет
+    let panel = document.getElementById('stats-panel');
+    
+    if (!panel) {
+        panel = document.createElement('div');
+        panel.id = 'stats-panel';
+        panel.className = 'stats-panel';
+        document.body.appendChild(panel);
+    }
+    
+    // Получаем данные
+    const clicks = JSON.parse(localStorage.getItem('affiliate_clicks') || '{}');
+    const stats = JSON.parse(localStorage.getItem('affiliate_stats') || '{}');
+    
+    // Подсчитываем общие клики
+    let totalClicks = 0;
+    Object.values(clicks).forEach(serviceClicks => {
+        totalClicks += (serviceClicks.main || 0) + (serviceClicks.alternative || 0);
+    });
+    
+    // Обновляем панель
+    panel.innerHTML = `
+        <div style="font-weight: bold; margin-bottom: 10px; color: var(--primary);">
+            <i class="fas fa-chart-bar"></i> Ваша статистика
+        </div>
+        <div style="font-size: 0.8rem; line-height: 1.4;">
+            <div>👥 Посетителей: ${stats.uniqueVisitors || 1}</div>
+            <div>📊 Кликов: ${totalClicks}</div>
+            <div>📩 Лидов: ${stats.leadsCount || 0}</div>
+            <div style="margin-top: 10px; font-size: 0.7rem; opacity: 0.7;">
+                <i class="fas fa-sync-alt"></i> Обновляется автоматически
+            </div>
+        </div>
+    `;
+}
+
+// ============ ОБНОВЛЕНИЕ СЧЁТЧИКА ЛИДОВ ============
+function updateLeadsCounter() {
+    const stats = JSON.parse(localStorage.getItem('affiliate_stats') || '{}');
+    stats.leadsCount = (stats.leadsCount || 0) + 1;
+    localStorage.setItem('affiliate_stats', JSON.stringify(stats));
+    updateStatsPanel();
+}
+
+// ============ ПОКАЗ УВЕДОМЛЕНИЙ ============
+function showNotification(message, type = 'info') {
+    // Удаляем старое уведомление
+    const oldNotification = document.querySelector('.notification');
+    if (oldNotification) {
+        oldNotification.remove();
+    }
+    
+    // Создаём новое уведомление
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    
+    // Настраиваем цвет в зависимости от типа
+    switch(type) {
+        case 'success':
+            notification.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            break;
+        case 'warning':
+            notification.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+            break;
+        case 'error':
+            notification.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
+            break;
+        default:
+            notification.style.background = 'linear-gradient(135deg, #7c3aed, #10b981)';
+    }
+    
+    notification.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 10px;">
+            ${getNotificationIcon(type)}
+            <div>${message}</div>
+        </div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Автоматическое скрытие через 5 секунд
+    setTimeout(() => {
+        notification.style.animation = 'slideOut 0.3s ease';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.remove();
             }
+        }, 300);
+    }, 5000);
+}
+
+// ============ ПОЛУЧЕНИЕ ИКОНКИ ДЛЯ УВЕДОМЛЕНИЯ ============
+function getNotificationIcon(type) {
+    switch(type) {
+        case 'success':
+            return '<i class="fas fa-check-circle"></i>';
+        case 'warning':
+            return '<i class="fas fa-exclamation-triangle"></i>';
+        case 'error':
+            return '<i class="fas fa-times-circle"></i>';
+        default:
+            return '<i class="fas fa-info-circle"></i>';
+    }
+}
+
+// ============ ОБНОВЛЕНИЕ ПАРТНЁРСКИХ ССЫЛОК ============
+function updateAffiliateLinks() {
+    // Обновляем все кнопки с атрибутом data-affiliate-service
+    document.querySelectorAll('[data-affiliate-service]').forEach(button => {
+        const serviceName = button.getAttribute('data-affiliate-service');
+        button.onclick = () => openPartnerLink(serviceName);
+    });
+}
+
+// ============ ПРОВЕРКА СТАТУСА ПАРТНЁРСКИХ ПРОГРАММ ============
+async function checkAffiliateStatus() {
+    try {
+        // Проверяем статус Copy.ai каждые 24 часа
+        const lastCheck = localStorage.getItem('last_affiliate_check');
+        const now = Date.now();
+        
+        if (!lastCheck || (now - parseInt(lastCheck)) > 24 * 60 * 60 * 1000) {
+            console.log('🔄 Проверяем статус партнёрских программ...');
             
-            // Показать успешную отправку
-            document.getElementById('leadForm').innerHTML = `
-                <div style="text-align: center; padding: 30px 0;">
-                    <div style="width: 80px; height: 80px; background: var(--gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2.5rem; color: white; animation: pulse 2s infinite;">
-                        <i class="fas fa-check"></i>
-                    </div>
-                    <h3 style="color: var(--text); margin-bottom: 15px;">Спасибо, ${name}!</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 25px;">
-                        На ${email} отправлено письмо с:<br>
-                        1. Всеми моими партнёрскими ссылками<br>
-                        2. Инструкцией по подключению<br>
-                        3. Шаблонами для продвижения
-                    </p>
-                    
-                    ${telegram ? `<div style="background: rgba(0, 136, 204, 0.1); padding: 15px; border-radius: 15px; margin-bottom: 15px; border: 2px solid #0088cc;">
-                        <p style="color: var(--text); margin-bottom: 10px;">
-                            <i class="fab fa-telegram" style="color: #0088cc;"></i> Приглашение в Telegram:
-                        </p>
-                        <a href="https://t.me/ai_toolkit_partner09" target="_blank" style="color: #0088cc; text-decoration: none;">
-                            t.me/ai_toolkit_partner09
-                        </a>
-                    </div>` : ''}
-                    
-                    ${vk ? `<div style="background: rgba(76, 117, 163, 0.1); padding: 15px; border-radius: 15px; margin-bottom: 25px; border: 2px solid #4c75a3;">
-                        <p style="color: var(--text); margin-bottom: 10px;">
-                            <i class="fab fa-vk" style="color: #4c75a3;"></i> Приглашение ВКонтакте:
-                        </p>
-                        <a href="https://vk.com/ai_cherem7" target="_blank" style="color: #4c75a3; text-decoration: none;">
-                            vk.com/ai_cherem7
-                        </a>
-                    </div>` : ''}
-                    
-                    <div style="background: rgba(124, 58, 237, 0.1); padding: 20px; border-radius: 15px; margin-top: 20px; border: 2px solid var(--primary);">
-                        <p style="color: var(--text); margin-bottom: 10px; font-weight: bold;">
-                            <i class="fas fa-star"></i> Быстрые ссылки:
-                        </p>
-                        <button onclick="copyPromocode()" class="btn-outline-glow" style="width: 100%; margin-bottom: 10px;">
-                            <i class="fas fa-copy"></i> Яндекс Маркет: MARKET_14628864
-                        </button>
-                        <button onclick="copySearchLink()" class="btn-outline-glow" style="width: 100%;">
-                            <i class="fas fa-copy"></i> Поиск Яндекс: clid=14628860
-                        </button>
-                    </div>
+            // В реальном проекте здесь был бы API запрос
+            const status = {
+                copyai: {
+                    active: false,
+                    message: 'В процессе обновления после приобретения Fullcast',
+                    lastUpdate: '2025-01-22'
+                },
+                jasper: {
+                    active: true,
+                    message: 'Активна, принимает новых партнёров',
+                    lastUpdate: new Date().toISOString().split('T')[0]
+                },
+                writesonic: {
+                    active: true,
+                    message: 'Активна, быстрая регистрация',
+                    lastUpdate: new Date().toISOString().split('T')[0]
+                }
+            };
+            
+            localStorage.setItem('affiliate_status', JSON.stringify(status));
+            localStorage.setItem('last_affiliate_check', now.toString());
+            
+            // Если Copy.ai неактивен, показываем уведомление
+            if (!status.copyai.active && !localStorage.getItem('copyai_inactive_shown')) {
+                setTimeout(() => {
+                    showNotification('Copy.ai временно недоступен. Используйте альтернативы!', 'warning');
+                    localStorage.setItem('copyai_inactive_shown', 'true');
+                }, 3000);
+            }
+        }
+    } catch (error) {
+        console.error('Ошибка проверки статуса:', error);
+    }
+}
+
+// ============ ПОКАЗ УСПЕШНОЙ ОТПРАВКИ ФОРМЫ ============
+function showSuccessMessage(email, name) {
+    // Показываем анимированный success state
+    const form = document.getElementById('leadForm');
+    
+    if (form) {
+        form.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px;">
+                <div style="width: 80px; height: 80px; background: var(--gradient); 
+                           border-radius: 50%; display: flex; align-items: center; 
+                           justify-content: center; margin: 0 auto 20px; font-size: 2.5rem; 
+                           color: white; animation: pulse 2s infinite;">
+                    <i class="fas fa-check"></i>
                 </div>
-            `;
+                <h3 style="color: var(--text); margin-bottom: 15px;">
+                    Отлично, ${name || 'друг'}! 🎉
+                </h3>
+                <p style="color: var(--text-secondary); margin-bottom: 30px;">
+                    На <strong>${email}</strong> отправлено письмо с:
+                </p>
+                
+                <div style="background: rgba(124, 58, 237, 0.1); padding: 20px; 
+                           border-radius: 15px; margin-bottom: 25px; 
+                           border: 2px solid var(--primary);">
+                    <ul style="text-align: left; color: var(--text); padding-left: 20px;">
+                        <li style="margin-bottom: 10px;">Все партнёрские ссылки</li>
+                        <li style="margin-bottom: 10px;">Инструкция по подключению</li>
+                        <li style="margin-bottom: 10px;">Шаблоны для продвижения</li>
+                        <li>Доступ к закрытому чату</li>
+                    </ul>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
+                           gap: 10px; margin-top: 30px;">
+                    <button onclick="openPartnerLink('jasper')" 
+                            class="btn-gradient" style="font-size: 0.9rem;">
+                        <i class="fas fa-robot"></i> Jasper AI
+                    </button>
+                    <button onclick="openPartnerLink('writesonic')" 
+                            class="btn-gradient" style="font-size: 0.9rem;">
+                        <i class="fas fa-pen-nib"></i> Writesonic
+                    </button>
+                </div>
+                
+                <p style="color: var(--text-secondary); margin-top: 25px; font-size: 0.9rem;">
+                    <i class="fas fa-clock"></i> Ссылки действительны 30 дней
+                </p>
+            </div>
+        `;
+        
+        // Обновляем счётчик оставшихся мест
+        updateSpotsCounter();
+        
+        // Показываем уведомление
+        showNotification('Данные сохранены! Проверьте почту 📧', 'success');
+    }
+}
+
+// ============ ОБНОВЛЕНИЕ СЧЁТЧИКА МЕСТ ============
+function updateSpotsCounter() {
+    const spotsElement = document.getElementById('spotsLeft');
+    if (spotsElement) {
+        let spots = parseInt(spotsElement.textContent);
+        if (spots > 0) {
+            spots--;
+            spotsElement.textContent = spots;
             
-            // Уменьшить количество оставшихся мест
-            const spotsElement = document.getElementById('spotsLeft');
-            let spots = parseInt(spotsElement.textContent);
-            if (spots > 0) {
-                spots--;
-                spotsElement.textContent = spots;
+            // Сохраняем новое значение
+            localStorage.setItem('remaining_spots', spots.toString());
+            
+            // Если мест мало, показываем предупреждение
+            if (spots < 10) {
+                showNotification(`Осталось всего ${spots} мест! ⏳`, 'warning');
             }
-            
-            // Отправка данных (в реальном проекте здесь должен быть AJAX запрос на сервер)
-            console.log('Новый лид:', {name, email, phone, subscribe, telegram, vk});
-            
-            // Можно добавить интеграцию с Telegram ботом или email рассылкой
         }
+    }
+}
 
-        // Информационные модалки
-        function showYandexMarketInfo() {
-            alert('📦 Яндекс Маркет - Партнёрская программа\n\n' +
-                  'Ваш промокод: MARKET_14628864\n\n' +
-                  'Как работает:\n' +
-                  '1. Дайте промокод предпринимателям\n' +
-                  '2. Они регистрируются на Яндекс.Маркете\n' +
-                  '3. Подключаются за 15,000 ₽\n' +
-                  '4. Вы получаете 15,000 ₽ за каждого\n\n' +
-                  'Идеально для: консультантов, маркетологов, бизнес-тренеров');
-        }
+// ============ ОТПРАВКА ФОРМЫ ЛИДА ============
+function submitLeadForm() {
+    const form = document.getElementById('leadForm');
+    const nameInput = form.querySelector('input[name="name"]');
+    const emailInput = form.querySelector('input[name="email"]');
+    const phoneInput = form.querySelector('input[name="phone"]');
+    
+    if (!nameInput.value || !emailInput.value) {
+        showNotification('Пожалуйста, заполните имя и email', 'error');
+        return;
+    }
+    
+    // Сохраняем лид
+    const leadData = {
+        name: nameInput.value,
+        email: emailInput.value,
+        phone: phoneInput.value || '',
+        date: new Date().toISOString(),
+        source: 'main_form'
+    };
+    
+    saveLead(leadData);
+    showSuccessMessage(emailInput.value, nameInput.value);
+    
+    // Сбрасываем форму
+    form.reset();
+}
 
-        function showSearchWidget() {
-            const code = `<script async src="https://yandex.ru/partner/loader.js"><\/script>
-<div class="yandex-search-widget" data-partner="14628860"></div>`;
-            
-            navigator.clipboard.writeText(code).then(() => {
-                alert('Код виджета скопирован!\n\nВставьте его на свой сайт для заработка 15% с рекламы в поиске Яндекс');
-            });
-        }
+// ============ СТАРЫЕ ФУНКЦИИ (для совместимости) ============
+function toggleFAQ(id) {
+    const content = document.getElementById(`faq-content-${id}`);
+    const icon = document.getElementById(`faq-icon-${id}`);
+    
+    if (content.style.display === 'block') {
+        content.style.display = 'none';
+        icon.classList.remove('fa-chevron-up');
+        icon.classList.add('fa-chevron-down');
+    } else {
+        content.style.display = 'block';
+        icon.classList.remove('fa-chevron-down');
+        icon.classList.add('fa-chevron-up');
+    }
+}
 
-        function showBrowserInfo() {
-            alert('🌐 Яндекс.Браузер для организаций\n\n' +
-                  'Ваша ссылка: https://browser.yandex.ru/corp/builds?refid=14628861\n\n' +
-                  'Как работает:\n' +
-                  '1. Отправляете ссылку организациям\n' +
-                  '2. Они устанавливают Яндекс.Браузер\n' +
-                  '3. Вы получаете вознаграждение\n\n' +
-                  'Целевая аудитория:\n' +
-                  '• IT-отделы компаний\n' +
-                  '• Системные администраторы\n' +
-                  '• Цифровые агентства');
-        }
+function comingSoon() {
+    showNotification('YouTube-канал в разработке! Следите за обновлениями в Telegram.', 'info');
+}
 
-        function showPromoGuide() {
-            const guide = `🎯 ГАЙД ПО ПРОДВИЖЕНИЮ ПАРТНЁРОК
+function closePopup() {
+    document.getElementById('ctaPopup').classList.remove('show');
+}
 
-1. Telegram-канал (@ai_toolkit_partner09):
+function showBonusMaterials() {
+    const materials = `🎁 БОНУСНЫЕ МАТЕРИАЛЫ:
+
+1. Готовые шаблоны сообщений для Telegram
+2. Шаблоны постов для ВКонтакте
+3. Скрипты для холодных звонков
+4. Шаблоны email-рассылок
+
+📥 Скачать: https://drive.google.com/drive/folders/...
+
+✉️ Или напишите мне в Telegram: @ai_toolkit_partner09`;
+    
+    alert(materials);
+    closePopup();
+}
+
+function scrollToForm() {
+    document.getElementById('real-form').scrollIntoView({ behavior: 'smooth' });
+}
+
+function showPromoGuide() {
+    const guide = `🎯 ГАЙД ПО ПРОДВИЖЕНИЮ:
+
+1. Telegram-канал:
    • 1 пост в день с полезной информацией
    • 2-3 раза в неделю - партнёрские ссылки
-   • Ответы на вопросы в комментариях
 
-2. ВКонтакте (vk.com/ai_cherem7):
+2. ВКонтакте:
    • Подробные статьи про партнёрки
    • Кейсы и примеры
    • Общение с аудиторией
@@ -1428,116 +1970,230 @@
 3. Личные сообщения:
    • 10 сообщений в день знакомым
    • Предложение полезной информации
-   • Без спама, только ценность
 
 4. Форумы и группы:
    • Комментарии в тематических сообществах
-   • Ответы на вопросы с упоминанием партнёрок
-   • Делитесь опытом, а не рекламируйте`;
+   • Ответы на вопросы`;
+    
+    alert(guide);
+}
 
-            alert(guide);
+// ============ АНИМАЦИИ И СКРОЛЛ ============
+function checkScroll() {
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    elements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elementTop < windowHeight - 100) {
+            element.classList.add('visible');
         }
+    });
+    
+    // Показ всплывающего окна при достижении середины страницы
+    const scrollPosition = window.pageYOffset;
+    const documentHeight = document.documentElement.scrollHeight;
+    
+    if (scrollPosition > documentHeight / 3) {
+        setTimeout(() => {
+            document.getElementById('ctaPopup').classList.add('show');
+        }, 2000);
+    }
+}
 
-        function comingSoon() {
-            alert('🎥 YouTube-канал в разработке!\n\n' +
-                  'Скоро запущу YouTube-канал с видео:\n' +
-                  '• Обзоры партнёрских программ\n' +
-                  '• Скринкасты работы с Яндекс.Дистрибуцией\n' +
-                  '• Интервью с успешными партнёрами\n\n' +
-                  'Подписывайтесь на Telegram, чтобы не пропустить запуск!');
+// ============ АНИМИРОВАННЫЕ СЧЁТЧИКИ ============
+function animateCounters() {
+    const counters = document.querySelectorAll('.stat-value');
+    counters.forEach(counter => {
+        const target = parseInt(counter.innerText.replace(/[^0-9]/g, ''));
+        const increment = target / 100;
+        let current = 0;
+        
+        const updateCounter = () => {
+            if (current < target) {
+                current += increment;
+                counter.innerText = Math.floor(current).toLocaleString() + 
+                    (counter.id === 'totalPayouts' ? 'М' : 
+                     counter.id === 'avgCommission' ? '%' : 
+                     counter.id === 'totalTools' ? '+' : 
+                     counter.id === 'totalEarners' ? '+' : '');
+                setTimeout(updateCounter, 20);
+            } else {
+                counter.innerText = target.toLocaleString() + 
+                    (counter.id === 'totalPayouts' ? 'М' : 
+                     counter.id === 'avgCommission' ? '%' : 
+                     counter.id === 'totalTools' ? '+' : 
+                     counter.id === 'totalEarners' ? '+' : '');
+            }
+        };
+        
+        updateCounter();
+    });
+}
+
+// ============ ИНИЦИАЛИЗАЦИЯ САЙТА ============
+document.addEventListener('DOMContentLoaded', function() {
+    // Запуск анимаций
+    setTimeout(animateCounters, 1000);
+    
+    // Отслеживание скролла для анимаций
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Проверить при загрузке
+    
+    // Автоматическое обновление статистики
+    setInterval(() => {
+        const earners = document.getElementById('totalEarners');
+        if (earners) {
+            const current = parseInt(earners.textContent.replace('+', ''));
+            earners.textContent = (current + Math.floor(Math.random() * 3)) + '+';
         }
-
-        // Всплывающее окно
-        function closePopup() {
-            document.getElementById('ctaPopup').classList.remove('show');
-        }
-
-        function showBonusMaterials() {
-            const materials = `🎁 БОНУСНЫЕ МАТЕРИАЛЫ ДЛЯ СКАЧИВАНИЯ:
-
-1. Готовые шаблоны сообщений для Telegram:
-   - Для предпринимателей (Яндекс Маркет)
-   - Для IT-специалистов (Яндекс.Браузер)
-   - Для турагентов (Яндекс.Путешествия)
-
-2. Шаблоны постов для ВКонтакте:
-   - Информационные посты
-   - Кейсы успеха
-   - Анонсы вебинаров
-
-3. Скрипты для холодных звонков
-4. Шаблоны email-рассылок
-
-Скачать все материалы можно по ссылке:
-https://drive.google.com/drive/folders/ваша_ссылка_на_гугл_диск
-
-Или напишите мне в Telegram: @ai_toolkit_partner09`;
-            
-            alert(materials);
-            closePopup();
-        }
-
-        function scrollToForm() {
-            document.getElementById('real-form').scrollIntoView({
-                behavior: 'smooth'
-            });
-        }
-
-        // Инициализация
-        document.addEventListener('DOMContentLoaded', function() {
-            // Запуск анимаций
-            setTimeout(animateCounters, 1000);
-            
-            // Отслеживание скролла для анимаций
-            window.addEventListener('scroll', checkScroll);
-            checkScroll(); // Проверить при загрузке
-            
-            // Автоматическое обновление статистики
-            setInterval(() => {
-                const earners = document.getElementById('totalEarners');
-                const current = parseInt(earners.textContent.replace('+', ''));
-                earners.textContent = (current + Math.floor(Math.random() * 3)) + '+';
-            }, 30000);
-            
-            // Интерактивность для карточек сервисов
-            document.querySelectorAll('.service-card-enhanced').forEach(card => {
-                card.addEventListener('mouseenter', function() {
-                    const icon = this.querySelector('.service-icon-wrapper i');
-                    if (icon) {
-                        icon.style.transform = 'scale(1.2) rotate(10deg)';
-                    }
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    const icon = this.querySelector('.service-icon-wrapper i');
-                    if (icon) {
-                        icon.style.transform = 'scale(1) rotate(0deg)';
-                    }
-                });
-            });
-            
-            // Автоматическое открытие попапа через 30 секунд
-            setTimeout(() => {
-                document.getElementById('ctaPopup').classList.add('show');
-            }, 30000);
-            
-            console.log('🚀 AI Affiliate Platform Ивана Черемных загружен!');
+    }, 30000);
+    
+    // Интерактивность для карточек сервисов
+    document.querySelectorAll('.service-card-enhanced').forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            const icon = this.querySelector('.service-icon-wrapper i');
+            if (icon) {
+                icon.style.transform = 'scale(1.2) rotate(10deg)';
+            }
         });
-
-        // Яндекс.Метрика
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(97567890, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
+        
+        card.addEventListener('mouseleave', function() {
+            const icon = this.querySelector('.service-icon-wrapper i');
+            if (icon) {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }
         });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/97567890" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-</body>
-</html>
+    });
+    
+    // Автоматическое открытие попапа через 30 секунд
+    setTimeout(() => {
+        const popup = document.getElementById('ctaPopup');
+        if (popup) {
+            popup.classList.add('show');
+        }
+    }, 30000);
+    
+    // Инициализация новой системы
+    initStats();
+    updateAffiliateLinks();
+    checkAffiliateStatus();
+    
+    console.log('🚀 AI Affiliate Platform загружен!');
+    console.log('📊 Версия 2.0 с улучшенным трекингом');
+});
+
+// ============ ЯНДЕКС.МЕТРИКА ============
+(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+m[i].l=1*new Date();
+for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+ym(97567890, "init", {
+    clickmap:true,
+    trackLinks:true,
+    accurateTrackBounce:true,
+    webvisor:true
+});
+
+// ============ ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ ============
+// Функция для копирования промокодов
+function copyToClipboard(text, message) {
+    navigator.clipboard.writeText(text).then(() => {
+        showNotification(message || 'Скопировано в буфер обмена! 📋', 'success');
+    }).catch(err => {
+        console.error('Ошибка копирования:', err);
+        showNotification('Не удалось скопировать', 'error');
+    });
+}
+
+// Функция для загрузки CSV с данными
+function exportLeadsToCSV() {
+    const leads = JSON.parse(localStorage.getItem('ai_affiliate_leads') || '[]');
+    if (leads.length === 0) {
+        showNotification('Нет данных для экспорта', 'warning');
+        return;
+    }
+    
+    let csv = 'Имя,Email,Телефон,Дата,Источник\n';
+    leads.forEach(lead => {
+        csv += `"${lead.name || ''}","${lead.email}","${lead.phone || ''}","${lead.date}","${lead.source || ''}"\n`;
+    });
+    
+    const blob = new Blob([csv], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `leads_${new Date().toISOString().split('T')[0]}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    
+    showNotification(`Экспортировано ${leads.length} лидов 📈`, 'success');
+}
+
+// ============ ОБРАБОТЧИК ОШИБОК ============
+window.addEventListener('error', function(e) {
+    console.error('Глобальная ошибка:', e.error);
+    showNotification('Произошла ошибка. Обновите страницу.', 'error');
+});
+
+// ============ ОФФЛАЙН-РЕЖИМ ============
+window.addEventListener('online', () => {
+    showNotification('Соединение восстановлено ✅', 'success');
+});
+
+window.addEventListener('offline', () => {
+    showNotification('Работаем в офлайн-режиме 📴', 'warning');
+});
+
+// ============ PWA ФУНКЦИОНАЛ ============
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').then(registration => {
+            console.log('ServiceWorker зарегистрирован:', registration);
+        }).catch(registrationError => {
+            console.log('ServiceWorker регистрация не удалась:', registrationError);
+        });
+    });
+}
+
+// ============ ОБРАБОТКА ВИДИМОСТИ СТРАНИЦЫ ============
+document.addEventListener('visibilitychange', function() {
+    if (document.hidden) {
+        console.log('Страница скрыта');
+    } else {
+        console.log('Страница видима');
+        // Обновляем статистику при возвращении на страницу
+        updateStatsPanel();
+    }
+});
+
+// ============ АВТОСОХРАНЕНИЕ ФОРМЫ ============
+function autoSaveForm() {
+    const form = document.getElementById('leadForm');
+    if (form) {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        localStorage.setItem('form_autosave', JSON.stringify(data));
+    }
+}
+
+// Автосохранение каждые 5 секунд
+setInterval(autoSaveForm, 5000);
+
+// Восстановление формы при загрузке
+function restoreForm() {
+    const saved = localStorage.getItem('form_autosave');
+    if (saved && document.getElementById('leadForm')) {
+        const data = JSON.parse(saved);
+        Object.keys(data).forEach(key => {
+            const input = document.querySelector(`[name="${key}"]`);
+            if (input) input.value = data[key];
+        });
+    }
+}
+
+// Восстанавливаем форму при загрузке
+document.addEventListener('DOMContentLoaded', restoreForm);
