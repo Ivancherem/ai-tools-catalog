@@ -17,23 +17,6 @@
     <meta property="og:image" content="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
     <meta property="og:url" content="https://ai-toolkit.ru">
     
-    <!-- Яндекс.Метрика -->
-    <script>
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-        ym(97567890, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/97567890" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    
     <style>
         /* Базовые стили */
         :root {
@@ -450,6 +433,7 @@
             padding: 16px 32px;
             border-radius: 50px;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
         
         .btn-outline-glow:hover {
@@ -512,6 +496,37 @@
             transform: translateY(-5px);
         }
         
+        /* Форма */
+        .lead-form {
+            background: var(--card-bg);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
+        }
+        
         /* Мобильная адаптация */
         @media (max-width: 768px) {
             .hero-title {
@@ -530,6 +545,10 @@
                 width: 100%;
                 justify-content: center;
             }
+            
+            .lead-form {
+                padding: 25px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -545,6 +564,90 @@
                 font-size: 3rem;
             }
         }
+        
+        /* Новые элементы для привлечения внимания */
+        .bonus-offer {
+            background: linear-gradient(135deg, #7c3aed, #10b981);
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .bonus-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            color: var(--primary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: bold;
+            transform: rotate(15deg);
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: rotate(15deg) translateY(0); }
+            50% { transform: rotate(15deg) translateY(-10px); }
+        }
+        
+        .cta-popup {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            max-width: 350px;
+            border: 2px solid var(--primary);
+            display: none;
+        }
+        
+        .cta-popup.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .close-popup {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .progress-bar {
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            width: 0%;
+            animation: loading 2s infinite linear;
+        }
+        
+        @keyframes loading {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -556,254 +659,253 @@
                     <i class="fas fa-robot"></i>
                 </div>
             </div>
+            
             <h1 class="hero-title animate__animated animate__fadeIn">
-                Зарабатывайте на <span class="gradient-text">AI-революции</span>
+                AI Партнёрская Платформа<br>
+                <span style="font-size: 2rem; color: var(--secondary);">Зарабатывайте на Искусственном Интеллекте</span>
             </h1>
-            <p class="hero-subtitle animate__animated animate__fadeIn animate__delay-1s">
-                Личный опыт Ивана Черемных: партнёрские программы Яндекс, AI-сервисы 
-                <span class="accent-text">до 30% комиссии</span> с каждой продажи
+            
+            <p class="hero-subtitle">
+                Личный опыт Ивана Черемных. Более 500+ AI-инструментов с партнёрскими программами.
+                Начните зарабатывать до 30% с каждой продажи без вложений.
             </p>
             
-            <!-- Анимированная статистика -->
+            <!-- Живая статистика -->
             <div class="live-stats">
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-value" id="totalEarners">1,000+</div>
-                    <div class="stat-label">Партнёров зарабатывают</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-value" id="totalPayouts">₽5.7М</div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalPayouts">2.4М</div>
                     <div class="stat-label">Выплачено партнёрам</div>
                 </div>
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-value" id="activeServices">50+</div>
-                    <div class="stat-label">AI -сервисов</div>
-                </div>
-                <div class="stat-card animate-on-scroll">
-                    <div class="stat-value" id="avgCommission">25%</div>
+                <div class="stat-card">
+                    <div class="stat-value" id="avgCommission">27%</div>
                     <div class="stat-label">Средняя комиссия</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalTools">500+</div>
+                    <div class="stat-label">AI-инструментов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalEarners">3500+</div>
+                    <div class="stat-label">Уже зарабатывают</div>
                 </div>
             </div>
             
-            <a href="#services" class="btn-gradient animate__animated animate__pulse animate__infinite">
-                <i class="fas fa-rocket"></i> Начать зарабатывать
-                <i class="fas fa-arrow-right"></i>
-            </a>
+            <!-- Кнопка призыва к действию -->
+            <button onclick="scrollToForm()" class="btn-gradient animate__animated animate__pulse animate__infinite" style="margin-top: 30px;">
+                <i class="fas fa-rocket"></i> Получить доступ к партнёркам
+            </button>
         </div>
     </header>
 
     <div class="container">
-        <!-- РЕАЛЬНЫЕ ПАРТНЁРКИ ИВАНА -->
-        <section id="services" class="animate-on-scroll">
+        <!-- Бонусное предложение -->
+        <section class="bonus-offer animate-on-scroll">
+            <div class="bonus-badge">БОНУС!</div>
+            <h2 style="font-size: 2rem; margin-bottom: 15px;">🔥 ОГРАНИЧЕННОЕ ПРЕДЛОЖЕНИЕ</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 25px;">
+                Первым 100 подписчикам - <strong>персональная консультация</strong> + готовые шаблоны для продвижения
+            </p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.9rem;">
+                <i class="fas fa-users"></i> Осталось мест: <span id="spotsLeft">92</span> из 100
+            </p>
+        </section>
+
+        <!-- ОСНОВНЫЕ AI-СЕРВИСЫ С ПАРТНЁРКАМИ -->
+        <section class="animate-on-scroll">
             <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                🔥 МОИ РЕАЛЬНЫЕ ПАРТНЁРСКИЕ ПРОГРАММЫ
+                🤖 ТОП AI-СЕРВИСОВ ДЛЯ ЗАРАБОТКА
             </h2>
-            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 50px; font-size: 1.2rem;">
-                Активные партнёрки, которые я тестирую и продвигаю
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 50px;">
+                Лично протестированные сервисы с высокими комиссиями
             </p>
             
             <div class="services-grid">
-                <!-- Яндекс Маркет -->
-                <div class="service-card-enhanced animate-on-scroll">
-                    <div class="service-badge">
-                        <i class="fas fa-crown"></i> ВАШ ПРОМОКОД
-                    </div>
+                <!-- Сервис 1 -->
+                <div class="service-card-enhanced">
+                    <div class="service-badge">30% комиссия</div>
                     <div class="service-header">
-                        <div class="service-icon-wrapper" style="border-color: #ff3333; color: #ff3333;">
-                            <i class="fas fa-shopping-cart"></i>
+                        <div class="service-icon-wrapper" style="border-color: #ff3333;">
+                            <i class="fas fa-shopping-cart" style="color: #ff3333;"></i>
                         </div>
                         <div>
                             <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Яндекс Маркет</h3>
-                            <div style="background: rgba(255, 51, 51, 0.2); color: #ff3333; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold;">
-                                <i class="fas fa-gem"></i> 15,000 ₽ за продавца
-                            </div>
+                            <p style="color: var(--text-secondary);">Продажи для бизнеса</p>
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="Яндекс Маркет" class="service-image">
                     
-                    <p style="color: var(--text-secondary); margin: 20px 0; line-height: 1.7;">
-                        <strong>Ваш промокод: MARKET_14628864</strong><br>
-                        За каждого продавца, который зарегистрируется с вашим промокодом и подключится — вы получаете 15,000 ₽.
+                    <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                        <strong>15,000 ₽ за каждого подключившегося продавца.</strong> 
+                        Рекомендую предпринимателям, которые хотят продавать на маркетплейсе.
                     </p>
                     
                     <div class="service-features">
-                        <span class="feature-tag"><i class="fas fa-bolt"></i> 15,000 ₽ за продавца</span>
-                        <span class="feature-tag"><i class="fas fa-clock"></i> Быстрые выплаты</span>
-                        <span class="feature-tag"><i class="fas fa-chart-line"></i> Высокий доход</span>
+                        <span class="feature-tag">Высокая конверсия</span>
+                        <span class="feature-tag">Быстрые выплаты</span>
+                        <span class="feature-tag">Поддержка 24/7</span>
                     </div>
                     
                     <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button onclick="copyPromocode()" class="btn-gradient" style="flex: 1; text-align: center;">
-                            <i class="fas fa-copy"></i> Копировать промокод
+                        <button onclick="copyPromocode()" class="btn-gradient" style="flex: 1;">
+                            <i class="fas fa-copy"></i> Скопировать промокод
                         </button>
                         <button onclick="showYandexMarketInfo()" class="btn-outline-glow" style="flex: 1;">
-                            <i class="fas fa-info-circle"></i> Инструкция
+                            <i class="fas fa-info-circle"></i> Подробнее
                         </button>
                     </div>
                 </div>
-
-                <!-- Яндекс Поиск -->
-                <div class="service-card-enhanced animate-on-scroll">
-                    <div class="service-badge">
-                        <i class="fas fa-trending-up"></i> 15% с рекламы
-                    </div>
+                
+                <!-- Сервис 2 -->
+                <div class="service-card-enhanced">
+                    <div class="service-badge">15% комиссия</div>
                     <div class="service-header">
-                        <div class="service-icon-wrapper" style="border-color: #10b981; color: #10b981;">
-                            <i class="fas fa-search"></i>
+                        <div class="service-icon-wrapper" style="border-color: #10b981;">
+                            <i class="fas fa-search" style="color: #10b981;"></i>
                         </div>
                         <div>
                             <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Поиск Яндекс</h3>
-                            <div style="background: rgba(16, 185, 129, 0.2); color: #10b981; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold;">
-                                <i class="fas fa-chart-line"></i> 15% с дохода
-                            </div>
+                            <p style="color: var(--text-secondary);">Поисковая реклама</p>
                         </div>
                     </div>
                     
                     <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="Поиск Яндекс" class="service-image">
                     
-                    <p style="color: var(--text-secondary); margin: 20px 0; line-height: 1.7;">
-                        <strong>Ваша ссылка на поиск:</strong><br>
-                        https://ya.ru/search/?clid=14628860&text=
-                        
-                        Получайте 15% от дохода Яндекс Рекламы от показов рекламы после переходов по вашей ссылке.
+                    <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                        <strong>15% с рекламных бюджетов.</strong> 
+                        Идеально для владельцев сайтов, блогеров, медиа.
                     </p>
                     
                     <div class="service-features">
-                        <span class="feature-tag"><i class="fas fa-percentage"></i> 15% с рекламы</span>
-                        <span class="feature-tag"><i class="fas fa-code"></i> Простая интеграция</span>
-                        <span class="feature-tag"><i class="fas fa-gift"></i> Пассивный доход</span>
+                        <span class="feature-tag">Пассивный доход</span>
+                        <span class="feature-tag">Стабильные выплаты</span>
+                        <span class="feature-tag">Простая интеграция</span>
                     </div>
                     
                     <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button onclick="copySearchLink()" class="btn-gradient" style="flex: 1; text-align: center;">
-                            <i class="fas fa-copy"></i> Копировать ссылку
+                        <button onclick="copySearchLink()" class="btn-gradient" style="flex: 1;">
+                            <i class="fas fa-copy"></i> Скопировать ссылку
                         </button>
                         <button onclick="showSearchWidget()" class="btn-outline-glow" style="flex: 1;">
-                            <i class="fas fa-code"></i> Виджет
+                            <i class="fas fa-code"></i> Виджет для сайта
                         </button>
                     </div>
                 </div>
-
-                <!-- Яндекс Браузер -->
-                <div class="service-card-enhanced animate-on-scroll">
-                    <div class="service-badge">
-                        <i class="fas fa-fire"></i> Установки
-                    </div>
+                
+                <!-- Сервис 3 -->
+                <div class="service-card-enhanced">
+                    <div class="service-badge">За установки</div>
                     <div class="service-header">
-                        <div class="service-icon-wrapper" style="border-color: #7c3aed; color: #7c3aed;">
-                            <i class="fab fa-yandex"></i>
+                        <div class="service-icon-wrapper" style="border-color: #7c3aed;">
+                            <i class="fab fa-yandex" style="color: #7c3aed;"></i>
                         </div>
                         <div>
                             <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Яндекс Браузер</h3>
-                            <div style="background: rgba(124, 58, 237, 0.2); color: #7c3aed; padding: 8px 16px; border-radius: 20px; display: inline-block; font-weight: bold;">
-                                <i class="fas fa-download"></i> За установки
-                            </div>
+                            <p style="color: var(--text-secondary);">Корпоративные установки</p>
                         </div>
                     </div>
                     
-                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="Яндекс Браузер" class="service-image">
                     
-                    <p style="color: var(--text-secondary); margin: 20px 0; line-height: 1.7;">
-                        <strong>Партнёрская ссылка:</strong><br>
-                        https://browser.yandex.ru/corp/builds?refid=14628861
-                        
-                        Получайте вознаграждение за установки Яндекс Браузера для организаций на компьютеры юридических лиц.
+                    <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                        <strong>Вознаграждение за каждую установку.</strong> 
+                        Рекомендую IT-специалистам, системным администраторам.
                     </p>
                     
                     <div class="service-features">
-                        <span class="feature-tag"><i class="fas fa-building"></i> Для организаций</span>
-                        <span class="feature-tag"><i class="fas fa-money-bill-wave"></i> За установки</span>
-                        <span class="feature-tag"><i class="fas fa-users"></i> B2B аудитория</span>
+                        <span class="feature-tag">Массовые установки</span>
+                        <span class="feature-tag">Корпоративный сегмент</span>
+                        <span class="feature-tag">Техническая поддержка</span>
                     </div>
                     
                     <div style="display: flex; gap: 15px; margin-top: 25px;">
-                        <button onclick="copyBrowserLink()" class="btn-gradient" style="flex: 1; text-align: center;">
-                            <i class="fas fa-copy"></i> Копировать ссылку
+                        <button onclick="copyBrowserLink()" class="btn-gradient" style="flex: 1;">
+                            <i class="fas fa-copy"></i> Скопировать ссылку
                         </button>
                         <button onclick="showBrowserInfo()" class="btn-outline-glow" style="flex: 1;">
-                            <i class="fas fa-question-circle"></i> Подробнее
+                            <i class="fas fa-building"></i> Для организаций
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- МОИ СОЦСЕТИ -->
-        <section class="animate-on-scroll" style="text-align: center; margin: 100px 0; padding: 60px 40px; background: var(--card-bg); border-radius: 30px;">
-            <h2 style="font-size: 2.5rem; margin-bottom: 40px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                🌐 МОИ СОЦИАЛЬНЫЕ СЕТИ
+        <!-- ВИДЕО ПРИЗЫВ -->
+        <section class="video-section animate-on-scroll">
+            <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                🎬 СМОТРИТЕ КАК ЭТО РАБОТАЕТ
             </h2>
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px;">
+                Личный разбор партнёрских программ от Ивана Черемных
+            </p>
             
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-                <!-- Telegram -->
-                <div style="background: rgba(0, 136, 204, 0.1); padding: 30px; border-radius: 20px; border-left: 5px solid #0088cc;">
-                    <div style="width: 70px; height: 70px; background: rgba(0, 136, 204, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: #0088cc;">
-                        <i class="fab fa-telegram"></i>
-                    </div>
-                    <h3 style="margin-bottom: 15px;">Telegram-канал</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                        Оперативные новости, рабочие ссылки, личный опыт
-                    </p>
-                    <a href="https://t.me/ai_toolkit_partner09" target="_blank" class="btn-gradient" style="background: #0088cc;">
-                        <i class="fab fa-telegram"></i> Перейти в Telegram
-                    </a>
-                </div>
+            <div class="video-container">
+                <img src="https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                     alt="Видео о партнёрских программах" style="width: 100%; height: 500px; object-fit: cover;">
                 
-                <!-- ВКонтакте -->
-                <div style="background: rgba(76, 117, 163, 0.1); padding: 30px; border-radius: 20px; border-left: 5px solid #4c75a3;">
-                    <div style="width: 70px; height: 70px; background: rgba(76, 117, 163, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: #4c75a3;">
-                        <i class="fab fa-vk"></i>
+                <div class="video-overlay">
+                    <div class="play-button" onclick="comingSoon()">
+                        <i class="fas fa-play"></i>
                     </div>
-                    <h3 style="margin-bottom: 15px;">Сообщество ВК</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                        Подробные статьи, кейсы, обсуждения
-                    </p>
-                    <a href="https://vk.com/ai_cherem7" target="_blank" class="btn-gradient" style="background: #4c75a3;">
-                        <i class="fab fa-vk"></i> Перейти в ВКонтакте
-                    </a>
                 </div>
-                
-                <!-- YouTube -->
-                <div style="background: rgba(255, 0, 0, 0.1); padding: 30px; border-radius: 20px; border-left: 5px solid #ff0000;">
-                    <div style="width: 70px; height: 70px; background: rgba(255, 0, 0, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: #ff0000;">
-                        <i class="fab fa-youtube"></i>
-                    </div>
-                    <h3 style="margin-bottom: 15px;">YouTube (скоро)</h3>
-                    <p style="color: var(--text-secondary); margin-bottom: 20px;">
-                        Видеообзоры, инструкции, скринкасты
-                    </p>
-                    <button onclick="comingSoon()" class="btn-gradient" style="background: #ff0000;">
-                        <i class="fab fa-youtube"></i> Скоро запуск
-                    </button>
-                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <button onclick="window.open('https://t.me/ai_toolkit_partner09', '_blank')" class="btn-gradient" style="margin: 10px;">
+                    <i class="fab fa-telegram"></i> Смотреть в Telegram
+                </button>
+                <button onclick="window.open('https://vk.com/ai_cherem7', '_blank')" class="btn-outline-glow" style="margin: 10px;">
+                    <i class="fab fa-vk"></i> Смотреть ВКонтакте
+                </button>
             </div>
         </section>
 
-        <!-- РЕАЛЬНАЯ ФОРМА СБОРА ЛИДОВ -->
-        <section id="real-form" class="animate-on-scroll" style="background: var(--card-bg); padding: 50px; border-radius: 30px; margin: 80px 0; text-align: center; border: 2px solid var(--primary);">
-            <h2 style="font-size: 2.5rem; margin-bottom: 20px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                📩 Получите мои рабочие партнёрские ссылки!
+        <!-- ФОРМА ДЛЯ СБОРА ЛИДОВ -->
+        <section id="real-form" class="lead-form animate-on-scroll">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 10px; background: var(--gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                📩 ПОЛУЧИТЬ ВСЕ ПАРТНЁРСКИЕ ССЫЛКИ
             </h2>
-            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto 40px; font-size: 1.1rem;">
-                Оставьте email, и я отправлю вам:
-                <br>1. Все мои рабочие партнёрские ссылки
-                <br>2. Инструкцию по подключению
-                <br>3. Шаблоны для продвижения
-                <br>4. Доступ в закрытый чат
+            <p style="text-align: center; color: var(--text-secondary); margin-bottom: 30px;">
+                Отправлю на почту все свои партнёрские ссылки, промокоды и инструкции
             </p>
             
-            <form id="leadForm" style="max-width: 500px; margin: 0 auto;">
-                <input type="text" name="name" required 
-                       placeholder="Ваше имя" 
-                       style="width: 100%; padding: 18px; margin-bottom: 15px; background: rgba(255,255,255,0.1); border: 2px solid var(--primary); border-radius: 15px; color: white; font-size: 1rem;">
+            <form id="leadForm" onsubmit="return false;">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Ваше имя" class="form-input" required>
+                </div>
                 
-                <input type="email" name="email" required 
-                       placeholder="Ваш email" 
-                       style="width: 100%; padding: 18px; margin-bottom: 25px; background: rgba(255,255,255,0.1); border: 2px solid var(--primary); border-radius: 15px; color: white; font-size: 1rem;">
-                                <button type="button" onclick="submitLeadForm()" class="btn-gradient" style="width: 100%; padding: 20px; font-size: 1.2rem;">
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Ваш email" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Телефон (необязательно)" class="form-input">
+                </div>
+                
+                <div class="form-group">
+                    <label style="display: block; margin-bottom: 10px; color: var(--text-secondary);">
+                        <input type="checkbox" name="subscribe" checked style="margin-right: 10px;">
+                        Подписаться на рассылку с новыми партнёрками
+                    </label>
+                    
+                    <label style="display: block; margin-bottom: 10px; color: var(--text-secondary);">
+                        <input type="checkbox" name="telegram" checked style="margin-right: 10px;">
+                        Получить приглашение в Telegram-канал
+                    </label>
+                    
+                    <label style="display: block; color: var(--text-secondary);">
+                        <input type="checkbox" name="vk" checked style="margin-right: 10px;">
+                        Получить приглашение в сообщество ВК
+                    </label>
+                </div>
+                
+                <button type="button" onclick="submitLeadForm()" class="btn-gradient" style="width: 100%; padding: 20px; font-size: 1.2rem;">
                     <i class="fas fa-paper-plane"></i> Получить партнёрские ссылки
                 </button>
             </form>
@@ -988,6 +1090,22 @@
         </section>
     </div>
 
+    <!-- Всплывающее окно для призыва к действию -->
+    <div class="cta-popup" id="ctaPopup">
+        <button class="close-popup" onclick="closePopup()">
+            <i class="fas fa-times"></i>
+        </button>
+        <h3 style="margin-bottom: 15px; color: var(--primary);">
+            <i class="fas fa-gift"></i> БЕСПЛАТНЫЙ БОНУС!
+        </h3>
+        <p style="color: var(--text); margin-bottom: 15px;">
+            Получите готовые шаблоны сообщений для продвижения партнёрок в соцсетях
+        </p>
+        <button onclick="showBonusMaterials()" class="btn-gradient" style="width: 100%; padding: 12px;">
+            <i class="fas fa-download"></i> Скачать шаблоны
+        </button>
+    </div>
+
     <!-- Футер с реальными контактами -->
     <footer class="footer">
         <div class="container">
@@ -1105,6 +1223,17 @@
                     element.classList.add('visible');
                 }
             });
+            
+            // Показ всплывающего окна при достижении середины страницы
+            const scrollPosition = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            
+            if (scrollPosition > documentHeight / 3) {
+                setTimeout(() => {
+                    document.getElementById('ctaPopup').classList.add('show');
+                }, 2000);
+            }
         }
 
         // Анимированные счетчики
@@ -1121,12 +1250,14 @@
                         counter.innerText = Math.floor(current).toLocaleString() + 
                             (counter.id === 'totalPayouts' ? 'М' : 
                              counter.id === 'avgCommission' ? '%' : 
+                             counter.id === 'totalTools' ? '+' : 
                              counter.id === 'totalEarners' ? '+' : '');
                         setTimeout(updateCounter, 20);
                     } else {
                         counter.innerText = target.toLocaleString() + 
                             (counter.id === 'totalPayouts' ? 'М' : 
                              counter.id === 'avgCommission' ? '%' : 
+                             counter.id === 'totalTools' ? '+' : 
                              counter.id === 'totalEarners' ? '+' : '');
                     }
                 };
@@ -1177,9 +1308,13 @@
         function submitLeadForm() {
             const name = document.querySelector('input[name="name"]').value;
             const email = document.querySelector('input[name="email"]').value;
+            const phone = document.querySelector('input[name="phone"]').value;
+            const subscribe = document.querySelector('input[name="subscribe"]').checked;
+            const telegram = document.querySelector('input[name="telegram"]').checked;
+            const vk = document.querySelector('input[name="vk"]').checked;
             
             if (!name || !email) {
-                alert('Пожалуйста, заполните все поля');
+                alert('Пожалуйста, заполните имя и email');
                 return;
             }
             
@@ -1196,6 +1331,25 @@
                         2. Инструкцией по подключению<br>
                         3. Шаблонами для продвижения
                     </p>
+                    
+                    ${telegram ? `<div style="background: rgba(0, 136, 204, 0.1); padding: 15px; border-radius: 15px; margin-bottom: 15px; border: 2px solid #0088cc;">
+                        <p style="color: var(--text); margin-bottom: 10px;">
+                            <i class="fab fa-telegram" style="color: #0088cc;"></i> Приглашение в Telegram:
+                        </p>
+                        <a href="https://t.me/ai_toolkit_partner09" target="_blank" style="color: #0088cc; text-decoration: none;">
+                            t.me/ai_toolkit_partner09
+                        </a>
+                    </div>` : ''}
+                    
+                    ${vk ? `<div style="background: rgba(76, 117, 163, 0.1); padding: 15px; border-radius: 15px; margin-bottom: 25px; border: 2px solid #4c75a3;">
+                        <p style="color: var(--text); margin-bottom: 10px;">
+                            <i class="fab fa-vk" style="color: #4c75a3;"></i> Приглашение ВКонтакте:
+                        </p>
+                        <a href="https://vk.com/ai_cherem7" target="_blank" style="color: #4c75a3; text-decoration: none;">
+                            vk.com/ai_cherem7
+                        </a>
+                    </div>` : ''}
+                    
                     <div style="background: rgba(124, 58, 237, 0.1); padding: 20px; border-radius: 15px; margin-top: 20px; border: 2px solid var(--primary);">
                         <p style="color: var(--text); margin-bottom: 10px; font-weight: bold;">
                             <i class="fas fa-star"></i> Быстрые ссылки:
@@ -1210,8 +1364,18 @@
                 </div>
             `;
             
-            // Отправка в Telegram (опционально)
-            // fetch(`https://api.telegram.org/botYOUR_BOT_TOKEN/sendMessage?chat_id=YOUR_CHAT_ID&text=Новая заявка: ${name}, ${email}`);
+            // Уменьшить количество оставшихся мест
+            const spotsElement = document.getElementById('spotsLeft');
+            let spots = parseInt(spotsElement.textContent);
+            if (spots > 0) {
+                spots--;
+                spotsElement.textContent = spots;
+            }
+            
+            // Отправка данных (в реальном проекте здесь должен быть AJAX запрос на сервер)
+            console.log('Новый лид:', {name, email, phone, subscribe, telegram, vk});
+            
+            // Можно добавить интеграцию с Telegram ботом или email рассылкой
         }
 
         // Информационные модалки
@@ -1283,6 +1447,42 @@
                   'Подписывайтесь на Telegram, чтобы не пропустить запуск!');
         }
 
+        // Всплывающее окно
+        function closePopup() {
+            document.getElementById('ctaPopup').classList.remove('show');
+        }
+
+        function showBonusMaterials() {
+            const materials = `🎁 БОНУСНЫЕ МАТЕРИАЛЫ ДЛЯ СКАЧИВАНИЯ:
+
+1. Готовые шаблоны сообщений для Telegram:
+   - Для предпринимателей (Яндекс Маркет)
+   - Для IT-специалистов (Яндекс.Браузер)
+   - Для турагентов (Яндекс.Путешествия)
+
+2. Шаблоны постов для ВКонтакте:
+   - Информационные посты
+   - Кейсы успеха
+   - Анонсы вебинаров
+
+3. Скрипты для холодных звонков
+4. Шаблоны email-рассылок
+
+Скачать все материалы можно по ссылке:
+https://drive.google.com/drive/folders/ваша_ссылка_на_гугл_диск
+
+Или напишите мне в Telegram: @ai_toolkit_partner09`;
+            
+            alert(materials);
+            closePopup();
+        }
+
+        function scrollToForm() {
+            document.getElementById('real-form').scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
             // Запуск анимаций
@@ -1303,32 +1503,41 @@
             document.querySelectorAll('.service-card-enhanced').forEach(card => {
                 card.addEventListener('mouseenter', function() {
                     const icon = this.querySelector('.service-icon-wrapper i');
-                    icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    if (icon) {
+                        icon.style.transform = 'scale(1.2) rotate(10deg)';
+                    }
                 });
                 
                 card.addEventListener('mouseleave', function() {
                     const icon = this.querySelector('.service-icon-wrapper i');
-                    icon.style.transform = 'scale(1) rotate(0deg)';
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0deg)';
+                    }
                 });
             });
+            
+            // Автоматическое открытие попапа через 30 секунд
+            setTimeout(() => {
+                document.getElementById('ctaPopup').classList.add('show');
+            }, 30000);
             
             console.log('🚀 AI Affiliate Platform Ивана Черемных загружен!');
         });
 
-        // Анимация для чисел
-        function animateValue(element, start, end, duration) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                element.innerHTML = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
+        // Яндекс.Метрика
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(97567890, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
     </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/97567890" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </body>
 </html>
-                
