@@ -1594,15 +1594,15 @@
             <strong>Поддержите проект!</strong>
             <p>Реклама помогает нам развивать сайт и добавлять новые AI-инструменты.</p>
             <div class="adblock-buttons">
-                <button onclick="closeAdblockWarning()" class="adblock-btn adblock-btn-secondary">
+                <button id="adblock-close-btn" class="adblock-btn adblock-btn-secondary">
                     Понятно, продолжить
                 </button>
-                <button onclick="whitelistSite()" class="adblock-btn adblock-btn-primary">
+                <button id="adblock-whitelist-btn" class="adblock-btn adblock-btn-primary">
                     <i class="fas fa-check-circle"></i> Добавить в исключения
                 </button>
             </div>
         </div>
-        <button onclick="closeAdblockWarning()" class="adblock-close">
+        <button id="adblock-close-x" class="adblock-close">
             <i class="fas fa-times"></i>
         </button>
     </div>
@@ -1682,7 +1682,105 @@
                         renderTo: 'yandex_rtb_R-A-18680344-2',
                         blockId: 'R-A-18680344-2'
                     })
-                })</script>
+                })
+                // ===== ФУНКЦИИ ДЛЯ БЛОКИРОВЩИКА РЕКЛАМЫ =====
+// Размещаем их в самом начале скрипта, чтобы они были доступны сразу
+
+function closeAdblockWarning() {
+    const warning = document.getElementById('adblock-warning');
+    if (warning) {
+        warning.style.display = 'none';
+        // Сохраняем в localStorage, чтобы не показывать снова сегодня
+        localStorage.setItem('adblock_warning_closed', new Date().toDateString());
+        console.log('Предупреждение о блокировщике скрыто');
+    }
+}
+
+function whitelistSite() {
+    showNotification('Спасибо за поддержку! 🚀', 'success');
+    closeAdblockWarning();
+    
+    // Отправляем событие в аналитику
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'adblock_whitelist', {
+            'event_category': 'engagement',
+            'event_label': 'user_whitelisted'
+        });
+    }
+    
+    // Также можно отправить в Яндекс.Метрику
+    if (typeof ym !== 'undefined') {
+        ym(XXXXXX, 'reachGoal', 'adblock_whitelist');
+    }
+    
+    // Обновляем страницу через 2 секунды
+    setTimeout(() => {
+        location.reload();
+    }, 2000);
+}
+
+// Инициализация обработчиков для блокировщика рекламы
+function initAdblockWarning() {
+    // Назначаем обработчики кнопкам
+    const closeBtn = document.getElementById('adblock-close-btn');
+    const whitelistBtn = document.getElementById('adblock-whitelist-btn');
+    const closeX = document.getElementById('adblock-close-x');
+    
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeAdblockWarning);
+    }
+    
+    if (whitelistBtn) {
+        whitelistBtn.addEventListener('click', whitelistSite);
+    }
+    
+    if (closeX) {
+        closeX.addEventListener('click', closeAdblockWarning);
+    }
+    
+    // Проверяем, не закрывали ли уже сегодня предупреждение
+    if (localStorage.getItem('adblock_warning_closed') === new Date().toDateString()) {
+        closeAdblockWarning();
+    }
+}
+
+// Функция проверки блокировщика рекламы
+function checkAdblock() {
+    setTimeout(function() {
+        // Проверяем, загрузилась ли реклама Яндекс РСЯ
+        const adContainer = document.getElementById('yandex_rtb_R-A-18680344-1');
+        const isAdLoaded = adContainer && 
+                          adContainer.innerHTML.trim() !== '' && 
+                          (adContainer.innerHTML.includes('iframe') || 
+                           adContainer.innerHTML.includes('img') ||
+                           adContainer.innerHTML.includes('div') ||
+                           adContainer.children.length > 0);
+        
+        // Проверяем, есть ли скрытые рекламные элементы
+        const adElements = document.querySelectorAll('[class*="ad"], [id*="ad"], [class*="Ad"], [id*="Ad"]');
+        let hiddenAds = 0;
+        adElements.forEach(el => {
+            if (el.offsetParent === null) {
+                hiddenAds++;
+            }
+        });
+        
+        // Показываем предупреждение только если:
+        // 1. Реклама не загрузилась ИЛИ
+        // 2. Обнаружено много скрытых рекламных элементов
+        if (!isAdLoaded || hiddenAds > 2) {
+            const warning = document.getElementById('adblock-warning');
+            if (warning) {
+                warning.style.display = 'block';
+                console.log('Блокировщик рекламы обнаружен');
+                
+                // Автоматически скрываем через 30 секунд
+                setTimeout(closeAdblockWarning, 30000);
+            }
+        }
+    }, 5000); // Проверяем через 5 секунд
+}
+                </script>
             </div>
 
             <!-- Герой-секция -->
@@ -3534,4 +3632,5 @@
     <script data-page-id="18680344" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
 </body>
 </html>
+
 
