@@ -1,0 +1,2 @@
+<meta name="regru-verification" content="abac4ef3eab99704191b2c9f46c6a327b39917c89c88d80f17c710ac795d0b9c" />
+regru-verification=abac4ef3eab99704191b2c9f46c6a327b39917c89c88d80f17c710ac795d0b9c
