@@ -1578,16 +1578,35 @@
     <div id="yandex_rtb_R-A-18680344-1"></div>
     <script>window.yaContextCb=window.yaContextCb||[]</script>
 
-    <!-- Баннер для блокировщиков рекламы -->
-    <noscript>
-        <div style="position:fixed;top:0;left:0;right:0;background:#ff6b6b;color:white;padding:10px;text-align:center;z-index:9999;">
-            ⚠️ Для корректной работы сайта включите JavaScript в настройках браузера
-        </div>
-    </noscript>
-
-    <div id="adblock-warning" style="display:none;position:fixed;top:0;left:0;right:0;background:#f59e0b;color:white;padding:15px;text-align:center;z-index:9998;">
-        ⚠️ Пожалуйста, отключите блокировщик рекламы для поддержки проекта
+    <!-- Сообщение об отсутствии JavaScript -->
+<noscript>
+    <div class="no-script-warning">
+        <i class="fas fa-exclamation-triangle"></i>
+        Для работы сайта требуется JavaScript. Пожалуйста, включите его в настройках браузера.
     </div>
+</noscript>
+
+<!-- Сообщение о блокировщике рекламы -->
+<div id="adblock-warning" class="adblock-warning">
+    <div class="adblock-content">
+        <i class="fas fa-heart"></i>
+        <div>
+            <strong>Поддержите проект!</strong>
+            <p>Реклама помогает нам развивать сайт и добавлять новые AI-инструменты.</p>
+            <div class="adblock-buttons">
+                <button onclick="closeAdblockWarning()" class="adblock-btn adblock-btn-secondary">
+                    Понятно, продолжить
+                </button>
+                <button onclick="whitelistSite()" class="adblock-btn adblock-btn-primary">
+                    <i class="fas fa-check-circle"></i> Добавить в исключения
+                </button>
+            </div>
+        </div>
+        <button onclick="closeAdblockWarning()" class="adblock-close">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+</div>
 
     <!-- Шапка -->
     <header class="header">
@@ -3515,3 +3534,4 @@
     <script data-page-id="18680344" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
 </body>
 </html>
+
