@@ -20,9 +20,9 @@
     <meta property="og:image" content="https://i.imgur.com/VkFcB7X.png">
     <meta property="og:type" content="website">
     
-    <!-- Стили -->
+    <!-- Стили прямо в файле -->
     <style>
-        /* ===== СБРОС СТИЛЕЙ ===== */
+        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
         * {
             margin: 0;
             padding: 0;
@@ -120,50 +120,9 @@
             margin-right: 8px;
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
-        .mobile-menu {
-            display: none;
-            position: fixed;
-            top: 70px;
-            left: 0;
-            right: 0;
-            background: var(--dark);
-            z-index: 1000;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        }
-
-        .mobile-menu-content {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .mobile-menu-content a {
-            color: white;
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.05);
-            transition: all 0.3s;
-        }
-
-        .mobile-menu-content a:hover {
-            background: var(--primary);
-        }
-
-        /* ===== ГЕРОЙ СЕКЦИЯ ===== */
+        /* ===== ГЕРОЙ ===== */
         .hero {
-            padding: 100px 0 60px;
+            padding: 80px 0 60px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -242,7 +201,7 @@
             margin-bottom: 10px;
         }
 
-        /* ===== ПАРТНЕРСКАЯ ПРОГРАММА ===== */
+        /* ===== ПАРТНЕРСКАЯ ПРОГРАММА REG.RU ===== */
         .partnership-section {
             background: rgba(15, 23, 42, 0.9);
             border-radius: 30px;
@@ -388,14 +347,15 @@
             font-size: 1rem;
         }
 
-        .program-button, .card-button, .form-button {
+        .program-button {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 15px;
+            width: 100%;
             background: var(--primary);
             color: white;
-            padding: 18px 35px;
+            padding: 18px;
             border-radius: 15px;
             text-decoration: none;
             font-weight: 600;
@@ -404,16 +364,52 @@
             cursor: pointer;
             transition: all 0.3s;
             margin-top: 20px;
-            width: 100%;
         }
 
-        .program-button:hover, .card-button:hover, .form-button:hover {
+        .program-button:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
         }
 
-        /* ===== РЫНОЧНАЯ СТАТИСТИКА ===== */
+        .why-partner {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+
+        .benefit-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .benefit-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .market-stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -439,7 +435,7 @@
             margin-bottom: 10px;
         }
 
-        /* ===== ПОИСК ===== */
+        /* ===== AI ПОИСКОВАЯ СИСТЕМА ===== */
         .ai-search-engine {
             background: rgba(15, 23, 42, 0.7);
             backdrop-filter: blur(20px);
@@ -539,6 +535,118 @@
             background: rgba(255, 255, 255, 0.08);
             transform: translateY(-5px);
             border-color: var(--primary);
+        }
+
+        /* ===== РАСШИРЕННЫЕ ИНСТРУМЕНТЫ ===== */
+        .advanced-tools {
+            margin: 80px 0;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .tool-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s;
+        }
+
+        .tool-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .tool-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .tool-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .tool-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .tool-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tool-feature {
+            background: rgba(99, 102, 241, 0.1);
+            color: #a5b4fc;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== ИНТЕРАКТИВНЫЕ ВИДЖЕТЫ ===== */
+        .interactive-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .widget {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .widget-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .ai-generator {
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(245, 158, 11, 0.1));
+        }
+
+        .comparison-tool {
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
+        }
+
+        .trending-ai {
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
         }
 
         /* ===== КАРТОЧКИ ИНСТРУМЕНТОВ ===== */
@@ -655,7 +763,49 @@
             font-size: 0.95rem;
         }
 
-        /* ===== СРАВНИТЕЛЬНАЯ ТАБЛИЦА ===== */
+        .card-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            padding: 18px;
+            border-radius: 15px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-button::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .card-button:hover::after {
+            left: 100%;
+        }
+
+        .card-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        /* ===== ИНТЕРАКТИВНЫЕ КОМПОНЕНТЫ ===== */
         .ai-comparison {
             background: rgba(15, 23, 42, 0.8);
             border-radius: 30px;
@@ -694,7 +844,533 @@
             font-size: 1.2rem;
         }
 
-        /* ===== ФУТЕР ===== */
+        /* ===== LIVE ТРЕКЕР ЦЕН ===== */
+        .price-tracker {
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .price-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+        }
+
+        .price-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateX(10px);
+        }
+
+        .price-change {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* ===== СЕТЬ AI-ЭКСПЕРТОВ ===== */
+        .ai-network {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 80px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ai-network::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .network-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .network-stat {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+        }
+
+        .network-stat:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        /* ===== МЕДИА ПЛЕЙЕР ===== */
+        .media-player {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .player-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .player-button:hover {
+            background: var(--primary-dark);
+            transform: scale(1.1);
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: var(--primary);
+            width: 30%;
+        }
+
+        /* ===== КРИПТО ИНТЕГРАЦИЯ ===== */
+        .crypto-section {
+            background: linear-gradient(45deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1));
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .crypto-prices {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .crypto-price {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .crypto-price:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+        }
+
+        /* ===== ФОРМА АНАЛИТИКИ ===== */
+        .analytics-form {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 25px;
+            padding: 50px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 18px 25px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
+        }
+
+        .form-button {
+            background: var(--secondary);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 0 auto;
+        }
+
+        .form-button:hover {
+            background: #0da271;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        /* ===== МОДАЛЬНЫЕ ОКНА ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            padding: 50px;
+            border-radius: 30px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: modalSlide 0.3s ease-out;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 100%;
+                padding: 0 30px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .tools-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .program-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero-stats {
+                gap: 30px;
+            }
+            
+            .hero-stat {
+                min-width: 170px;
+            }
+            
+            .partnership-section {
+                padding: 40px 30px;
+            }
+            
+            .partnership-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            .ai-search-engine {
+                padding: 30px 20px;
+            }
+            
+            .ai-network {
+                padding: 40px 25px;
+            }
+            
+            .modal-content {
+                padding: 30px 20px;
+            }
+            
+            .program-card {
+                padding: 30px 20px;
+            }
+            
+            .market-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-stat {
+                min-width: 140px;
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .tool-card {
+                padding: 25px;
+            }
+            
+            .partnership-header h2 {
+                font-size: 2rem;
+            }
+            
+            .program-title {
+                font-size: 1.5rem;
+            }
+            
+            .market-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== АНИМАЦИИ ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .glow-animation {
+            animation: glow 3s ease-in-out infinite;
+        }
+
+        /* ===== УТИЛИТЫ ===== */
+        .text-gradient {
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .bg-gradient {
+            background: var(--gradient-1);
+        }
+
+        .shadow-deep {
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .shadow-light {
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .hover-lift {
+            transition: transform 0.3s;
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        /* ===== КАСТОМНЫЕ СКРОЛЛБАР ===== */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== СЕКЦИЯ LIVE UPDATES ===== */
+        .live-updates {
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .update-stream {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 30px;
+            padding-right: 15px;
+        }
+
+        .update-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== КАРТА САЙТОВ ===== */
+        .sitemap {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .sitemap-category h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .sitemap-links {
+            list-style: none;
+        }
+
+        .sitemap-links li {
+            margin-bottom: 12px;
+        }
+
+        .sitemap-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sitemap-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* ===== СТИЛИ ДЛЯ ФУТЕРА ===== */
         .footer {
             background: rgba(15, 23, 42, 0.95);
             padding: 60px 0 30px;
@@ -768,218 +1444,6 @@
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
         }
-
-        /* ===== МОДАЛЬНЫЕ ОКНА ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal-content {
-            background: var(--dark);
-            padding: 50px;
-            border-radius: 30px;
-            max-width: 800px;
-            width: 90%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: modalSlide 0.3s ease-out;
-        }
-
-        @keyframes modalSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== УВЕДОМЛЕНИЯ ===== */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            z-index: 10001;
-            display: none;
-            animation: slideInRight 0.3s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 100%;
-                padding: 0 30px;
-            }
-            
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .program-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-stats {
-                gap: 30px;
-            }
-            
-            .hero-stat {
-                min-width: 170px;
-            }
-            
-            .partnership-section {
-                padding: 40px 30px;
-            }
-            
-            .partnership-header h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-                padding: 0 20px;
-            }
-            
-            .cards {
-                grid-template-columns: 1fr;
-                padding: 0 15px;
-            }
-            
-            .ai-search-engine {
-                padding: 30px 20px;
-            }
-            
-            .modal-content {
-                padding: 30px 20px;
-            }
-            
-            .program-card {
-                padding: 30px 20px;
-            }
-            
-            .market-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-stat {
-                min-width: 140px;
-                padding: 20px;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .card {
-                padding: 25px;
-            }
-            
-            .partnership-header h2 {
-                font-size: 2rem;
-            }
-            
-            .program-title {
-                font-size: 1.5rem;
-            }
-            
-            .market-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ===== */
-        .text-gradient {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hover-lift {
-            transition: transform 0.3s;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-10px);
-        }
-
-        .section-subtitle {
-            color: rgba(255, 255, 255, 0.7);
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 1.2rem;
-        }
-
-        /* Кастомный скроллбар */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.8);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 5px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
     </style>
 </head>
 <body>
@@ -1025,7 +1489,7 @@
     </header>
 
     <!-- Мобильное меню -->
-    <div id="mobileMenu" class="mobile-menu">
+    <div id="mobileMenu" class="mobile-menu" style="display: none;">
         <div class="mobile-menu-content">
             <a href="#home" onclick="toggleMobileMenu()">Главная</a>
             <a href="#tools" onclick="toggleMobileMenu()">Инструменты</a>
@@ -1042,7 +1506,7 @@
         <div class="container">
             <!-- Герой-секция -->
             <section id="home" class="hero">
-                <h1 class="hero-title">🚀 AI HUB 2024</h1>
+                <h1 class="float-animation">🚀 AI HUB 2024</h1>
                 <p class="hero-subtitle">
                     Самый мощный каталог искусственного интеллекта с реальными промокодами, 
                     инструментами для разработки и экосистемой для AI-энтузиастов
@@ -1118,7 +1582,7 @@
                             </div>
                         </div>
 
-                        <button class="program-button" onclick="openAgentProgram()">
+                        <button class="program-button" onclick="joinAgentProgram()">
                             <i class="fas fa-play-circle"></i> Подробнее о программе
                         </button>
                     </div>
@@ -1154,12 +1618,12 @@
                             </div>
                         </div>
 
-                        <p class="program-suitable">
+                        <p style="margin-top: 20px; color: rgba(255,255,255,0.7);">
                             <strong>Подходит для:</strong> сервис-провайдеров, хостинг-провайдеров, 
                             телеком-операторов, дата-центров
                         </p>
 
-                        <button class="program-button" onclick="openResellerProgram()">
+                        <button class="program-button" onclick="joinResellerProgram()">
                             <i class="fas fa-file-contract"></i> Оставить заявку
                         </button>
                     </div>
@@ -1186,7 +1650,7 @@
                 </div>
 
                 <!-- Преимущества -->
-                <div class="benefits-section">
+                <div class="why-partner">
                     <h3 class="text-gradient">🎯 Почему выгодно партнёрство с Reg.ru?</h3>
                     <div class="benefits-grid">
                         <div class="benefit-item">
@@ -1219,12 +1683,22 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- CTA кнопки -->
+                <div style="text-align: center; margin-top: 50px;">
+                    <button class="program-button" onclick="joinAgentProgram()" style="margin: 10px; width: auto; padding: 15px 40px;">
+                        <i class="fas fa-user-tie"></i> Подключиться к Агентской программе
+                    </button>
+                    <button class="program-button" onclick="joinResellerProgram()" style="margin: 10px; width: auto; padding: 15px 40px; background: var(--accent);">
+                        <i class="fas fa-store"></i> Оставить заявку на Реселлерскую программу
+                    </button>
+                </div>
             </section>
 
             <!-- AI Поисковая система -->
             <section id="search" class="ai-search-engine">
                 <h2 class="text-gradient">🔍 Умный поиск AI-инструментов</h2>
-                <p class="section-subtitle">Найдите лучшие нейросети по вашим критериям</p>
+                <p>Найдите лучшие нейросети по вашим критериям</p>
                 
                 <div class="search-container">
                     <input type="text" 
@@ -1249,10 +1723,134 @@
                 <div id="search-results" class="search-results"></div>
             </section>
 
+            <!-- Расширенные инструменты -->
+            <section id="tools" class="advanced-tools">
+                <h2 class="text-gradient">🛠️ Расширенные AI-инструменты</h2>
+                <p class="section-subtitle">Профессиональные инструменты для работы с нейросетями</p>
+                
+                <div class="tools-grid">
+                    <!-- AI Генератор контента -->
+                    <div class="tool-card hover-lift">
+                        <div class="tool-badge">НОВИНКА</div>
+                        <div class="tool-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="tool-title">AI Content Generator</h3>
+                        <p class="tool-desc">
+                            Генерация текстов, статей, постов для соцсетей с помощью нескольких нейросетей одновременно
+                        </p>
+                        <div class="tool-features">
+                            <span class="tool-feature">Мульти-модель</span>
+                            <span class="tool-feature">SEO оптимизация</span>
+                            <span class="tool-feature">Плагиата нет</span>
+                        </div>
+                        <button class="card-button" onclick="openContentGenerator()">
+                            <i class="fas fa-magic"></i> Сгенерировать контент
+                        </button>
+                    </div>
+
+                    <!-- Компаратор AI моделей -->
+                    <div class="tool-card hover-lift">
+                        <div class="tool-badge">ПОПУЛЯРНО</div>
+                        <div class="tool-icon">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 class="tool-title">AI Model Comparator</h3>
+                        <p class="tool-desc">
+                            Сравнивайте разные нейросети по скорости, качеству, цене и поддержке русского языка
+                        </p>
+                        <div class="tool-features">
+                            <span class="tool-feature">Реальное тестирование</span>
+                            <span class="tool-feature">Графики</span>
+                            <span class="tool-feature">Отзывы</span>
+                        </div>
+                        <button class="card-button" onclick="openModelComparator()">
+                            <i class="fas fa-chart-bar"></i> Сравнить модели
+                        </button>
+                    </div>
+
+                    <!-- AI Аналитика трендов -->
+                    <div class="tool-card hover-lift">
+                        <div class="tool-badge">АНАЛИТИКА</div>
+                        <div class="tool-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="tool-title">AI Trend Analyzer</h3>
+                        <p class="tool-desc">
+                            Анализ трендов в мире искусственного интеллекта. Что будет популярно завтра?
+                        </p>
+                        <div class="tool-features">
+                            <span class="tool-feature">Прогнозы</span>
+                            <span class="tool-feature">Анализ рынка</span>
+                            <span class="tool-feature">Инвестиции</span>
+                        </div>
+                        <button class="card-button" onclick="openTrendAnalyzer()">
+                            <i class="fas fa-crystal-ball"></i> Анализировать тренды
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Интерактивные виджеты -->
+            <section class="interactive-widgets">
+                <!-- AI Генератор -->
+                <div class="widget ai-generator">
+                    <div class="widget-title">
+                        <i class="fas fa-bolt"></i>
+                        <h3>Быстрый генератор</h3>
+                    </div>
+                    <div class="generator-controls">
+                        <input type="text" 
+                               class="form-input" 
+                               placeholder="Опишите что нужно сгенерировать..."
+                               id="quick-generator-input">
+                        <button class="form-button" onclick="quickGenerate()">
+                            <i class="fas fa-play"></i> Генерировать
+                        </button>
+                    </div>
+                    <div id="quick-generator-output" class="generator-output"></div>
+                </div>
+
+                <!-- Сравнительный инструмент -->
+                <div class="widget comparison-tool">
+                    <div class="widget-title">
+                        <i class="fas fa-exchange-alt"></i>
+                        <h3>Сравнение моделей</h3>
+                    </div>
+                    <div class="comparison-controls">
+                        <select class="form-input" id="model1-select">
+                            <option>ChatGPT 4</option>
+                            <option>GPT-4o</option>
+                            <option>Claude 3</option>
+                            <option>Gemini Pro</option>
+                        </select>
+                        <select class="form-input" id="model2-select">
+                            <option>Яндекс GPT</option>
+                            <option>GigaChat</option>
+                            <option>Kandinsky 3.0</option>
+                            <option>Midjourney</option>
+                        </select>
+                        <button class="form-button" onclick="compareModels()">
+                            <i class="fas fa-balance-scale"></i> Сравнить
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Trending AI -->
+                <div class="widget trending-ai">
+                    <div class="widget-title">
+                        <i class="fas fa-fire"></i>
+                        <h3>Популярное сейчас</h3>
+                    </div>
+                    <div id="trending-list" class="trending-list">
+                        <!-- Динамически заполняется -->
+                    </div>
+                </div>
+            </section>
+
             <!-- Карточки инструментов -->
-            <section id="tools" class="tools-section">
+            <section class="catalog">
                 <h2 class="text-gradient">🔥 Топ AI инструменты 2024</h2>
-                <p class="section-subtitle">Лучшие нейросети с проверенными промокодами</p>
                 
                 <div class="cards">
                     <!-- Яндекс GPT -->
@@ -1285,7 +1883,7 @@
                         </button>
                     </div>
 
-                    <!-- Kandinsky -->
+                    <!-- Midjourney Альтернатива -->
                     <div class="card hover-lift">
                         <div class="card-header">
                             <div class="card-icon">
@@ -1315,7 +1913,7 @@
                         </button>
                     </div>
 
-                    <!-- GigaChat -->
+                    <!-- GigaChat Pro -->
                     <div class="card hover-lift">
                         <div class="card-header">
                             <div class="card-icon">
@@ -1350,8 +1948,6 @@
             <!-- Сравнение AI моделей -->
             <section class="ai-comparison">
                 <h2 class="text-gradient">📊 Сравнение нейросетей</h2>
-                <p class="section-subtitle">Объективное сравнение по ключевым параметрам</p>
-                
                 <table class="comparison-table">
                     <thead>
                         <tr>
@@ -1400,12 +1996,86 @@
                 </table>
             </section>
 
-            <!-- Форма аналитики -->
-            <section id="analytics" class="analytics-section">
-                <h2 class="text-gradient">📈 Персональная AI аналитика</h2>
-                <p class="section-subtitle">Получите индивидуальные рекомендации по AI инструментам</p>
+            <!-- Live трекер цен -->
+            <section class="price-tracker">
+                <h2 class="text-gradient">💎 Live трекер цен на AI</h2>
+                <p>Актуальные цены и скидки на нейросети в реальном времени</p>
                 
-                <form id="analytics-form">
+                <div id="price-tracker" class="price-tracker-list">
+                    <!-- Динамически обновляется -->
+                </div>
+            </section>
+
+            <!-- Сеть AI-экспертов -->
+            <section id="network" class="ai-network">
+                <h2 class="text-gradient">🤝 Сеть AI-экспертов</h2>
+                <p>Присоединяйтесь к крупнейшему сообществу AI-специалистов в СНГ</p>
+                
+                <div class="network-stats">
+                    <div class="network-stat">
+                        <h3>5,000+</h3>
+                        <p>Экспертов в сети</p>
+                    </div>
+                    <div class="network-stat">
+                        <h3>1,200+</h3>
+                        <p>Проектов создано</p>
+                    </div>
+                    <div class="network-stat">
+                        <h3>$2M+</h3>
+                        <p>Инвестиций привлечено</p>
+                    </div>
+                    <div class="network-stat">
+                        <h3>100+</h3>
+                        <p>Партнёров</p>
+                    </div>
+                </div>
+                
+                <button class="form-button" onclick="joinNetwork()">
+                    <i class="fas fa-user-plus"></i> Присоединиться к сети
+                </button>
+            </section>
+
+            <!-- Live Updates -->
+            <section class="live-updates">
+                <h2 class="text-gradient">📢 Live обновления</h2>
+                <p>Последние новости и обновления в мире AI</p>
+                
+                <div id="update-stream" class="update-stream">
+                    <!-- Обновления добавляются динамически -->
+                </div>
+            </section>
+
+            <!-- Крипто интеграция -->
+            <section class="crypto-section">
+                <h2 class="text-gradient">₿ AI & Крипто</h2>
+                <p>Интеграция с криптовалютами и Web3</p>
+                
+                <div class="crypto-prices">
+                    <div class="crypto-price">
+                        <h4>AI Token</h4>
+                        <p>$2.34 <span style="color: #10b981;">+5.2%</span></p>
+                    </div>
+                    <div class="crypto-price">
+                        <h4>Neural Coin</h4>
+                        <p>$1.89 <span style="color: #10b981;">+3.7%</span></p>
+                    </div>
+                    <div class="crypto-price">
+                        <h4>GPT Token</h4>
+                        <p>$5.67 <span style="color: #ef4444;">-2.1%</span></p>
+                    </div>
+                </div>
+                
+                <button class="form-button" onclick="openCryptoExchange()">
+                    <i class="fas fa-exchange-alt"></i> Купить AI токены
+                </button>
+            </section>
+
+            <!-- Форма аналитики -->
+            <section id="analytics" class="analytics-form">
+                <h2 class="text-gradient">📈 Персональная AI аналитика</h2>
+                <p>Получите индивидуальные рекомендации по AI инструментам</p>
+                
+                <form id="analytics-form" onsubmit="return submitAnalytics()">
                     <div class="form-grid">
                         <input type="text" 
                                class="form-input" 
@@ -1434,6 +2104,54 @@
                         <i class="fas fa-chart-line"></i> Получить аналитику
                     </button>
                 </form>
+            </section>
+
+            <!-- Карта сайтов -->
+            <section class="sitemap">
+                <h2 class="text-gradient">🗺️ Карта AI ресурсов</h2>
+                <p>Все полезные сайты и ресурсы в одном месте</p>
+                
+                <div class="sitemap-grid">
+                    <div class="sitemap-category">
+                        <h4>🌐 Поисковые системы</h4>
+                        <ul class="sitemap-links">
+                            <li><a href="https://perplexity.ai" target="_blank">Perplexity AI</a></li>
+                            <li><a href="https://you.com" target="_blank">You.com</a></li>
+                            <li><a href="https://phind.com" target="_blank">Phind</a></li>
+                            <li><a href="https://consensus.app" target="_blank">Consensus</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sitemap-category">
+                        <h4>💼 Бизнес AI</h4>
+                        <ul class="sitemap-links">
+                            <li><a href="https://jasper.ai" target="_blank">Jasper</a></li>
+                            <li><a href="https://copy.ai" target="_blank">Copy.ai</a></li>
+                            <li><a href="https://writesonic.com" target="_blank">Writesonic</a></li>
+                            <li><a href="https://rytr.me" target="_blank">Rytr</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sitemap-category">
+                        <h4>🎨 Дизайн и Арт</h4>
+                        <ul class="sitemap-links">
+                            <li><a href="https://midjourney.com" target="_blank">Midjourney</a></li>
+                            <li><a href="https://leonardo.ai" target="_blank">Leonardo.ai</a></li>
+                            <li><a href="https://stability.ai" target="_blank">Stability AI</a></li>
+                            <li><a href="https://runwayml.com" target="_blank">Runway ML</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sitemap-category">
+                        <h4>💻 Программирование</h4>
+                        <ul class="sitemap-links">
+                            <li><a href="https://github.com/copilot" target="_blank">GitHub Copilot</a></li>
+                            <li><a href="https://replit.com" target="_blank">Replit</a></li>
+                            <li><a href="https://cursor.sh" target="_blank">Cursor</a></li>
+                            <li><a href="https://tabnine.com" target="_blank">Tabnine</a></li>
+                        </ul>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
@@ -1468,7 +2186,19 @@
                         <li><a href="#tools"><i class="fas fa-tools"></i> Инструменты</a></li>
                         <li><a href="#search"><i class="fas fa-search"></i> Поиск AI</a></li>
                         <li><a href="#partnership"><i class="fas fa-handshake"></i> Партнёрство</a></li>
+                        <li><a href="#network"><i class="fas fa-users"></i> Сеть</a></li>
                         <li><a href="#analytics"><i class="fas fa-chart-line"></i> Аналитика</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h5>Ресурсы</h5>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-book"></i> Документация</a></li>
+                        <li><a href="#"><i class="fas fa-video"></i> Видеоуроки</a></li>
+                        <li><a href="#"><i class="fas fa-file-code"></i> API</a></li>
+                        <li><a href="#"><i class="fas fa-graduation-cap"></i> Курсы</a></li>
+                        <li><a href="#"><i class="fas fa-blog"></i> Блог</a></li>
                     </ul>
                 </div>
                 
@@ -1476,8 +2206,10 @@
                     <h5>Партнёрам</h5>
                     <ul class="footer-links">
                         <li><a href="#partnership"><i class="fas fa-handshake"></i> Партнёрство с Reg.ru</a></li>
-                        <li><a href="#" onclick="showStatistics()"><i class="fas fa-chart-bar"></i> Статистика</a></li>
-                        <li><a href="#" onclick="showPayouts()"><i class="fas fa-wallet"></i> Выплаты</a></li>
+                        <li><a href="#"><i class="fas fa-chart-bar"></i> Статистика</a></li>
+                        <li><a href="#"><i class="fas fa-wallet"></i> Выплаты</a></li>
+                        <li><a href="#"><i class="fas fa-toolbox"></i> Ресурсы</a></li>
+                        <li><a href="#"><i class="fas fa-headset"></i> Поддержка</a></li>
                     </ul>
                 </div>
             </div>
@@ -1485,118 +2217,135 @@
             <div class="footer-bottom">
                 <p>© 2024 AI HUB. Все права защищены. Все инструменты проверены на работу в России.</p>
                 <p>
-                    <a href="#" onclick="showPrivacyPolicy()">Политика конфиденциальности</a> | 
-                    <a href="#" onclick="showTerms()">Условия использования</a>
+                    <a href="#" style="color: rgba(255,255,255,0.5); margin: 0 10px;">Политика конфиденциальности</a> | 
+                    <a href="#" style="color: rgba(255,255,255,0.5); margin: 0 10px;">Условия использования</a> | 
+                    <a href="#" style="color: rgba(255,255,255,0.5); margin: 0 10px;">Cookie</a>
                 </p>
             </div>
         </div>
     </footer>
 
     <!-- Модальные окна -->
+    <div id="contentGeneratorModal" class="modal">
+        <div class="modal-content">
+            <h2>🎨 AI Генератор контента</h2>
+            <p>Создавайте контент с помощью нескольких нейросетей одновременно</p>
+            <!-- Содержимое генератора -->
+            <button onclick="closeModal('contentGeneratorModal')">Закрыть</button>
+        </div>
+    </div>
+
+    <div id="comparatorModal" class="modal">
+        <div class="modal-content">
+            <h2>⚖️ Сравнение AI моделей</h2>
+            <p>Сравнивайте нейросети по разным параметрам</p>
+            <!-- Содержимое компаратора -->
+            <button onclick="closeModal('comparatorModal')">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно партнерской программы -->
     <div id="partnershipModal" class="modal">
         <div class="modal-content">
-            <button class="modal-close" onclick="closeModal()">×</button>
             <h2>🤝 Партнёрская программа Reg.ru</h2>
-            <div class="modal-grid">
-                <div class="modal-card">
-                    <h3>🎯 Агентская программа</h3>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                <div>
+                    <h3>Агентская программа</h3>
                     <p><strong>15%</strong> с облачных услуг</p>
                     <p><strong>10%</strong> с выделенных серверов</p>
-                    <button class="program-button" onclick="openAgentProgram()">
-                        <i class="fas fa-external-link-alt"></i> Перейти на сайт
+                    <button class="program-button" onclick="window.open('https://www.reg.ru/partners/', '_blank')">
+                        Присоединиться
                     </button>
                 </div>
-                <div class="modal-card">
-                    <h3>🏢 Реселлерская программа</h3>
+                <div>
+                    <h3>Реселлерская программа</h3>
                     <p>Индивидуальные условия</p>
                     <p>White Label решение</p>
-                    <button class="program-button" onclick="openResellerProgram()">
-                        <i class="fas fa-file-contract"></i> Оставить заявку
+                    <button class="program-button" onclick="window.open('https://www.reg.ru/partners/resellers/', '_blank')">
+                        Оставить заявку
                     </button>
                 </div>
             </div>
+            <button onclick="closeModal('partnershipModal')" style="margin-top: 20px;">Закрыть</button>
         </div>
     </div>
 
     <!-- Уведомления -->
-    <div id="notification" class="notification"></div>
+    <div id="notification" class="notification" style="display: none;"></div>
 
     <!-- JavaScript -->
     <script>
-        // Инициализация при загрузке
+        // Конфигурация
+        const CONFIG = {
+            telegramBotToken: '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys',
+            telegramChatId: '2048092522',
+            apiEndpoints: {
+                search: 'https://api.ai-hub.com/search',
+                analytics: 'https://api.ai-hub.com/analytics',
+                trends: 'https://api.ai-hub.com/trends'
+            }
+        };
+
+        // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            initNavigation();
-            initSearch();
-            initForms();
+            initSearchEngine();
+            initPriceTracker();
+            initLiveUpdates();
+            initTrendingList();
+            initAnalyticsForm();
             initTheme();
-            initModals();
-            initSmoothScroll();
+            initNotifications();
+            initAIWidgets();
+            initPartnership();
         });
 
-        // Навигация
-        function initNavigation() {
-            // Плавная прокрутка
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
+        // Партнерская программа
+        function initPartnership() {
+            window.joinPartnership = function() {
+                showModal('partnershipModal', `
+                    <h2>🤝 Партнёрская программа Reg.ru</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
+                        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+                            <h3>🎯 Агентская программа</h3>
+                            <p style="margin: 15px 0;"><strong style="font-size: 2rem; color: #10b981;">15%</strong> с облачных услуг</p>
+                            <p style="margin: 15px 0;"><strong style="font-size: 2rem; color: #10b981;">10%</strong> с выделенных серверов</p>
+                            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Идеально для разработчиков и IT-аутсорсеров</p>
+                            <button class="program-button" onclick="window.open('https://www.reg.ru/partners/', '_blank')">
+                                <i class="fas fa-external-link-alt"></i> Перейти на сайт Reg.ru
+                            </button>
+                        </div>
+                        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+                            <h3>🏢 Реселлерская программа</h3>
+                            <p style="margin: 15px 0;"><strong style="font-size: 1.5rem; color: #f59e0b;">Индивидуальные условия</strong></p>
+                            <p style="margin: 15px 0;"><strong style="font-size: 1.5rem; color: #f59e0b;">White Label решение</strong></p>
+                            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Для хостинг-провайдеров и дата-центров</p>
+                            <button class="program-button" onclick="window.open('https://www.reg.ru/partners/resellers/', '_blank')">
+                                <i class="fas fa-file-contract"></i> Оставить заявку
+                            </button>
+                        </div>
+                    </div>
+                    <div style="margin-top: 30px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
+                        <h4>📞 Контактная информация</h4>
+                        <p>Телефон: 8 800 333-92-23 (бесплатно по России)</p>
+                        <p>Email: partners@reg.ru</p>
+                        <p>Сайт: <a href="https://www.reg.ru/partners/" target="_blank" style="color: #a5b4fc;">www.reg.ru/partners/</a></p>
+                    </div>
+                `);
+            };
 
-            // Активная навигация при скролле
-            window.addEventListener('scroll', function() {
-                const sections = document.querySelectorAll('section[id]');
-                const navLinks = document.querySelectorAll('.nav-link');
-                
-                let current = '';
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    if (scrollY >= (sectionTop - 100)) {
-                        current = section.getAttribute('id');
-                    }
-                });
+            window.joinAgentProgram = function() {
+                window.open('https://www.reg.ru/partners/', '_blank');
+                sendToTelegram('Переход на агентскую программу Reg.ru');
+            };
 
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${current}`) {
-                        link.classList.add('active');
-                    }
-                });
-            });
+            window.joinResellerProgram = function() {
+                window.open('https://www.reg.ru/partners/resellers/', '_blank');
+                sendToTelegram('Переход на реселлерскую программу Reg.ru');
+            };
         }
 
-        // Мобильное меню
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        }
-
-        // Тема
-        function initTheme() {
-            const savedTheme = localStorage.getItem('ai-theme') || 'dark';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        }
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('ai-theme', newTheme);
-            showNotification(`Тема изменена на ${newTheme === 'dark' ? 'тёмную' : 'светлую'}`);
-        }
-
-        // Поиск
-        function initSearch() {
+        // AI Поисковая система
+        function initSearchEngine() {
             const searchInput = document.getElementById('ai-search-input');
             const searchResults = document.getElementById('search-results');
             
@@ -1628,15 +2377,26 @@
                     tags: ['текст', 'программирование', 'анализ', 'английский'],
                     rating: 4.8,
                     url: 'https://chat.openai.com'
+                },
+                {
+                    name: 'Runway ML',
+                    description: 'Создание и редактирование видео с AI',
+                    tags: ['видео', 'анимация', 'редактирование', 'английский'],
+                    rating: 4.7,
+                    url: 'https://runwayml.com'
+                },
+                {
+                    name: 'Suno AI',
+                    description: 'Создание музыки с помощью нейросетей',
+                    tags: ['музыка', 'аудио', 'творчество', 'английский'],
+                    rating: 4.6,
+                    url: 'https://suno.ai'
                 }
             ];
 
             searchInput.addEventListener('input', function() {
-                const query = this.value.toLowerCase().trim();
-                if (query.length < 2) {
-                    searchResults.innerHTML = '';
-                    return;
-                }
+                const query = this.value.toLowerCase();
+                if (query.length < 2) return;
                 
                 const results = aiTools.filter(tool => 
                     tool.name.toLowerCase().includes(query) ||
@@ -1649,16 +2409,16 @@
 
             function displaySearchResults(results) {
                 if (results.length === 0) {
-                    searchResults.innerHTML = '<p class="no-results">Ничего не найдено. Попробуйте другой запрос.</p>';
+                    searchResults.innerHTML = '<p>Ничего не найдено. Попробуйте другой запрос.</p>';
                     return;
                 }
 
                 searchResults.innerHTML = results.map(tool => `
                     <div class="search-result" onclick="openTool('${tool.url}')">
-                        <h4>${tool.name} <span class="rating">${tool.rating}★</span></h4>
+                        <h4>${tool.name} <span style="color: #f59e0b;">${tool.rating}★</span></h4>
                         <p>${tool.description}</p>
-                        <div class="tags">
-                            ${tool.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                        <div style="display: flex; gap: 8px; margin-top: 10px;">
+                            ${tool.tags.map(tag => `<span style="background: rgba(99,102,241,0.1); color: #a5b4fc; padding: 4px 10px; border-radius: 12px; font-size: 0.85rem;">${tag}</span>`).join('')}
                         </div>
                     </div>
                 `).join('');
@@ -1668,7 +2428,6 @@
         function searchByTag(tag) {
             const searchInput = document.getElementById('ai-search-input');
             searchInput.value = tag;
-            searchInput.focus();
             searchInput.dispatchEvent(new Event('input'));
         }
 
@@ -1677,125 +2436,229 @@
             searchInput.dispatchEvent(new Event('input'));
         }
 
-        // Формы
-        function initForms() {
-            const analyticsForm = document.getElementById('analytics-form');
-            if (analyticsForm) {
-                analyticsForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const formData = new FormData(this);
-                    const data = Object.fromEntries(formData);
-                    
-                    showNotification('🔍 Анализируем ваши потребности...');
-                    
-                    setTimeout(() => {
-                        const report = `
-                            <h3>📊 Ваш персональный AI отчёт</h3>
-                            <p><strong>Сфера:</strong> ${data[0]}</p>
-                            <p><strong>Бюджет:</strong> $${data[1]}/мес</p>
-                            <p><strong>Цель:</strong> ${data[2]}</p>
-                            <p><strong>Email:</strong> ${data[3]}</p>
-                            <p class="success">Отчёт отправлен на вашу почту!</p>
-                        `;
-                        
-                        showModal('analyticsReport', report);
-                    }, 1500);
-                });
-            }
-        }
+        // Трекер цен
+        function initPriceTracker() {
+            const prices = [
+                { name: 'ChatGPT Plus', price: 20, change: 0 },
+                { name: 'Midjourney Basic', price: 10, change: 0 },
+                { name: 'Claude Pro', price: 20, change: 0 },
+                { name: 'GitHub Copilot', price: 10, change: 0 },
+                { name: 'Jasper AI', price: 49, change: 0 }
+            ];
 
-        // Модальные окна
-        function initModals() {
-            // Закрытие по клику вне окна
-            document.addEventListener('click', function(e) {
-                if (e.target.classList.contains('modal')) {
-                    closeModal();
-                }
-            });
-
-            // Закрытие по Escape
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape') {
-                    closeModal();
-                }
-            });
-        }
-
-        function showModal(modalId, content) {
-            let modal = document.getElementById(modalId);
-            if (!modal) {
-                modal = document.createElement('div');
-                modal.id = modalId;
-                modal.className = 'modal';
-                modal.innerHTML = `
-                    <div class="modal-content">
-                        <button class="modal-close" onclick="closeModal()">×</button>
-                        ${content}
-                    </div>
-                `;
-                document.body.appendChild(modal);
-            }
-            modal.style.display = 'flex';
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal() {
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.style.display = 'none';
-            });
-            document.body.style.overflow = 'auto';
-        }
-
-        // Уведомления
-        function showNotification(message, type = 'info') {
-            const notification = document.getElementById('notification');
-            notification.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.style.display = 'block';
+            const tracker = document.getElementById('price-tracker');
             
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
+            function updatePrices() {
+                prices.forEach(item => {
+                    const change = (Math.random() - 0.5) * 4;
+                    item.change = parseFloat(change.toFixed(2));
+                    item.price = Math.max(1, item.price + change / 10);
+                });
+
+                tracker.innerHTML = prices.map(item => `
+                    <div class="price-item">
+                        <div>
+                            <strong>${item.name}</strong>
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                                Обновлено: ${new Date().toLocaleTimeString('ru-RU')}
+                            </div>
+                        </div>
+                        <div style="text-align: right;">
+                            <div style="font-size: 1.5rem; font-weight: bold;">$${item.price.toFixed(2)}</div>
+                            <div style="color: ${item.change >= 0 ? '#10b981' : '#ef4444'};">
+                                ${item.change >= 0 ? '+' : ''}${item.change.toFixed(2)}%
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            updatePrices();
+            setInterval(updatePrices, 5000);
         }
 
-        // Партнерские программы
-        function joinPartnership() {
-            showModal('partnershipModal', `
-                <h2>🤝 Партнёрская программа Reg.ru</h2>
-                <div class="modal-grid">
-                    <div class="modal-card">
-                        <h3>🎯 Агентская программа</h3>
-                        <p><strong>15%</strong> с облачных услуг</p>
-                        <p><strong>10%</strong> с выделенных серверов</p>
-                        <button class="program-button" onclick="openAgentProgram()">
-                            <i class="fas fa-external-link-alt"></i> Перейти на сайт
-                        </button>
+        // Live обновления
+        function initLiveUpdates() {
+            const updates = [
+                "🚀 Вышла новая версия Яндекс GPT с улучшенной поддержкой русского языка",
+                "🎨 Kandinsky 3.5: в 2 раза быстрее и качественнее",
+                "💎 Новый промокод: AIHUB2024 - 20% скидка на все инструменты",
+                "📈 ИИ-токен AI Token вырос на 15% за сутки",
+                "🤝 Сбер запускает GigaChat для малого бизнеса",
+                "🔧 Новый инструмент: AI Content Generator доступен в бета-версии"
+            ];
+
+            const updateStream = document.getElementById('update-stream');
+            
+            function addUpdate() {
+                const update = updates[Math.floor(Math.random() * updates.length)];
+                const updateItem = document.createElement('div');
+                updateItem.className = 'update-item';
+                updateItem.innerHTML = `
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 5px;">
+                        <div style="width: 8px; height: 8px; background: #10b981; border-radius: 50%;"></div>
+                        <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
+                            ${new Date().toLocaleTimeString('ru-RU')}
+                        </div>
                     </div>
-                    <div class="modal-card">
-                        <h3>🏢 Реселлерская программа</h3>
-                        <p>Индивидуальные условия</p>
-                        <p>White Label решение</p>
-                        <button class="program-button" onclick="openResellerProgram()">
-                            <i class="fas fa-file-contract"></i> Оставить заявку
-                        </button>
+                    <div>${update}</div>
+                `;
+                
+                updateStream.insertBefore(updateItem, updateStream.firstChild);
+                
+                if (updateStream.children.length > 10) {
+                    updateStream.removeChild(updateStream.lastChild);
+                }
+            }
+
+            addUpdate();
+            setInterval(addUpdate, 30000);
+        }
+
+        // Trending список
+        function initTrendingList() {
+            const trending = [
+                { name: 'Sora AI', category: 'Видео', trend: '🔥' },
+                { name: 'Claude 3.5', category: 'Текст', trend: '📈' },
+                { name: 'Groq LPU', category: 'Аппаратное', trend: '⚡' },
+                { name: 'Kimi Chat', category: 'Китайский AI', trend: '🌏' },
+                { name: 'Stable Audio', category: 'Музыка', trend: '🎵' }
+            ];
+
+            const trendingList = document.getElementById('trending-list');
+            trendingList.innerHTML = trending.map(item => `
+                <div style="padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 10px;">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <strong>${item.name}</strong>
+                            <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">${item.category}</div>
+                        </div>
+                        <span style="font-size: 1.2rem;">${item.trend}</span>
                     </div>
                 </div>
-            `);
+            `).join('');
         }
 
-        function openAgentProgram() {
-            window.open('https://www.reg.ru/partners/', '_blank');
-            showNotification('Открыта страница агентской программы Reg.ru');
+        // Форма аналитики
+        function initAnalyticsForm() {
+            const form = document.getElementById('analytics-form');
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                
+                showNotification('🔍 Анализируем ваши потребности...', 'info');
+                
+                setTimeout(() => {
+                    const recommendations = [
+                        'Яндекс GPT для работы с русским текстом',
+                        'Kandinsky 3.0 для создания изображений',
+                        'GitHub Copilot для программирования',
+                        'Runway ML для работы с видео'
+                    ];
+                    
+                    const report = `
+                        <h3>📊 Ваш персональный AI отчёт</h3>
+                        <p><strong>Сфера:</strong> ${data[0]}</p>
+                        <p><strong>Бюджет:</strong> $${data[1]}/мес</p>
+                        <p><strong>Цель:</strong> ${data[2]}</p>
+                        <h4>🎯 Рекомендуемые инструменты:</h4>
+                        <ul>
+                            ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
+                        </ul>
+                        <p>📧 Отчёт отправлен на: ${data[3]}</p>
+                    `;
+                    
+                    showModal('analyticsReport', report);
+                    sendToTelegram(`Новая аналитика: ${JSON.stringify(data)}`);
+                }, 2000);
+            });
         }
 
-        function openResellerProgram() {
-            window.open('https://www.reg.ru/partners/resellers/', '_blank');
-            showNotification('Открыта страница реселлерской программы Reg.ru');
+        // AI Виджеты
+        function initAIWidgets() {
+            window.quickGenerate = function() {
+                const input = document.getElementById('quick-generator-input');
+                const output = document.getElementById('quick-generator-output');
+                
+                if (!input.value.trim()) {
+                    showNotification('Введите описание для генерации', 'warning');
+                    return;
+                }
+                
+                const prompts = {
+                    'текст': 'Вот сгенерированный текст по вашей теме...',
+                    'изображение': 'Изображение будет сгенерировано в Kandinsky 3.0...',
+                    'код': 'Вот пример кода на Python...',
+                    'идея': 'Вот несколько идей для вашего проекта...'
+                };
+                
+                output.innerHTML = `
+                    <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                        <div style="color: #10b981; margin-bottom: 10px;">
+                            <i class="fas fa-check-circle"></i> Генерация завершена
+                        </div>
+                        <p>${prompts[input.value.toLowerCase().includes('код') ? 'код' : 
+                                   input.value.toLowerCase().includes('картин') ? 'изображение' : 
+                                   input.value.toLowerCase().includes('иде') ? 'идея' : 'текст']}</p>
+                    </div>
+                `;
+            };
         }
 
-        // Открытие инструментов
-        function openTool(toolName) {
+        // Сравнение моделей
+        window.compareModels = function() {
+            const model1 = document.getElementById('model1-select').value;
+            const model2 = document.getElementById('model2-select').value;
+            
+            const comparisonData = {
+                'ChatGPT 4': { speed: 85, quality: 95, price: 20, support: 90 },
+                'GPT-4o': { speed: 90, quality: 96, price: 20, support: 92 },
+                'Claude 3': { speed: 80, quality: 94, price: 20, support: 88 },
+                'Gemini Pro': { speed: 88, quality: 93, price: 0, support: 85 },
+                'Яндекс GPT': { speed: 92, quality: 89, price: 0, support: 98 },
+                'GigaChat': { speed: 90, quality: 88, price: 99, support: 95 },
+                'Kandinsky 3.0': { speed: 95, quality: 92, price: 49, support: 96 },
+                'Midjourney': { speed: 70, quality: 98, price: 10, support: 80 }
+            };
+            
+            const result = `
+                <h3>⚖️ Сравнение: ${model1} vs ${model2}</h3>
+                <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+                    <tr>
+                        <th style="padding: 10px; text-align: left;">Параметр</th>
+                        <th style="padding: 10px; text-align: left;">${model1}</th>
+                        <th style="padding: 10px; text-align: left;">${model2}</th>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Скорость</td>
+                        <td style="padding: 10px;">${comparisonData[model1]?.speed || 0}/100</td>
+                        <td style="padding: 10px;">${comparisonData[model2]?.speed || 0}/100</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Качество</td>
+                        <td style="padding: 10px;">${comparisonData[model1]?.quality || 0}/100</td>
+                        <td style="padding: 10px;">${comparisonData[model2]?.quality || 0}/100</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Цена ($/мес)</td>
+                        <td style="padding: 10px;">${comparisonData[model1]?.price || 0}</td>
+                        <td style="padding: 10px;">${comparisonData[model2]?.price || 0}</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;">Поддержка</td>
+                        <td style="padding: 10px;">${comparisonData[model1]?.support || 0}/100</td>
+                        <td style="padding: 10px;">${comparisonData[model2]?.support || 0}/100</td>
+                    </tr>
+                </table>
+            `;
+            
+            showModal('comparisonResult', result);
+        };
+
+        // Работа с инструментами
+        window.openTool = function(toolName) {
             const urls = {
                 'yandex-gpt': 'https://360.yandex.ru/gpt',
                 'kandinsky': 'https://fusionbrain.ai',
@@ -1806,301 +2669,200 @@
             
             if (urls[toolName]) {
                 window.open(urls[toolName], '_blank');
-                showNotification(`Открыт ${toolName}`);
+            } else if (toolName.startsWith('http')) {
+                window.open(toolName, '_blank');
+            } else {
+                showNotification('Инструмент не найден', 'error');
             }
+        };
+
+        // Уведомления
+        function initNotifications() {
+            window.showNotification = function(message, type = 'info') {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.style.display = 'block';
+                notification.style.background = type === 'error' ? '#ef4444' :
+                                              type === 'success' ? '#10b981' :
+                                              type === 'warning' ? '#f59e0b' : '#6366f1';
+                
+                setTimeout(() => {
+                    notification.style.display = 'none';
+                }, 3000);
+            };
         }
 
-        // Плавная прокрутка
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href === '#') return;
-                    
-                    const target = document.querySelector(href);
-                    if (target) {
-                        e.preventDefault();
-                        window.scrollTo({
-                            top: target.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Закрыть мобильное меню если открыто
-                        const mobileMenu = document.getElementById('mobileMenu');
-                        if (mobileMenu.style.display === 'block') {
-                            mobileMenu.style.display = 'none';
-                        }
-                    }
-                });
-            });
+        // Модальные окна
+        window.showModal = function(modalId, content) {
+            let modal = document.getElementById(modalId);
+            if (!modal) {
+                modal = document.createElement('div');
+                modal.id = modalId;
+                modal.className = 'modal';
+                modal.innerHTML = `
+                    <div class="modal-content">
+                        <button onclick="closeModal('${modalId}')" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
+                        ${content}
+                    </div>
+                `;
+                document.body.appendChild(modal);
+            }
+            modal.style.display = 'flex';
+        };
+
+        window.closeModal = function(modalId) {
+            const modal = document.getElementById(modalId);
+            if (modal) modal.style.display = 'none';
+        };
+
+        // Темная/светлая тема
+        function initTheme() {
+            const savedTheme = localStorage.getItem('ai-theme') || 'dark';
+            document.body.setAttribute('data-theme', savedTheme);
+            
+            window.toggleTheme = function() {
+                const currentTheme = document.body.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                document.body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('ai-theme', newTheme);
+                showNotification(`Тема изменена на ${newTheme === 'dark' ? 'тёмную' : 'светлую'}`, 'info');
+            };
         }
+
+        // Мобильное меню
+        window.toggleMobileMenu = function() {
+            const menu = document.getElementById('mobileMenu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        };
+
+        // Отправка в Telegram
+        function sendToTelegram(message) {
+            if (!CONFIG.telegramBotToken || !CONFIG.telegramChatId) return;
+            
+            fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    chat_id: CONFIG.telegramChatId,
+                    text: `AI HUB: ${message}`,
+                    parse_mode: 'HTML'
+                })
+            }).catch(console.error);
+        }
+
+        // Сеть
+        window.joinNetwork = function() {
+            showModal('joinNetwork', `
+                <h2>🤝 Присоединиться к AI Сети</h2>
+                <p>Заполните форму, чтобы стать частью сообщества AI-экспертов:</p>
+                <form id="networkForm" style="margin-top: 20px;">
+                    <input type="text" placeholder="Ваше имя" class="form-input" style="margin-bottom: 15px;" required>
+                    <input type="email" placeholder="Email" class="form-input" style="margin-bottom: 15px;" required>
+                    <select class="form-input" style="margin-bottom: 15px;" required>
+                        <option value="">Ваша специализация</option>
+                        <option value="developer">Разработчик</option>
+                        <option value="designer">Дизайнер</option>
+                        <option value="marketer">Маркетолог</option>
+                        <option value="researcher">Исследователь</option>
+                        <option value="entrepreneur">Предприниматель</option>
+                    </select>
+                    <textarea class="form-input" placeholder="Расскажите о себе" rows="4" style="margin-bottom: 20px;"></textarea>
+                    <button type="submit" class="form-button">Отправить заявку</button>
+                </form>
+            `);
+            
+            document.getElementById('networkForm')?.addEventListener('submit', function(e) {
+                e.preventDefault();
+                showNotification('Заявка отправлена! Мы свяжемся с вами в течение 24 часов.', 'success');
+                closeModal('joinNetwork');
+                sendToTelegram('Новая заявка в AI Сеть');
+            });
+        };
+
+        // Крипто биржа
+        window.openCryptoExchange = function() {
+            showModal('cryptoExchange', `
+                <h2>₿ AI Crypto Exchange</h2>
+                <p>Покупайте и продавайте AI-токены:</p>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h4>Купить</h4>
+                        <input type="number" placeholder="Сумма в $" class="form-input" style="margin: 10px 0;">
+                        <select class="form-input" style="margin-bottom: 10px;">
+                            <option>AI Token</option>
+                            <option>Neural Coin</option>
+                            <option>GPT Token</option>
+                        </select>
+                        <button class="form-button" style="width: 100%;">Купить</button>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
+                        <h4>Продать</h4>
+                        <input type="number" placeholder="Количество" class="form-input" style="margin: 10px 0;">
+                        <select class="form-input" style="margin-bottom: 10px;">
+                            <option>AI Token</option>
+                            <option>Neural Coin</option>
+                            <option>GPT Token</option>
+                        </select>
+                        <button class="form-button" style="width: 100%;">Продать</button>
+                    </div>
+                </div>
+            `);
+        };
 
         // Вспомогательные функции
-        function showStatistics() {
-            showNotification('Статистика доступна в личном кабинете Reg.ru');
-        }
-
-        function showPayouts() {
-            showNotification('Информация о выплатах в личном кабинете Reg.ru');
-        }
-
-        function showPrivacyPolicy() {
-            showModal('privacyPolicy', `
-                <h2>🔒 Политика конфиденциальности</h2>
-                <p>Мы защищаем ваши персональные данные...</p>
-                <p>Подробная информация доступна по запросу.</p>
-            `);
-        }
-
-        function showTerms() {
-            showModal('terms', `
-                <h2>📄 Условия использования</h2>
-                <p>Используя наш сайт, вы соглашаетесь с условиями...</p>
-            `);
-        }
-
-        // Аналитика просмотров
-        function trackView(section) {
-            console.log(`Просмотр секции: ${section}`);
-            // Здесь можно добавить отправку в аналитику
-        }
-
-        // Отслеживание видимых секций
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const sectionId = entry.target.id;
-                    trackView(sectionId);
-                }
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showNotification('Скопировано в буфер обмена!', 'success');
             });
-        }, { threshold: 0.3 });
+        }
 
-        // Наблюдаем за секциями
-        document.querySelectorAll('section[id]').forEach(section => {
-            observer.observe(section);
-        });
+        // Аналитика страницы
+        function trackPageView() {
+            const pageData = {
+                url: window.location.href,
+                referrer: document.referrer,
+                timestamp: Date.now(),
+                userAgent: navigator.userAgent,
+                screen: `${screen.width}x${screen.height}`,
+                language: navigator.language
+            };
+            
+            localStorage.setItem('last_page_view', JSON.stringify(pageData));
+            sendToTelegram(`Просмотр страницы: ${pageData.url}`);
+        }
 
-        // Инициализация при загрузке
-        window.addEventListener('load', function() {
-            // Проверяем, какая секция видна при загрузке
-            const heroSection = document.getElementById('home');
-            if (heroSection) {
-                const rect = heroSection.getBoundingClientRect();
-                if (rect.top >= 0 && rect.bottom <= window.innerHeight) {
-                    trackView('home');
-                }
+        // Отслеживание времени на сайте
+        let timeOnSite = 0;
+        setInterval(() => {
+            timeOnSite += 1;
+            if (timeOnSite === 30) {
+                sendToTelegram('Пользователь провёл на сайте 30 секунд');
             }
-        });
+            if (timeOnSite === 120) {
+                sendToTelegram('Пользователь активно изучает сайт (2+ минуты)');
+            }
+        }, 1000);
+
+        // Отправка heartbeat
+        setInterval(() => {
+            const data = {
+                timeOnSite: timeOnSite,
+                page: window.location.hash || '#home',
+                timestamp: Date.now()
+            };
+            
+            console.log('Heartbeat:', data);
+        }, 30000);
+
+        // Инициализация трекинга
+        trackPageView();
+
+        // Service Worker для оффлайн работы
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').catch(console.error);
+        }
     </script>
-
-    <!-- Дополнительные стили для модальных окон -->
-    <style>
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 1;
-        }
-
-        .modal-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin: 30px 0;
-        }
-
-        @media (max-width: 768px) {
-            .modal-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .modal-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .tags {
-            display: flex;
-            gap: 8px;
-            margin-top: 10px;
-            flex-wrap: wrap;
-        }
-
-        .tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #a5b4fc;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 0.85rem;
-        }
-
-        .rating {
-            color: #f59e0b;
-        }
-
-        .success {
-            color: #10b981;
-            margin-top: 20px;
-            font-weight: 600;
-        }
-
-        .benefits-section {
-            margin: 60px 0;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .benefit-item {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
-        }
-
-        .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .program-suitable {
-            margin-top: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.95rem;
-        }
-
-        .analytics-section {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 25px;
-            padding: 50px;
-            margin: 60px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-            margin-bottom: 30px;
-        }
-
-        .form-input {
-            width: 100%;
-            padding: 18px 25px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            color: white;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .form-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
-        }
-
-        .tools-section {
-            margin: 80px 0;
-        }
-
-        /* Темная/светлая тема */
-        :root[data-theme="light"] {
-            --dark: #f8fafc;
-            --light: #0f172a;
-            --card-bg: rgba(15, 23, 42, 0.97);
-        }
-
-        :root[data-theme="light"] body {
-            background: linear-gradient(45deg, #f1f5f9, #e2e8f0);
-            color: var(--light);
-        }
-
-        :root[data-theme="light"] .header {
-            background: rgba(248, 250, 252, 0.95);
-            border-bottom: 1px solid rgba(15, 23, 42, 0.1);
-        }
-
-        :root[data-theme="light"] .nav-link {
-            color: var(--light);
-        }
-
-        :root[data-theme="light"] .nav-link:hover {
-            background: rgba(15, 23, 42, 0.1);
-        }
-
-        :root[data-theme="light"] .card {
-            background: var(--card-bg);
-            color: white;
-        }
-
-        :root[data-theme="light"] .card-title {
-            color: white;
-        }
-
-        :root[data-theme="light"] .card-description {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        :root[data-theme="light"] .feature {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(79, 70, 229, 0.1));
-            color: #a5b4fc;
-        }
-
-        :root[data-theme="light"] .footer {
-            background: rgba(248, 250, 252, 0.95);
-        }
-
-        :root[data-theme="light"] .footer-section h5 {
-            color: var(--light);
-        }
-
-        :root[data-theme="light"] .footer-links a {
-            color: rgba(15, 23, 42, 0.7);
-        }
-
-        :root[data-theme="light"] .footer-links a:hover {
-            color: var(--light);
-        }
-
-        :root[data-theme="light"] .social-link {
-            background: rgba(15, 23, 42, 0.1);
-        }
-
-        :root[data-theme="light"] .footer-bottom {
-            color: rgba(15, 23, 42, 0.5);
-        }
-    </style>
 </body>
 </html>
