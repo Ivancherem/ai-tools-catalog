@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Hub 2024 | Каталог нейросетей + Инструменты + Промокоды</title>
     <meta name="description" content="Топ AI-инструменты: Яндекс GPT, Kandinsky, Midjourney. Рабочие промокоды, отзывы, сравнение. Партнерская программа Reg.ru">
-    <meta name="keywords" content="AI, нейросети, промокоды, ChatGPT, Midjourney, Яндекс GPT, GigaChat, партнерская программа, Reg.ru">
+    <meta name="keywords" content="AI, нейросети, промокоды, ChatGPT, Midjourney, Яндекс GPT, GigaChat,                     партнерская программа, Reg.ru">
     <meta name="regru-verification" content="abac4ef3eab99704191b2c9f46c6a327b39917c89c88d80f17c710ac795d0b9c" />
     
     <!-- Обязательные мета-теги для РСЯ -->
@@ -1571,6 +1571,74 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-dark);
         }
+        
+        /* ===== СТИЛИ ДЛЯ ПРЕДУПРЕЖДЕНИЙ ===== */
+        .no-script-warning {
+            background: var(--danger);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9999;
+        }
+        
+        .adblock-warning {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--danger);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 10px;
+            z-index: 10001;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideInRight 0.3s ease-out;
+        }
+        
+        .adblock-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .adblock-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .adblock-btn {
+            padding: 8px 15px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .adblock-btn-primary {
+            background: white;
+            color: var(--dark);
+        }
+        
+        .adblock-btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        .adblock-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -1682,105 +1750,7 @@
                         renderTo: 'yandex_rtb_R-A-18680344-2',
                         blockId: 'R-A-18680344-2'
                     })
-                })
-                // ===== ФУНКЦИИ ДЛЯ БЛОКИРОВЩИКА РЕКЛАМЫ =====
-// Размещаем их в самом начале скрипта, чтобы они были доступны сразу
-
-function closeAdblockWarning() {
-    const warning = document.getElementById('adblock-warning');
-    if (warning) {
-        warning.style.display = 'none';
-        // Сохраняем в localStorage, чтобы не показывать снова сегодня
-        localStorage.setItem('adblock_warning_closed', new Date().toDateString());
-        console.log('Предупреждение о блокировщике скрыто');
-    }
-}
-
-function whitelistSite() {
-    showNotification('Спасибо за поддержку! 🚀', 'success');
-    closeAdblockWarning();
-    
-    // Отправляем событие в аналитику
-    if (typeof gtag !== 'undefined') {
-        gtag('event', 'adblock_whitelist', {
-            'event_category': 'engagement',
-            'event_label': 'user_whitelisted'
-        });
-    }
-    
-    // Также можно отправить в Яндекс.Метрику
-    if (typeof ym !== 'undefined') {
-        ym(XXXXXX, 'reachGoal', 'adblock_whitelist');
-    }
-    
-    // Обновляем страницу через 2 секунды
-    setTimeout(() => {
-        location.reload();
-    }, 2000);
-}
-
-// Инициализация обработчиков для блокировщика рекламы
-function initAdblockWarning() {
-    // Назначаем обработчики кнопкам
-    const closeBtn = document.getElementById('adblock-close-btn');
-    const whitelistBtn = document.getElementById('adblock-whitelist-btn');
-    const closeX = document.getElementById('adblock-close-x');
-    
-    if (closeBtn) {
-        closeBtn.addEventListener('click', closeAdblockWarning);
-    }
-    
-    if (whitelistBtn) {
-        whitelistBtn.addEventListener('click', whitelistSite);
-    }
-    
-    if (closeX) {
-        closeX.addEventListener('click', closeAdblockWarning);
-    }
-    
-    // Проверяем, не закрывали ли уже сегодня предупреждение
-    if (localStorage.getItem('adblock_warning_closed') === new Date().toDateString()) {
-        closeAdblockWarning();
-    }
-}
-
-// Функция проверки блокировщика рекламы
-function checkAdblock() {
-    setTimeout(function() {
-        // Проверяем, загрузилась ли реклама Яндекс РСЯ
-        const adContainer = document.getElementById('yandex_rtb_R-A-18680344-1');
-        const isAdLoaded = adContainer && 
-                          adContainer.innerHTML.trim() !== '' && 
-                          (adContainer.innerHTML.includes('iframe') || 
-                           adContainer.innerHTML.includes('img') ||
-                           adContainer.innerHTML.includes('div') ||
-                           adContainer.children.length > 0);
-        
-        // Проверяем, есть ли скрытые рекламные элементы
-        const adElements = document.querySelectorAll('[class*="ad"], [id*="ad"], [class*="Ad"], [id*="Ad"]');
-        let hiddenAds = 0;
-        adElements.forEach(el => {
-            if (el.offsetParent === null) {
-                hiddenAds++;
-            }
-        });
-        
-        // Показываем предупреждение только если:
-        // 1. Реклама не загрузилась ИЛИ
-        // 2. Обнаружено много скрытых рекламных элементов
-        if (!isAdLoaded || hiddenAds > 2) {
-            const warning = document.getElementById('adblock-warning');
-            if (warning) {
-                warning.style.display = 'block';
-                console.log('Блокировщик рекламы обнаружен');
-                
-                // Автоматически скрываем через 30 секунд
-                setTimeout(closeAdblockWarning, 30000);
-            }
-        }
-    }, 5000); // Проверяем через 5 секунд
-}
-                </script>
+                })</script>
             </div>
 
             <!-- Герой-секция -->
@@ -2016,8 +1986,8 @@ function checkAdblock() {
                             </div>
                         </div>
 
-                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА (строка ~711) -->
-                        <a href="https://www.reg.ru/partners/?ref=AIHUB&utm_source=aihub&utm_medium=referral&utm_campaign=partnership" 
+                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
+                        <a href="https://reg.cloud/?rlink=reflink-31250911" 
                            class="program-button" 
                            target="_blank" 
                            rel="noopener noreferrer"
@@ -2062,8 +2032,8 @@ function checkAdblock() {
                             телеком-операторов, дата-центров
                         </p>
 
-                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА (строка ~777) -->
-                        <a href="https://www.reg.ru/partners/?ref=AIHUB&utm_source=aihub&utm_medium=referral&utm_campaign=reseller" 
+                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
+                        <a href="https://reg.cloud/?rlink=reflink-31250911" 
                            class="program-button" 
                            target="_blank" 
                            rel="noopener noreferrer"
@@ -2130,8 +2100,8 @@ function checkAdblock() {
 
                 <!-- CTA кнопки -->
                 <div style="text-align: center; margin-top: 50px;">
-                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА (строка 902-915 - первая кнопка) -->
-                    <a href="https://www.reg.ru/partners/?ref=AIHUB&utm_source=aihub&utm_medium=referral&utm_campaign=agent_main&program=agent" 
+                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
+                    <a href="https://reg.cloud/cloud/servers/?rlink=reflink-31250911" 
                        class="program-button" 
                        target="_blank" 
                        rel="noopener noreferrer"
@@ -2139,8 +2109,8 @@ function checkAdblock() {
                        onclick="trackAffiliateClick('regru_agent_main')">
                         <i class="fas fa-user-tie"></i> Подключиться к Агентской программе
                     </a>
-                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА (строка 902-915 - вторая кнопка) -->
-                    <a href="https://www.reg.ru/partners/?ref=AIHUB&utm_source=aihub&utm_medium=referral&utm_campaign=reseller_main&program=reseller" 
+                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
+                    <a href="https://reg.cloud/services/backup-and-snapshots/?rlink=reflink-31250911" 
                        class="program-button" 
                        target="_blank" 
                        rel="noopener noreferrer"
@@ -2148,6 +2118,42 @@ function checkAdblock() {
                        onclick="trackAffiliateClick('regru_reseller_main')">
                         <i class="fas fa-store"></i> Оставить заявку на Реселлерскую программу
                     </a>
+                </div>
+                
+                <!-- ДОПОЛНИТЕЛЬНЫЕ ПАРТНЕРСКИЕ ССЫЛКИ -->
+                <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.03); border-radius: 15px;">
+                    <h4 style="margin-bottom: 15px; color: var(--primary);">🔥 Популярные продукты Reg.ru:</h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                        <!-- ВСЕ ВАШИ ПАРТНЕРСКИЕ ССЫЛКИ -->
+                        <a href="https://reg.cloud/apps/?rlink=reflink-31250911" 
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
+                           onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
+                           onclick="trackAffiliateClick('regru_apps')">
+                            <i class="fas fa-boxes"></i> Приложения
+                        </a>
+                        <a href="https://reg.cloud/dedicated/?rlink=reflink-31250911" 
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
+                           onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
+                           onclick="trackAffiliateClick('regru_dedicated')">
+                            <i class="fas fa-server"></i> Выделенные серверы
+                        </a>
+                        <a href="https://reg.cloud/cloud/servers/?rlink=reflink-31250911" 
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
+                           onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
+                           onclick="trackAffiliateClick('regru_cloud_servers')">
+                            <i class="fas fa-cloud"></i> Облачные серверы
+                        </a>
+                        <a href="https://reg.cloud/services/backup-and-snapshots/?rlink=reflink-31250911" 
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
+                           onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
+                           onclick="trackAffiliateClick('regru_backup')">
+                            <i class="fas fa-hdd"></i> Бэкапы и снапшоты
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -2747,6 +2753,10 @@ function checkAdblock() {
                 <p style="font-size: 0.8rem; margin-top: 10px;">
                     Сайт использует файлы cookie. Продолжая использовать сайт, вы соглашаетесь с этим.
                 </p>
+                <!-- ДОБАВЛЕН ВАШ ПАРТНЕРСКИЙ КОД -->
+                <p style="font-size: 0.7rem; margin-top: 10px; color: rgba(255,255,255,0.3);">
+                    Партнёрский ID: 61FB-434A-2266-055F
+                </p>
             </div>
         </div>
     </footer>
@@ -2769,7 +2779,7 @@ function checkAdblock() {
                 yandex_gpt: 'AIHUB',
                 kandinsky: 'aihub2024',
                 gigachat: 'aihub',
-                regru: 'AIHUB'
+                regru: 'reflink-31250911'
             }
         };
 
@@ -2809,6 +2819,9 @@ function checkAdblock() {
                         document.getElementById('adblock-warning').style.display = 'block';
                     }
                 }, 3000);
+                
+                // Инициализация обработчиков блокировщика
+                initAdblockWarning();
             });
             
             function initOtherAdBlocks() {
@@ -2832,6 +2845,102 @@ function checkAdblock() {
                 });
             }
         })();
+
+        // ===== ФУНКЦИИ ДЛЯ БЛОКИРОВЩИКА РЕКЛАМЫ =====
+        function closeAdblockWarning() {
+            const warning = document.getElementById('adblock-warning');
+            if (warning) {
+                warning.style.display = 'none';
+                // Сохраняем в localStorage, чтобы не показывать снова сегодня
+                localStorage.setItem('adblock_warning_closed', new Date().toDateString());
+                console.log('Предупреждение о блокировщике скрыто');
+            }
+        }
+
+        function whitelistSite() {
+            showNotification('Спасибо за поддержку! 🚀', 'success');
+            closeAdblockWarning();
+            
+            // Отправляем событие в аналитику
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'adblock_whitelist', {
+                    'event_category': 'engagement',
+                    'event_label': 'user_whitelisted'
+                });
+            }
+            
+            // Также можно отправить в Яндекс.Метрику
+            if (typeof ym !== 'undefined') {
+                ym(XXXXXX, 'reachGoal', 'adblock_whitelist');
+            }
+            
+            // Обновляем страницу через 2 секунды
+            setTimeout(() => {
+                location.reload();
+            }, 2000);
+        }
+
+        // Инициализация обработчиков для блокировщика рекламы
+        function initAdblockWarning() {
+            // Назначаем обработчики кнопкам
+            const closeBtn = document.getElementById('adblock-close-btn');
+            const whitelistBtn = document.getElementById('adblock-whitelist-btn');
+            const closeX = document.getElementById('adblock-close-x');
+            
+            if (closeBtn) {
+                closeBtn.addEventListener('click', closeAdblockWarning);
+            }
+            
+            if (whitelistBtn) {
+                whitelistBtn.addEventListener('click', whitelistSite);
+            }
+            
+            if (closeX) {
+                closeX.addEventListener('click', closeAdblockWarning);
+            }
+            
+            // Проверяем, не закрывали ли уже сегодня предупреждение
+            if (localStorage.getItem('adblock_warning_closed') === new Date().toDateString()) {
+                closeAdblockWarning();
+            }
+        }
+
+        // Функция проверки блокировщика рекламы
+        function checkAdblock() {
+            setTimeout(function() {
+                // Проверяем, загрузилась ли реклама Яндекс РСЯ
+                const adContainer = document.getElementById('yandex_rtb_R-A-18680344-1');
+                const isAdLoaded = adContainer && 
+                                  adContainer.innerHTML.trim() !== '' && 
+                                  (adContainer.innerHTML.includes('iframe') || 
+                                   adContainer.innerHTML.includes('img') ||
+                                   adContainer.innerHTML.includes('div') ||
+                                   adContainer.children.length > 0);
+                
+                // Проверяем, есть ли скрытые рекламные элементы
+                const adElements = document.querySelectorAll('[class*="ad"], [id*="ad"], [class*="Ad"], [id*="Ad"]');
+                let hiddenAds = 0;
+                adElements.forEach(el => {
+                    if (el.offsetParent === null) {
+                        hiddenAds++;
+                    }
+                });
+                
+                // Показываем предупреждение только если:
+                // 1. Реклама не загрузилась ИЛИ
+                // 2. Обнаружено много скрытых рекламных элементов
+                if (!isAdLoaded || hiddenAds > 2) {
+                    const warning = document.getElementById('adblock-warning');
+                    if (warning) {
+                        warning.style.display = 'block';
+                        console.log('Блокировщик рекламы обнаружен');
+                        
+                        // Автоматически скрываем через 30 секунд
+                        setTimeout(closeAdblockWarning, 30000);
+                    }
+                }
+            }, 5000); // Проверяем через 5 секунд
+        }
 
         // Аналитика и трекинг
         const analytics = {
@@ -2898,6 +3007,9 @@ function checkAdblock() {
             // Установка активной ссылки в навигации
             updateActiveNavLink();
             window.addEventListener('scroll', updateActiveNavLink);
+            
+            // Проверка блокировщика рекламы
+            checkAdblock();
         });
 
         // Плавная прокрутка
@@ -2977,8 +3089,8 @@ function checkAdblock() {
                             <p style="margin: 15px 0;"><strong style="font-size: 2rem; color: #10b981;">15%</strong> с облачных услуг</p>
                             <p style="margin: 15px 0;"><strong style="font-size: 2rem; color: #10b981;">10%</strong> с выделенных серверов</p>
                             <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Идеально для разработчиков и IT-аутсорсеров</p>
-                            <!-- ИСПРАВЛЕННАЯ ССЫЛКА В МОДАЛЬНОМ ОКНЕ (строка ~1520) -->
-                            <a href="https://www.reg.ru/partners/?ref=AIHUB&utm_source=aihub&utm_medium=referral&utm_campaign=partnership&program=agent" 
+                            <!-- ИСПРАВЛЕННАЯ ССЫЛКА В МОДАЛЬНОМ ОКНЕ -->
+                            <a href="https://reg.cloud/?rlink=reflink-31250911" 
                                class="program-button" 
                                target="_blank"
                                onclick="trackAffiliateClick('regru_agent_modal')">
@@ -2990,7 +3102,7 @@ function checkAdblock() {
                             <p style="margin: 15px 0;"><strong style="font-size: 1.5rem; color: #f59e0b;">Индивидуальные условия</strong></p>
                             <p style="margin: 15px 0;"><strong style="font-size: 1.5rem; color: #f59e0b;">White Label решение</strong></p>
                             <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Для хостинг-провайдеров и дата-центров</p>
-                            <a href="https://www.reg.ru/partners/?ref=AIHUB&utm_source=aihub&utm_medium=referral&utm_campaign=reseller" 
+                            <a href="https://reg.cloud/?rlink=reflink-31250911" 
                                class="program-button" 
                                target="_blank"
                                onclick="trackAffiliateClick('regru_reseller_modal')">
@@ -3002,7 +3114,7 @@ function checkAdblock() {
                         <h4>📞 Контактная информация</h4>
                         <p>Телефон: 8 800 333-92-23 (бесплатно по России)</p>
                         <p>Email: partners@reg.ru</p>
-                        <p>Сайт: <a href="https://www.reg.ru/partners/" target="_blank" style="color: #a5b4fc;">www.reg.ru/partners/</a></p>
+                        <p>Сайт: <a href="https://reg.cloud/?rlink=reflink-31250911" target="_blank" style="color: #a5b4fc;">reg.cloud</a></p>
                     </div>
                 `);
             };
