@@ -20,6 +20,9 @@
     <meta property="og:image" content="https://i.imgur.com/VkFcB7X.png">
     <meta property="og:type" content="website">
     
+    <!-- Canonical URL для SEO -->
+    <link rel="canonical" href="https://ai-toolkit.ru/">
+    
     <!-- Стили прямо в файле -->
     <style>
         /* ===== ОСНОВНЫЕ СТИЛИ ===== */
@@ -88,6 +91,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
         }
 
         .nav-links {
@@ -104,6 +108,7 @@
             border-radius: 10px;
             transition: all 0.3s;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-link:hover {
@@ -118,6 +123,51 @@
 
         .nav-link i {
             margin-right: 8px;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            padding: 80px 20px;
+        }
+
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-menu-content a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-content a:hover {
+            background: var(--primary);
+            transform: translateX(10px);
         }
 
         /* ===== ГЕРОЙ ===== */
@@ -347,7 +397,7 @@
             font-size: 1rem;
         }
 
-        .program-button {
+        .program-button, .card-button, .form-button {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -366,7 +416,7 @@
             margin-top: 20px;
         }
 
-        .program-button:hover {
+        .program-button:hover, .card-button:hover, .form-button:hover {
             background: var(--primary-dark);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
@@ -529,6 +579,7 @@
             border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
+            cursor: pointer;
         }
 
         .search-result:hover {
@@ -649,6 +700,14 @@
             background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
         }
 
+        .generator-output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            min-height: 100px;
+        }
+
         /* ===== КАРТОЧКИ ИНСТРУМЕНТОВ ===== */
         .cards {
             display: grid;
@@ -761,48 +820,6 @@
         .card-price small {
             color: var(--gray);
             font-size: 0.95rem;
-        }
-
-        .card-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            padding: 18px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card-button::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-            transform: rotate(45deg);
-            transition: all 0.5s;
-        }
-
-        .card-button:hover::after {
-            left: 100%;
-        }
-
-        .card-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
         }
 
         /* ===== ИНТЕРАКТИВНЫЕ КОМПОНЕНТЫ ===== */
@@ -919,53 +936,6 @@
             transform: translateY(-5px);
         }
 
-        /* ===== МЕДИА ПЛЕЙЕР ===== */
-        .media-player {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 25px;
-            padding: 40px;
-            margin: 50px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .player-controls {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .player-button {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-size: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .player-button:hover {
-            background: var(--primary-dark);
-            transform: scale(1.1);
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 8px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .progress {
-            height: 100%;
-            background: var(--primary);
-            width: 30%;
-        }
-
         /* ===== КРИПТО ИНТЕГРАЦИЯ ===== */
         .crypto-section {
             background: linear-gradient(45deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1));
@@ -1029,29 +999,6 @@
             box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
         }
 
-        .form-button {
-            background: var(--secondary);
-            color: white;
-            padding: 20px 40px;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin: 0 auto;
-        }
-
-        .form-button:hover {
-            background: #0da271;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
-        }
-
         /* ===== МОДАЛЬНЫЕ ОКНА ===== */
         .modal {
             display: none;
@@ -1060,10 +1007,11 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 10000;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
 
         .modal-content {
@@ -1071,11 +1019,12 @@
             padding: 50px;
             border-radius: 30px;
             max-width: 800px;
-            width: 90%;
+            width: 100%;
             max-height: 90vh;
             overflow-y: auto;
             border: 1px solid rgba(255, 255, 255, 0.1);
             animation: modalSlide 0.3s ease-out;
+            position: relative;
         }
 
         @keyframes modalSlide {
@@ -1087,6 +1036,186 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* ===== УВЕДОМЛЕНИЯ ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 10001;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== СЕКЦИЯ LIVE UPDATES ===== */
+        .live-updates {
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .update-stream {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 30px;
+            padding-right: 15px;
+        }
+
+        .update-item {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* ===== КАРТА САЙТОВ ===== */
+        .sitemap {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 25px;
+            padding: 40px;
+            margin: 50px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .sitemap-category h4 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .sitemap-links {
+            list-style: none;
+        }
+
+        .sitemap-links li {
+            margin-bottom: 12px;
+        }
+
+        .sitemap-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sitemap-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        /* ===== СТИЛИ ДЛЯ ФУТЕРА ===== */
+        .footer {
+            background: rgba(15, 23, 42, 0.95);
+            padding: 60px 0 30px;
+            margin-top: 100px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h5 {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
         }
 
         /* ===== АДАПТИВНОСТЬ ===== */
@@ -1289,171 +1418,16 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary-dark);
         }
-
-        /* ===== СЕКЦИЯ LIVE UPDATES ===== */
-        .live-updates {
-            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
-            border-radius: 25px;
-            padding: 40px;
-            margin: 50px 0;
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        .update-stream {
-            max-height: 400px;
-            overflow-y: auto;
-            margin-top: 30px;
-            padding-right: 15px;
-        }
-
-        .update-item {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--primary);
-            animation: slideIn 0.5s ease-out;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateX(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* ===== КАРТА САЙТОВ ===== */
-        .sitemap {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 25px;
-            padding: 40px;
-            margin: 50px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sitemap-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .sitemap-category h4 {
-            color: var(--primary);
-            margin-bottom: 20px;
-            font-size: 1.3rem;
-        }
-
-        .sitemap-links {
-            list-style: none;
-        }
-
-        .sitemap-links li {
-            margin-bottom: 12px;
-        }
-
-        .sitemap-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .sitemap-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        /* ===== СТИЛИ ДЛЯ ФУТЕРА ===== */
-        .footer {
-            background: rgba(15, 23, 42, 0.95);
-            padding: 60px 0 30px;
-            margin-top: 100px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h5 {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-        }
-
-        .social-link {
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
     </style>
 </head>
 <body>
     <!-- Шапка -->
     <header class="header">
         <div class="container nav-container">
-            <h1 class="site-title">
+            <a href="/" class="site-title">
                 <i class="fas fa-brain"></i>
                 AI HUB 2024
-            </h1>
+            </a>
             
             <nav class="nav-links">
                 <a href="#home" class="nav-link active">
@@ -1489,15 +1463,18 @@
     </header>
 
     <!-- Мобильное меню -->
-    <div id="mobileMenu" class="mobile-menu" style="display: none;">
+    <div id="mobileMenu" class="mobile-menu">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="position: absolute; top: 20px; right: 20px;">
+            <i class="fas fa-times"></i>
+        </button>
         <div class="mobile-menu-content">
-            <a href="#home" onclick="toggleMobileMenu()">Главная</a>
-            <a href="#tools" onclick="toggleMobileMenu()">Инструменты</a>
-            <a href="#search" onclick="toggleMobileMenu()">Поиск AI</a>
-            <a href="#partnership" onclick="toggleMobileMenu()">Партнёрство</a>
-            <a href="#promo" onclick="toggleMobileMenu()">Промокоды</a>
-            <a href="#network" onclick="toggleMobileMenu()">Сеть</a>
-            <a href="#analytics" onclick="toggleMobileMenu()">Аналитика</a>
+            <a href="#home" onclick="toggleMobileMenu()"><i class="fas fa-home"></i> Главная</a>
+            <a href="#tools" onclick="toggleMobileMenu()"><i class="fas fa-tools"></i> Инструменты</a>
+            <a href="#search" onclick="toggleMobileMenu()"><i class="fas fa-search"></i> Поиск AI</a>
+            <a href="#partnership" onclick="toggleMobileMenu()"><i class="fas fa-handshake"></i> Партнёрство</a>
+            <a href="#promo" onclick="toggleMobileMenu()"><i class="fas fa-gift"></i> Промокоды</a>
+            <a href="#network" onclick="toggleMobileMenu()"><i class="fas fa-users"></i> Сеть</a>
+            <a href="#analytics" onclick="toggleMobileMenu()"><i class="fas fa-chart-line"></i> Аналитика</a>
         </div>
     </div>
 
@@ -2001,7 +1978,7 @@
                 <h2 class="text-gradient">💎 Live трекер цен на AI</h2>
                 <p>Актуальные цены и скидки на нейросети в реальном времени</p>
                 
-                <div id="price-tracker" class="price-tracker-list">
+                <div id="price-tracker-list" class="price-tracker-list">
                     <!-- Динамически обновляется -->
                 </div>
             </section>
@@ -2075,18 +2052,20 @@
                 <h2 class="text-gradient">📈 Персональная AI аналитика</h2>
                 <p>Получите индивидуальные рекомендации по AI инструментам</p>
                 
-                <form id="analytics-form" onsubmit="return submitAnalytics()">
+                <form id="analytics-form" onsubmit="return submitAnalytics(event)">
                     <div class="form-grid">
                         <input type="text" 
+                               name="industry"
                                class="form-input" 
                                placeholder="Ваша сфера деятельности"
                                required>
                         <input type="number" 
+                               name="budget"
                                class="form-input" 
                                placeholder="Бюджет ($/мес)"
                                min="0"
                                required>
-                        <select class="form-input" required>
+                        <select class="form-input" name="goal" required>
                             <option value="">Выберите цель</option>
                             <option value="content">Генерация контента</option>
                             <option value="code">Программирование</option>
@@ -2095,6 +2074,7 @@
                             <option value="research">Исследования</option>
                         </select>
                         <input type="email" 
+                               name="email"
                                class="form-input" 
                                placeholder="Email для отчёта"
                                required>
@@ -2115,40 +2095,40 @@
                     <div class="sitemap-category">
                         <h4>🌐 Поисковые системы</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://perplexity.ai" target="_blank">Perplexity AI</a></li>
-                            <li><a href="https://you.com" target="_blank">You.com</a></li>
-                            <li><a href="https://phind.com" target="_blank">Phind</a></li>
-                            <li><a href="https://consensus.app" target="_blank">Consensus</a></li>
+                            <li><a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity AI</a></li>
+                            <li><a href="https://you.com" target="_blank" rel="noopener noreferrer">You.com</a></li>
+                            <li><a href="https://phind.com" target="_blank" rel="noopener noreferrer">Phind</a></li>
+                            <li><a href="https://consensus.app" target="_blank" rel="noopener noreferrer">Consensus</a></li>
                         </ul>
                     </div>
                     
                     <div class="sitemap-category">
                         <h4>💼 Бизнес AI</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://jasper.ai" target="_blank">Jasper</a></li>
-                            <li><a href="https://copy.ai" target="_blank">Copy.ai</a></li>
-                            <li><a href="https://writesonic.com" target="_blank">Writesonic</a></li>
-                            <li><a href="https://rytr.me" target="_blank">Rytr</a></li>
+                            <li><a href="https://jasper.ai" target="_blank" rel="noopener noreferrer">Jasper</a></li>
+                            <li><a href="https://copy.ai" target="_blank" rel="noopener noreferrer">Copy.ai</a></li>
+                            <li><a href="https://writesonic.com" target="_blank" rel="noopener noreferrer">Writesonic</a></li>
+                            <li><a href="https://rytr.me" target="_blank" rel="noopener noreferrer">Rytr</a></li>
                         </ul>
                     </div>
                     
                     <div class="sitemap-category">
                         <h4>🎨 Дизайн и Арт</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://midjourney.com" target="_blank">Midjourney</a></li>
-                            <li><a href="https://leonardo.ai" target="_blank">Leonardo.ai</a></li>
-                            <li><a href="https://stability.ai" target="_blank">Stability AI</a></li>
-                            <li><a href="https://runwayml.com" target="_blank">Runway ML</a></li>
+                            <li><a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a></li>
+                            <li><a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer">Leonardo.ai</a></li>
+                            <li><a href="https://stability.ai" target="_blank" rel="noopener noreferrer">Stability AI</a></li>
+                            <li><a href="https://runwayml.com" target="_blank" rel="noopener noreferrer">Runway ML</a></li>
                         </ul>
                     </div>
                     
                     <div class="sitemap-category">
                         <h4>💻 Программирование</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://github.com/copilot" target="_blank">GitHub Copilot</a></li>
-                            <li><a href="https://replit.com" target="_blank">Replit</a></li>
-                            <li><a href="https://cursor.sh" target="_blank">Cursor</a></li>
-                            <li><a href="https://tabnine.com" target="_blank">Tabnine</a></li>
+                            <li><a href="https://github.com/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a></li>
+                            <li><a href="https://replit.com" target="_blank" rel="noopener noreferrer">Replit</a></li>
+                            <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a></li>
+                            <li><a href="https://tabnine.com" target="_blank" rel="noopener noreferrer">Tabnine</a></li>
                         </ul>
                     </div>
                 </div>
@@ -2164,16 +2144,16 @@
                     <h5>AI HUB 2024</h5>
                     <p>Крупнейшая платформа для работы с искусственным интеллектом в СНГ.</p>
                     <div class="social-links">
-                        <a href="https://t.me/ai_hub_2024" class="social-link" target="_blank">
+                        <a href="https://t.me/ai_hub_2024" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-telegram"></i>
                         </a>
-                        <a href="https://vk.com/ai_hub" class="social-link" target="_blank">
+                        <a href="https://vk.com/ai_hub" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-vk"></i>
                         </a>
-                        <a href="https://github.com/ai-hub" class="social-link" target="_blank">
+                        <a href="https://github.com/ai-hub" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-github"></i>
                         </a>
-                        <a href="https://youtube.com/@aihub" class="social-link" target="_blank">
+                        <a href="https://youtube.com/@aihub" class="social-link" target="_blank" rel="noopener noreferrer">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </div>
@@ -2225,53 +2205,8 @@
         </div>
     </footer>
 
-    <!-- Модальные окна -->
-    <div id="contentGeneratorModal" class="modal">
-        <div class="modal-content">
-            <h2>🎨 AI Генератор контента</h2>
-            <p>Создавайте контент с помощью нескольких нейросетей одновременно</p>
-            <!-- Содержимое генератора -->
-            <button onclick="closeModal('contentGeneratorModal')">Закрыть</button>
-        </div>
-    </div>
-
-    <div id="comparatorModal" class="modal">
-        <div class="modal-content">
-            <h2>⚖️ Сравнение AI моделей</h2>
-            <p>Сравнивайте нейросети по разным параметрам</p>
-            <!-- Содержимое компаратора -->
-            <button onclick="closeModal('comparatorModal')">Закрыть</button>
-        </div>
-    </div>
-
-    <!-- Модальное окно партнерской программы -->
-    <div id="partnershipModal" class="modal">
-        <div class="modal-content">
-            <h2>🤝 Партнёрская программа Reg.ru</h2>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
-                <div>
-                    <h3>Агентская программа</h3>
-                    <p><strong>15%</strong> с облачных услуг</p>
-                    <p><strong>10%</strong> с выделенных серверов</p>
-                    <button class="program-button" onclick="window.open('https://www.reg.ru/partners/', '_blank')">
-                        Присоединиться
-                    </button>
-                </div>
-                <div>
-                    <h3>Реселлерская программа</h3>
-                    <p>Индивидуальные условия</p>
-                    <p>White Label решение</p>
-                    <button class="program-button" onclick="window.open('https://www.reg.ru/partners/resellers/', '_blank')">
-                        Оставить заявку
-                    </button>
-                </div>
-            </div>
-            <button onclick="closeModal('partnershipModal')" style="margin-top: 20px;">Закрыть</button>
-        </div>
-    </div>
-
     <!-- Уведомления -->
-    <div id="notification" class="notification" style="display: none;"></div>
+    <div id="notification" class="notification"></div>
 
     <!-- JavaScript -->
     <script>
@@ -2288,6 +2223,7 @@
 
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('AI Hub 2024 загружен');
             initSearchEngine();
             initPriceTracker();
             initLiveUpdates();
@@ -2297,13 +2233,72 @@
             initNotifications();
             initAIWidgets();
             initPartnership();
+            initSmoothScroll();
+            initNavigation();
+            
+            // Установка активной ссылки в навигации
+            updateActiveNavLink();
+            window.addEventListener('scroll', updateActiveNavLink);
         });
+
+        // Плавная прокрутка
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Навигация
+        function initNavigation() {
+            // Обновление активной ссылки при скролле
+            function updateActiveNavLink() {
+                const sections = document.querySelectorAll('section[id]');
+                const scrollPos = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        document.querySelectorAll('.nav-link').forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === `#${sectionId}`) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.updateActiveNavLink = updateActiveNavLink;
+        }
+
+        // Мобильное меню
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const isOpen = menu.style.display === 'flex';
+            menu.style.display = isOpen ? 'none' : 'flex';
+            document.body.style.overflow = isOpen ? '' : 'hidden';
+        }
 
         // Партнерская программа
         function initPartnership() {
             window.joinPartnership = function() {
                 showModal('partnershipModal', `
-                    <h2>🤝 Партнёрская программа Reg.ru</h2>
+                    <h2 style="margin-bottom: 20px;">🤝 Партнёрская программа Reg.ru</h2>
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
                         <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
                             <h3>🎯 Агентская программа</h3>
@@ -2446,7 +2441,7 @@
                 { name: 'Jasper AI', price: 49, change: 0 }
             ];
 
-            const tracker = document.getElementById('price-tracker');
+            const tracker = document.getElementById('price-tracker-list');
             
             function updatePrices() {
                 prices.forEach(item => {
@@ -2546,7 +2541,12 @@
                 e.preventDefault();
                 
                 const formData = new FormData(form);
-                const data = Object.fromEntries(formData);
+                const data = {
+                    industry: formData.get('industry'),
+                    budget: formData.get('budget'),
+                    goal: formData.get('goal'),
+                    email: formData.get('email')
+                };
                 
                 showNotification('🔍 Анализируем ваши потребности...', 'info');
                 
@@ -2560,14 +2560,14 @@
                     
                     const report = `
                         <h3>📊 Ваш персональный AI отчёт</h3>
-                        <p><strong>Сфера:</strong> ${data[0]}</p>
-                        <p><strong>Бюджет:</strong> $${data[1]}/мес</p>
-                        <p><strong>Цель:</strong> ${data[2]}</p>
+                        <p><strong>Сфера:</strong> ${data.industry}</p>
+                        <p><strong>Бюджет:</strong> $${data.budget}/мес</p>
+                        <p><strong>Цель:</strong> ${data.goal}</p>
                         <h4>🎯 Рекомендуемые инструменты:</h4>
                         <ul>
                             ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
                         </ul>
-                        <p>📧 Отчёт отправлен на: ${data[3]}</p>
+                        <p>📧 Отчёт отправлен на: ${data.email}</p>
                     `;
                     
                     showModal('analyticsReport', report);
@@ -2676,6 +2676,171 @@
             }
         };
 
+        // Инструменты генерации
+        window.openContentGenerator = function() {
+            showModal('contentGenerator', `
+                <h2>🎨 AI Генератор контента</h2>
+                <p>Создавайте контент с помощью нескольких нейросетей одновременно</p>
+                
+                <div style="margin: 20px 0;">
+                    <select class="form-input" id="generator-model">
+                        <option value="yandex">Яндекс GPT</option>
+                        <option value="chatgpt">ChatGPT</option>
+                        <option value="gigachat">GigaChat</option>
+                        <option value="combined">Все сразу</option>
+                    </select>
+                    
+                    <textarea class="form-input" id="generator-prompt" placeholder="Опишите, что нужно сгенерировать..." rows="5" style="margin: 15px 0;"></textarea>
+                    
+                    <button class="form-button" onclick="generateContent()">
+                        <i class="fas fa-magic"></i> Сгенерировать
+                    </button>
+                    
+                    <div id="generator-result" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px; display: none;"></div>
+                </div>
+            `);
+        };
+
+        window.generateContent = function() {
+            const prompt = document.getElementById('generator-prompt').value;
+            const resultDiv = document.getElementById('generator-result');
+            
+            if (!prompt.trim()) {
+                showNotification('Введите промпт для генерации', 'warning');
+                return;
+            }
+            
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `
+                <div style="color: #10b981; margin-bottom: 10px;">
+                    <i class="fas fa-spinner fa-spin"></i> Генерация контента...
+                </div>
+            `;
+            
+            setTimeout(() => {
+                const generatedText = `Вот сгенерированный текст на основе вашего промпта: "${prompt}"\n\nAI HUB 2024 предоставляет доступ к самым современным нейросетям. Для вашего запроса мы рекомендуем использовать Яндекс GPT для лучшей работы с русским языком.`;
+                
+                resultDiv.innerHTML = `
+                    <div style="color: #10b981; margin-bottom: 10px;">
+                        <i class="fas fa-check-circle"></i> Контент сгенерирован
+                    </div>
+                    <p>${generatedText}</p>
+                    <button class="form-button" onclick="copyToClipboard('${generatedText.replace(/'/g, "\\'")}')" style="margin-top: 10px;">
+                        <i class="fas fa-copy"></i> Копировать
+                    </button>
+                `;
+            }, 1500);
+        };
+
+        window.openModelComparator = function() {
+            showModal('modelComparator', `
+                <h2>⚖️ Сравнение AI моделей</h2>
+                <p>Сравнивайте нейросети по разным параметрам</p>
+                
+                <div id="comparator-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                        <div>
+                            <h4>Выберите первую модель:</h4>
+                            <select class="form-input" id="comp-model1">
+                                <option>Яндекс GPT</option>
+                                <option>ChatGPT 4</option>
+                                <option>GigaChat</option>
+                                <option>Claude 3</option>
+                                <option>Gemini Pro</option>
+                            </select>
+                        </div>
+                        <div>
+                            <h4>Выберите вторую модель:</h4>
+                            <select class="form-input" id="comp-model2">
+                                <option>ChatGPT 4</option>
+                                <option>Яндекс GPT</option>
+                                <option>GigaChat</option>
+                                <option>Claude 3</option>
+                                <option>Gemini Pro</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <button class="form-button" onclick="runComparison()">
+                        <i class="fas fa-balance-scale"></i> Сравнить
+                    </button>
+                    
+                    <div id="comparison-results" style="margin-top: 20px;"></div>
+                </div>
+            `);
+        };
+
+        window.runComparison = function() {
+            const model1 = document.getElementById('comp-model1').value;
+            const model2 = document.getElementById('comp-model2').value;
+            
+            if (model1 === model2) {
+                showNotification('Выберите разные модели для сравнения', 'warning');
+                return;
+            }
+            
+            const results = document.getElementById('comparison-results');
+            results.innerHTML = `
+                <div style="padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                    <div style="color: #10b981; margin-bottom: 10px;">
+                        <i class="fas fa-spinner fa-spin"></i> Сравниваем модели...
+                    </div>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                const data = {
+                    'Яндекс GPT': { speed: 92, quality: 89, price: 0, support: 98, russian: 100 },
+                    'ChatGPT 4': { speed: 85, quality: 95, price: 20, support: 90, russian: 70 },
+                    'GigaChat': { speed: 90, quality: 88, price: 99, support: 95, russian: 100 },
+                    'Claude 3': { speed: 80, quality: 94, price: 20, support: 88, russian: 50 },
+                    'Gemini Pro': { speed: 88, quality: 93, price: 0, support: 85, russian: 60 }
+                };
+                
+                const m1 = data[model1] || { speed: 0, quality: 0, price: 0, support: 0, russian: 0 };
+                const m2 = data[model2] || { speed: 0, quality: 0, price: 0, support: 0, russian: 0 };
+                
+                results.innerHTML = `
+                    <h4>Результаты сравнения:</h4>
+                    <table style="width: 100%; border-collapse: collapse; margin: 15px 0;">
+                        <tr style="background: rgba(99,102,241,0.1);">
+                            <th style="padding: 10px; text-align: left;">Параметр</th>
+                            <th style="padding: 10px; text-align: center;">${model1}</th>
+                            <th style="padding: 10px; text-align: center;">${model2}</th>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">Скорость</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m1.speed}/100</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m2.speed}/100</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">Качество</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m1.quality}/100</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m2.quality}/100</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">Цена ($/мес)</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m1.price}</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m2.price}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">Поддержка</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m1.support}/100</td>
+                            <td style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); text-align: center;">${m2.support}/100</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px;">Русский язык</td>
+                            <td style="padding: 10px; text-align: center;">${m1.russian}/100</td>
+                            <td style="padding: 10px; text-align: center;">${m2.russian}/100</td>
+                        </tr>
+                    </table>
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(16,185,129,0.1); border-radius: 10px;">
+                        <strong>Рекомендация:</strong> ${m1.russian > m2.russian ? model1 : model2} лучше подходит для работы с русским языком
+                    </div>
+                `;
+            }, 1000);
+        };
+
         // Уведомления
         function initNotifications() {
             window.showNotification = function(message, type = 'info') {
@@ -2708,11 +2873,15 @@
                 document.body.appendChild(modal);
             }
             modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
         };
 
         window.closeModal = function(modalId) {
             const modal = document.getElementById(modalId);
-            if (modal) modal.style.display = 'none';
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
         };
 
         // Темная/светлая тема
@@ -2729,27 +2898,25 @@
             };
         }
 
-        // Мобильное меню
-        window.toggleMobileMenu = function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-        };
-
         // Отправка в Telegram
         function sendToTelegram(message) {
             if (!CONFIG.telegramBotToken || !CONFIG.telegramChatId) return;
             
-            fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    chat_id: CONFIG.telegramChatId,
-                    text: `AI HUB: ${message}`,
-                    parse_mode: 'HTML'
-                })
-            }).catch(console.error);
+            try {
+                fetch(`https://api.telegram.org/bot${CONFIG.telegramBotToken}/sendMessage`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: CONFIG.telegramChatId,
+                        text: `AI HUB: ${message}`,
+                        parse_mode: 'HTML'
+                    })
+                }).catch(error => console.log('Telegram error:', error));
+            } catch (e) {
+                console.log('Telegram send error:', e);
+            }
         }
 
         // Сеть
@@ -2773,12 +2940,17 @@
                 </form>
             `);
             
-            document.getElementById('networkForm')?.addEventListener('submit', function(e) {
-                e.preventDefault();
-                showNotification('Заявка отправлена! Мы свяжемся с вами в течение 24 часов.', 'success');
-                closeModal('joinNetwork');
-                sendToTelegram('Новая заявка в AI Сеть');
-            });
+            setTimeout(() => {
+                const form = document.getElementById('networkForm');
+                if (form) {
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+                        showNotification('Заявка отправлена! Мы свяжемся с вами в течение 24 часов.', 'success');
+                        closeModal('joinNetwork');
+                        sendToTelegram('Новая заявка в AI Сеть');
+                    });
+                }
+            }, 100);
         };
 
         // Крипто биржа
@@ -2795,7 +2967,7 @@
                             <option>Neural Coin</option>
                             <option>GPT Token</option>
                         </select>
-                        <button class="form-button" style="width: 100%;">Купить</button>
+                        <button class="form-button" style="width: 100%;" onclick="showNotification('Функция в разработке', 'info')">Купить</button>
                     </div>
                     <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
                         <h4>Продать</h4>
@@ -2805,7 +2977,7 @@
                             <option>Neural Coin</option>
                             <option>GPT Token</option>
                         </select>
-                        <button class="form-button" style="width: 100%;">Продать</button>
+                        <button class="form-button" style="width: 100%;" onclick="showNotification('Функция в разработке', 'info')">Продать</button>
                     </div>
                 </div>
             `);
@@ -2815,6 +2987,9 @@
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
                 showNotification('Скопировано в буфер обмена!', 'success');
+            }).catch(err => {
+                console.log('Copy failed:', err);
+                showNotification('Ошибка копирования', 'error');
             });
         }
 
@@ -2859,10 +3034,23 @@
         // Инициализация трекинга
         trackPageView();
 
-        // Service Worker для оффлайн работы
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').catch(console.error);
-        }
+        // Закрытие модальных окон по клику вне контента
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal').forEach(modal => {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = '';
+                });
+            }
+        });
     </script>
 </body>
 </html>
