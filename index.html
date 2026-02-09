@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Hub 2024 | Каталог нейросетей + Инструменты + Промокоды</title>
     <meta name="description" content="Топ AI-инструменты: Яндекс GPT, Kandinsky, Midjourney. Рабочие промокоды, отзывы, сравнение. Партнерская программа Reg.ru">
-    <meta name="keywords" content="AI, нейросети, промокоды, ChatGPT, Midjourney, Яндекс GPT, GigaChat,                     партнерская программа, Reg.ru">
+    <meta name="keywords" content="AI, нейросети, промокоды, ChatGPT, Midjourney, Яндекс GPT, GigaChat, партнерская программа, Reg.ru">
     <meta name="regru-verification" content="abac4ef3eab99704191b2c9f46c6a327b39917c89c88d80f17c710ac795d0b9c" />
     
     <!-- Обязательные мета-теги для РСЯ -->
@@ -14,7 +14,7 @@
     <meta property="og:url" content="https://ai-toolkit.ru/">
     <meta property="og:site_name" content="AI Hub 2024">
     
-    <!-- Favicon (обязательно!) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -39,21 +39,9 @@
     <!-- Canonical URL для SEO -->
     <link rel="canonical" href="https://ai-toolkit.ru/">
     
-    <!-- Яндекс.Вебмастер -->
-    <meta name="yandex-verification" content="ваш-код-верификации">
-    
-    <!-- Google Search Console -->
-    <meta name="google-site-verification" content="ваш-код-верификации">
-    
-    <!-- Стили прямо в файле -->
+    <!-- Стили -->
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* ===== ОСНОВНЫЕ ПЕРЕМЕННЫЕ ===== */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -67,6 +55,20 @@
             --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --glass-bg: rgba(255, 255, 255, 0.05);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 20px 40px rgba(0,0,0,0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -84,87 +86,124 @@
             padding: 0 20px;
         }
 
-        /* ===== РЕКЛАМНЫЕ БЛОКИ ===== */
-        .ad-section {
-            margin: 40px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        /* ===== ОБЩИЕ СТИЛИ ===== */
+        .section {
+            margin: 80px 0;
+        }
+
+        .section-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
             text-align: center;
         }
 
-        .sidebar-ad {
-            position: sticky;
-            top: 100px;
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
         }
 
-        .ad-label {
-            display: block;
-            font-size: 0.8rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 10px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .hover-lift:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow);
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+        }
+
+        .button-secondary {
+            background: var(--secondary);
+        }
+
+        .button-accent {
+            background: var(--accent);
         }
 
         /* ===== ШАПКА ===== */
         .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(20px);
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 15px 0;
         }
 
         .site-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 900;
             background: var(--gradient-2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
+            text-decoration: none;
             display: flex;
             align-items: center;
             gap: 10px;
-            text-decoration: none;
         }
 
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 20px;
             align-items: center;
         }
 
         .nav-link {
             color: var(--light);
             text-decoration: none;
-            font-weight: 500;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 10px;
-            transition: all 0.3s;
-            position: relative;
-            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
         }
 
         .nav-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+            background: var(--glass-bg);
         }
 
         .nav-link.active {
@@ -172,23 +211,21 @@
             box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
         }
 
-        .nav-link i {
-            margin-right: 8px;
-        }
-
         .mobile-menu-btn {
             display: none;
             background: none;
-            border: none;
+            border: 2px solid var(--glass-border);
             color: white;
-            font-size: 1.5rem;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
             cursor: pointer;
-            padding: 10px;
+            align-items: center;
+            justify-content: center;
         }
 
         /* ===== МОБИЛЬНОЕ МЕНЮ ===== */
         .mobile-menu {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -196,65 +233,42 @@
             bottom: 0;
             background: rgba(0, 0, 0, 0.95);
             z-index: 2000;
-            padding: 80px 20px;
+            display: none;
+            flex-direction: column;
+            padding: 100px 20px;
+        }
+
+        .mobile-menu.active {
+            display: flex;
         }
 
         .mobile-menu-content {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 15px;
         }
 
         .mobile-menu-content a {
             color: white;
             text-decoration: none;
+            padding: 20px;
+            background: var(--glass-bg);
+            border-radius: 15px;
             font-size: 1.2rem;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
         }
 
         .mobile-menu-content a:hover {
             background: var(--primary);
             transform: translateX(10px);
         }
-        <style>
-    /* ФИКС КНОПКИ МЕНЮ */
-    .mobile-menu-btn {
-        background: transparent !important;
-        border: 2px solid rgba(255, 255, 255, 0.2) !important;
-        color: white !important;
-    }
-    @media (min-width: 993px) {
-        .mobile-menu-btn { display: none !important; }
-        .nav-links { display: flex !important; }
-    }
-    @media (max-width: 992px) {
-        .nav-links { display: none !important; }
-        .mobile-menu-btn { display: flex !important; }
-    }
-    /* ===== ФИКС КНОПКИ МЕНЮ ===== */
-.mobile-menu-btn {
-    background: transparent !important;
-    border: 2px solid rgba(255, 255, 255, 0.2) !important;
-    color: white !important;
-}
 
-@media (min-width: 993px) {
-    .mobile-menu-btn { display: none !important; }
-    .nav-links { display: flex !important; }
-}
-
-@media (max-width: 992px) {
-    .nav-links { display: none !important; }
-    .mobile-menu-btn { display: flex !important; }
-}
-</style>
-        /* ===== ГЕРОЙ ===== */
+        /* ===== ГЕРОЙ СЕКЦИЯ ===== */
         .hero {
-            padding: 80px 0 60px;
+            padding: 180px 0 100px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -281,8 +295,7 @@
             background: linear-gradient(45deg, #667eea, #f093fb, #4facfe);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             animation: gradientShift 8s ease infinite;
         }
 
@@ -295,31 +308,31 @@
             font-size: 1.4rem;
             color: rgba(255, 255, 255, 0.9);
             max-width: 800px;
-            margin: 0 auto 40px;
+            margin: 0 auto 50px;
             line-height: 1.8;
         }
 
         .hero-stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 50px;
+            margin-top: 60px;
         }
 
         .hero-stat {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             backdrop-filter: blur(10px);
             padding: 25px;
             border-radius: 20px;
             min-width: 200px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
         }
 
         .hero-stat:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: var(--shadow);
         }
 
         .stat-number {
@@ -329,575 +342,15 @@
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 10px;
         }
 
-        /* ===== НОВЫЕ СЕКЦИИ ===== */
-        .testimonials-section {
-            background: rgba(15, 23, 42, 0.8);
-            border-radius: 30px;
-            padding: 60px;
-            margin: 80px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .testimonial-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gradient-1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-
-        .promo-codes-section {
-            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
-            border-radius: 30px;
-            padding: 60px;
-            margin: 80px 0;
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .promo-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-        }
-
-        .promo-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .promo-code {
-            font-size: 2rem;
-            font-weight: 900;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 15px 0;
-            padding: 10px;
-            border: 2px dashed var(--primary);
-            border-radius: 10px;
-        }
-
-        .about-section {
-            background: rgba(15, 23, 42, 0.9);
-            border-radius: 30px;
-            padding: 60px;
-            margin: 80px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* ===== ПАРТНЕРСКАЯ ПРОГРАММА REG.RU ===== */
-        .partnership-section {
-            background: rgba(15, 23, 42, 0.9);
-            border-radius: 30px;
-            padding: 60px;
-            margin: 80px 0;
-            border: 2px solid rgba(99, 102, 241, 0.3);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .partnership-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 40%);
-            z-index: -1;
-        }
-
-        .partnership-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .partnership-header h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-
-        .partnership-subtitle {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .program-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin: 50px 0;
-        }
-
-        .program-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 40px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .program-card:hover {
-            transform: translateY(-10px);
-            background: rgba(255, 255, 255, 0.08);
-            border-color: var(--primary);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        .program-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-        }
-
-        .program-icon {
-            font-size: 3.5rem;
-            margin-bottom: 25px;
-            background: var(--gradient-3);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .program-title {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: white;
-            font-weight: 700;
-        }
-
-        .program-description {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .program-features {
-            margin: 25px 0;
-        }
-
-        .program-feature {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .program-feature i {
-            color: var(--secondary);
-            width: 20px;
-        }
-
-        .program-commission {
-            background: rgba(16, 185, 129, 0.1);
-            border-left: 4px solid var(--secondary);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 25px 0;
-        }
-
-        .commission-amount {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #10b981, #34d399);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 5px;
-        }
-
-        .commission-label {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 1rem;
-        }
-
-        .program-button, .card-button, .form-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            padding: 18px;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 20px;
-        }
-
-        .program-button:hover, .card-button:hover, .form-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
-        }
-
-        .why-partner {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 25px;
-            padding: 40px;
-            margin: 60px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .benefit-item {
-            text-align: center;
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.3s;
-        }
-
-        .benefit-item:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-        }
-
-        .benefit-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .market-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-            text-align: center;
-        }
-
-        .market-stat {
-            background: rgba(255, 255, 255, 0.03);
-            padding: 30px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .market-stat-number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            background: var(--gradient-2);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        /* ===== AI ПОИСКОВАЯ СИСТЕМА ===== */
-        .ai-search-engine {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(20px);
-            border-radius: 30px;
-            padding: 50px;
-            margin: 60px auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            max-width: 1200px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .search-container {
-            position: relative;
-            margin-bottom: 30px;
-        }
-
-        #ai-search-input {
-            width: 100%;
-            padding: 25px 70px 25px 30px;
-            font-size: 1.2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(99, 102, 241, 0.3);
-            border-radius: 15px;
-            color: white;
-            transition: all 0.3s;
-        }
-
-        #ai-search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        .search-button {
-            position: absolute;
-            right: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: var(--primary);
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .search-button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .search-tags {
-            display: flex;
-            gap: 15px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .search-tag {
-            background: rgba(99, 102, 241, 0.1);
-            color: #a5b4fc;
-            padding: 12px 25px;
-            border-radius: 25px;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid rgba(99, 102, 241, 0.3);
-        }
-
-        .search-tag:hover {
-            background: rgba(99, 102, 241, 0.2);
-            transform: translateY(-2px);
-        }
-
-        .search-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
-        }
-
-        .search-result {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-
-        .search-result:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        /* ===== РАСШИРЕННЫЕ ИНСТРУМЕНТЫ ===== */
-        .advanced-tools {
-            margin: 80px 0;
-        }
-
-        .tools-grid {
+        /* ===== КАТАЛОГ ИНСТРУМЕНТОВ ===== */
+        .cards-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-        }
-
-        .tool-card {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s;
-        }
-
-        .tool-card:hover {
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        .tool-badge {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--accent);
-            color: var(--dark);
-            padding: 6px 15px;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            font-weight: 600;
-        }
-
-        .tool-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tool-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: white;
-        }
-
-        .tool-desc {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 25px;
-            line-height: 1.6;
-        }
-
-        .tool-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-
-        .tool-feature {
-            background: rgba(99, 102, 241, 0.1);
-            color: #a5b4fc;
-            padding: 6px 15px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-        }
-
-        /* ===== ИНТЕРАКТИВНЫЕ ВИДЖЕТЫ ===== */
-        .interactive-widgets {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-
-        .widget {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .widget-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 25px;
-            font-size: 1.3rem;
-            color: white;
-        }
-
-        .ai-generator {
-            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(245, 158, 11, 0.1));
-        }
-
-        .comparison-tool {
-            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
-        }
-
-        .trending-ai {
-            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
-        }
-
-        .generator-output {
-            margin-top: 20px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            min-height: 100px;
-        }
-
-        /* ===== КАРТОЧКИ ИНСТРУМЕНТОВ ===== */
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
+            margin-top: 40px;
         }
 
         .card {
@@ -905,7 +358,7 @@
             border-radius: 25px;
             padding: 35px;
             box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-            transition: all 0.4s;
+            transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.3);
             position: relative;
             overflow: hidden;
@@ -938,7 +391,6 @@
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
 
         .card-rating {
@@ -964,12 +416,11 @@
             color: var(--gray);
             margin-bottom: 25px;
             line-height: 1.6;
-            font-size: 1.05rem;
         }
 
         .card-features {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             margin-bottom: 25px;
             flex-wrap: wrap;
         }
@@ -997,22 +448,556 @@
             background: var(--gradient-1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            background-clip: text;
             margin-bottom: 5px;
         }
 
-        .card-price small {
-            color: var(--gray);
-            font-size: 0.95rem;
+        /* ===== ПАРТНЕРСКАЯ ПРОГРАММА ===== */
+        .partnership-section {
+            background: rgba(15, 23, 42, 0.9);
+            border-radius: 30px;
+            padding: 60px;
+            margin: 80px 0;
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* ===== ИНТЕРАКТИВНЫЕ КОМПОНЕНТЫ ===== */
-        .ai-comparison {
-            background: rgba(15, 23, 42, 0.8);
+        .partnership-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(99, 102, 241, 0.2) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(16, 185, 129, 0.2) 0%, transparent 40%);
+            z-index: -1;
+        }
+
+        .program-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .program-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 40px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .program-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        /* ===== ПОИСКОВАЯ СИСТЕМА ===== */
+        .ai-search-engine {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(20px);
             border-radius: 30px;
             padding: 50px;
-            margin: 60px 0;
+            margin: 60px auto;
+            border: 1px solid var(--glass-border);
+            max-width: 1200px;
+            box-shadow: var(--shadow);
+        }
+
+        .search-container {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        #ai-search-input {
+            width: 100%;
+            padding: 25px 70px 25px 30px;
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(99, 102, 241, 0.3);
+            border-radius: 15px;
+            color: white;
+            transition: var(--transition);
+        }
+
+        #ai-search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 30px rgba(99, 102, 241, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .search-button {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        /* ===== ПРОМОКОДЫ ===== */
+        .promo-codes-section {
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
+            border-radius: 30px;
+            padding: 60px;
+            margin: 80px 0;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        .promo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .promo-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .promo-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .promo-code {
+            font-size: 2rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+            padding: 10px;
+            border: 2px dashed var(--primary);
+            border-radius: 10px;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 30px;
+            }
+            
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .program-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: flex;
+            }
+            
+            .section-title {
+                font-size: 2.5rem;
+            }
+            
+            .partnership-section {
+                padding: 40px 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 150px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+                padding: 0 20px;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+                padding: 0 15px;
+            }
+            
+            .ai-search-engine {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-stat {
+                min-width: 140px;
+                padding: 20px;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .card {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .promo-code {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* ===== АНИМАЦИИ ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-animation {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* ===== УВЕДОМЛЕНИЯ И МОДАЛЬНЫЕ ОКНА ===== */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 10001;
+            box-shadow: var(--shadow);
+            animation: slideInRight 0.3s ease-out;
+            display: none;
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--dark);
+            padding: 50px;
+            border-radius: 30px;
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--glass-border);
+            animation: modalSlide 0.3s ease-out;
+            position: relative;
+        }
+
+        @keyframes modalSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== СКРОЛЛБАР ===== */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ===== */
+        .ad-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 15px;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+        }
+
+        .ad-label {
+            display: block;
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .testimonial-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .search-tags {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .search-tag {
+            background: rgba(99, 102, 241, 0.1);
+            color: #a5b4fc;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+        }
+
+        .search-tag:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .search-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .search-result {
+            background: var(--glass-bg);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .search-result:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tool-card {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
+        }
+
+        .tool-card:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .tool-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tool-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .tool-desc {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .tool-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .tool-feature {
+            background: rgba(99, 102, 241, 0.1);
+            color: #a5b4fc;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        .interactive-widgets {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .widget {
+            background: var(--glass-bg);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid var(--glass-border);
+        }
+
+        .widget-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            color: white;
+        }
+
+        .ai-generator {
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(245, 158, 11, 0.1));
+        }
+
+        .comparison-tool {
+            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(99, 102, 241, 0.1));
+        }
+
+        .trending-ai {
+            background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
+        }
+
+        .generator-output {
+            margin-top: 20px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            min-height: 100px;
         }
 
         .comparison-table {
@@ -1027,7 +1012,7 @@
         .comparison-table th, .comparison-table td {
             padding: 20px;
             text-align: left;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid var(--glass-border);
         }
 
         .comparison-table th {
@@ -1041,11 +1026,10 @@
         }
 
         .rating-stars {
-            color: #f59e0b;
+            color: var(--accent);
             font-size: 1.2rem;
         }
 
-        /* ===== LIVE ТРЕКЕР ЦЕН ===== */
         .price-tracker {
             background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
             border-radius: 25px;
@@ -1062,7 +1046,7 @@
             background: rgba(255, 255, 255, 0.03);
             border-radius: 15px;
             margin-bottom: 15px;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .price-item:hover {
@@ -1070,19 +1054,13 @@
             transform: translateX(10px);
         }
 
-        .price-change {
-            color: var(--secondary);
-            font-weight: 600;
-        }
-
-        /* ===== СЕТЬ AI-ЭКСПЕРТОВ ===== */
         .ai-network {
             background: rgba(15, 23, 42, 0.9);
             border-radius: 30px;
             padding: 60px;
             margin: 80px 0;
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
             position: relative;
             overflow: hidden;
         }
@@ -1108,11 +1086,11 @@
         }
 
         .network-stat {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--glass-bg);
             padding: 30px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s;
+            border: 1px solid var(--glass-border);
+            transition: var(--transition);
         }
 
         .network-stat:hover {
@@ -1120,7 +1098,6 @@
             transform: translateY(-5px);
         }
 
-        /* ===== КРИПТО ИНТЕГРАЦИЯ ===== */
         .crypto-section {
             background: linear-gradient(45deg, rgba(245, 158, 11, 0.1), rgba(99, 102, 241, 0.1));
             border-radius: 25px;
@@ -1137,11 +1114,11 @@
         }
 
         .crypto-price {
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--glass-bg);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .crypto-price:hover {
@@ -1149,13 +1126,12 @@
             transform: translateY(-5px);
         }
 
-        /* ===== ФОРМА АНАЛИТИКИ ===== */
         .analytics-form {
             background: rgba(15, 23, 42, 0.8);
             border-radius: 25px;
             padding: 50px;
             margin: 60px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
         }
 
         .form-grid {
@@ -1169,11 +1145,11 @@
             width: 100%;
             padding: 18px 25px;
             background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
             border-radius: 12px;
             color: white;
             font-size: 1rem;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .form-input:focus {
@@ -1183,71 +1159,6 @@
             box-shadow: 0 0 25px rgba(99, 102, 241, 0.2);
         }
 
-        /* ===== МОДАЛЬНЫЕ ОКНА ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.95);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal-content {
-            background: var(--dark);
-            padding: 50px;
-            border-radius: 30px;
-            max-width: 800px;
-            width: 100%;
-            max-height: 90vh;
-            overflow-y: auto;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            animation: modalSlide 0.3s ease-out;
-            position: relative;
-        }
-
-        @keyframes modalSlide {
-            from {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* ===== УВЕДОМЛЕНИЯ ===== */
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--primary);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 10px;
-            z-index: 10001;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: slideInRight 0.3s ease-out;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* ===== СЕКЦИЯ LIVE UPDATES ===== */
         .live-updates {
             background: linear-gradient(45deg, rgba(239, 68, 68, 0.1), rgba(245, 158, 11, 0.1));
             border-radius: 25px;
@@ -1264,7 +1175,7 @@
         }
 
         .update-item {
-            background: rgba(255, 255, 255, 0.03);
+            background: var(--glass-bg);
             padding: 20px;
             border-radius: 15px;
             margin-bottom: 15px;
@@ -1283,13 +1194,12 @@
             }
         }
 
-        /* ===== КАРТА САЙТОВ ===== */
         .sitemap {
             background: rgba(15, 23, 42, 0.8);
             border-radius: 25px;
             padding: 40px;
             margin: 50px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--glass-border);
         }
 
         .sitemap-grid {
@@ -1316,7 +1226,7 @@
         .sitemap-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1327,12 +1237,12 @@
             transform: translateX(5px);
         }
 
-        /* ===== СТИЛИ ДЛЯ ФУТЕРА ===== */
+        /* ===== ФУТЕР ===== */
         .footer {
             background: rgba(15, 23, 42, 0.95);
             padding: 60px 0 30px;
             margin-top: 100px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--glass-border);
         }
 
         .footer-grid {
@@ -1359,7 +1269,7 @@
         .footer-links a {
             color: rgba(255, 255, 255, 0.7);
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -1380,13 +1290,13 @@
             width: 45px;
             height: 45px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--glass-bg);
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
-            transition: all 0.3s;
+            transition: var(--transition);
         }
 
         .social-link:hover {
@@ -1397,315 +1307,16 @@
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid var(--glass-border);
             color: rgba(255, 255, 255, 0.5);
             font-size: 0.9rem;
-        }
-
-        /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 1200px) {
-            .container {
-                max-width: 100%;
-                padding: 0 30px;
-            }
-            
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .tools-grid {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-            
-            .program-cards {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 992px) {
-            .hero h1 {
-                font-size: 3rem;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-stats {
-                gap: 30px;
-            }
-            
-            .hero-stat {
-                min-width: 170px;
-            }
-            
-            .partnership-section {
-                padding: 40px 30px;
-            }
-            
-            .partnership-header h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-                padding: 0 20px;
-            }
-            
-            .cards {
-                grid-template-columns: 1fr;
-                padding: 0 15px;
-            }
-            
-            .ai-search-engine {
-                padding: 30px 20px;
-            }
-            
-            .ai-network {
-                padding: 40px 25px;
-            }
-            
-            .modal-content {
-                padding: 30px 20px;
-            }
-            
-            .program-card {
-                padding: 30px 20px;
-            }
-            
-            .market-stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-stat {
-                min-width: 140px;
-                padding: 20px;
-            }
-            
-            .stat-number {
-                font-size: 2.5rem;
-            }
-            
-            .card {
-                padding: 25px;
-            }
-            
-            .tool-card {
-                padding: 25px;
-            }
-            
-            .partnership-header h2 {
-                font-size: 2rem;
-            }
-            
-            .program-title {
-                font-size: 1.5rem;
-            }
-            
-            .market-stats {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* ===== АНИМАЦИИ ===== */
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        @keyframes glow {
-            0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
-            50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
-        }
-
-        .float-animation {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .pulse-animation {
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .glow-animation {
-            animation: glow 3s ease-in-out infinite;
-        }
-
-        /* ===== УТИЛИТЫ ===== */
-        .text-gradient {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .bg-gradient {
-            background: var(--gradient-1);
-        }
-
-        .shadow-deep {
-            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
-        }
-
-        .shadow-light {
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
-        .hover-lift {
-            transition: transform 0.3s;
-        }
-
-        .hover-lift:hover {
-            transform: translateY(-10px);
-        }
-
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        /* ===== КАСТОМНЫЕ СКРОЛЛБАР ===== */
-        ::-webkit-scrollbar {
-            width: 12px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: rgba(15, 23, 42, 0.8);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 6px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
-        }
-        
-        /* ===== СТИЛИ ДЛЯ ПРЕДУПРЕЖДЕНИЙ ===== */
-        .no-script-warning {
-            background: var(--danger);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 9999;
-        }
-        
-        .adblock-warning {
-            display: none;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--danger);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 10px;
-            z-index: 10001;
-            max-width: 400px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            animation: slideInRight 0.3s ease-out;
-        }
-        
-        .adblock-content {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .adblock-buttons {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .adblock-btn {
-            padding: 8px 15px;
-            border-radius: 6px;
-            border: none;
-            cursor: pointer;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        
-        .adblock-btn-primary {
-            background: white;
-            color: var(--dark);
-        }
-        
-        .adblock-btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: white;
-        }
-        
-        .adblock-close {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.2rem;
-            cursor: pointer;
-            margin-left: 10px;
         }
     </style>
 </head>
 <body>
-    <!-- Yandex.RTB R-A-18680344-1 -->
-    <div id="yandex_rtb_R-A-18680344-1"></div>
-    <script>window.yaContextCb=window.yaContextCb||[]</script>
-
-    <!-- Сообщение об отсутствии JavaScript -->
-<noscript>
-    <div class="no-script-warning">
-        <i class="fas fa-exclamation-triangle"></i>
-        Для работы сайта требуется JavaScript. Пожалуйста, включите его в настройках браузера.
-    </div>
-</noscript>
-
-<!-- Сообщение о блокировщике рекламы -->
-<div id="adblock-warning" class="adblock-warning">
-    <div class="adblock-content">
-        <i class="fas fa-heart"></i>
-        <div>
-            <strong>Поддержите проект!</strong>
-            <p>Реклама помогает нам развивать сайт и добавлять новые AI-инструменты.</p>
-            <div class="adblock-buttons">
-                <button id="adblock-close-btn" class="adblock-btn adblock-btn-secondary">
-                    Понятно, продолжить
-                </button>
-                <button id="adblock-whitelist-btn" class="adblock-btn adblock-btn-primary">
-                    <i class="fas fa-check-circle"></i> Добавить в исключения
-                </button>
-            </div>
-        </div>
-        <button id="adblock-close-x" class="adblock-close">
-            <i class="fas fa-times"></i>
-        </button>
-    </div>
-</div>
+    <!-- Уведомления -->
+    <div id="notification" class="notification"></div>
+    <div id="modal" class="modal"></div>
 
     <!-- Шапка -->
     <header class="header">
@@ -1753,7 +1364,7 @@
 
     <!-- Мобильное меню -->
     <div id="mobileMenu" class="mobile-menu">
-        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" style="position: absolute; top: 20px; right: 20px;">
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
             <i class="fas fa-times"></i>
         </button>
         <div class="mobile-menu-content">
@@ -1765,27 +1376,15 @@
             <a href="#network" onclick="toggleMobileMenu()"><i class="fas fa-users"></i> Сеть</a>
             <a href="#analytics" onclick="toggleMobileMenu()"><i class="fas fa-chart-line"></i> Аналитика</a>
             <a href="#about" onclick="toggleMobileMenu()"><i class="fas fa-info-circle"></i> О нас</a>
+            <a href="#" onclick="toggleTheme(); toggleMobileMenu()"><i class="fas fa-moon"></i> Сменить тему</a>
         </div>
     </div>
 
     <!-- Основной контент -->
     <main class="main">
         <div class="container">
-            <!-- Блок рекламы перед контентом -->
-            <div class="ad-section">
-                <span class="ad-label">Реклама</span>
-                <!-- Yandex.RTB R-A-18680344-2 -->
-                <div id="yandex_rtb_R-A-18680344-2"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-2',
-                        blockId: 'R-A-18680344-2'
-                    })
-                })</script>
-            </div>
-
             <!-- Герой-секция -->
-            <section id="home" class="hero">
+            <section id="home" class="hero section">
                 <h1 class="float-animation">🚀 AI HUB 2024</h1>
                 <p class="hero-subtitle">
                     Самый мощный каталог искусственного интеллекта с реальными промокодами, 
@@ -1814,85 +1413,65 @@
 
             <!-- Рекламный блок -->
             <div class="ad-section">
-                <span class="ad-label">Рекомендуем</span>
-                <!-- Yandex.RTB R-A-18680344-5 -->
-                <div id="yandex_rtb_R-A-18680344-5"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-5',
-                        blockId: 'R-A-18680344-5'
-                    })
-                })</script>
+                <span class="ad-label">Реклама</span>
+                <div id="yandex-rtb"></div>
             </div>
 
             <!-- Секция с промокодами -->
-            <section id="promo" class="promo-codes-section">
-                <h2 class="text-gradient">🎁 Работающие промокоды на AI-инструменты</h2>
-                <p>Актуальные промокоды на декабрь 2024 года</p>
+            <section id="promo" class="promo-codes-section section">
+                <h2 class="section-title">🎁 Работающие промокоды на AI-инструменты</h2>
+                <p class="section-subtitle">Актуальные промокоды на декабрь 2024 года</p>
                 
                 <div class="promo-grid">
-                    <div class="promo-card">
+                    <div class="promo-card hover-lift">
                         <h3>Яндекс GPT Pro</h3>
-                        <div class="promo-code">AIHUB2024</div>
+                        <div class="promo-code">8B77-0FF0-E6ED-E300</div>
                         <p>3 месяца бесплатно по подписке Pro</p>
                         <p><small>Действует до 31.12.2024</small></p>
-                        <button class="card-button" onclick="copyPromoCode('AIHUB2024')">
+                        <button class="button" onclick="copyPromoCode('8B77-0FF0-E6ED-E300')">
                             <i class="fas fa-copy"></i> Скопировать промокод
                         </button>
                     </div>
                     
-                    <div class="promo-card">
+                    <div class="promo-card hover-lift">
                         <h3>Kandinsky 3.0</h3>
                         <div class="promo-code">AIART50</div>
                         <p>50% скидка на первый месяц</p>
                         <p><small>Для новых пользователей</small></p>
-                        <button class="card-button" onclick="copyPromoCode('AIART50')">
+                        <button class="button" onclick="copyPromoCode('AIART50')">
                             <i class="fas fa-copy"></i> Скопировать промокод
                         </button>
                     </div>
                     
-                    <div class="promo-card">
+                    <div class="promo-card hover-lift">
                         <h3>Midjourney</h3>
                         <div class="promo-code">MJ2024FREE</div>
                         <p>1 месяц бесплатно на Basic план</p>
                         <p><small>Только для РФ и СНГ</small></p>
-                        <button class="card-button" onclick="copyPromoCode('MJ2024FREE')">
+                        <button class="button" onclick="copyPromoCode('MJ2024FREE')">
                             <i class="fas fa-copy"></i> Скопировать промокод
                         </button>
                     </div>
                     
-                    <div class="promo-card">
+                    <div class="promo-card hover-lift">
                         <h3>GitHub Copilot</h3>
                         <div class="promo-code">COPILOT30</div>
                         <p>30% скидка на годовую подписку</p>
                         <p><small>Для студентов и разработчиков</small></p>
-                        <button class="card-button" onclick="copyPromoCode('COPILOT30')">
+                        <button class="button" onclick="copyPromoCode('COPILOT30')">
                             <i class="fas fa-copy"></i> Скопировать промокод
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- Рекламный блок -->
-            <div class="ad-section">
-                <span class="ad-label">Реклама</span>
-                <!-- Yandex.RTB R-A-18680344-10 -->
-                <div id="yandex_rtb_R-A-18680344-10"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-10',
-                        blockId: 'R-A-18680344-10'
-                    })
-                })</script>
-            </div>
-
             <!-- Секция с отзывами -->
-            <section class="testimonials-section">
-                <h2 class="text-gradient">💬 Отзывы пользователей</h2>
-                <p>Что говорят о нас клиенты и партнеры</p>
+            <section class="section">
+                <h2 class="section-title">💬 Отзывы пользователей</h2>
+                <p class="section-subtitle">Что говорят о нас клиенты и партнеры</p>
                 
                 <div class="testimonials-grid">
-                    <div class="testimonial-card">
+                    <div class="testimonial-card hover-lift">
                         <div class="testimonial-text">
                             "С помощью AI HUB наш отдел маркетинга увеличил конверсию на 40%. 
                             Особенно полезными оказались промокоды и сравнение моделей."
@@ -1908,7 +1487,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
+                    <div class="testimonial-card hover-lift">
                         <div class="testimonial-text">
                             "Партнерская программа Reg.ru приносит стабильный доход. 
                             Рекомендую всем IT-специалистам и разработчикам."
@@ -1924,7 +1503,7 @@
                         </div>
                     </div>
                     
-                    <div class="testimonial-card">
+                    <div class="testimonial-card hover-lift">
                         <div class="testimonial-text">
                             "Лучший каталог AI-инструментов для русского рынка. 
                             Все промокоды рабочие, поддержка отвечает быстро."
@@ -1943,9 +1522,9 @@
             </section>
 
             <!-- Секция "О нас" -->
-            <section id="about" class="about-section">
-                <h2 class="text-gradient">О проекте AI HUB 2024</h2>
-                <div style="max-width: 800px; margin: 30px auto;">
+            <section id="about" class="section glass-card">
+                <h2 class="section-title">О проекте AI HUB 2024</h2>
+                <div class="section-subtitle" style="text-align: left;">
                     <p style="margin-bottom: 20px; font-size: 1.1rem; line-height: 1.8;">
                         AI HUB 2024 — это крупнейшая платформа для работы с искусственным интеллектом в СНГ. 
                         Мы помогаем разработчикам, бизнесу и энтузиастам найти лучшие AI-инструменты, 
@@ -1970,12 +1549,12 @@
             <!-- Партнерская программа Reg.ru -->
             <section id="partnership" class="partnership-section">
                 <div class="partnership-header">
-                    <h2>☁️ Облако и IT-инфраструктура</h2>
-                    <p class="partnership-subtitle">
+                    <h2 class="section-title">☁️ Облако и IT-инфраструктура</h2>
+                    <p class="section-subtitle">
                         Привлекайте клиентов на облачные продукты и выделенные серверы в Reg.ru 
                         и зарабатывайте вместе с нами
                     </p>
-                    <button class="program-button" onclick="joinPartnership()">
+                    <button class="button button-secondary" onclick="showPartnershipModal()">
                         <i class="fas fa-rocket"></i> Присоединиться
                     </button>
                 </div>
@@ -2017,9 +1596,8 @@
                             </div>
                         </div>
 
-                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
                         <a href="https://reg.cloud/?rlink=reflink-31250911" 
-                           class="program-button" 
+                           class="button" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            onclick="trackAffiliateClick('regru_agent')">
@@ -2063,9 +1641,8 @@
                             телеком-операторов, дата-центров
                         </p>
 
-                        <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
                         <a href="https://reg.cloud/?rlink=reflink-31250911" 
-                           class="program-button" 
+                           class="button" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            onclick="trackAffiliateClick('regru_reseller')">
@@ -2076,19 +1653,19 @@
 
                 <!-- Статистика рынка -->
                 <div class="market-stats">
-                    <div class="market-stat">
+                    <div class="market-stat hover-lift">
                         <div class="market-stat-number">350 млрд ₽</div>
                         <p>объем рынка IT-инфраструктуры</p>
                     </div>
-                    <div class="market-stat">
+                    <div class="market-stat hover-lift">
                         <div class="market-stat-number">+35%</div>
                         <p>средний рост рынка в год</p>
                     </div>
-                    <div class="market-stat">
+                    <div class="market-stat hover-lift">
                         <div class="market-stat-number">10 лет</div>
                         <p>будет сохраняться рост</p>
                     </div>
-                    <div class="market-stat">
+                    <div class="market-stat hover-lift">
                         <div class="market-stat-number">Топ-12</div>
                         <p>облачных провайдеров России</p>
                     </div>
@@ -2096,30 +1673,30 @@
 
                 <!-- Преимущества -->
                 <div class="why-partner">
-                    <h3 class="text-gradient">🎯 Почему выгодно партнёрство с Reg.ru?</h3>
+                    <h3 class="section-title">🎯 Почему выгодно партнёрство с Reg.ru?</h3>
                     <div class="benefits-grid">
-                        <div class="benefit-item">
+                        <div class="benefit-item hover-lift">
                             <div class="benefit-icon">
                                 <i class="fas fa-shield-alt"></i>
                             </div>
                             <h4>Проверенный поставщик</h4>
                             <p>На рынке с 2006 года, в реестре провайдеров хостинга РФ</p>
                         </div>
-                        <div class="benefit-item">
+                        <div class="benefit-item hover-lift">
                             <div class="benefit-icon">
                                 <i class="fas fa-wallet"></i>
                             </div>
                             <h4>Гарантированное вознаграждение</h4>
                             <p>Высокий процент отчислений, своевременные выплаты</p>
                         </div>
-                        <div class="benefit-item">
+                        <div class="benefit-item hover-lift">
                             <div class="benefit-icon">
                                 <i class="fas fa-cogs"></i>
                             </div>
                             <h4>Экосистема продуктов</h4>
                             <p>Облачная платформа + IT-инфраструктура в одном месте</p>
                         </div>
-                        <div class="benefit-item">
+                        <div class="benefit-item hover-lift">
                             <div class="benefit-icon">
                                 <i class="fas fa-headset"></i>
                             </div>
@@ -2129,56 +1706,33 @@
                     </div>
                 </div>
 
-                <!-- CTA кнопки -->
-                <div style="text-align: center; margin-top: 50px;">
-                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
-                    <a href="https://reg.cloud/cloud/servers/?rlink=reflink-31250911" 
-                       class="program-button" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       style="margin: 10px; width: auto; padding: 15px 40px; display: inline-block;"
-                       onclick="trackAffiliateClick('regru_agent_main')">
-                        <i class="fas fa-user-tie"></i> Подключиться к Агентской программе
-                    </a>
-                    <!-- ИСПРАВЛЕННАЯ ССЫЛКА С ВАШИМ ПАРТНЕРСКИМ КОДОМ -->
-                    <a href="https://reg.cloud/services/backup-and-snapshots/?rlink=reflink-31250911" 
-                       class="program-button" 
-                       target="_blank" 
-                       rel="noopener noreferrer"
-                       style="margin: 10px; width: auto; padding: 15px 40px; background: var(--accent); display: inline-block;"
-                       onclick="trackAffiliateClick('regru_reseller_main')">
-                        <i class="fas fa-store"></i> Оставить заявку на Реселлерскую программу
-                    </a>
-                </div>
-                
-                <!-- ДОПОЛНИТЕЛЬНЫЕ ПАРТНЕРСКИЕ ССЫЛКИ -->
+                <!-- Дополнительные партнерские ссылки -->
                 <div style="margin-top: 40px; padding: 25px; background: rgba(255,255,255,0.03); border-radius: 15px;">
                     <h4 style="margin-bottom: 15px; color: var(--primary);">🔥 Популярные продукты Reg.ru:</h4>
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                        <!-- ВСЕ ВАШИ ПАРТНЕРСКИЕ ССЫЛКИ -->
                         <a href="https://reg.cloud/apps/?rlink=reflink-31250911" 
-                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: var(--transition);"
                            onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
                            onclick="trackAffiliateClick('regru_apps')">
                             <i class="fas fa-boxes"></i> Приложения
                         </a>
                         <a href="https://reg.cloud/dedicated/?rlink=reflink-31250911" 
-                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: var(--transition);"
                            onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
                            onclick="trackAffiliateClick('regru_dedicated')">
                             <i class="fas fa-server"></i> Выделенные серверы
                         </a>
                         <a href="https://reg.cloud/cloud/servers/?rlink=reflink-31250911" 
-                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: var(--transition);"
                            onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
                            onclick="trackAffiliateClick('regru_cloud_servers')">
                             <i class="fas fa-cloud"></i> Облачные серверы
                         </a>
                         <a href="https://reg.cloud/services/backup-and-snapshots/?rlink=reflink-31250911" 
-                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: all 0.3s;"
+                           style="color: rgba(255,255,255,0.8); text-decoration: none; padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; text-align: center; transition: var(--transition);"
                            onmouseover="this.style.background='rgba(99,102,241,0.2)'; this.style.color='white';"
                            onmouseout="this.style.background='rgba(255,255,255,0.05)'; this.style.color='rgba(255,255,255,0.8)';"
                            onclick="trackAffiliateClick('regru_backup')">
@@ -2188,81 +1742,174 @@
                 </div>
             </section>
 
-            <!-- Рекламный блок -->
-            <div class="ad-section">
-                <span class="ad-label">Реклама</span>
-                <!-- Yandex.RTB R-A-18680344-3 -->
-                <div id="yandex_rtb_R-A-18680344-3"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-3',
-                        blockId: 'R-A-18680344-3'
-                    })
-                })</script>
+            <!-- Яндекс.Директ партнерская программа -->
+            <div class="program-card hover-lift section">
+                <div class="program-badge" style="background: #fc3f1d;">НОВОЕ</div>
+                <div class="program-icon">
+                    <i class="fab fa-yandex"></i>
+                </div>
+                <h3 class="program-title">Партнерская программа Яндекс.Директ</h3>
+                <p class="program-description">
+                    Разместите партнерскую ссылку на сайте, в блоге или социальной сети — 
+                    и получите вознаграждение за каждого нового клиента, который запустит 
+                    рекламную кампанию в Яндекс Директе.
+                </p>
+                
+                <div class="program-commission">
+                    <div class="commission-amount">До 20%</div>
+                    <div class="commission-label">от расходов на рекламу</div>
+                </div>
+                
+                <div class="program-features">
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Работает для всех ниш</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Автоматические выплаты</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Статистика в реальном времени</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Поддержка 24/7</span>
+                    </div>
+                </div>
+                
+                <div style="margin: 25px 0; padding: 20px; background: rgba(252, 63, 29, 0.1); border-radius: 10px;">
+                    <h4 style="color: #fc3f1d; margin-bottom: 10px;">🎯 Ваша партнерская ссылка:</h4>
+                    <div class="promo-code" style="font-size: 1.2rem; margin: 10px 0;">
+                        https://yandex.ru/project/direct/partner/distribution/?partner=14661305
+                    </div>
+                    <button class="button button-accent" onclick="copyPromoCode('https://yandex.ru/project/direct/partner/distribution/?partner=14661305')" 
+                            style="margin-top: 10px;">
+                        <i class="fas fa-copy"></i> Скопировать ссылку
+                    </button>
+                </div>
+                
+                <a href="https://yandex.ru/project/direct/partner/distribution/?partner=14661305" 
+                   class="button" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   style="background: #fc3f1d;"
+                   onclick="trackAffiliateClick('yandex_direct')">
+                    <i class="fas fa-external-link-alt"></i> Подробнее о программе
+                </a>
             </div>
 
-            <!-- Яндекс.Директ партнерская программа -->
-<div class="program-card hover-lift" style="margin: 40px 0;">
-    <div class="program-badge" style="background: #fc3f1d;">НОВОЕ</div>
-    <div class="program-icon">
-        <i class="fab fa-yandex"></i>
-    </div>
-    <h3 class="program-title">Партнерская программа Яндекс.Директ</h3>
-    <p class="program-description">
-        Разместите партнерскую ссылку на сайте, в блоге или социальной сети — 
-        и получите вознаграждение за каждого нового клиента, который запустит 
-        рекламную кампанию в Яндекс Директе.
-    </p>
-    
-    <div class="program-commission">
-        <div class="commission-amount">До 20%</div>
-        <div class="commission-label">от расходов на рекламу</div>
-    </div>
-    
-    <div class="program-features">
-        <div class="program-feature">
-            <i class="fas fa-check-circle"></i>
-            <span>Работает для всех ниш</span>
-        </div>
-        <div class="program-feature">
-            <i class="fas fa-check-circle"></i>
-            <span>Автоматические выплаты</span>
-        </div>
-        <div class="program-feature">
-            <i class="fas fa-check-circle"></i>
-            <span>Статистика в реальном времени</span>
-        </div>
-        <div class="program-feature">
-            <i class="fas fa-check-circle"></i>
-            <span>Поддержка 24/7</span>
-        </div>
-    </div>
-    
-    <div style="margin: 25px 0; padding: 20px; background: rgba(252, 63, 29, 0.1); border-radius: 10px;">
-        <h4 style="color: #fc3f1d; margin-bottom: 10px;">🎯 Ваша партнерская ссылка:</h4>
-        <div class="promo-code" style="font-size: 1.2rem; margin: 10px 0;">
-            https://yandex.ru/project/direct/partner/distribution/?partner=14661305
-        </div>
-        <button class="card-button" onclick="copyPromoCode('https://yandex.ru/project/direct/partner/distribution/?partner=14661305')" 
-                style="background: #fc3f1d; margin-top: 10px;">
-            <i class="fas fa-copy"></i> Скопировать ссылку
-        </button>
-    </div>
-    
-    <a href="https://yandex.ru/project/direct/partner/distribution/?partner=14661305" 
-       class="program-button" 
-       target="_blank" 
-       rel="noopener noreferrer"
-       style="background: #fc3f1d;"
-       onclick="trackAffiliateClick('yandex_direct')">
-        <i class="fas fa-external-link-alt"></i> Подробнее о программе
-    </a>
-</div>
+            <!-- Яндекс.Браузер партнерская программа -->
+            <div class="program-card hover-lift section">
+                <div class="program-badge" style="background: #FFCC00; color: #000;">ПОПУЛЯРНО</div>
+                <div class="program-icon">
+                    <i class="fab fa-yandex"></i>
+                </div>
+                <h3 class="program-title">Партнерская программа Яндекс.Браузер</h3>
+                <p class="program-description">
+                    Рекомендуйте Яндекс.Браузер и получайте вознаграждение за каждую установку. 
+                    Браузер с AI-ассистентом Алисой и встроенной защитой.
+                </p>
+                
+                <div class="program-commission">
+                    <div class="commission-amount">Высокий %</div>
+                    <div class="commission-label">за установки браузера</div>
+                </div>
+                
+                <div class="program-features">
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Простая интеграция</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Стабильные выплаты</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Поддержка всех платформ</span>
+                    </div>
+                </div>
+                
+                <div style="margin: 25px 0; padding: 20px; background: rgba(255, 204, 0, 0.1); border-radius: 10px;">
+                    <h4 style="color: #FFCC00; margin-bottom: 10px;">🎯 Ваша партнерская ссылка:</h4>
+                    <div class="promo-code" style="font-size: 1.2rem; margin: 10px 0;">
+                        https://browser.yandex.ru/corp/builds?refid=14628861
+                    </div>
+                    <button class="button" onclick="copyPromoCode('https://browser.yandex.ru/corp/builds?refid=14628861')" 
+                            style="margin-top: 10px; background: #FFCC00; color: #000;">
+                        <i class="fas fa-copy"></i> Скопировать ссылку
+                    </button>
+                </div>
+                
+                <a href="https://browser.yandex.ru/corp/builds?refid=14628861" 
+                   class="button" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   style="background: #FFCC00; color: #000;"
+                   onclick="trackAffiliateClick('yandex_browser')">
+                    <i class="fas fa-external-link-alt"></i> Подробнее о программе
+                </a>
+            </div>
+
+            <!-- Яндекс.Маркет партнерская программа -->
+            <div class="program-card hover-lift section">
+                <div class="program-badge" style="background: #FF6B00;">ВЫГОДНО</div>
+                <div class="program-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h3 class="program-title">Партнерская программа Яндекс.Маркет</h3>
+                <p class="program-description">
+                    Привлекайте покупателей в Яндекс.Маркет и получайте до 10% от суммы заказов. 
+                    Миллионы товаров и надежная система выплат.
+                </p>
+                
+                <div class="program-commission">
+                    <div class="commission-amount">До 10%</div>
+                    <div class="commission-label">от суммы заказов</div>
+                </div>
+                
+                <div class="program-features">
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Куки 30 дней</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Быстрые выплаты</span>
+                    </div>
+                    <div class="program-feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Детальная статистика</span>
+                    </div>
+                </div>
+                
+                <div style="margin: 25px 0; padding: 20px; background: rgba(255, 107, 0, 0.1); border-radius: 10px;">
+                    <h4 style="color: #FF6B00; margin-bottom: 10px;">🎯 Ваш партнерский код:</h4>
+                    <div class="promo-code" style="font-size: 1.2rem; margin: 10px 0;">
+                        MARKET_14628864
+                    </div>
+                    <button class="button" onclick="copyPromoCode('MARKET_14628864')" 
+                            style="margin-top: 10px; background: #FF6B00;">
+                        <i class="fas fa-copy"></i> Скопировать код
+                    </button>
+                </div>
+                
+                <a href="https://ya.ru/search/?clid=14628860&text=" 
+                   class="button" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   style="background: #FF6B00;"
+                   onclick="trackAffiliateClick('yandex_market')">
+                    <i class="fas fa-external-link-alt"></i> Перейти в Яндекс.Маркет
+                </a>
+            </div>
             
             <!-- AI Поисковая система -->
-            <section id="search" class="ai-search-engine">
-                <h2 class="text-gradient">🔍 Умный поиск AI-инструментов</h2>
-                <p>Найдите лучшие нейросети по вашим критериям</p>
+            <section id="search" class="ai-search-engine section">
+                <h2 class="section-title">🔍 Умный поиск AI-инструментов</h2>
+                <p class="section-subtitle">Найдите лучшие нейросети по вашим критериям</p>
                 
                 <div class="search-container">
                     <input type="text" 
@@ -2287,22 +1934,9 @@
                 <div id="search-results" class="search-results"></div>
             </section>
 
-            <!-- Рекламный блок -->
-            <div class="ad-section">
-                <span class="ad-label">Реклама</span>
-                <!-- Yandex.RTB R-A-18680344-4 -->
-                <div id="yandex_rtb_R-A-18680344-4"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-4',
-                        blockId: 'R-A-18680344-4'
-                    })
-                })</script>
-            </div>
-
             <!-- Расширенные инструменты -->
-            <section id="tools" class="advanced-tools">
-                <h2 class="text-gradient">🛠️ Расширенные AI-инструменты</h2>
+            <section id="tools" class="section">
+                <h2 class="section-title">🛠️ Расширенные AI-инструменты</h2>
                 <p class="section-subtitle">Профессиональные инструменты для работы с нейросетями</p>
                 
                 <div class="tools-grid">
@@ -2321,7 +1955,7 @@
                             <span class="tool-feature">SEO оптимизация</span>
                             <span class="tool-feature">Плагиата нет</span>
                         </div>
-                        <button class="card-button" onclick="openContentGenerator()">
+                        <button class="button" onclick="openContentGenerator()">
                             <i class="fas fa-magic"></i> Сгенерировать контент
                         </button>
                     </div>
@@ -2341,7 +1975,7 @@
                             <span class="tool-feature">Графики</span>
                             <span class="tool-feature">Отзывы</span>
                         </div>
-                        <button class="card-button" onclick="openModelComparator()">
+                        <button class="button" onclick="openModelComparator()">
                             <i class="fas fa-chart-bar"></i> Сравнить модели
                         </button>
                     </div>
@@ -2361,7 +1995,7 @@
                             <span class="tool-feature">Анализ рынка</span>
                             <span class="tool-feature">Инвестиции</span>
                         </div>
-                        <button class="card-button" onclick="openTrendAnalyzer()">
+                        <button class="button" onclick="openTrendAnalyzer()">
                             <i class="fas fa-crystal-ball"></i> Анализировать тренды
                         </button>
                     </div>
@@ -2371,7 +2005,7 @@
             <!-- Интерактивные виджеты -->
             <section class="interactive-widgets">
                 <!-- AI Генератор -->
-                <div class="widget ai-generator">
+                <div class="widget ai-generator hover-lift">
                     <div class="widget-title">
                         <i class="fas fa-bolt"></i>
                         <h3>Быстрый генератор</h3>
@@ -2381,7 +2015,7 @@
                                class="form-input" 
                                placeholder="Опишите что нужно сгенерировать..."
                                id="quick-generator-input">
-                        <button class="form-button" onclick="quickGenerate()">
+                        <button class="button" onclick="quickGenerate()">
                             <i class="fas fa-play"></i> Генерировать
                         </button>
                     </div>
@@ -2389,7 +2023,7 @@
                 </div>
 
                 <!-- Сравнительный инструмент -->
-                <div class="widget comparison-tool">
+                <div class="widget comparison-tool hover-lift">
                     <div class="widget-title">
                         <i class="fas fa-exchange-alt"></i>
                         <h3>Сравнение моделей</h3>
@@ -2407,14 +2041,14 @@
                             <option>Kandinsky 3.0</option>
                             <option>Midjourney</option>
                         </select>
-                        <button class="form-button" onclick="compareModels()">
+                        <button class="button" onclick="compareModels()">
                             <i class="fas fa-balance-scale"></i> Сравнить
                         </button>
                     </div>
                 </div>
 
                 <!-- Trending AI -->
-                <div class="widget trending-ai">
+                <div class="widget trending-ai hover-lift">
                     <div class="widget-title">
                         <i class="fas fa-fire"></i>
                         <h3>Популярное сейчас</h3>
@@ -2426,10 +2060,10 @@
             </section>
 
             <!-- Карточки инструментов с партнерскими ссылками -->
-            <section class="catalog">
-                <h2 class="text-gradient">🔥 Топ AI инструменты 2024</h2>
+            <section class="catalog section">
+                <h2 class="section-title">🔥 Топ AI инструменты 2024</h2>
                 
-                <div class="cards">
+                <div class="cards-grid">
                     <!-- Яндекс GPT -->
                     <div class="card hover-lift">
                         <div class="card-header">
@@ -2456,7 +2090,7 @@
                             <small>3 месяца бесплатно по промокоду</small>
                         </div>
                         <a href="https://360.yandex.ru/gpt?utm_source=aihub&utm_medium=referral&utm_campaign=yandex_gpt&ref=AIHUB" 
-                           class="card-button" 
+                           class="button" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            onclick="trackAffiliateClick('yandex_gpt')">
@@ -2490,7 +2124,7 @@
                             <small>1000+ изображений в месяц</small>
                         </div>
                         <a href="https://fusionbrain.ai?ref=aihub2024&utm_source=aihub&utm_medium=referral&utm_campaign=kandinsky" 
-                           class="card-button" 
+                           class="button" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            onclick="trackAffiliateClick('kandinsky')">
@@ -2524,7 +2158,7 @@
                             <small>Индивидуальные тарифы</small>
                         </div>
                         <a href="https://developers.sber.ru/gigachat?ref=aihub&utm_source=aihub&utm_medium=referral&utm_campaign=gigachat" 
-                           class="card-button" 
+                           class="button" 
                            target="_blank" 
                            rel="noopener noreferrer"
                            onclick="trackAffiliateClick('gigachat')">
@@ -2534,22 +2168,9 @@
                 </div>
             </section>
 
-            <!-- Рекламный блок -->
-            <div class="ad-section">
-                <span class="ad-label">Реклама</span>
-                <!-- Yandex.RTB R-A-18680344-6 -->
-                <div id="yandex_rtb_R-A-18680344-6"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-6',
-                        blockId: 'R-A-18680344-6'
-                    })
-                })</script>
-            </div>
-
             <!-- Сравнение AI моделей -->
-            <section class="ai-comparison">
-                <h2 class="text-gradient">📊 Сравнение нейросетей</h2>
+            <section class="ai-comparison section">
+                <h2 class="section-title">📊 Сравнение нейросетей</h2>
                 <table class="comparison-table">
                     <thead>
                         <tr>
@@ -2599,9 +2220,9 @@
             </section>
 
             <!-- Live трекер цен -->
-            <section class="price-tracker">
-                <h2 class="text-gradient">💎 Live трекер цен на AI</h2>
-                <p>Актуальные цены и скидки на нейросети в реальном времени</p>
+            <section class="price-tracker section">
+                <h2 class="section-title">💎 Live трекер цен на AI</h2>
+                <p class="section-subtitle">Актуальные цены и скидки на нейросети в реальном времени</p>
                 
                 <div id="price-tracker-list" class="price-tracker-list">
                     <!-- Динамически обновляется -->
@@ -2609,38 +2230,38 @@
             </section>
 
             <!-- Сеть AI-экспертов -->
-            <section id="network" class="ai-network">
-                <h2 class="text-gradient">🤝 Сеть AI-экспертов</h2>
-                <p>Присоединяйтесь к крупнейшему сообществу AI-специалистов в СНГ</p>
+            <section id="network" class="ai-network section">
+                <h2 class="section-title">🤝 Сеть AI-экспертов</h2>
+                <p class="section-subtitle">Присоединяйтесь к крупнейшему сообществу AI-специалистов в СНГ</p>
                 
                 <div class="network-stats">
-                    <div class="network-stat">
+                    <div class="network-stat hover-lift">
                         <h3>5,000+</h3>
                         <p>Экспертов в сети</p>
                     </div>
-                    <div class="network-stat">
+                    <div class="network-stat hover-lift">
                         <h3>1,200+</h3>
                         <p>Проектов создано</p>
                     </div>
-                    <div class="network-stat">
+                    <div class="network-stat hover-lift">
                         <h3>$2M+</h3>
                         <p>Инвестиций привлечено</p>
                     </div>
-                    <div class="network-stat">
+                    <div class="network-stat hover-lift">
                         <h3>100+</h3>
                         <p>Партнёров</p>
                     </div>
                 </div>
                 
-                <button class="form-button" onclick="joinNetwork()">
+                <button class="button button-secondary" onclick="joinNetwork()">
                     <i class="fas fa-user-plus"></i> Присоединиться к сети
                 </button>
             </section>
 
             <!-- Live Updates -->
-            <section class="live-updates">
-                <h2 class="text-gradient">📢 Live обновления</h2>
-                <p>Последние новости и обновления в мире AI</p>
+            <section class="live-updates section">
+                <h2 class="section-title">📢 Live обновления</h2>
+                <p class="section-subtitle">Последние новости и обновления в мире AI</p>
                 
                 <div id="update-stream" class="update-stream">
                     <!-- Обновления добавляются динамически -->
@@ -2648,34 +2269,34 @@
             </section>
 
             <!-- Крипто интеграция -->
-            <section class="crypto-section">
-                <h2 class="text-gradient">₿ AI & Крипто</h2>
-                <p>Интеграция с криптовалютами и Web3</p>
+            <section class="crypto-section section">
+                <h2 class="section-title">₿ AI & Крипто</h2>
+                <p class="section-subtitle">Интеграция с криптовалютами и Web3</p>
                 
                 <div class="crypto-prices">
-                    <div class="crypto-price">
+                    <div class="crypto-price hover-lift">
                         <h4>AI Token</h4>
                         <p>$2.34 <span style="color: #10b981;">+5.2%</span></p>
                     </div>
-                    <div class="crypto-price">
+                    <div class="crypto-price hover-lift">
                         <h4>Neural Coin</h4>
                         <p>$1.89 <span style="color: #10b981;">+3.7%</span></p>
                     </div>
-                    <div class="crypto-price">
+                    <div class="crypto-price hover-lift">
                         <h4>GPT Token</h4>
                         <p>$5.67 <span style="color: #ef4444;">-2.1%</span></p>
                     </div>
                 </div>
                 
-                <button class="form-button" onclick="openCryptoExchange()">
+                <button class="button button-accent" onclick="openCryptoExchange()">
                     <i class="fas fa-exchange-alt"></i> Купить AI токены
                 </button>
             </section>
 
             <!-- Форма аналитики -->
-            <section id="analytics" class="analytics-form">
-                <h2 class="text-gradient">📈 Персональная AI аналитика</h2>
-                <p>Получите индивидуальные рекомендации по AI инструментам</p>
+            <section id="analytics" class="analytics-form section">
+                <h2 class="section-title">📈 Персональная AI аналитика</h2>
+                <p class="section-subtitle">Получите индивидуальные рекомендации по AI инструментам</p>
                 
                 <form id="analytics-form" onsubmit="return submitAnalytics(event)">
                     <div class="form-grid">
@@ -2705,72 +2326,59 @@
                                required>
                     </div>
                     
-                    <button type="submit" class="form-button">
+                    <button type="submit" class="button button-secondary">
                         <i class="fas fa-chart-line"></i> Получить аналитику
                     </button>
                 </form>
             </section>
 
             <!-- Карта сайтов -->
-            <section class="sitemap">
-                <h2 class="text-gradient">🗺️ Карта AI ресурсов</h2>
-                <p>Все полезные сайты и ресурсы в одном месте</p>
+            <section class="sitemap section">
+                <h2 class="section-title">🗺️ Карта AI ресурсов</h2>
+                <p class="section-subtitle">Все полезные сайты и ресурсы в одном месте</p>
                 
                 <div class="sitemap-grid">
                     <div class="sitemap-category">
                         <h4>🌐 Поисковые системы</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer">Perplexity AI</a></li>
-                            <li><a href="https://you.com" target="_blank" rel="noopener noreferrer">You.com</a></li>
-                            <li><a href="https://phind.com" target="_blank" rel="noopener noreferrer">Phind</a></li>
-                            <li><a href="https://consensus.app" target="_blank" rel="noopener noreferrer">Consensus</a></li>
+                            <li><a href="https://perplexity.ai" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Perplexity AI</a></li>
+                            <li><a href="https://you.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> You.com</a></li>
+                            <li><a href="https://phind.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Phind</a></li>
+                            <li><a href="https://consensus.app" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Consensus</a></li>
                         </ul>
                     </div>
                     
                     <div class="sitemap-category">
                         <h4>💼 Бизнес AI</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://jasper.ai" target="_blank" rel="noopener noreferrer">Jasper</a></li>
-                            <li><a href="https://copy.ai" target="_blank" rel="noopener noreferrer">Copy.ai</a></li>
-                            <li><a href="https://writesonic.com" target="_blank" rel="noopener noreferrer">Writesonic</a></li>
-                            <li><a href="https://rytr.me" target="_blank" rel="noopener noreferrer">Rytr</a></li>
+                            <li><a href="https://jasper.ai" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Jasper</a></li>
+                            <li><a href="https://copy.ai" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Copy.ai</a></li>
+                            <li><a href="https://writesonic.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Writesonic</a></li>
+                            <li><a href="https://rytr.me" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Rytr</a></li>
                         </ul>
                     </div>
                     
                     <div class="sitemap-category">
                         <h4>🎨 Дизайн и Арт</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://midjourney.com" target="_blank" rel="noopener noreferrer">Midjourney</a></li>
-                            <li><a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer">Leonardo.ai</a></li>
-                            <li><a href="https://stability.ai" target="_blank" rel="noopener noreferrer">Stability AI</a></li>
-                            <li><a href="https://runwayml.com" target="_blank" rel="noopener noreferrer">Runway ML</a></li>
+                            <li><a href="https://midjourney.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Midjourney</a></li>
+                            <li><a href="https://leonardo.ai" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Leonardo.ai</a></li>
+                            <li><a href="https://stability.ai" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Stability AI</a></li>
+                            <li><a href="https://runwayml.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Runway ML</a></li>
                         </ul>
                     </div>
                     
                     <div class="sitemap-category">
                         <h4>💻 Программирование</h4>
                         <ul class="sitemap-links">
-                            <li><a href="https://github.com/copilot" target="_blank" rel="noopener noreferrer">GitHub Copilot</a></li>
-                            <li><a href="https://replit.com" target="_blank" rel="noopener noreferrer">Replit</a></li>
-                            <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer">Cursor</a></li>
-                            <li><a href="https://tabnine.com" target="_blank" rel="noopener noreferrer">Tabnine</a></li>
+                            <li><a href="https://github.com/copilot" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> GitHub Copilot</a></li>
+                            <li><a href="https://replit.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Replit</a></li>
+                            <li><a href="https://cursor.sh" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Cursor</a></li>
+                            <li><a href="https://tabnine.com" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Tabnine</a></li>
                         </ul>
                     </div>
                 </div>
             </section>
-
-            <!-- Рекламный блок в конце -->
-            <div class="ad-section">
-                <span class="ad-label">Реклама</span>
-                <!-- Yandex.RTB R-A-18680344-11 -->
-                <div id="yandex_rtb_R-A-18680344-11"></div>
-                <script>window.yaContextCb.push(()=>{
-                    Ya.Context.AdvManager.render({
-                        renderTo: 'yandex_rtb_R-A-18680344-11',
-                        blockId: 'R-A-18680344-11'
-                    })
-                })</script>
-            </div>
         </div>
     </main>
 
@@ -2833,7 +2441,7 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2024 AI HUB. Все права защищены. ИНН: [ваш ИНН] ОГРН: [ваш ОГРН]</p>
+                <p>© 2024 AI HUB. Все права защищены.</p>
                 <p>
                     <a href="/privacy.html" style="color: rgba(255,255,255,0.5); margin: 0 10px;">Политика конфиденциальности</a> | 
                     <a href="/terms.html" style="color: rgba(255,255,255,0.5); margin: 0 10px;">Условия использования</a> | 
@@ -2842,244 +2450,36 @@
                 <p style="font-size: 0.8rem; margin-top: 10px;">
                     Сайт использует файлы cookie. Продолжая использовать сайт, вы соглашаетесь с этим.
                 </p>
-                <!-- ДОБАВЛЕН ВАШ ПАРТНЕРСКИЙ КОД -->
+                <!-- ВСЕ ВАШИ ПАРТНЕРСКИЕ КОДЫ В ФУТЕРЕ -->
                 <p style="font-size: 0.7rem; margin-top: 10px; color: rgba(255,255,255,0.3);">
-                    Партнёрский ID: 61FB-434A-2266-055F
+                    Партнёрские коды: 8B77-0FF0-E6ED-E300 | 61FB-434A-2266-055F | MARKET_14628864 | Clid: 14628860
                 </p>
             </div>
         </div>
     </footer>
 
-    <!-- Уведомления -->
-    <div id="notification" class="notification"></div>
-
     <!-- JavaScript -->
     <script>
-        // Конфигурация
+        // Конфигурация с ВСЕМИ вашими партнерскими кодами
         const CONFIG = {
             telegramBotToken: '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys',
             telegramChatId: '2048092522',
-            apiEndpoints: {
-                search: 'https://api.ai-hub.com/search',
-                analytics: 'https://api.ai-hub.com/analytics',
-                trends: 'https://api.ai-hub.com/trends'
-            },
             affiliateCodes: {
                 yandex_gpt: 'AIHUB',
                 kandinsky: 'aihub2024',
                 gigachat: 'aihub',
-                regru: 'reflink-31250911'
-            }
-        };
-
-        // Инициализация Яндекс РСЯ
-        (function() {
-            window.yaContextCb = window.yaContextCb || [];
-            
-            // Авторасстановка
-            const autoPlacementCode = `
-                (function(w, d, n, s, t) {
-                    w[n] = w[n] || [];
-                    w[n].push(function() {
-                        Ya.Context.AdvManager.render({
-                            blockId: "R-A-18680344-1",
-                            renderTo: "yandex_rtb_R-A-18680344-1",
-                            async: true
-                        });
-                    });
-                    t = d.getElementsByTagName("script")[0];
-                    s = d.createElement("script");
-                    s.type = "text/javascript";
-                    s.src = "https://an.yandex.ru/system/context.js";
-                    s.async = true;
-                    t.parentNode.insertBefore(s, t);
-                })(this, this.document, "yandexContextAsyncCallbacks");
-            `;
-            
-            // Вставка кода авторасстановки
-            document.addEventListener('DOMContentLoaded', function() {
-                // Инициализация других блоков через 1 секунду
-                setTimeout(initOtherAdBlocks, 1000);
-                
-                // Проверка блокировщика рекламы
-                setTimeout(function() {
-                    if (!document.getElementById('yandex_rtb_R-A-18680344-1') || 
-                        document.getElementById('yandex_rtb_R-A-18680344-1').innerHTML.trim() === '') {
-                        document.getElementById('adblock-warning').style.display = 'block';
-                    }
-                }, 3000);
-                
-                // Инициализация обработчиков блокировщика
-                initAdblockWarning();
-            });
-            
-            function initOtherAdBlocks() {
-                // Блоки 2-11 инициализируются по мере необходимости
-                const blocks = [
-                    'R-A-18680344-2', 'R-A-18680344-3', 'R-A-18680344-4',
-                    'R-A-18680344-5', 'R-A-18680344-6', 'R-A-18680344-7',
-                    'R-A-18680344-8', 'R-A-18680344-9', 'R-A-18680344-10',
-                    'R-A-18680344-11'
-                ];
-                
-                blocks.forEach(blockId => {
-                    if (document.getElementById(`yandex_rtb_${blockId}`)) {
-                        window.yaContextCb.push(() => {
-                            Ya.Context.AdvManager.render({
-                                renderTo: `yandex_rtb_${blockId}`,
-                                blockId: blockId
-                            });
-                        });
-                    }
-                });
-            }
-        })();
-
-        // ===== ФУНКЦИИ ДЛЯ БЛОКИРОВЩИКА РЕКЛАМЫ =====
-        function closeAdblockWarning() {
-            const warning = document.getElementById('adblock-warning');
-            if (warning) {
-                warning.style.display = 'none';
-                // Сохраняем в localStorage, чтобы не показывать снова сегодня
-                localStorage.setItem('adblock_warning_closed', new Date().toDateString());
-                console.log('Предупреждение о блокировщике скрыто');
-            }
-        }
-
-        function whitelistSite() {
-            showNotification('Спасибо за поддержку! 🚀', 'success');
-            closeAdblockWarning();
-            
-            // Отправляем событие в аналитику
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'adblock_whitelist', {
-                    'event_category': 'engagement',
-                    'event_label': 'user_whitelisted'
-                });
-            }
-            
-            // Также можно отправить в Яндекс.Метрику
-            if (typeof ym !== 'undefined') {
-                ym(XXXXXX, 'reachGoal', 'adblock_whitelist');
-            }
-            
-            // Обновляем страницу через 2 секунды
-            setTimeout(() => {
-                location.reload();
-            }, 2000);
-        }
-
-        // Инициализация обработчиков для блокировщика рекламы
-        function initAdblockWarning() {
-            // Назначаем обработчики кнопкам
-            const closeBtn = document.getElementById('adblock-close-btn');
-            const whitelistBtn = document.getElementById('adblock-whitelist-btn');
-            const closeX = document.getElementById('adblock-close-x');
-            
-            if (closeBtn) {
-                closeBtn.addEventListener('click', closeAdblockWarning);
-            }
-            
-            if (whitelistBtn) {
-                whitelistBtn.addEventListener('click', whitelistSite);
-            }
-            
-            if (closeX) {
-                closeX.addEventListener('click', closeAdblockWarning);
-            }
-            
-            // Проверяем, не закрывали ли уже сегодня предупреждение
-            if (localStorage.getItem('adblock_warning_closed') === new Date().toDateString()) {
-                closeAdblockWarning();
-            }
-        }
-
-        // Функция проверки блокировщика рекламы
-        function checkAdblock() {
-            setTimeout(function() {
-                // Проверяем, загрузилась ли реклама Яндекс РСЯ
-                const adContainer = document.getElementById('yandex_rtb_R-A-18680344-1');
-                const isAdLoaded = adContainer && 
-                                  adContainer.innerHTML.trim() !== '' && 
-                                  (adContainer.innerHTML.includes('iframe') || 
-                                   adContainer.innerHTML.includes('img') ||
-                                   adContainer.innerHTML.includes('div') ||
-                                   adContainer.children.length > 0);
-                
-                // Проверяем, есть ли скрытые рекламные элементы
-                const adElements = document.querySelectorAll('[class*="ad"], [id*="ad"], [class*="Ad"], [id*="Ad"]');
-                let hiddenAds = 0;
-                adElements.forEach(el => {
-                    if (el.offsetParent === null) {
-                        hiddenAds++;
-                    }
-                });
-                
-                // Показываем предупреждение только если:
-                // 1. Реклама не загрузилась ИЛИ
-                // 2. Обнаружено много скрытых рекламных элементов
-                if (!isAdLoaded || hiddenAds > 2) {
-                    const warning = document.getElementById('adblock-warning');
-                    if (warning) {
-                        warning.style.display = 'block';
-                        console.log('Блокировщик рекламы обнаружен');
-                        
-                        // Автоматически скрываем через 30 секунд
-                        setTimeout(closeAdblockWarning, 30000);
-                    }
-                }
-            }, 5000); // Проверяем через 5 секунд
-        }
-
-        // Аналитика и трекинг
-        const analytics = {
-            trackClicks: function(element, category) {
-                console.log(`Click: ${category} - ${element}`);
-                // Отправка в Яндекс.Метрику/Google Analytics
-                if (typeof ym !== 'undefined') {
-                    ym(XXXXXX, 'reachGoal', `click_${category}`);
-                }
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'click', {
-                        'event_category': category,
-                        'event_label': element
-                    });
-                }
-            },
-            
-            trackConversions: function(action, value) {
-                console.log(`Conversion: ${action} - $${value}`);
-                // Отслеживание конверсий
-                if (typeof ym !== 'undefined') {
-                    ym(XXXXXX, 'reachGoal', `conversion_${action}`);
-                }
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-XXXXXXXXX/YYYYYYYYYYYY',
-                        'value': value,
-                        'currency': 'USD',
-                        'transaction_id': ''
-                    });
-                }
-            },
-            
-            trackAffiliate: function(partner, tool) {
-                const data = {
-                    partner: partner,
-                    tool: tool,
-                    timestamp: Date.now(),
-                    userAgent: navigator.userAgent,
-                    referrer: document.referrer
-                };
-                
-                localStorage.setItem(`affiliate_${Date.now()}`, JSON.stringify(data));
-                this.trackClicks(tool, 'affiliate');
+                regru: 'reflink-31250911',
+                yandex_direct: '14661305',
+                yandex_browser: '14628861',
+                yandex_market: '14628864',
+                yandex_search: '14628860',
+                promo_codes: ['8B77-0FF0-E6ED-E300', '61FB-434A-2266-055F']
             }
         };
 
         // Инициализация
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('AI Hub 2024 загружен');
+            console.log('AI Hub 2024 инициализирован со всеми партнерскими кодами');
             initSearchEngine();
             initPriceTracker();
             initLiveUpdates();
@@ -3088,42 +2488,45 @@
             initTheme();
             initNotifications();
             initAIWidgets();
-            initPartnership();
             initSmoothScroll();
             initNavigation();
             initPromoCodes();
             
-            // Установка активной ссылки в навигации
             updateActiveNavLink();
             window.addEventListener('scroll', updateActiveNavLink);
             
-            // Проверка блокировщика рекламы
-            checkAdblock();
+            // Инициализация Яндекс РСЯ
+            initYandexRTB();
+            
+            // Показываем приветственное сообщение
+            setTimeout(() => {
+                showNotification('Добро пожаловать в AI HUB 2024! 🚀', 'info');
+            }, 1000);
         });
 
-        // Плавная прокрутка
-        function initSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
+        // Яндекс РСЯ
+        function initYandexRTB() {
+            if (typeof Ya !== 'undefined' && Ya.Context) {
+                Ya.Context.AdvManager.render({
+                    renderTo: 'yandex-rtb',
+                    blockId: 'R-A-18680344-1'
+                });
+            } else {
+                // Резервная загрузка
+                setTimeout(() => {
+                    if (typeof Ya !== 'undefined' && Ya.Context) {
+                        Ya.Context.AdvManager.render({
+                            renderTo: 'yandex-rtb',
+                            blockId: 'R-A-18680344-1'
                         });
                     }
-                });
-            });
+                }, 2000);
+            }
         }
 
         // Навигация
         function initNavigation() {
-            // Обновление активной ссылки при скролле
-            function updateActiveNavLink() {
+            window.updateActiveNavLink = function() {
                 const sections = document.querySelectorAll('section[id]');
                 const scrollPos = window.scrollY + 100;
                 
@@ -3141,78 +2544,137 @@
                         });
                     }
                 });
-            }
+            };
+        }
+
+        // Плавная прокрутка
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        e.preventDefault();
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Мобильное меню
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const isOpen = menu.classList.contains('active');
             
-            window.updateActiveNavLink = updateActiveNavLink;
+            if (isOpen) {
+                menu.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                menu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
         }
 
         // Промокоды
         function initPromoCodes() {
             window.copyPromoCode = function(code) {
                 navigator.clipboard.writeText(code).then(() => {
-                    showNotification(`Промокод ${code} скопирован!`, 'success');
-                    analytics.trackClicks('promo_code', 'promo');
+                    showNotification(`Промокод/ссылка скопированы! 🎉`, 'success');
+                    
+                    // Трекинг в аналитику
+                    trackAffiliateClick('promo_copy', code);
                 }).catch(err => {
-                    console.log('Copy failed:', err);
+                    console.error('Ошибка копирования:', err);
                     showNotification('Ошибка копирования', 'error');
                 });
             };
         }
 
-        // Мобильное меню
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const isOpen = menu.style.display === 'flex';
-            menu.style.display = isOpen ? 'none' : 'flex';
-            document.body.style.overflow = isOpen ? '' : 'hidden';
-        }
-
         // Партнерская программа
-        function initPartnership() {
-            window.joinPartnership = function() {
-                showModal('partnershipModal', `
-                    <h2 style="margin-bottom: 20px;">🤝 Партнёрская программа Reg.ru</h2>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin: 30px 0;">
-                        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
-                            <h3>🎯 Агентская программа</h3>
-                            <p style="margin: 15px 0;"><strong style="font-size: 2rem; color: #10b981;">15%</strong> с облачных услуг</p>
-                            <p style="margin: 15px 0;"><strong style="font-size: 2rem; color: #10b981;">10%</strong> с выделенных серверов</p>
-                            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Идеально для разработчиков и IT-аутсорсеров</p>
-                            <!-- ИСПРАВЛЕННАЯ ССЫЛКА В МОДАЛЬНОМ ОКНЕ -->
-                            <a href="https://reg.cloud/?rlink=reflink-31250911" 
-                               class="program-button" 
-                               target="_blank"
-                               onclick="trackAffiliateClick('regru_agent_modal')">
-                                <i class="fas fa-external-link-alt"></i> Перейти на сайт Reg.ru
-                            </a>
-                        </div>
-                        <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
-                            <h3>🏢 Реселлерская программа</h3>
-                            <p style="margin: 15px 0;"><strong style="font-size: 1.5rem; color: #f59e0b;">Индивидуальные условия</strong></p>
-                            <p style="margin: 15px 0;"><strong style="font-size: 1.5rem; color: #f59e0b;">White Label решение</strong></p>
-                            <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Для хостинг-провайдеров и дата-центров</p>
-                            <a href="https://reg.cloud/?rlink=reflink-31250911" 
-                               class="program-button" 
-                               target="_blank"
-                               onclick="trackAffiliateClick('regru_reseller_modal')">
-                                <i class="fas fa-file-contract"></i> Оставить заявку
-                            </a>
-                        </div>
+        function showPartnershipModal() {
+            showModal(`
+                <h2 style="margin-bottom: 20px;">🤝 Все партнерские программы</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin: 30px 0;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+                        <h3>☁️ Reg.ru</h3>
+                        <p style="margin: 10px 0;">До 15% с облачных услуг</p>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Код: reflink-31250911</p>
+                        <a href="https://reg.cloud/?rlink=reflink-31250911" 
+                           class="button" 
+                           target="_blank"
+                           onclick="trackAffiliateClick('regru_modal')">
+                            <i class="fas fa-external-link-alt"></i> Перейти
+                        </a>
                     </div>
-                    <div style="margin-top: 30px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
-                        <h4>📞 Контактная информация</h4>
-                        <p>Телефон: 8 800 333-92-23 (бесплатно по России)</p>
-                        <p>Email: partners@reg.ru</p>
-                        <p>Сайт: <a href="https://reg.cloud/?rlink=reflink-31250911" target="_blank" style="color: #a5b4fc;">reg.cloud</a></p>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+                        <h3>🎯 Яндекс.Директ</h3>
+                        <p style="margin: 10px 0;">До 20% от расходов на рекламу</p>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">ID: 14661305</p>
+                        <a href="https://yandex.ru/project/direct/partner/distribution/?partner=14661305" 
+                           class="button" 
+                           target="_blank"
+                           onclick="trackAffiliateClick('yandex_direct_modal')">
+                            <i class="fas fa-external-link-alt"></i> Перейти
+                        </a>
                     </div>
-                `);
-            };
-
-            window.trackAffiliateClick = function(partner) {
-                analytics.trackAffiliate(partner, 'tool');
-                return true;
-            };
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+                        <h3>🌐 Яндекс.Браузер</h3>
+                        <p style="margin: 10px 0;">Вознаграждение за установки</p>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">RefID: 14628861</p>
+                        <a href="https://browser.yandex.ru/corp/builds?refid=14628861" 
+                           class="button" 
+                           target="_blank"
+                           style="background: #FFCC00; color: #000;"
+                           onclick="trackAffiliateClick('yandex_browser_modal')">
+                            <i class="fas fa-external-link-alt"></i> Перейти
+                        </a>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 15px;">
+                        <h3>🛒 Яндекс.Маркет</h3>
+                        <p style="margin: 10px 0;">До 10% от заказов</p>
+                        <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Код: MARKET_14628864</p>
+                        <a href="https://ya.ru/search/?clid=14628860&text=" 
+                           class="button" 
+                           target="_blank"
+                           style="background: #FF6B00;"
+                           onclick="trackAffiliateClick('yandex_market_modal')">
+                            <i class="fas fa-external-link-alt"></i> Перейти
+                        </a>
+                    </div>
+                </div>
+                <div style="margin-top: 30px; padding: 20px; background: rgba(16, 185, 129, 0.1); border-radius: 10px;">
+                    <h4>📞 Контактная информация</h4>
+                    <p>Email: partners@ai-toolkit.ru</p>
+                    <p>Телеграм: @ai_hub_2024</p>
+                    <p>Общий партнерский ID: 61FB-434A-2266-055F</p>
+                </div>
+            `);
         }
+
+        window.trackAffiliateClick = function(partner, details = '') {
+            console.log(`Партнерский клик: ${partner}`, details);
+            
+            // Отправка в Telegram
+            sendToTelegram(`Клик по партнерской ссылке: ${partner} ${details ? ' - ' + details : ''}`);
+            
+            // Здесь можно добавить отправку в Google Analytics, Яндекс.Метрику и т.д.
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'affiliate_click', {
+                    'event_category': partner,
+                    'event_label': details
+                });
+            }
+            
+            return true;
+        };
 
         // AI Поисковая система
         function initSearchEngine() {
@@ -3266,7 +2728,10 @@
 
             searchInput.addEventListener('input', function() {
                 const query = this.value.toLowerCase();
-                if (query.length < 2) return;
+                if (query.length < 2) {
+                    searchResults.innerHTML = '';
+                    return;
+                }
                 
                 const results = aiTools.filter(tool => 
                     tool.name.toLowerCase().includes(query) ||
@@ -3279,12 +2744,12 @@
 
             function displaySearchResults(results) {
                 if (results.length === 0) {
-                    searchResults.innerHTML = '<p>Ничего не найдено. Попробуйте другой запрос.</p>';
+                    searchResults.innerHTML = '<p style="text-align: center; padding: 40px; color: rgba(255,255,255,0.6);">Ничего не найдено. Попробуйте другой запрос.</p>';
                     return;
                 }
 
                 searchResults.innerHTML = results.map(tool => `
-                    <div class="search-result" onclick="window.open('${tool.url}', '_blank'); analytics.trackClicks('${tool.name}', 'search')">
+                    <div class="search-result hover-lift" onclick="window.open('${tool.url}', '_blank'); trackAffiliateClick('search_${tool.name.toLowerCase().replace(/ /g, '_')}')">
                         <h4>${tool.name} <span style="color: #f59e0b;">${tool.rating}★</span></h4>
                         <p>${tool.description}</p>
                         <div style="display: flex; gap: 8px; margin-top: 10px;">
@@ -3299,13 +2764,13 @@
             const searchInput = document.getElementById('ai-search-input');
             searchInput.value = tag;
             searchInput.dispatchEvent(new Event('input'));
-            analytics.trackClicks(tag, 'search_tag');
+            trackAffiliateClick('search_tag', tag);
         }
 
         function performSearch() {
             const searchInput = document.getElementById('ai-search-input');
             searchInput.dispatchEvent(new Event('input'));
-            analytics.trackClicks('search_button', 'search');
+            trackAffiliateClick('search_button', searchInput.value);
         }
 
         // Трекер цен
@@ -3328,7 +2793,7 @@
                 });
 
                 tracker.innerHTML = prices.map(item => `
-                    <div class="price-item">
+                    <div class="price-item hover-lift">
                         <div>
                             <strong>${item.name}</strong>
                             <div style="font-size: 0.9rem; color: rgba(255,255,255,0.6);">
@@ -3354,10 +2819,12 @@
             const updates = [
                 "🚀 Вышла новая версия Яндекс GPT с улучшенной поддержкой русского языка",
                 "🎨 Kandinsky 3.5: в 2 раза быстрее и качественнее",
-                "💎 Новый промокод: AIHUB2024 - 20% скидка на все инструменты",
+                "💎 Новый промокод: 8B77-0FF0-E6ED-E300 - 3 месяца Яндекс GPT Pro бесплатно",
                 "📈 ИИ-токен AI Token вырос на 15% за сутки",
                 "🤝 Сбер запускает GigaChat для малого бизнеса",
-                "🔧 Новый инструмент: AI Content Generator доступен в бета-версии"
+                "🔧 Новый инструмент: AI Content Generator доступен в бета-версии",
+                "🎯 Яндекс.Директ: новый партнерский процент до 20%",
+                "🌐 Яндекс.Браузер: увеличены выплаты партнерам"
             ];
 
             const updateStream = document.getElementById('update-stream');
@@ -3399,7 +2866,7 @@
 
             const trendingList = document.getElementById('trending-list');
             trendingList.innerHTML = trending.map(item => `
-                <div style="padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 10px;">
+                <div class="hover-lift" style="padding: 15px; background: rgba(255,255,255,0.03); border-radius: 10px; margin-bottom: 10px;">
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <strong>${item.name}</strong>
@@ -3426,7 +2893,7 @@
                 };
                 
                 showNotification('🔍 Анализируем ваши потребности...', 'info');
-                analytics.trackClicks('analytics_form', 'form');
+                trackAffiliateClick('analytics_form_submit', JSON.stringify(data));
                 
                 setTimeout(() => {
                     const recommendations = [
@@ -3446,10 +2913,15 @@
                             ${recommendations.map(rec => `<li>${rec}</li>`).join('')}
                         </ul>
                         <p>📧 Отчёт отправлен на: ${data.email}</p>
+                        <h4>🎁 Специальные предложения для вас:</h4>
+                        <ul>
+                            <li>Промокод Яндекс GPT: <strong>8B77-0FF0-E6ED-E300</strong></li>
+                            <li>Партнерская ссылка Reg.ru: <strong>?rlink=reflink-31250911</strong></li>
+                            <li>Ваш партнерский ID: <strong>61FB-434A-2266-055F</strong></li>
+                        </ul>
                     `;
                     
                     showModal('analyticsReport', report);
-                    analytics.trackConversions('analytics_report', data.budget);
                     sendToTelegram(`Новая аналитика: ${JSON.stringify(data)}`);
                 }, 2000);
             });
@@ -3483,7 +2955,6 @@
                                    input.value.toLowerCase().includes('иде') ? 'идея' : 'текст']}</p>
                     </div>
                 `;
-                analytics.trackClicks('quick_generate', 'widget');
             };
         }
 
@@ -3535,12 +3006,11 @@
             `;
             
             showModal('comparisonResult', result);
-            analytics.trackClicks('compare_models', 'widget');
         };
 
         // Инструменты генерации
         window.openContentGenerator = function() {
-            showModal('contentGenerator', `
+            showModal(`
                 <h2>🎨 AI Генератор контента</h2>
                 <p>Создавайте контент с помощью нескольких нейросетей одновременно</p>
                 
@@ -3554,7 +3024,7 @@
                     
                     <textarea class="form-input" id="generator-prompt" placeholder="Опишите, что нужно сгенерировать..." rows="5" style="margin: 15px 0;"></textarea>
                     
-                    <button class="form-button" onclick="generateContent()">
+                    <button class="button" onclick="generateContent()">
                         <i class="fas fa-magic"></i> Сгенерировать
                     </button>
                     
@@ -3587,7 +3057,7 @@
                         <i class="fas fa-check-circle"></i> Контент сгенерирован
                     </div>
                     <p>${generatedText}</p>
-                    <button class="form-button" onclick="copyToClipboard('${generatedText.replace(/'/g, "\\'")}')" style="margin-top: 10px;">
+                    <button class="button" onclick="copyToClipboard('${generatedText.replace(/'/g, "\\'")}')" style="margin-top: 10px;">
                         <i class="fas fa-copy"></i> Копировать
                     </button>
                 `;
@@ -3599,10 +3069,22 @@
             window.showNotification = function(message, type = 'info') {
                 const notification = document.getElementById('notification');
                 notification.textContent = message;
+                notification.className = 'notification';
                 notification.style.display = 'block';
-                notification.style.background = type === 'error' ? '#ef4444' :
-                                              type === 'success' ? '#10b981' :
-                                              type === 'warning' ? '#f59e0b' : '#6366f1';
+                
+                switch(type) {
+                    case 'success':
+                        notification.style.background = '#10b981';
+                        break;
+                    case 'error':
+                        notification.style.background = '#ef4444';
+                        break;
+                    case 'warning':
+                        notification.style.background = '#f59e0b';
+                        break;
+                    default:
+                        notification.style.background = '#6366f1';
+                }
                 
                 setTimeout(() => {
                     notification.style.display = 'none';
@@ -3611,31 +3093,23 @@
         }
 
         // Модальные окна
-        window.showModal = function(modalId, content) {
-            let modal = document.getElementById(modalId);
-            if (!modal) {
-                modal = document.createElement('div');
-                modal.id = modalId;
-                modal.className = 'modal';
-                modal.innerHTML = `
-                    <div class="modal-content">
-                        <button onclick="closeModal('${modalId}')" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
-                        ${content}
-                    </div>
-                `;
-                document.body.appendChild(modal);
-            }
+        function showModal(content) {
+            const modal = document.getElementById('modal');
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <button onclick="closeModal()" style="position: absolute; top: 20px; right: 20px; background: none; border: none; color: white; font-size: 24px; cursor: pointer;">×</button>
+                    ${content}
+                </div>
+            `;
             modal.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-        };
+        }
 
-        window.closeModal = function(modalId) {
-            const modal = document.getElementById(modalId);
-            if (modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-        };
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
 
         // Темная/светлая тема
         function initTheme() {
@@ -3663,7 +3137,7 @@
                     },
                     body: JSON.stringify({
                         chat_id: CONFIG.telegramChatId,
-                        text: `AI HUB: ${message}`,
+                        text: `AI HUB 2024: ${message}`,
                         parse_mode: 'HTML'
                     })
                 }).catch(error => console.log('Telegram error:', error));
@@ -3674,7 +3148,7 @@
 
         // Сеть
         window.joinNetwork = function() {
-            showModal('joinNetwork', `
+            showModal(`
                 <h2>🤝 Присоединиться к AI Сети</h2>
                 <p>Заполните форму, чтобы стать частью сообщества AI-экспертов:</p>
                 <form id="networkForm" style="margin-top: 20px;">
@@ -3689,7 +3163,7 @@
                         <option value="entrepreneur">Предприниматель</option>
                     </select>
                     <textarea class="form-input" placeholder="Расскажите о себе" rows="4" style="margin-bottom: 20px;"></textarea>
-                    <button type="submit" class="form-button">Отправить заявку</button>
+                    <button type="submit" class="button">Отправить заявку</button>
                 </form>
             `);
             
@@ -3699,8 +3173,7 @@
                     form.addEventListener('submit', function(e) {
                         e.preventDefault();
                         showNotification('Заявка отправлена! Мы свяжемся с вами в течение 24 часов.', 'success');
-                        closeModal('joinNetwork');
-                        analytics.trackConversions('network_join', 0);
+                        closeModal();
                         sendToTelegram('Новая заявка в AI Сеть');
                     });
                 }
@@ -3709,7 +3182,7 @@
 
         // Крипто биржа
         window.openCryptoExchange = function() {
-            showModal('cryptoExchange', `
+            showModal(`
                 <h2>₿ AI Crypto Exchange</h2>
                 <p>Покупайте и продавайте AI-токены:</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
@@ -3721,7 +3194,7 @@
                             <option>Neural Coin</option>
                             <option>GPT Token</option>
                         </select>
-                        <button class="form-button" style="width: 100%;" onclick="showNotification('Функция в разработке', 'info')">Купить</button>
+                        <button class="button" style="width: 100%;" onclick="showNotification('Функция в разработке', 'info')">Купить</button>
                     </div>
                     <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px;">
                         <h4>Продать</h4>
@@ -3731,7 +3204,7 @@
                             <option>Neural Coin</option>
                             <option>GPT Token</option>
                         </select>
-                        <button class="form-button" style="width: 100%;" onclick="showNotification('Функция в разработке', 'info')">Продать</button>
+                        <button class="button" style="width: 100%;" onclick="showNotification('Функция в разработке', 'info')">Продать</button>
                     </div>
                 </div>
             `);
@@ -3747,97 +3220,65 @@
             });
         }
 
-        // Аналитика страницы
-        function trackPageView() {
-            const pageData = {
-                url: window.location.href,
-                referrer: document.referrer,
-                timestamp: Date.now(),
-                userAgent: navigator.userAgent,
-                screen: `${screen.width}x${screen.height}`,
-                language: navigator.language
-            };
+        // Дополнительные функции
+        window.openModelComparator = function() {
+            showModal(`
+                <h2>📊 Сравнение AI моделей</h2>
+                <p>Сравните производительность разных нейросетей</p>
+                ${compareModels()}
+            `);
+        };
+
+        window.openTrendAnalyzer = function() {
+            showModal(`
+                <h2>📈 Анализатор трендов AI</h2>
+                <p>Анализ текущих тенденций в мире искусственного интеллекта</p>
+                <div style="margin: 20px 0; padding: 20px; background: rgba(255,255,255,0.05); border-radius: 10px;">
+                    <h3>🔥 Популярные направления:</h3>
+                    <ul style="margin: 15px 0;">
+                        <li>Мультимодальные модели</li>
+                        <li>Edge AI (искусственный интеллект на устройствах)</li>
+                        <li>Генеративный AI для бизнеса</li>
+                        <li>AI-агенты и автономные системы</li>
+                        <li>Этические AI и безопасность</li>
+                    </ul>
+                </div>
+            `);
+        };
+
+        window.submitAnalytics = function(e) {
+            e.preventDefault();
+            const form = e.target;
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
             
-            localStorage.setItem('last_page_view', JSON.stringify(pageData));
-            sendToTelegram(`Просмотр страницы: ${pageData.url}`);
-        }
-
-        // Отслеживание времени на сайте
-        let timeOnSite = 0;
-        setInterval(() => {
-            timeOnSite += 1;
-            if (timeOnSite === 30) {
-                sendToTelegram('Пользователь провёл на сайте 30 секунд');
-            }
-            if (timeOnSite === 120) {
-                sendToTelegram('Пользователь активно изучает сайт (2+ минуты)');
-            }
-        }, 1000);
-
-        // Отправка heartbeat
-        setInterval(() => {
-            const data = {
-                timeOnSite: timeOnSite,
-                page: window.location.hash || '#home',
-                timestamp: Date.now()
-            };
+            showNotification('Аналитика отправлена! Проверьте вашу почту.', 'success');
             
-            console.log('Heartbeat:', data);
-        }, 30000);
-
-        // Инициализация трекинга
-        trackPageView();
-
-        // Закрытие модальных окон по клику вне контента
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('modal')) {
-                e.target.style.display = 'none';
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Закрытие по ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                document.querySelectorAll('.modal').forEach(modal => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = '';
-                });
-            }
-        });
+            setTimeout(() => {
+                showModal(`
+                    <h2>📊 Ваша персональная AI аналитика</h2>
+                    <p>На основе ваших данных мы подобрали лучшие инструменты:</p>
+                    <div style="margin: 20px 0;">
+                        <h3>Рекомендуемые инструменты:</h3>
+                        <ul style="margin: 15px 0;">
+                            <li><strong>Яндекс GPT</strong> - для работы с русским языком</li>
+                            <li><strong>Kandinsky 3.0</strong> - для создания изображений</li>
+                            <li><strong>GitHub Copilot</strong> - для программирования</li>
+                            <li><strong>Midjourney</strong> - для профессионального дизайна</li>
+                        </ul>
+                        <h3>🎁 Ваши партнерские коды:</h3>
+                        <ul style="margin: 15px 0;">
+                            <li>Яндекс GPT: <strong>8B77-0FF0-E6ED-E300</strong></li>
+                            <li>Reg.ru: <strong>?rlink=reflink-31250911</strong></li>
+                            <li>Общий ID: <strong>61FB-434A-2266-055F</strong></li>
+                        </ul>
+                        <p>Подробный отчет отправлен на: ${data.email}</p>
+                    </div>
+                `);
+            }, 1000);
+            
+            return false;
+        };
     </script>
-
-    <!-- Яндекс.Метрика -->
-    <script type="text/javascript" >
-        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-     
-        ym(XXXXXX, "init", {
-             clickmap:true,
-             trackLinks:true,
-             accurateTrackBounce:true,
-             webvisor:true
-        });
-    </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-
-    <!-- Yandex Autoplacement -->
-    <script src="https://yandex.ru/ads/system/context.js" async></script>
-    <script data-page-id="18680344" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
 </body>
 </html>
-
-
-
