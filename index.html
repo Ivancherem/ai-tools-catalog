@@ -220,7 +220,22 @@
             background: var(--primary);
             transform: translateX(10px);
         }
-
+        <style>
+    /* ФИКС КНОПКИ МЕНЮ */
+    .mobile-menu-btn {
+        background: transparent !important;
+        border: 2px solid rgba(255, 255, 255, 0.2) !important;
+        color: white !important;
+    }
+    @media (min-width: 993px) {
+        .mobile-menu-btn { display: none !important; }
+        .nav-links { display: flex !important; }
+    }
+    @media (max-width: 992px) {
+        .nav-links { display: none !important; }
+        .mobile-menu-btn { display: flex !important; }
+    }
+</style>
         /* ===== ГЕРОЙ ===== */
         .hero {
             padding: 80px 0 60px;
@@ -3807,4 +3822,5 @@
     <script data-page-id="18680344" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
 </body>
 </html>
+
 
