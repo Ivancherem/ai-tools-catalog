@@ -61,6 +61,94 @@
             --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* ===== РАЗНОЦВЕТНАЯ ПЕРЕЛИВАЮЩАЯСЯ ТЕМА ===== */
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        /* Переливающийся заголовок героя */
+        .hero h1 {
+            background: linear-gradient(90deg, 
+                #ff6b6b, #ffa726, #ffee58, #66bb6a, 
+                #42a5f5, #5c6bc0, #ab47bc, #ff6b6b);
+            background-size: 400% 400%;
+            animation: rainbow 8s ease infinite;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Анимированные кнопки промокодов */
+        .promo-card .button {
+            background: linear-gradient(90deg, 
+                #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 300% 300%;
+            animation: rainbow 4s ease infinite;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .promo-card .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Пульсирующие промокоды */
+        .promo-code {
+            animation: pulse 2s infinite;
+            border: 2px solid;
+            border-image: linear-gradient(90deg, #667eea, #764ba2) 1;
+        }
+
+        /* Плавающие элементы */
+        .hero-stat {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(99, 102, 241, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Переливающиеся градиенты для секций */
+        .promo-codes-section {
+            background: linear-gradient(135deg, 
+                rgba(99, 102, 241, 0.1), 
+                rgba(139, 92, 246, 0.1),
+                rgba(168, 85, 247, 0.1));
+        }
+
+        .social-integration {
+            background: linear-gradient(135deg, 
+                rgba(59, 130, 246, 0.1),
+                rgba(99, 102, 241, 0.1));
+        }
+
+        /* Анимированные иконки */
+        .card-icon {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        /* Эффект при наведении на кнопки */
+        .button:hover {
+            background-size: 200% 200%;
+            animation: rainbow 1s ease infinite;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -436,23 +524,6 @@
             66% { transform: translate(5%, 5%); }
         }
 
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 5rem;
-            font-weight: 900;
-            background: linear-gradient(45deg, #667eea, #f093fb, #4facfe, #00f2fe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 40px;
-            animation: gradientShift 8s ease infinite;
-            background-size: 200% 200%;
-        }
-
-        @keyframes gradientShift {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
         .hero-subtitle {
             font-size: 1.5rem;
             color: rgba(255, 255, 255, 0.9);
@@ -499,12 +570,6 @@
             background: var(--gradient-1);
         }
 
-        .hero-stat:hover {
-            transform: translateY(-15px);
-            box-shadow: var(--shadow);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
         .stat-number {
             display: block;
             font-size: 3.5rem;
@@ -522,9 +587,6 @@
         }
 
         /* ===== РЕКЛАМНЫЙ БЛОК ===== */
-        <!-- Yandex Autoplacement 18680344 -->
-<script src="https://yandex.ru/ads/system/context.js" async></script>
-<script data-page-id="18680344" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
         .ad-section {
             margin: 60px 0;
             padding: 25px;
@@ -608,12 +670,6 @@
             right: 0;
             height: 5px;
             background: var(--gradient-1);
-        }
-
-        .card:hover {
-            transform: translateY(-20px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-            border-color: rgba(99, 102, 241, 0.5);
         }
 
         .card-header {
@@ -2395,9 +2451,6 @@
             </section>
 
             <!-- Рекламный блок -->
-            <!-- Yandex Autoplacement 18680344 -->
-<script src="https://yandex.ru/ads/system/context.js" async></script>
-<script data-page-id="18680344" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
             <div class="ad-section">
                 <span class="ad-label">Партнёрский материал</span>
                 <div id="yandex-rtb"></div>
@@ -2405,6 +2458,7 @@
                     Реклама помогает поддерживать проект и предоставлять бесплатные промокоды
                 </p>
             </div>
+
             <!-- Секция с промокодами -->
             <section id="promo" class="promo-codes-section section">
                 <h2 class="section-title">🎁 Работающие промокоды на AI-инструменты</h2>
