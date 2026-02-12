@@ -296,8 +296,8 @@
             box-sizing: border-box;
         }
 
-        :root {
-            /* Цветовая схема 2026 */
+                :root {
+            /* Цветовая схема 2026 - ПЕРЕЛИВЫ! */
             --primary: #7c3aed;
             --primary-light: #a78bfa;
             --primary-dark: #5b21b6;
@@ -322,14 +322,15 @@
             --gray-light: #94a3b8;
             --gray-dark: #475569;
             
-            /* Градиенты 2026 */
-            --gradient-1: linear-gradient(135deg, #7c3aed 0%, #3b82f6 50%, #8b5cf6 100%);
-            --gradient-2: linear-gradient(135deg, #f59e0b 0%, #ef4444 50%, #ec4899 100%);
-            --gradient-3: linear-gradient(135deg, #10b981 0%, #3b82f6 50%, #6366f1 100%);
-            --gradient-4: linear-gradient(135deg, #8b5cf6 0%, #ec4899 50%, #ef4444 100%);
-            --gradient-5: linear-gradient(135deg, #6366f1 0%, #7c3aed 50%, #8b5cf6 100%);
-            --gradient-6: linear-gradient(135deg, #0ea5e9 0%, #6366f1 50%, #8b5cf6 100%);
-            --gradient-7: linear-gradient(135deg, #f43f5e 0%, #ec4899 50%, #8b5cf6 100%);
+            /* ПЕРЕЛИВАЮЩИЕСЯ ГРАДИЕНТЫ 2026 */
+            --gradient-1: linear-gradient(45deg, #7c3aed, #3b82f6, #8b5cf6, #7c3aed);
+            --gradient-2: linear-gradient(45deg, #f59e0b, #ef4444, #ec4899, #f59e0b);
+            --gradient-3: linear-gradient(45deg, #10b981, #3b82f6, #6366f1, #10b981);
+            --gradient-4: linear-gradient(45deg, #8b5cf6, #ec4899, #ef4444, #8b5cf6);
+            --gradient-5: linear-gradient(45deg, #6366f1, #7c3aed, #8b5cf6, #6366f1);
+            --gradient-6: linear-gradient(45deg, #0ea5e9, #6366f1, #8b5cf6, #0ea5e9);
+            --gradient-7: linear-gradient(45deg, #f43f5e, #ec4899, #8b5cf6, #f43f5e);
+            --gradient-8: linear-gradient(45deg, #ff6b6b, #ffa726, #ffee58, #66bb6a, #42a5f5, #7c3aed);
             
             /* Glassmorphism */
             --glass-bg: rgba(255, 255, 255, 0.07);
@@ -363,79 +364,6 @@
             --radius-3xl: 30px;
             --radius-4xl: 40px;
             --radius-full: 9999px;
-        }
-
-        /* Светлая тема */
-        .light-theme {
-            --dark: #ffffff;
-            --darker: #f8fafc;
-            --darkest: #f1f5f9;
-            --light: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.95);
-            --glass-bg: rgba(15, 23, 42, 0.05);
-            --glass-border: rgba(15, 23, 42, 0.1);
-            --card-border: rgba(15, 23, 42, 0.1);
-            
-            .card-title, .program-title, .promo-card h3, .social-bot-card h3, .widget-title h3, .network-stat h3, .trending-name {
-                color: #0f172a;
-            }
-            
-            .card-description, .program-description, .promo-card p, .social-bot-card p, .testimonial-text, .sitemap-links a, .footer-links a, .update-text p {
-                color: #334155;
-            }
-            
-            .nav-link {
-                color: #334155;
-            }
-            
-            .nav-link:hover, .nav-link.active {
-                color: #7c3aed;
-            }
-            
-            .filter-btn {
-                color: #334155;
-                border-color: rgba(15, 23, 42, 0.2);
-            }
-            
-            .glass-card, .card, .partnership-card, .promo-card, .social-bot-card, .testimonial-card, .widget, .price-item, .crypto-price, .network-stat, .live-stat, .tech-item, .trending-item {
-                background: rgba(255, 255, 255, 0.95);
-                border-color: rgba(15, 23, 42, 0.1);
-            }
-            
-            .footer {
-                background: rgba(255, 255, 255, 0.98);
-                border-top-color: rgba(124, 58, 237, 0.2);
-            }
-            
-            .footer-section h5, .footer-links a, .footer-partner {
-                color: #334155;
-            }
-            
-            .footer-links a:hover {
-                color: #7c3aed;
-            }
-            
-            .form-input {
-                background: rgba(15, 23, 42, 0.05);
-                border-color: rgba(15, 23, 42, 0.2);
-                color: #0f172a;
-            }
-            
-            .form-input::placeholder {
-                color: rgba(15, 23, 42, 0.4);
-            }
-            
-            .form-label {
-                color: #0f172a;
-            }
-            
-            .modal-content {
-                background: white;
-            }
-            
-            .modal-content h2, .modal-content h3, .modal-content h4 {
-                color: #0f172a;
-            }
         }
 
         /* ===== АНИМАЦИИ 2026 ===== */
@@ -7099,4 +7027,5 @@
     </script>
 </body>
 </html>
+
 
