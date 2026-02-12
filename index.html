@@ -296,7 +296,7 @@
             box-sizing: border-box;
         }
 
-                :root {
+        :root {
             /* Цветовая схема 2026 - ПЕРЕЛИВЫ! */
             --primary: #7c3aed;
             --primary-light: #a78bfa;
@@ -367,6 +367,43 @@
         }
 
         /* ===== АНИМАЦИИ 2026 ===== */
+                @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes neon {
+            0%, 100% { 
+                filter: drop-shadow(0 0 7px rgba(124, 58, 237, 0.7)) 
+                        drop-shadow(0 0 15px rgba(59, 130, 246, 0.5))
+                        drop-shadow(0 0 25px rgba(139, 92, 246, 0.3)); 
+            }
+            50% { 
+                filter: drop-shadow(0 0 15px rgba(124, 58, 237, 0.9)) 
+                        drop-shadow(0 0 30px rgba(59, 130, 246, 0.7))
+                        drop-shadow(0 0 45px rgba(139, 92, 246, 0.5)); 
+            }
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+
+        @keyframes glow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(124, 58, 237, 0.4),
+                           0 0 40px rgba(59, 130, 246, 0.2); 
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(124, 58, 237, 0.7),
+                           0 0 80px rgba(59, 130, 246, 0.4); 
+            }
+        }
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-20px); }
@@ -498,6 +535,21 @@
         }
 
         /* ===== ТИПОГРАФИКА ===== */
+        .hero h1 {
+            font-size: 5.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+            background: linear-gradient(90deg, 
+                #ff6b6b, #ffa726, #ffee58, #66bb6a, 
+                #42a5f5, #5c6bc0, #ab47bc, #ff6b6b);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: rainbow 8s ease infinite, neon 3s ease infinite, slideDown 1s ease;
+        }
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
@@ -556,6 +608,37 @@
         }
 
         /* ===== КНОПКИ ===== */
+                .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 16px 32px;
+            background: linear-gradient(90deg, 
+                #7c3aed, #3b82f6, #8b5cf6, #10b981, 
+                #f59e0b, #ef4444, #ec4899, #7c3aed);
+            background-size: 300% 300%;
+            animation: rainbow 8s ease infinite;
+            color: white;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.3);
+            letter-spacing: 0.5px;
+        }
+
+        .button:hover {
+            animation: rainbow 2s ease infinite;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
+        }
         .button {
             display: inline-flex;
             align-items: center;
@@ -7027,5 +7110,6 @@
     </script>
 </body>
 </html>
+
 
 
