@@ -40,6 +40,18 @@
             padding: 0;
             box-sizing: border-box;
         }
+        
+        /* ГЛОБАЛЬНОЕ ПРАВИЛО ДЛЯ КАРТИНОК - ИСПРАВЛЯЕТ ПРОБЛЕМУ ОБРЕЗАНИЯ */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Убирает лишние отступы */
+        }
+        
+        /* ДЛЯ КОНТЕЙНЕРОВ С ИЗОБРАЖЕНИЯМИ */
+        picture, figure, div[class*="image"], div[class*="img"] {
+            line-height: 0; /* Убирает лишние отступы */
+        }
 
         :root {
             /* Цветовая схема 2026 - ПЕРЕЛИВЫ! */
@@ -7522,7 +7534,10 @@
             </div>
             
             <div class="footer-bottom">
-                <p>© 2022-2026 AI NEXUS. Все права защищены.</p>
+                <!-- ===== МАРКИРОВКА РЕКЛАМЫ ЯНДЕКС (ДОБАВЛЕНО) ===== -->
+                <p style="margin-top: 15px; font-size: 0.95rem; color: rgba(255,255,255,0.6);">
+                    ⚠️ <strong>Реклама. ООО «Яндекс», ИНН 7736207543.</strong> Информация о партнёрских программах и промокодах.
+                </p>
                 <p style="margin-top: 15px; font-size: 0.95rem; color: rgba(255,255,255,0.6);">
                     Проект содержит партнерские ссылки. Все промокоды проверены и работают в РФ и СНГ.
                     <br>Используя сайт, вы соглашаетесь с <a href="#" onclick="openTerms()" style="color: var(--primary); text-decoration: none;">пользовательским соглашением</a>.
