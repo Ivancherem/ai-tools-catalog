@@ -1,1 +1,60 @@
-
+{
+  "promos": [
+    {
+      "name": "Яндекс GPT 2.0 Pro",
+      "code": "YGPT2026-3FREE",
+      "description": "3 месяца бесплатного доступа к Pro версии",
+      "url": "https://360.yandex.ru/gpt?ref=AINEXUS2026",
+      "category": "text"
+    },
+    {
+      "name": "Kandinsky 4.0 Ultra",
+      "code": "KANDY60",
+      "description": "60% скидка на первый месяц подписки Ultra",
+      "url": "https://fusionbrain.ai/?ref=ainexus2026",
+      "category": "image"
+    },
+    {
+      "name": "Midjourney V8 Premium",
+      "code": "MJV8FREE2026",
+      "description": "1 месяц бесплатного доступа к Premium плану",
+      "url": "https://www.midjourney.com",
+      "category": "image"
+    },
+    {
+      "name": "GitHub Copilot X+",
+      "code": "COPILOT40",
+      "description": "40% скидка на годовую подписку",
+      "url": "https://github.com/features/copilot?ref=ainexus2026",
+      "category": "code"
+    },
+    {
+      "name": "GigaChat Pro 2026",
+      "code": "GIGAPRO30",
+      "description": "30 дней бесплатного доступа к бизнес-тарифу",
+      "url": "https://developers.sber.ru/gigachat?ref=ainexus",
+      "category": "text"
+    },
+    {
+      "name": "ChatGPT 5 Omni",
+      "code": "GPT5FREE30",
+      "description": "30 дней бесплатного доступа к ChatGPT 5",
+      "url": "https://chat.openai.com",
+      "category": "text"
+    },
+    {
+      "name": "Runway Gen-3",
+      "code": "RUNWAY30",
+      "description": "30 дней бесплатного доступа к Pro плану",
+      "url": "https://runwayml.com",
+      "category": "video"
+    },
+    {
+      "name": "Suno AI 2026",
+      "code": "SUNO50",
+      "description": "50% скидка на Pro подписку",
+      "url": "https://suno.ai",
+      "category": "audio"
+    }
+  ]
+}
