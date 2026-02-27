@@ -3529,7 +3529,18 @@
                     </span>
                 </div>
             </div>
+            
+            <!-- БЛОК ПОИСКА -->
+<div style="margin: 60px 0 30px; text-align: center;">
+    <h2 style="font-size: 2.5rem; margin-bottom: 20px; background: linear-gradient(90deg, #7c3aed, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔍 Поиск AI инструментов</h2>
+    <input type="text" id="searchInput" placeholder="Например: нейросеть для видео..." 
+           style="padding: 15px 25px; width: 80%; max-width: 500px; border-radius: 50px; 
+                  border: 2px solid #7c3aed; background: #1a1f2e; color: white; font-size: 16px;">
+    <div style="margin-top: 20px; color: rgba(255,255,255,0.7;">Введите название нейросети</div>
+</div>
 
+<!-- ДАЛЬШЕ ИДЁТ ТВОЯ СЕКЦИЯ ПРОМОКОДОВ -->
+<section id="promo" class="promo-codes-section">
             <!-- СЕКЦИЯ ПРОМОКОДОВ 2026 -->
             <section id="promo" class="promo-codes-section">
                 <h2 class="section-title">🎁 Рабочие промокоды 2026</h2>
@@ -8993,5 +9004,27 @@
         gtag('js', new Date());
         gtag('config', 'G-XXXXXXXXXX');
     </script>
+    <script>
+    // Функция для поиска по странице
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        if (!searchInput) return;
+        
+        searchInput.addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.promo-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
+                if (title.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
+
