@@ -1639,159 +1639,122 @@
             flex-wrap: wrap;
         }
 
+        /* ===== УЛУЧШЕННЫЙ AI-ПОИСК (ЯНДЕКС СТИЛЬ) ===== */
         .ai-search-engine {
             position: relative;
             padding: 70px 60px;
-            margin: 40px 0;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 2px solid rgba(124, 58, 237, 0.3);
+            margin: 40px 0 80px;
+            background: linear-gradient(145deg, rgba(124, 58, 237, 0.15), rgba(16, 185, 129, 0.15));
+            border: 2px solid rgba(124, 58, 237, 0.4);
             border-radius: var(--radius-4xl);
-            box-shadow: var(--shadow);
             overflow: hidden;
+            box-shadow: var(--shadow-xl);
         }
-
         .ai-search-engine::before {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            right: -50%;
-            bottom: -50%;
-            background: 
-                radial-gradient(circle at 30% 20%, rgba(124, 58, 237, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 70% 80%, rgba(16, 185, 129, 0.15) 0%, transparent 60%);
-            animation: gradientBG 20s ease infinite;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(124,58,237,0.3) 0%, transparent 50%);
+            filter: blur(50px);
             z-index: -1;
         }
-
         .search-container {
             position: relative;
-            margin-bottom: 40px;
+            margin-bottom: 25px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
-
-        #ai-search-input {
+        #internet-search-input {
             width: 100%;
-            padding: 25px 90px 25px 30px;
-            background: rgba(255, 255, 255, 0.07);
-            border: 2px solid rgba(124, 58, 237, 0.4);
-            border-radius: var(--radius-xl);
+            padding: 22px 140px 22px 30px;
+            background: rgba(5, 8, 20, 0.8);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(124, 58, 237, 0.6);
+            border-radius: 60px;
             color: white;
             font-size: 1.2rem;
             font-family: 'Inter', sans-serif;
             transition: var(--transition);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
-
-        #ai-search-input:focus {
+        #internet-search-input:focus {
             outline: none;
             border-color: var(--primary);
-            background: rgba(255, 255, 255, 0.1);
-            box-shadow: 0 0 50px rgba(124, 58, 237, 0.3);
+            background: rgba(5, 8, 20, 0.95);
+            box-shadow: 0 0 0 4px rgba(124,58,237,0.3), 0 8px 30px rgba(124,58,237,0.4);
         }
-
-        #ai-search-input::placeholder {
-            color: rgba(255, 255, 255, 0.4);
+        #internet-search-input::placeholder {
+            color: rgba(255,255,255,0.5);
             font-weight: 400;
         }
-
         .search-button {
             position: absolute;
             top: 50%;
-            right: 20px;
+            right: 12px;
             transform: translateY(-50%);
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 55px;
-            height: 55px;
-            background: linear-gradient(90deg, 
-                #7c3aed, #3b82f6, #8b5cf6, #10b981, 
-                #f59e0b, #ef4444, #ec4899, #7c3aed);
-            background-size: 300% 300%;
-            animation: rainbow 8s ease infinite;
+            gap: 8px;
+            padding: 12px 30px;
+            background: linear-gradient(90deg, #7c3aed, #8b5cf6, #a78bfa);
             border: none;
-            border-radius: var(--radius-lg);
+            border-radius: 50px;
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.1rem;
+            font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
-            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+            box-shadow: 0 8px 20px rgba(124,58,237,0.5);
         }
-
         .search-button:hover {
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 12px 35px rgba(124, 58, 237, 0.5);
+            transform: translateY(-50%) scale(1.05);
+            background: linear-gradient(90deg, #8b5cf6, #9f7aea, #b794f4);
+            box-shadow: 0 12px 30px rgba(124,58,237,0.7);
         }
-
+        .search-button i {
+            font-size: 1.2rem;
+        }
         .search-tags {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 30px;
+            max-width: 900px;
+            margin: 20px auto 0;
         }
-
         .search-tag {
-            padding: 12px 25px;
-            background: rgba(124, 58, 237, 0.15);
-            border: 1px solid rgba(124, 58, 237, 0.3);
-            border-radius: var(--radius-full);
-            color: #c4b5fd;
+            padding: 10px 22px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(124,58,237,0.4);
+            border-radius: 40px;
+            color: #e0e7ff;
             font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
             transition: var(--transition);
+            backdrop-filter: blur(5px);
         }
-
         .search-tag:hover {
-            background: rgba(124, 58, 237, 0.25);
+            background: rgba(124,58,237,0.25);
             border-color: var(--primary);
             color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(124, 58, 237, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px rgba(124,58,237,0.3);
         }
-
-        .search-results {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 50px;
+        .search-info {
+            text-align: center;
+            margin-top: 25px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
         }
-
-        .search-result {
-            padding: 30px;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: var(--radius-xl);
-            cursor: pointer;
-            transition: var(--transition);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .search-result:hover {
-            background: rgba(255, 255, 255, 0.07);
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .search-result h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 15px;
-            font-family: 'Space Grotesk', sans-serif;
-            word-break: break-word;
-        }
-
-        .search-result p {
-            font-size: 1rem;
-            line-height: 1.7;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            word-break: break-word;
+        .search-info i {
+            color: var(--primary-light);
+            margin-right: 5px;
         }
 
         .social-integration {
@@ -3411,17 +3374,17 @@
             .program-actions .button {
                 width: 100% !important;
             }
-            #ai-search-input {
-                padding: 20px 70px 20px 20px !important;
+            #internet-search-input {
+                padding: 20px 110px 20px 20px !important;
                 font-size: 1rem !important;
             }
             .search-button {
-                width: 50px !important;
-                height: 50px !important;
+                padding: 10px 20px !important;
+                font-size: 0.95rem !important;
             }
             .search-tag {
-                padding: 10px 20px !important;
-                font-size: 0.9rem !important;
+                padding: 8px 16px !important;
+                font-size: 0.85rem !important;
             }
             .price-item {
                 flex-direction: column !important;
@@ -3519,6 +3482,15 @@
             .promo-card,
             .partnership-card {
                 padding: 20px !important;
+            }
+            #internet-search-input {
+                padding: 15px 90px 15px 15px !important;
+                font-size: 0.9rem !important;
+            }
+            .search-button {
+                padding: 8px 16px !important;
+                font-size: 0.85rem !important;
+                right: 6px;
             }
         }
 
@@ -3703,6 +3675,40 @@
                     </span>
                 </div>
             </div>
+
+            <!-- ПОИСК ПО ИНТЕРНЕТУ (КАК В ЯНДЕКСЕ) - ПЕРВЫЙ БЛОК -->
+            <section id="internet-search" class="section" style="margin-top: 40px;">
+                <div class="container" style="padding:0;">
+                    <h2 class="section-title" style="margin-bottom:0;">🔍 Поиск в интернете</h2>
+                    <p class="section-subtitle">Найдите любую информацию в сети. Работает как Яндекс или Google.</p>
+                    
+                    <div class="ai-search-engine">
+                        <div class="search-container">
+                            <input type="text" 
+                                   id="internet-search-input" 
+                                   placeholder="Введите запрос для поиска в интернете..."
+                                   autocomplete="off"
+                                   value="">
+                            <button class="search-button" onclick="searchInternet()">
+                                <i class="fas fa-search"></i> Найти
+                            </button>
+                        </div>
+                        
+                        <div class="search-tags">
+                            <span class="search-tag" onclick="quickSearch('нейросети 2026')">нейросети 2026</span>
+                            <span class="search-tag" onclick="quickSearch('Kandinsky 4.0')">Kandinsky 4.0</span>
+                            <span class="search-tag" onclick="quickSearch('ChatGPT 5')">ChatGPT 5</span>
+                            <span class="search-tag" onclick="quickSearch('Яндекс GPT 2.0')">Яндекс GPT 2.0</span>
+                            <span class="search-tag" onclick="quickSearch('Midjourney V8')">Midjourney V8</span>
+                            <span class="search-tag" onclick="quickSearch('как заработать на AI')">как заработать на AI</span>
+                        </div>
+                        
+                        <div class="search-info">
+                            <i class="fas fa-info-circle"></i> Нажмите "Найти" или Enter — откроется поиск Яндекса с вашим запросом
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             <!-- ВАШ ОРИГИНАЛЬНЫЙ БЛОК ПОИСКА (Я ЕГО СОХРАНИЛ) -->
             <div style="margin: 60px 0 30px; text-align: center;">
@@ -5082,7 +5088,7 @@
             </div>
         </section>
 
-        <!-- ПОИСК AI ИНСТРУМЕНТОВ -->
+        <!-- ПОИСК AI ИНСТРУМЕНТОВ (ВТОРОЙ ПОИСК, ЕСЛИ НУЖЕН) -->
         <section id="search" class="section">
             <div class="container">
                 <h2 class="section-title">🔍 Поиск AI инструментов 2026</h2>
@@ -6506,11 +6512,51 @@
             initSearch();
             initSimpleSearch(); // для простого поиска вверху
             
+            // Добавляем обработчик для поиска по интернету
+            const internetSearch = document.getElementById('internet-search-input');
+            if (internetSearch) {
+                internetSearch.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        searchInternet();
+                    }
+                });
+            }
+            
             showNotification('🚀 Добро пожаловать в AI Nexus 2026! Сегодня добавлено 12 новых промокодов.', 'success');
             
             // Запускаем интервалы обновления
             startLiveUpdates();
         });
+
+        // ----- ПОИСК ПО ИНТЕРНЕТУ (НОВАЯ ФУНКЦИЯ) -----
+        function searchInternet() {
+            const query = document.getElementById('internet-search-input').value.trim();
+            if (!query) {
+                showNotification('❌ Введите запрос для поиска в интернете', 'error');
+                return;
+            }
+            
+            // Кодируем запрос для URL
+            const encodedQuery = encodeURIComponent(query);
+            
+            // Используем Яндекс как поисковую систему (можно заменить на Google)
+            const searchUrl = `https://yandex.ru/search/?text=${encodedQuery}`;
+            
+            // Открываем в новой вкладке
+            window.open(searchUrl, '_blank');
+            
+            // Показываем уведомление
+            showNotification(`🔍 Ищем "${query}" в Яндексе...`, 'info');
+            
+            // Очищаем поле (опционально)
+            // document.getElementById('internet-search-input').value = '';
+        }
+
+        // ----- БЫСТРЫЙ ПОИСК ПО ТЕГАМ -----
+        function quickSearch(query) {
+            document.getElementById('internet-search-input').value = query;
+            searchInternet();
+        }
 
         // ----- ТЕМА (РАБОТАЕТ) -----
         function initTheme() {
