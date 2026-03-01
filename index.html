@@ -672,6 +672,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            flex-wrap: wrap;
         }
 
         .nav-link {
@@ -3411,6 +3412,12 @@
                 <a href="#crypto" class="nav-link">
                     <i class="fas fa-coins"></i> Крипто
                 </a>
+                <a href="#blog" class="nav-link">
+                    <i class="fas fa-newspaper"></i> Блог
+                </a>
+                <a href="#faq" class="nav-link">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </a>
             </nav>
             
             <div class="header-actions">
@@ -3449,6 +3456,8 @@
             <a href="#crypto" onclick="toggleMobileMenu()"><i class="fas fa-coins"></i> AI Крипто</a>
             <a href="#analytics" onclick="toggleMobileMenu()"><i class="fas fa-chart-pie"></i> Персональная аналитика</a>
             <a href="#sitemap" onclick="toggleMobileMenu()"><i class="fas fa-sitemap"></i> Карта ресурсов</a>
+            <a href="#blog" onclick="toggleMobileMenu()"><i class="fas fa-newspaper"></i> Блог AI</a>
+            <a href="#faq" onclick="toggleMobileMenu()"><i class="fas fa-question-circle"></i> FAQ</a>
             <a href="#footer" onclick="toggleMobileMenu()"><i class="fas fa-info-circle"></i> Контакты</a>
         </div>
     </div>
@@ -5341,6 +5350,31 @@
                         </a>
                     </div>
                 </div>
+
+                <!-- НОВАЯ ПАРТНЁРСКАЯ ПРОГРАММА: PuzzleBot -->
+                <div class="partnership-card">
+                    <div class="program-badge" style="background: linear-gradient(90deg, #667eea, #764ba2);">Партнёрская</div>
+                    <div class="program-icon">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3 class="program-title">PuzzleBot</h3>
+                    <p class="program-description">
+                        Конструктор Telegram-ботов без программирования. Создавай ботов, как наш NeuraAI, и зарабатывай.
+                    </p>
+                    <div class="program-features">
+                        <div class="program-feature"><i class="fas fa-check-circle"></i> Бесплатный тариф навсегда</div>
+                        <div class="program-feature"><i class="fas fa-check-circle"></i> Создание ботов без кода</div>
+                        <div class="program-feature"><i class="fas fa-check-circle"></i> Партнёрская программа</div>
+                    </div>
+                    <div class="partner-link-container">
+                        <div class="partner-link-title"><i class="fas fa-link"></i> Партнерская ссылка:</div>
+                        <div class="partner-link">https://puzzlebot.top/?r=dlXx0AIN</div>
+                    </div>
+                    <div class="program-actions">
+                        <button class="button" onclick="copyPromoCode('https://puzzlebot.top/?r=dlXx0AIN', 'PuzzleBot')">Копировать ссылку</button>
+                        <a href="https://puzzlebot.top/?r=dlXx0AIN" class="button button-secondary" style="background: linear-gradient(90deg, #667eea, #764ba2);" target="_blank">Создать бота</a>
+                    </div>
+                </div>
             </div>
             
             <div style="text-align: center; margin-top: 60px;">
@@ -5350,6 +5384,74 @@
                 <p style="margin-top: 25px; color: rgba(255,255,255,0.8); font-size: 1.1rem;">
                     <i class="fas fa-chart-line"></i> Средний заработок партнеров: 80,000 - 500,000 руб/мес
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- НОВЫЙ РАЗДЕЛ: БЛОГ AI -->
+    <section id="blog" class="section">
+        <div class="container">
+            <h2 class="section-title">📰 Блог AI Nexus 2026</h2>
+            <p class="section-subtitle">Свежие новости, гайды и статьи о мире искусственного интеллекта.</p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="glass-card" style="padding: 30px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">Как выбрать нейросеть для дизайна</h3>
+                    <p style="margin-bottom: 20px;">Midjourney V8, Kandinsky 4.0 или DALL-E 4 — что лучше для ваших задач? Разбираем плюсы и минусы.</p>
+                    <a href="#" class="button button-small">Читать статью →</a>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">Заработок на партнёрках AI: пошаговый гайд</h3>
+                    <p style="margin-bottom: 20px;">Как начать зарабатывать от 50 000 рублей в месяц, рекомендуя нейросети.</p>
+                    <a href="#" class="button button-small">Читать статью →</a>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">Обзор Яндекс GPT 2.0 Pro</h3>
+                    <p style="margin-bottom: 20px;">Тестируем новую русскоязычную нейросеть. Честный обзор и сравнение с ChatGPT-5.</p>
+                    <a href="#" class="button button-small">Читать статью →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- НОВЫЙ РАЗДЕЛ: ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ) -->
+    <section id="faq" class="section">
+        <div class="container">
+            <h2 class="section-title">❓ Часто задаваемые вопросы</h2>
+            <p class="section-subtitle">Ответы на самые популярные вопросы о работе с AI и партнёрскими программами.</p>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <details style="margin-bottom: 20px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+                    <summary style="font-weight: 600; cursor: pointer; color: var(--primary-light);">Как начать зарабатывать с вашими партнёрками?</summary>
+                    <p style="margin-top: 15px;">Достаточно перейти по партнёрской ссылке, зарегистрироваться и начать пользоваться сервисом. Комиссия будет начисляться автоматически.</p>
+                </details>
+                <details style="margin-bottom: 20px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+                    <summary style="font-weight: 600; cursor: pointer; color: var(--primary-light);">Актуальны ли промокоды?</summary>
+                    <p style="margin-top: 15px;">Да, мы обновляем промокоды ежедневно. Если какой-то код перестал работать, сообщите нам, и мы его заменим.</p>
+                </details>
+                <details style="margin-bottom: 20px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: var(--radius-lg);">
+                    <summary style="font-weight: 600; cursor: pointer; color: var(--primary-light);">Как связаться с поддержкой?</summary>
+                    <p style="margin-top: 15px;">Напишите в Telegram @ai_toolkit_partner09 или на email cherem.7@yandex.ru. Обычно отвечаем в течение 15 минут.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- НОВЫЙ РАЗДЕЛ: ОТЗЫВЫ -->
+    <section id="testimonials" class="section">
+        <div class="container">
+            <h2 class="section-title">💬 Что говорят наши партнёры</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div class="glass-card" style="padding: 30px;">
+                    <p style="font-style: italic;">"С помощью промокодов с этого сайта я сэкономил уже больше 5000 рублей на подписках. Отличный ресурс!"</p>
+                    <p style="margin-top: 15px; font-weight: 700;">— Алексей, веб-мастер</p>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <p style="font-style: italic;">"Зарабатываю на партнёрках уже 3 месяца. Регулярные выплаты, всё честно. Спасибо за подборку!"</p>
+                    <p style="margin-top: 15px; font-weight: 700;">— Екатерина, блогер</p>
+                </div>
+                <div class="glass-card" style="padding: 30px;">
+                    <p style="font-style: italic;">"Очень удобный каталог. Все нейросети в одном месте, даже искать ничего не надо."</p>
+                    <p style="margin-top: 15px; font-weight: 700;">— Дмитрий, разработчик</p>
+                </div>
             </div>
         </div>
     </section>
@@ -6366,6 +6468,8 @@
                     border: 1px solid rgba(255, 255, 255, 0.1);
                     backdrop-filter: blur(10px);
                     -webkit-backdrop-filter: blur(10px);
+                    flex-wrap: wrap;
+                    gap: 20px;
                 }
                 
                 .price-item:hover {
@@ -7564,6 +7668,9 @@
                         <li><a href="#crypto"><i class="fas fa-coins"></i> AI Крипто</a></li>
                         <li><a href="#analytics"><i class="fas fa-chart-pie"></i> Аналитика</a></li>
                         <li><a href="#sitemap"><i class="fas fa-sitemap"></i> Карта ресурсов</a></li>
+                        <li><a href="#blog"><i class="fas fa-newspaper"></i> Блог</a></li>
+                        <li><a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a></li>
+                        <li><a href="#testimonials"><i class="fas fa-star"></i> Отзывы</a></li>
                     </ul>
                 </div>
                 
@@ -7574,6 +7681,7 @@
                         <li><a href="https://yandex.ru/project/direct/partner/distribution/?partner=14661305" target="_blank" rel="noopener noreferrer"><i class="fab fa-yandex"></i> Яндекс.Директ</a></li>
                         <li><a href="https://browser.yandex.ru/corp/builds?refid=14628861" target="_blank" rel="noopener noreferrer"><i class="fas fa-browser"></i> Яндекс.Браузер</a></li>
                         <li><a href="https://market.yandex.ru/partners?ref=14628864" target="_blank" rel="noopener noreferrer"><i class="fas fa-shopping-cart"></i> Яндекс.Маркет</a></li>
+                        <li><a href="https://puzzlebot.top/?r=dlXx0AIN" target="_blank" rel="noopener noreferrer"><i class="fas fa-puzzle-piece"></i> PuzzleBot</a></li>
                         <li><a href="#partnership" onclick="showAllPartnerships()"><i class="fas fa-handshake"></i> Все 25+ программ</a></li>
                     </ul>
                 </div>
@@ -8846,7 +8954,7 @@
                         </div>
                     </div>
                     <div style="text-align: center;">
-                        <button class="button" onclick="closeModal()" style="padding: 16px 40px;">Закрыть</button>
+                        <button class="button" onclick="closeModal()">Закрыть</button>
                     </div>
                 </div>
             `;
@@ -9027,4 +9135,3 @@
 </script>
 </body>
 </html>
-
