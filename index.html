@@ -9400,23 +9400,6 @@
         console.log('📢 Telegram канал: @ai_toolkit_partner09');
         console.log('👥 VK сообщество: vk.com/ai_cherem7');
         console.log('🐙 GitHub: github.com/Ivancherem/neuraai-bot');
-        // ----- ПОИСК ПО ИНТЕРНЕТУ (ЯНДЕКС) -----
-        function searchInternet() {
-            const query = document.getElementById('internet-search-input').value.trim();
-            if (!query) {
-                showNotification('❌ Введите запрос для поиска в интернете', 'error');
-                return;
-            }
-            const encodedQuery = encodeURIComponent(query);
-            const searchUrl = `https://yandex.ru/search/?text=${encodedQuery}`;
-            window.open(searchUrl, '_blank');
-            showNotification(`🔍 Ищем "${query}" в Яндексе...`, 'info');
-        }
-
-        function quickSearch(query) {
-            document.getElementById('internet-search-input').value = query;
-            searchInternet();
-        }
     </script>
 <!-- Мои реквизиты для ЮKassa -->
 <div style="text-align: center; margin: 40px 0; padding: 20px; border-top: 1px solid #333; color: #999; font-size: 14px;">
@@ -9431,6 +9414,7 @@
 </div>
 </body>
 </html>
+
 
 
 
