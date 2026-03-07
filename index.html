@@ -3377,51 +3377,73 @@
             }
         }
 
-        @media (max-width: 768px) {
+               @media (max-width: 768px) {
             .container,
             .nav-container {
-                padding: 0 20px !important;
+                padding: 0 15px !important;
             }
             .site-title {
-                font-size: 1.6rem !important;
+                font-size: 1.3rem !important;
             }
             .hero {
-                padding: 150px 0 80px !important;
-                margin-top: 70px !important;
+                padding: 120px 0 60px !important;
+                margin-top: 60px !important;
             }
             .hero h1 {
-                font-size: 2.5rem !important;
+                font-size: 1.8rem !important;
                 line-height: 1.2 !important;
                 word-break: break-word !important;
             }
             .hero-subtitle {
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
+                padding: 0 10px !important;
             }
             .hero-stats,
             .network-stats,
             .live-stats {
                 grid-template-columns: 1fr !important;
+                gap: 15px !important;
             }
-            .section-title {
-                font-size: 2rem !important;
+            .hero-stat {
+                padding: 20px !important;
             }
             .stat-number,
             .live-stat-value {
-                font-size: 2.2rem !important;
+                font-size: 2rem !important;
+            }
+            .section-title {
+                font-size: 1.8rem !important;
+            }
+            .section-subtitle {
+                font-size: 1rem !important;
             }
             .button {
-                padding: 14px 25px !important;
-                font-size: 0.95rem !important;
+                padding: 12px 20px !important;
+                font-size: 0.9rem !important;
                 width: 100% !important;
+            }
+            .card,
+            .promo-card,
+            .partnership-card,
+            .social-bot-card,
+            .testimonial-card,
+            .widget {
+                padding: 25px 15px !important;
+                margin: 10px 0 !important;
             }
             .card-title,
             .program-title,
             .promo-card h3,
             .social-bot-card h3 {
-                font-size: 1.5rem !important;
+                font-size: 1.3rem !important;
+            }
+            .card-description,
+            .program-description {
+                font-size: 0.9rem !important;
+                line-height: 1.5 !important;
             }
             .promo-code {
-                font-size: 1.5rem !important;
+                font-size: 1.2rem !important;
                 padding: 12px !important;
                 word-break: break-all !important;
             }
@@ -3435,23 +3457,26 @@
             .card-actions .button,
             .program-actions .button {
                 width: 100% !important;
+                margin: 5px 0 !important;
             }
             #ai-search-input {
-                padding: 20px 70px 20px 20px !important;
-                font-size: 1rem !important;
+                padding: 15px 60px 15px 15px !important;
+                font-size: 0.95rem !important;
             }
             .search-button {
-                width: 50px !important;
-                height: 50px !important;
+                width: 45px !important;
+                height: 45px !important;
+                right: 5px !important;
+                font-size: 1.1rem !important;
             }
             .search-tag {
-                padding: 10px 20px !important;
-                font-size: 0.9rem !important;
+                padding: 8px 15px !important;
+                font-size: 0.85rem !important;
             }
             .price-item {
                 flex-direction: column !important;
                 text-align: center !important;
-                padding: 20px !important;
+                padding: 20px 15px !important;
             }
             .price-info {
                 margin-bottom: 15px !important;
@@ -3459,14 +3484,29 @@
             .price-value {
                 text-align: center !important;
             }
+            .price-value .amount {
+                font-size: 1.8rem !important;
+            }
             .crypto-prices {
                 grid-template-columns: 1fr !important;
+            }
+            .crypto-price {
+                padding: 20px !important;
+            }
+            .crypto-price p {
+                font-size: 1.8rem !important;
             }
             .sitemap-grid {
                 grid-template-columns: 1fr !important;
             }
+            .sitemap-category {
+                padding: 20px !important;
+            }
             .network-stats {
                 grid-template-columns: 1fr !important;
+            }
+            .network-stat {
+                padding: 25px !important;
             }
             .network-features {
                 grid-template-columns: 1fr !important;
@@ -3478,48 +3518,107 @@
                 grid-template-columns: 1fr !important;
             }
             .modal-content {
-                padding: 40px 20px !important;
-                margin: 20px !important;
+                padding: 30px 15px !important;
+                margin: 15px !important;
             }
             .notification {
-                left: 20px !important;
-                right: 20px !important;
+                left: 15px !important;
+                right: 15px !important;
                 width: auto !important;
+                font-size: 0.9rem !important;
+                padding: 15px !important;
             }
             .mobile-menu-header h2 {
-                font-size: 2rem !important;
+                font-size: 1.8rem !important;
             }
             .mobile-menu-content a {
-                padding: 16px !important;
-                font-size: 1.1rem !important;
+                padding: 15px !important;
+                font-size: 1rem !important;
             }
-            .hero h1 {
-                font-size: 2.5rem !important;
+            .cards-grid,
+            .partnership-grid,
+            .social-bots-grid,
+            .interactive-widgets,
+            .blog-grid,
+            .testimonials-grid,
+            .faq-grid,
+            .glossary-grid,
+            .guides-grid,
+            .courses-grid,
+            .books-grid,
+            .devtools-grid,
+            .startups-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
             }
-            .section-title {
-                font-size: 2rem !important;
+            .tech-stack {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
             }
-        }
-
-        @media (max-width: 576px) {
-            .site-title {
-                font-size: 1.3rem !important;
+            .tech-item {
+                padding: 20px !important;
             }
-            .hero h1 {
-                font-size: 2rem !important;
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
             }
-            .section-title {
-                font-size: 1.6rem !important;
+            .footer-section {
+                text-align: center !important;
             }
-            .promo-code {
-                font-size: 1.2rem !important;
+            .footer-section h5::after {
+                left: 50% !important;
+                transform: translateX(-50%) !important;
             }
-            .card .badge[style*="left: 120px"],
-            .promo-card .badge[style*="left: 120px"] {
-                left: 15px !important;
-                top: 60px !important;
+            .footer-links a {
+                justify-content: center !important;
             }
-        }
+            .footer-partners {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 10px !important;
+            }
+            .footer-partner {
+                width: 100% !important;
+                justify-content: center !important;
+            }
+            .social-links {
+                justify-content: center !important;
+            }
+            .vk-widget-container {
+                padding: 20px !important;
+            }
+            .community-stats {
+                gap: 20px !important;
+            }
+            .community-stat-number {
+                font-size: 1.5rem !important;
+            }
+            .trending-item {
+                padding: 15px !important;
+            }
+            .trending-number {
+                width: 30px !important;
+                height: 30px !important;
+                font-size: 1rem !important;
+            }
+            .trending-name {
+                font-size: 1rem !important;
+            }
+            .event-item {
+                flex-direction: column !important;
+                align-items: flex-start !important;
+                gap: 15px !important;
+                padding: 20px !important;
+            }
+            .event-date {
+                min-width: auto !important;
+                width: 100% !important;
+                text-align: center !important;
+            }
+            .glossary-item {
+                padding: 20px !important;
+            }
+        } 
 
         @media (max-width: 480px) {
             .hero h1 {
@@ -9415,4 +9514,5 @@
 </div>
 </body>
 </html>
+
 
