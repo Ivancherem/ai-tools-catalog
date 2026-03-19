@@ -3664,6 +3664,61 @@
                 transform: translateY(-5px) !important;
             }
         }
+        /* ДОПОЛНИТЕЛЬНЫЕ ПРАВИЛА ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem !important;
+        padding: 0 15px !important;
+    }
+    
+    .section-title {
+        font-size: 2rem !important;
+    }
+    
+    .card, .promo-card, .partnership-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 20px 15px !important;
+    }
+    
+    .cards-grid, .partnership-grid, .promo-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+        padding: 0 10px !important;
+    }
+    
+    .promo-code {
+        font-size: 1.3rem !important;
+        word-break: break-all !important;
+    }
+    
+    iframe {
+        max-width: 100% !important;
+        height: auto !important;
+        min-height: 500px !important;
+    }
+    
+    .tech-stack {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .footer-section {
+        text-align: center !important;
+    }
+    
+    .footer-links a {
+        justify-content: center !important;
+    }
+}
     </style>
 </head>
 <body class="dark-theme">
