@@ -4332,17 +4332,7 @@
     </p>
     
 </div>
-<!-- КОНЕЦ БЛОКА ПРОДАЖИ -->
-            
-            <!-- Виджет ОСАГО от Pampadu -->
-            <div style="margin: 60px 0; padding: 20px; background: rgba(255,255,255,0.03); border-radius: 24px;">
-                <h3 style="color: white; text-align: center; margin-bottom: 30px;">🚗 Калькулятор ОСАГО</h3>
-                <iframe src="https://b2c.pampadu.ru/index.html#6774ee6f-7381-4558-834a-9a15f5075aee" 
-                        style="width: 100%; border: none; height: 650px; min-width: 320px; overflow: hidden;" 
-                        id="ppdwi" 
-                        scrolling="no"></iframe>
-                <script src="https://b2c.pampadu.ru/ppdw.js"></script>
-            </div>
+
                     <!-- КАЛЬКУЛЯТОР ОСАГО -->
         <section class="section">
             <div class="container">
@@ -9681,6 +9671,24 @@
       navigator.serviceWorker.register('/sw.js');
     });
   }
+   /* ДОПОЛНИТЕЛЬНЫЕ ПРАВИЛА ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2rem !important;
+    }
+    
+    .card, .promo-card, .partnership-card {
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    .partnership-grid, .cards-grid {
+        padding: 0 10px !important;
+    }
+    
+    iframe {
+        max-width: 100% !important;
+    }     
 </script>
 </div>
 
