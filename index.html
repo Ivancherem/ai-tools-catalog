@@ -3376,7 +3376,70 @@
                 grid-template-columns: repeat(2, 1fr) !important;
             }
         }
-
+         .catalog-filters {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 50px 0 60px;
+    animation: slideUp 1s ease;
+}
+.filter-btn {
+    padding: 12px 28px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+}
+.filter-btn:hover {
+    background: rgba(124, 58, 237, 0.2);
+    border-color: rgba(124, 58, 237, 0.5);
+    color: white;
+    transform: translateY(-2px);
+}
+.filter-btn.active {
+    background: linear-gradient(90deg, #7c3aed, #3b82f6, #8b5cf6, #10b981, #f59e0b, #ef4444, #ec4899, #7c3aed);
+    background-size: 300% 300%;
+    animation: rainbow 8s ease infinite;
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.4);
+}
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+.card-icon {
+    font-size: 3.5rem;
+    background: linear-gradient(90deg, #7c3aed, #3b82f6, #8b5cf6, #10b981, #f59e0b, #ef4444, #ec4899, #7c3aed);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: var(--transition);
+    animation: rainbow 8s ease infinite;
+}
+.card-rating {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: linear-gradient(90deg, #10b981, #3b82f6, #6366f1, #10b981);
+    background-size: 300% 300%;
+    animation: rainbow 8s ease infinite;
+    border-radius: var(--radius-full);
+    color: white;
+    font-size: 1rem;
+    font-weight: 700;
+}
                @media (max-width: 768px) {
             .container,
             .nav-container {
