@@ -8595,24 +8595,22 @@
         }
 
         // ----- УВЕДОМЛЕНИЯ (РАБОТАЕТ) -----
-        function showNotification(message, type = 'info') {
-            const notification = document.getElementById('notification');
-            
-            clearTimeout(notificationTimeout);
+function showNotification(message, type = 'info') {
+    const notification = document.getElementById('notification');
+    if (!notification) return;
+    clearTimeout(notificationTimeout);
+    notification.textContent = message;
+    notification.className = `notification ${type}`;
+    notification.style.display = 'block';
+    notification.style.opacity = '1';
+    notificationTimeout = setTimeout(() => {
+        notification.style.opacity = '0';
+        setTimeout(() => {
             notification.style.display = 'none';
-            
-            notification.textContent = message;
-            notification.className = `notification ${type}`;
-            notification.style.display = 'block';
-            
-            notificationTimeout = setTimeout(() => {
-                notification.style.opacity = '0';
-                setTimeout(() => {
-                    notification.style.display = 'none';
-                    notification.style.opacity = '1';
-                }, 300);
-            }, 5000);
-        }
+            notification.style.opacity = '1';
+        }, 300);
+    }, 5000);
+}
 
         // ----- МОДАЛЬНЫЕ ОКНА (РАБОТАЕТ) -----
         function openModal(content, title = '') {
