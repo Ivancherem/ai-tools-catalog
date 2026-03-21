@@ -8524,20 +8524,23 @@
         }
 
         function setTheme(theme) {
-            document.body.className = theme + '-theme';
-            localStorage.setItem('theme', theme);
-            currentTheme = theme;
-            
-            const icon = document.querySelector('.theme-toggle i');
-            if (icon) {
-                icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-            }
+    document.body.className = theme + '-theme';
+    localStorage.setItem('theme', theme);
+    const icon = document.querySelector('.theme-toggle i');
+    if (icon) {
+        if (theme === 'dark') {
+            icon.className = 'fas fa-moon';
+        } else {
+            icon.className = 'fas fa-sun';
         }
+    }
+}
 
-        function toggleTheme() {
-            setTheme(currentTheme === 'dark' ? 'light' : 'dark');
-            showNotification(`Тема изменена на ${currentTheme === 'dark' ? '🌙 тёмную' : '☀️ светлую'}`, 'success');
-        }
+function toggleTheme() {
+    const currentTheme = document.body.className.includes('light') ? 'dark' : 'light';
+    setTheme(currentTheme);
+    showNotification(`Тема изменена на ${currentTheme === 'dark' ? '🌙 тёмную' : '☀️ светлую'}`, 'success');
+}
 
         // ----- НАВИГАЦИЯ (РАБОТАЕТ) -----
         function scrollToSection(sectionId) {
