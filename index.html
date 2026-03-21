@@ -8875,24 +8875,20 @@
         }
 
         // ----- ФИЛЬТРЫ ИНСТРУМЕНТОВ (РАБОТАЕТ) -----
-        function filterTools(category) {
-            const cards = document.querySelectorAll('.card');
-            const filterBtns = document.querySelectorAll('.filter-btn');
-            
-            filterBtns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            cards.forEach(card => {
-                if (category === 'all' || card.dataset.category.includes(category)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            showNotification(`Показаны инструменты: ${category === 'all' ? 'все категории' : category}`, 'info');
+function filterTools(category) {
+    const cards = document.querySelectorAll('.card');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    filterBtns.forEach(btn => btn.classList.remove('active'));
+    if (window.event && window.event.target) window.event.target.classList.add('active');
+    cards.forEach(card => {
+        if (category === 'all' || card.dataset.category.includes(category)) {
+            card.style.display = 'block';
+        } else {
+            card.style.display = 'none';
         }
-
+    });
+    showNotification(`Показаны инструменты: ${category === 'all' ? 'все категории' : category}`, 'info');
+}
         function showAllTools() {
             let content = `
                 <div style="max-width: 900px; margin: 0 auto;">
