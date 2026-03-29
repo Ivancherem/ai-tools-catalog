@@ -10114,16 +10114,6 @@ function filterTools(category) {
             }, 300);
         }, 5000);
     };
-    
-    window.scrollToSection = window.scrollToSection || function(sectionId) {
-        const section = document.querySelector(sectionId);
-        if (section) {
-            window.scrollTo({
-                top: section.offsetTop - 100,
-                behavior: 'smooth'
-            });
-        }
-    };
 
     // 2. Добавляем недостающие функции для кнопок
     window.showAllGuides = function() {
