@@ -3773,6 +3773,286 @@
     </style>
 </head>
 <body class="dark-theme">
+    <script>
+// ============================================
+// ФУНКЦИИ ДЛЯ КНОПОК (ИНСТРУКЦИИ, БЛОГ, ОТЗЫВЫ И Т.Д.)
+// ============================================
+
+// Функция для кнопки "Смотреть все инструкции"
+window.showAllGuides = function() {
+    window.showNotification('📘 Все инструкции будут доступны в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">📘 Все инструкции по нейросетям (25+)</h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="background: rgba(124,58,237,0.1); padding: 25px; border-radius: 15px;">
+                    <h4 style="color: white;">Kandinsky 4.0</h4>
+                    <p style="color: rgba(255,255,255,0.8);">Пошаговый гайд по генерации изображений 8K</p>
+                    <button class="button button-small" onclick="window.open('https://fusionbrain.ai', '_blank')">Читать инструкцию</button>
+                </div>
+                <div style="background: rgba(16,185,129,0.1); padding: 25px; border-radius: 15px;">
+                    <h4 style="color: white;">ChatGPT 5 Omni</h4>
+                    <p style="color: rgba(255,255,255,0.8);">Как использовать мультимодальную нейросеть</p>
+                    <button class="button button-small" onclick="window.open('https://chat.openai.com', '_blank')">Читать инструкцию</button>
+                </div>
+                <div style="background: rgba(245,158,11,0.1); padding: 25px; border-radius: 15px;">
+                    <h4 style="color: white;">Midjourney V8</h4>
+                    <p style="color: rgba(255,255,255,0.8);">Генерация фотореалистичных изображений</p>
+                    <button class="button button-small" onclick="window.open('https://midjourney.com', '_blank')">Читать инструкцию</button>
+                </div>
+                <div style="background: rgba(239,68,68,0.1); padding: 25px; border-radius: 15px;">
+                    <h4 style="color: white;">Яндекс GPT 2.0</h4>
+                    <p style="color: rgba(255,255,255,0.8);">Российская нейросеть без VPN</p>
+                    <button class="button button-small" onclick="window.open('https://ya.ru/ai/gpt', '_blank')">Читать инструкцию</button>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📘 Все инструкции AI Nexus 2026');
+};
+
+// Функция для кнопки "Все статьи блога"
+window.showAllBlogPosts = function() {
+    window.showNotification('📝 Все статьи блога будут доступны в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">📝 Все статьи блога (50+)</h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                    <h4 style="color: white;">🔥 Топ-10 нейросетей для создания видео в 2026</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Runway Gen-3, Pika 2.0, HeyGen, Synthesia и другие</p>
+                    <span style="color: rgba(255,255,255,0.5);">15 марта 2026 • 4.2K просмотров</span>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                    <h4 style="color: white;">💼 Как заработать на AI в 2026: партнерские программы</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Полный разбор партнерок Reg.ru, Яндекс.Директ, PuzzleBot</p>
+                    <span style="color: rgba(255,255,255,0.5);">10 марта 2026 • 7.8K просмотров</span>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
+                    <h4 style="color: white;">🇷🇺 Российские нейросети 2026: Kandinsky 4.0 vs GigaChat Pro</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Сравнение двух лидеров российского рынка AI</p>
+                    <span style="color: rgba(255,255,255,0.5);">5 марта 2026 • 5.1K просмотров</span>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📝 Блог AI Nexus 2026');
+};
+
+// Функция для кнопки "Читать все отзывы"
+window.showAllTestimonials = function() {
+    window.showNotification('💬 Все отзывы будут доступны в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">💬 Все отзывы пользователей (500+)</h3>
+            <div style="max-height: 500px; overflow-y: auto;">
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px;">
+                    <p style="color: rgba(255,255,255,0.9);">"Отличный сайт! Нашел промокод на ChatGPT 5, сэкономил 30$."</p>
+                    <div style="margin-top: 10px; color: var(--primary-light);">— Алексей, Москва</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px;">
+                    <p style="color: rgba(255,255,255,0.9);">"Благодаря партнерке Яндекс.Директ заработал первые 50,000₽"</p>
+                    <div style="margin-top: 10px; color: var(--primary-light);">— Елена, СПб</div>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px;">
+                    <p style="color: rgba(255,255,255,0.9);">"NeuraAI бот в Telegram — находка! Всегда свежие промокоды"</p>
+                    <div style="margin-top: 10px; color: var(--primary-light);">— Дмитрий, Казань</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '💬 Отзывы пользователей');
+};
+
+// Функция для кнопки "Все события"
+window.showAllEvents = function() {
+    window.showNotification('📅 Все события будут доступны в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">📅 Все AI события 2026 (30+)</h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="background: rgba(124,58,237,0.1); padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white;">20 марта</h4>
+                        <span class="badge badge-free">Бесплатно</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.8);">Вебинар «ChatGPT-5 в бизнесе»</p>
+                </div>
+                <div style="background: rgba(16,185,129,0.1); padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white;">25 марта</h4>
+                        <span class="badge badge-new">Новинка</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.8);">Релиз Kandinsky 4.0 Ultra</p>
+                </div>
+                <div style="background: rgba(245,158,11,0.1); padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white;">1 апреля</h4>
+                        <span class="badge badge-free">Бесплатно</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.8);">AI Хакатон 2026 (призовой фонд 500,000₽)</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📅 Календарь AI событий 2026');
+};
+
+// Функция для кнопки "Полный глоссарий"
+window.showFullGlossary = function() {
+    window.showNotification('📚 Полный глоссарий будет доступен в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">📚 Полный глоссарий AI терминов (100+)</h3>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                    <strong style="color: var(--primary-light);">LLM</strong>
+                    <p style="color: rgba(255,255,255,0.7);">Large Language Model - большая языковая модель</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                    <strong style="color: var(--primary-light);">RAG</strong>
+                    <p style="color: rgba(255,255,255,0.7);">Retrieval-Augmented Generation - генерация с поиском</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                    <strong style="color: var(--primary-light);">Fine-tuning</strong>
+                    <p style="color: rgba(255,255,255,0.7);">Донастройка модели на собственных данных</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
+                    <strong style="color: var(--primary-light);">Prompt Engineering</strong>
+                    <p style="color: rgba(255,255,255,0.7);">Искусство составления запросов для нейросетей</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📚 Глоссарий AI терминов');
+};
+
+// Функция для кнопки "Показать все 100 нейросетей"
+window.showFullRanking = function() {
+    window.showNotification('🏆 Полный рейтинг из 100 нейросетей откроется в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 1000px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">🏆 Топ-100 нейросетей 2026</h3>
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--primary);">
+                            <th style="padding: 10px; text-align: left;">#</th>
+                            <th style="padding: 10px; text-align: left;">Название</th>
+                            <th style="padding: 10px; text-align: left;">Категория</th>
+                            <th style="padding: 10px; text-align: center;">Рейтинг</th>
+                         </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding: 10px;">1</td><td>Яндекс GPT 2.0 Pro</td><td>Текст</td><td style="text-align: center;">4.9 ★</td></tr>
+                        <tr><td style="padding: 10px;">2</td><td>Kandinsky 4.0 Ultra</td><td>Изображения</td><td style="text-align: center;">4.8 ★</td></tr>
+                        <tr><td style="padding: 10px;">3</td><td>ChatGPT 5 Omni</td><td>Текст/Видео</td><td style="text-align: center;">4.9 ★</td></tr>
+                        <tr><td style="padding: 10px;">4</td><td>Midjourney V8</td><td>Изображения</td><td style="text-align: center;">4.9 ★</td></tr>
+                        <tr><td style="padding: 10px;">5</td><td>GitHub Copilot X+</td><td>Код</td><td style="text-align: center;">4.8 ★</td></tr>
+                    </tbody>
+                 </table>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '🏆 Топ-100 нейросетей 2026');
+};
+
+// Функция для кнопки "Все курсы и вебинары"
+window.showAllCourses = function() {
+    window.showNotification('📚 Все курсы будут доступны в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">📚 Все курсы и вебинары (20+)</h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="background: rgba(124,58,237,0.1); padding: 20px; border-radius: 15px;">
+                    <h4 style="color: white;">Введение в нейросети</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Бесплатный курс для начинающих • 5 часов</p>
+                    <button class="button button-small" onclick="window.open('https://stepik.org', '_blank')">Начать</button>
+                </div>
+                <div style="background: rgba(16,185,129,0.1); padding: 20px; border-radius: 15px;">
+                    <h4 style="color: white;">Prompt Engineering</h4>
+                    <p style="color: rgba(255,255,255,0.7);">Продвинутый курс • 12 часов • 4,990 ₽</p>
+                    <button class="button button-small">Купить</button>
+                </div>
+                <div style="background: rgba(245,158,11,0.1); padding: 20px; border-radius: 15px;">
+                    <h4 style="color: white;">AI для бизнеса</h4>
+                    <p style="color: rgba(255,255,255,0.7);">VIP курс • 20 часов • 14,990 ₽</p>
+                    <button class="button button-small">Консультация</button>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📚 Обучение AI 2026');
+};
+
+// Функция для кнопки "Смотреть все вакансии"
+window.showAllJobs = function() {
+    window.showNotification('💼 Все вакансии будут доступны в новом окне', 'info');
+    window.openModal(`
+        <div style="max-width: 900px; margin: 0 auto;">
+            <h3 style="color: var(--primary); margin-bottom: 30px;">💼 Все вакансии в AI (25+)</h3>
+            <div style="display: grid; gap: 20px;">
+                <div style="background: rgba(124,58,237,0.1); padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white;">ML Engineer</h4>
+                        <span style="color: #10b981;">от 400,000 ₽</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Яндекс, Москва / удалённо</p>
+                    <button class="button button-small">Откликнуться</button>
+                </div>
+                <div style="background: rgba(16,185,129,0.1); padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white;">AI-дизайнер</h4>
+                        <span style="color: #10b981;">от 250,000 ₽</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">Sber, Санкт-Петербург</p>
+                    <button class="button button-small">Откликнуться</button>
+                </div>
+                <div style="background: rgba(245,158,11,0.1); padding: 20px; border-radius: 15px;">
+                    <div style="display: flex; justify-content: space-between;">
+                        <h4 style="color: white;">Prompt Engineer</h4>
+                        <span style="color: #10b981;">от 180,000 ₽</span>
+                    </div>
+                    <p style="color: rgba(255,255,255,0.7);">VK, удалённо</p>
+                    <button class="button button-small">Откликнуться</button>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '💼 Вакансии в AI 2026');
+};
+
+// Функция для кнопки "Загрузить еще обновления"
+window.loadMoreNews = function() {
+    window.showNotification('📰 Загружаем еще новости...', 'info');
+    setTimeout(() => {
+        window.showNotification('✅ Добавлено 5 новых новостей', 'success');
+    }, 1000);
+};
+
+// Функция для фильтра рейтинга
+window.filterRanking = function(category) {
+    window.showNotification(`Фильтр рейтинга: ${category === 'all' ? 'все категории' : category}`, 'info');
+};
+
+console.log('✅ Все функции для кнопок загружены!');
+</script>
     <!-- Уведомление и Модальное окно -->
     <div id="notification" class="notification"></div>
     <div id="modal" class="modal"></div>
