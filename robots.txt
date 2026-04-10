@@ -1,0 +1,11 @@
+User-agent: Yandex
+Disallow:
+
+User-agent: Googlebot
+Disallow:
+
+User-agent: *
+Disallow:
+
+Host: https://ai-toolkit.ru
+Sitemap: https://ai-toolkit.ru/sitemap.xml
