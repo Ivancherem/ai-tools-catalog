@@ -7,5 +7,5 @@ Disallow:
 User-agent: *
 Disallow:
 
-Host: https://ai-toolkit.ru
+Host: ai-toolkit.ru
 Sitemap: https://ai-toolkit.ru/sitemap.xml
