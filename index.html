@@ -7598,54 +7598,58 @@ console.log('✅ Все функции для кнопок загружены!')
         </section>
 
         <!-- БЛОК 8: Отзывы пользователей -->
-        <section id="testimonials" class="section">
-            <div class="container">
-                <h2 class="section-title">💬 Отзывы пользователей</h2>
-                <p class="section-subtitle">
-                    Более 75 000 человек уже пользуются нашими подборками и промокодами.
-                </p>
-                
-                <div class="testimonials-grid">
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">«Нашел на сайте промокод на Kandinsky 4.0 со скидкой 60%. Сэкономил кучу денег! Арты генерирует отлично, русский понимает идеально.»</p>
-                        <div class="testimonial-author">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='25' fill='%237c3aed'/%3E%3Ctext x='25' y='32' font-size='24' text-anchor='middle' fill='white' font-family='Arial'%3EА%3C/text%3E%3C/svg%3E" alt="Аватар">
-                            <div>
-                                <div class="author-name">Алексей, дизайнер</div>
-                                <div class="author-role">г. Москва</div>
-                            </div>
-                        </div>
+<section id="testimonials" class="section">
+    <div class="container">
+        <h2 class="section-title">💬 Отзывы пользователей</h2>
+        <p class="section-subtitle">
+            Более 75 000 человек уже пользуются нашими подборками и промокодами.
+        </p>
+        
+        <div class="testimonials-grid">
+            <!-- Отзыв 1 - Алексей -->
+            <div class="testimonial-card">
+                <p class="testimonial-text">«Нашел на сайте промокод на Kandinsky 4.0 со скидкой 60%. Сэкономил кучу денег! Арты генерирует отлично, русский понимает идеально.»</p>
+                <div class="testimonial-author">
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #a78bfa); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(124,58,237,0.3);">А</div>
+                    <div>
+                        <div class="author-name">Алексей, дизайнер</div>
+                        <div class="author-role">г. Москва</div>
                     </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">«Зарегистрировался в партнерке Яндекс.Директ по ссылке с сайта. За первый месяц заработал 15 000 рублей. Выплатили быстро, всё честно.»</p>
-                        <div class="testimonial-author">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='25' fill='%2310b981'/%3E%3Ctext x='25' y='32' font-size='24' text-anchor='middle' fill='white' font-family='Arial'%3ЕМ%3C/text%3E%3C/svg%3E" alt="Аватар">
-                            <div>
-                                <div class="author-name">Елена, маркетолог</div>
-                                <div class="author-role">г. Санкт-Петербург</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-card">
-                        <p class="testimonial-text">«NeuraAI бот в Telegram — просто находка! Каждый день новые промокоды, уже активировал ChatGPT-5 бесплатно на месяц. Всем советую!»</p>
-                        <div class="testimonial-author">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'%3E%3Ccircle cx='25' cy='25' r='25' fill='%23f59e0b'/%3E%3Ctext x='25' y='32' font-size='24' text-anchor='middle' fill='white' font-family='Arial'%3EД%3C/text%3E%3C/svg%3E" alt="Аватар">
-                            <div>
-                                <div class="author-name">Дмитрий, разработчик</div>
-                                <div class="author-role">г. Казань</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div style="text-align: center; margin-top: 50px;">
-                    <button class="button" onclick="showAllTestimonials()">
-                        <i class="fas fa-comments"></i> Читать все отзывы (500+)
-                    </button>
                 </div>
             </div>
-        </section>
-
+            
+            <!-- Отзыв 2 - Елена -->
+            <div class="testimonial-card">
+                <p class="testimonial-text">«Зарегистрировался в партнерке Яндекс.Директ по ссылке с сайта. За первый месяц заработал 15 000 рублей. Выплатили быстро, всё честно.»</p>
+                <div class="testimonial-author">
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(16,185,129,0.3);">Е</div>
+                    <div>
+                        <div class="author-name">Елена, маркетолог</div>
+                        <div class="author-role">г. Санкт-Петербург</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Отзыв 3 - Дмитрий -->
+            <div class="testimonial-card">
+                <p class="testimonial-text">«NeuraAI бот в Telegram — просто находка! Каждый день новые промокоды, уже активировал ChatGPT-5 бесплатно на месяц. Всем советую!»</p>
+                <div class="testimonial-author">
+                    <div style="width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #fbbf24); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 24px; box-shadow: 0 4px 12px rgba(245,158,11,0.3);">Д</div>
+                    <div>
+                        <div class="author-name">Дмитрий, разработчик</div>
+                        <div class="author-role">г. Казань</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 50px;">
+            <button class="button" onclick="showAllTestimonials()">
+                <i class="fas fa-comments"></i> Читать все отзывы (500+)
+            </button>
+        </div>
+    </div>
+</section>
         <!-- БЛОК 9: Календарь событий AI -->
         <section id="events" class="section">
             <div class="container">
