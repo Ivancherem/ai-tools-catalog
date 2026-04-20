@@ -1414,46 +1414,49 @@
             </div>
         </section>
 
-        <!-- Отзывы -->
-        <section class="testimonials glass rounded-xl">
-            <h3 class="section-title">💬 Отзывы пользователей</h3>
-            <p class="section-subtitle">Что говорят те, кто уже использует наши рекомендации</p>
-            
-            <div class="alt-cards">
-                <div class="testimonial-card">
-                    <p>"Наконец-то нашел работающие в России AI-инструменты! Яндекс GPT отлично заменяет ChatGPT для русских текстов."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">АС</div>
-                        <div class="author-info">
-                            <strong>Алексей Смирнов</strong>
-                            <small>Маркетолог, Москва</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"Kandinsky 3.0 стал спасением! Раньше использовал Midjourney через VPN, теперь всё быстро и на русском."</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">МК</div>
-                        <div class="author-info">
-                            <strong>Мария Ковалёва</strong>
-                            <small>Дизайнер, Санкт-Петербург</small>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <p>"Благодаря промокодам сэкономил 5000 рублей на подписках. Рассылка действительно полезная!"</p>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">ДИ</div>
-                        <div class="author-info">
-                            <strong>Дмитрий Иванов</strong>
-                            <small>Предприниматель, Екатеринбург</small>
-                        </div>
-                    </div>
+        <!-- Отзывы пользователей -->
+<section class="testimonials glass rounded-xl">
+    <h3 class="section-title">💬 Отзывы пользователей</h3>
+    <p class="section-subtitle">Что говорят те, кто уже использует наши рекомендации</p>
+    
+    <div class="alt-cards">
+        <!-- Отзыв 1 - Алексей -->
+        <div class="testimonial-card">
+            <p>"Наконец-то нашел работающие в России AI-инструменты! Яндекс GPT отлично заменяет ChatGPT для русских текстов."</p>
+            <div class="testimonial-author">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #a78bfa); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; box-shadow: 0 4px 12px rgba(124,58,237,0.3);">А</div>
+                <div class="author-info">
+                    <strong>Алексей Смирнов</strong>
+                    <small>Маркетолог, Москва</small>
                 </div>
             </div>
-        </section>
+        </div>
+        
+        <!-- Отзыв 2 - Мария -->
+        <div class="testimonial-card">
+            <p>"Kandinsky 3.0 стал спасением! Раньше использовал Midjourney через VPN, теперь всё быстро и на русском."</p>
+            <div class="testimonial-author">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; box-shadow: 0 4px 12px rgba(16,185,129,0.3);">М</div>
+                <div class="author-info">
+                    <strong>Мария Ковалёва</strong>
+                    <small>Дизайнер, Санкт-Петербург</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Отзыв 3 - Дмитрий -->
+        <div class="testimonial-card">
+            <p>"Благодаря промокодам сэкономил 5000 рублей на подписках. Рассылка действительно полезная!"</p>
+            <div class="testimonial-author">
+                <div style="width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #f59e0b, #fbbf24); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; box-shadow: 0 4px 12px rgba(245,158,11,0.3);">Д</div>
+                <div class="author-info">
+                    <strong>Дмитрий Иванов</strong>
+                    <small>Предприниматель, Екатеринбург</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- FAQ -->
         <section class="faq-section">
