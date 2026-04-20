@@ -8807,6 +8807,140 @@ console.log('✅ Все функции для кнопок загружены!')
                     </p>
                 </div>
             </div>
+            <!-- ========== ФОРМА ОБРАТНОЙ СВЯЗИ ========== -->
+<section id="feedback" class="section">
+    <div class="container">
+        <div style="background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(16,185,129,0.1)); border-radius: 40px; padding: 60px 40px; border: 2px solid rgba(124,58,237,0.3);">
+            
+            <div style="text-align: center; margin-bottom: 40px;">
+                <i class="fas fa-envelope-open-text" style="font-size: 4rem; color: var(--primary); margin-bottom: 15px; display: inline-block;"></i>
+                <h2 class="section-title" style="font-size: 2.5rem; margin-bottom: 15px;">📬 Напишите нам</h2>
+                <p class="section-subtitle" style="font-size: 1.1rem; max-width: 600px; margin: 0 auto;">
+                    Вопросы, предложения, сотрудничество — мы на связи 24/7
+                </p>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start;">
+                
+                <!-- Левая колонка - Контакты -->
+                <div>
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; margin-bottom: 30px;">
+                        <h3 style="color: white; font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-headset" style="color: var(--primary);"></i>
+                            Свяжитесь с нами
+                        </h3>
+                        
+                        <div style="display: flex; flex-direction: column; gap: 20px;">
+                            <a href="mailto:partner@ai-nexus.ru" style="display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.9); text-decoration: none; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 16px; transition: 0.3s;">
+                                <div style="width: 50px; height: 50px; background: rgba(124,58,237,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-envelope" style="font-size: 1.5rem; color: var(--primary);"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; margin-bottom: 5px;">Email</div>
+                                    <div style="font-size: 0.9rem; opacity: 0.8;">partner@ai-nexus.ru</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://t.me/NeuraAI_Assistant_bot" target="_blank" style="display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.9); text-decoration: none; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 16px; transition: 0.3s;">
+                                <div style="width: 50px; height: 50px; background: rgba(0,136,204,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fab fa-telegram" style="font-size: 1.5rem; color: #0088cc;"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; margin-bottom: 5px;">Telegram Бот</div>
+                                    <div style="font-size: 0.9rem; opacity: 0.8;">@NeuraAI_Assistant_bot</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://vk.com/ai_cherem7" target="_blank" style="display: flex; align-items: center; gap: 15px; color: rgba(255,255,255,0.9); text-decoration: none; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 16px; transition: 0.3s;">
+                                <div style="width: 50px; height: 50px; background: rgba(76,117,163,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fab fa-vk" style="font-size: 1.5rem; color: #4C75A3;"></i>
+                                </div>
+                                <div>
+                                    <div style="font-weight: 600; margin-bottom: 5px;">VK Сообщество</div>
+                                    <div style="font-size: 0.9rem; opacity: 0.8;">vk.com/ai_cherem7</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div style="background: rgba(255,255,255,0.05); border-radius: 24px; padding: 30px; text-align: center;">
+                        <i class="fas fa-clock" style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;"></i>
+                        <h4 style="color: white; margin-bottom: 10px;">Время ответа</h4>
+                        <p style="color: rgba(255,255,255,0.7); font-size: 0.9rem;">
+                            Обычно отвечаем в течение<br>
+                            <strong style="color: var(--primary);">2-4 часов</strong> в рабочее время
+                        </p>
+                        <p style="color: rgba(255,255,255,0.5); font-size: 0.8rem; margin-top: 15px;">
+                            Пн-Пт: 09:00 - 21:00 МСК<br>
+                            Сб-Вс: 10:00 - 18:00 МСК
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Правая колонка - Форма -->
+                <div>
+                    <form id="feedback-form" style="background: rgba(255,255,255,0.03); border-radius: 24px; padding: 35px;">
+                        <h3 style="color: white; font-size: 1.5rem; margin-bottom: 25px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-pen" style="color: var(--primary);"></i>
+                            Отправить сообщение
+                        </h3>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: rgba(255,255,255,0.8); margin-bottom: 8px; font-size: 0.9rem;">
+                                <i class="fas fa-user"></i> Ваше имя <span style="color: #ef4444;">*</span>
+                            </label>
+                            <input type="text" id="feedback-name" class="form-input" placeholder="Иван Иванов" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: rgba(255,255,255,0.8); margin-bottom: 8px; font-size: 0.9rem;">
+                                <i class="fas fa-envelope"></i> Email <span style="color: #ef4444;">*</span>
+                            </label>
+                            <input type="email" id="feedback-email" class="form-input" placeholder="ivan@example.com" required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: block; color: rgba(255,255,255,0.8); margin-bottom: 8px; font-size: 0.9rem;">
+                                <i class="fas fa-tag"></i> Тема обращения
+                            </label>
+                            <select id="feedback-topic" class="form-input" style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);">
+                                <option value="question">📝 Вопрос о сайте</option>
+                                <option value="promo">🎁 Вопрос о промокоде</option>
+                                <option value="partnership">🤝 Сотрудничество / Партнёрство</option>
+                                <option value="bug">🐛 Сообщить об ошибке</option>
+                                <option value="suggestion">💡 Предложение по улучшению</option>
+                                <option value="other">💬 Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px;">
+                            <label style="display: block; color: rgba(255,255,255,0.8); margin-bottom: 8px; font-size: 0.9rem;">
+                                <i class="fas fa-comment"></i> Сообщение <span style="color: #ef4444;">*</span>
+                            </label>
+                            <textarea id="feedback-message" class="form-input" rows="5" placeholder="Напишите ваш вопрос или предложение..." required style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); resize: vertical;"></textarea>
+                        </div>
+                        
+                        <div style="margin-bottom: 20px;">
+                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer; color: rgba(255,255,255,0.7); font-size: 0.85rem;">
+                                <input type="checkbox" id="feedback-consent" style="width: 18px; height: 18px; cursor: pointer;">
+                                Я согласен на обработку персональных данных
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="button button-full" style="padding: 16px; font-size: 1.1rem;">
+                            <i class="fas fa-paper-plane"></i> Отправить сообщение
+                        </button>
+                        
+                        <p style="text-align: center; margin-top: 20px; font-size: 0.8rem; color: rgba(255,255,255,0.4);">
+                            <i class="fas fa-lock"></i> Ваши данные в безопасности. Мы не передаём их третьим лицам.
+                        </p>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
         </footer>
     </main>
             <div style="padding: 40px 20px; background: rgba(255,255,255,0.03); text-align: center; margin-top: 60px;">
