@@ -2557,51 +2557,51 @@ exportDate: new Date().toISOString()
             </div>
         </section>
 
-        <!-- Отзывы -->
-        <section id="reviews" class="reviews-section">
-            <div class="container">
-                <h2 class="section-title">
-                    <i class="fas fa-comments"></i>
-                    Отзывы пользователей
-                </h2>
-                
-                <div class="reviews-grid">
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-avatar">А</div>
-                            <div class="reviewer-info">
-                                <h4>Алексей, маркетолог</h4>
-                                <div class="review-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
+        <!-- Отзывы пользователей (секция 2) -->
+<section id="reviews" class="reviews-section">
+    <div class="container">
+        <h2 class="section-title">
+            <i class="fas fa-comments"></i>
+            Отзывы пользователей
+        </h2>
+        
+        <div class="reviews-grid">
+            <div class="review-card">
+                <div class="review-header">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #7c3aed, #a78bfa); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; flex-shrink: 0;">А</div>
+                    <div class="reviewer-info">
+                        <h4>Алексей, маркетолог</h4>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
                         </div>
-                        <p class="review-text">"Сэкономил $50 на подписках благодаря промокодам с этого сайта. Очень удобный каталог!"</p>
-                    </div>
-                    
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="reviewer-avatar">М</div>
-                            <div class="reviewer-info">
-                                <h4>Мария, дизайнер</h4>
-                                <div class="review-rating">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="review-text">"Нашла через этот сайт несколько отличных инструментов для работы с графикой. Рассылка действительно полезная!"</p>
                     </div>
                 </div>
+                <p class="review-text">"Сэкономил $50 на подписках благодаря промокодам с этого сайта. Очень удобный каталог!"</p>
             </div>
-        </section>
+            
+            <div class="review-card">
+                <div class="review-header">
+                    <div style="width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, #10b981, #34d399); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 20px; flex-shrink: 0;">М</div>
+                    <div class="reviewer-info">
+                        <h4>Мария, дизайнер</h4>
+                        <div class="review-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="review-text">"Нашла через этот сайт несколько отличных инструментов для работы с графикой. Рассылка действительно полезная!"</p>
+            </div>
+        </div>
+    </div>
+</section>
 
         <!-- FAQ -->
         <section id="faq" class="faq-section">
