@@ -8990,7 +8990,101 @@ console.log('✅ Все функции для кнопок загружены!')
         // ============================================
         // AI NEXUS 2026 - ПОЛНЫЙ ФУНКЦИОНАЛ
         // ============================================
+        // ========== ФОРМА ОБРАТНОЙ СВЯЗИ ==========
+const feedbackForm = document.getElementById('feedback-form');
+if (feedbackForm) {
+    feedbackForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        
+        // Проверка согласия
+        const consent = document.getElementById('feedback-consent').checked;
+        if (!consent) {
+            showNotification('❌ Пожалуйста, согласитесь на обработку персональных данных', 'error');
+            return;
+        }
+        
+        const name = document.getElementById('feedback-name').value.trim();
+        const email = document.getElementById('feedback-email').value.trim();
+        const topicSelect = document.getElementById('feedback-topic');
+        const topic = topicSelect.options[topicSelect.selectedIndex].text;
+        const message = document.getElementById('feedback-message').value.trim();
+        
+        // Валидация
+        if (!name) {
+            showNotification('❌ Пожалуйста, введите ваше имя', 'error');
+            return;
+        }
+        if (!email) {
+            showNotification('❌ Пожалуйста, введите ваш email', 'error');
+            return;
+        }
+        if (!validateEmail(email)) {
+            showNotification('❌ Пожалуйста, введите корректный email', 'error');
+            return;
+        }
+        if (!message) {
+            showNotification('❌ Пожалуйста, введите текст сообщения', 'error');
+            return;
+        }
+        
+        // Показываем загрузку
+        const submitBtn = feedbackForm.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Отправка...';
+        submitBtn.disabled = true;
+        
+        try {
+            // Сохраняем в localStorage
+            const feedbackData = {
+                name: name,
+                email: email,
+                topic: topic,
+                message: message,
+                timestamp: Date.now(),
+                date: new Date().toLocaleString('ru-RU')
+            };
+            
+            let feedbacks = JSON.parse(localStorage.getItem('ai_feedbacks') || '[]');
+            feedbacks.push(feedbackData);
+            localStorage.setItem('ai_feedbacks', JSON.stringify(feedbacks));
+            
+            // Отправляем в Telegram
+            const telegramMessage = `
+📬 <b>НОВОЕ СООБЩЕНИЕ С САЙТА!</b>
 
+━━━━━━━━━━━━━━━━━━━━━
+
+👤 <b>Имя:</b> ${name}
+📧 <b>Email:</b> <code>${email}</code>
+📂 <b>Тема:</b> ${topic}
+💬 <b>Сообщение:</b>
+<pre>${message}</pre>
+
+━━━━━━━━━━━━━━━━━━━━━
+📅 <b>Время:</b> ${new Date().toLocaleString('ru-RU')}
+🌐 <b>Страница:</b> ${window.location.href}
+            `;
+            
+            await sendTelegramNotification(telegramMessage);
+            
+            showNotification('✅ Сообщение отправлено! Мы ответим вам в ближайшее время.', 'success');
+            feedbackForm.reset();
+            
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            showNotification('❌ Ошибка при отправке. Попробуйте позже или напишите нам на email.', 'error');
+        } finally {
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        }
+    });
+}
+
+// Валидация email
+function validateEmail(email) {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+}
         // ----- ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ -----
         let currentTheme = localStorage.getItem('theme') || 'dark';
         let notificationTimeout;
