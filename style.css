@@ -1638,6 +1638,26 @@
 
 <!-- Telegram Bot & Analytics -->
 <script>
+/* ===== ФОРМА ОБРАТНОЙ СВЯЗИ ===== */
+#feedback-form input:focus,
+#feedback-form textarea:focus,
+#feedback-form select:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 15px rgba(124,58,237,0.3) !important;
+    outline: none;
+}
+
+#feedback-form input:hover,
+#feedback-form textarea:hover,
+#feedback-form select:hover {
+    border-color: rgba(124,58,237,0.5) !important;
+}
+
+/* Анимация для карточек контактов */
+#feedback a[style*="display: flex"]:hover {
+    transform: translateX(10px);
+    background: rgba(255,255,255,0.08) !important;
+}
     // Конфигурация Telegram бота
     const TELEGRAM_BOT_TOKEN = '8116434805:AAEpp2Vsm0qy8DBwqBqacxGoKZgWBrFjyys';
     const TELEGRAM_CHAT_ID = '2048092522';
