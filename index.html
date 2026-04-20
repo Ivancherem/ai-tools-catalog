@@ -3770,6 +3770,22 @@
         justify-content: center !important;
     }
 }
+/* ===== АНИМАЦИЯ ДЛЯ АВАТАРОК ===== */
+.testimonial-author div[style*="border-radius: 50%"],
+.review-header div[style*="border-radius: 50%"],
+.testimonial-author .author-avatar,
+.reviewer-avatar {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer;
+}
+
+.testimonial-author div[style*="border-radius: 50%"]:hover,
+.review-header div[style*="border-radius: 50%"]:hover,
+.testimonial-author .author-avatar:hover,
+.reviewer-avatar:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
+}
     </style>
 </head>
 <body class="dark-theme">
