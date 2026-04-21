@@ -4,24 +4,33 @@
   <!-- Главная страница -->
   <url>
     <loc>https://ai-toolkit.ru/</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>weekly</changefreq>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   
-  <!-- Якорные ссылки на разделы (Google их понимает как отдельные сущности) -->
+  <!-- Основной HTML файл -->
   <url>
-    <loc>https://ai-toolkit.ru/#catalog</loc>
-    <lastmod>2026-04-19</lastmod>
+    <loc>https://ai-toolkit.ru/index.html</loc>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Страница оффера (если есть) -->
+  <url>
+    <loc>https://ai-toolkit.ru/offer.html</loc>
+    <lastmod>2026-04-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
+  <!-- Страница с промокодами -->
   <url>
     <loc>https://ai-toolkit.ru/#promo</loc>
-    <lastmod>2026-04-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-04-21</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   
 </urlset>
