@@ -17,14 +17,6 @@
     <priority>0.9</priority>
   </url>
   
-  <!-- Страница оффера (если есть) -->
-  <url>
-    <loc>https://ai-toolkit.ru/offer.html</loc>
-    <lastmod>2026-04-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
   <!-- Страница с промокодами -->
   <url>
     <loc>https://ai-toolkit.ru/#promo</loc>
