@@ -4021,6 +4021,41 @@
 </head>
 <body class="dark-theme">
     <script>
+(function() {
+    // ПРИНУДИТЕЛЬНЫЙ ФИКС ПРОКРУТКИ НА МОБИЛЬНЫХ
+    if (window.innerWidth <= 768) {
+        // Убираем все overflow:hidden
+        document.body.style.overflow = 'auto';
+        document.body.style.overflowY = 'auto';
+        document.body.style.height = 'auto';
+        document.documentElement.style.overflow = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+        document.documentElement.style.height = 'auto';
+        
+        // Убираем touch-action: none
+        document.body.style.touchAction = 'auto';
+        
+        // Исправляем все элементы с position: fixed
+        var fixedElements = document.querySelectorAll('[style*="position: fixed"], [style*="position:fixed"]');
+        fixedElements.forEach(function(el) {
+            el.style.position = 'relative';
+        });
+        
+        // Убираем overflow: hidden с html
+        document.documentElement.style.removeProperty('overflow');
+        document.body.style.removeProperty('overflow');
+        
+        // Исправляем модальное окно
+        var modal = document.getElementById('modal');
+        if (modal) {
+            modal.style.display = 'none';
+        }
+        
+        // Лог для отладки
+        console.log('✅ Мобильный фикс применён');
+    }
+})();
+</script>
 // ============================================
 // ФУНКЦИИ ДЛЯ КНОПОК (ИНСТРУКЦИИ, БЛОГ, ОТЗЫВЫ И Т.Д.)
 // ============================================
