@@ -4062,7 +4062,62 @@
     [style*="position: fixed"], [style*="position:fixed"] {
         position: relative !important;
     }
+}/* ===== ФИКС ДЛЯ КАРТЫ РЕСУРСОВ (СРОЧНО!) ===== */
+@media (max-width: 768px) {
+    .sitemap {
+        padding: 30px 15px !important;
+        overflow: visible !important;
+    }
+    
+    .sitemap-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+    
+    .sitemap-category {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 15px !important;
+    }
+    
+    .sitemap-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .sitemap-links li {
+        width: 100% !important;
+    }
+    
+    .sitemap-links a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 10px 12px !important;
+        font-size: 14px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    
+    .sitemap-stats {
+        flex-direction: column !important;
+        gap: 15px !important;
+    }
+    
+    .sitemap-stat {
+        width: 100% !important;
+    }
+    
+    /* Отключаем hover на мобильных */
+    .sitemap-category:hover,
+    .sitemap-links a:hover {
+        transform: none !important;
+        background: none !important;
+    }
 }
+    
     </style>
 </head>
 <body class="dark-theme">
