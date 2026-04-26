@@ -11035,8 +11035,8 @@ function filterTools(category) {
 <!-- Мои реквизиты для ЮKassa -->
 <div style="text-align: center; margin: 40px 0; padding: 20px; border-top: 1px solid #333; color: #999; font-size: 14px;">
     Самозанятый Черемных Иван Андреевич, ИНН 664900542343
-    </div>
-  
+</div>
+
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -11050,12 +11050,12 @@ function filterTools(category) {
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/107725437" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
 <script>
     // ============================================
     // ДОПОЛНИТЕЛЬНЫЙ JAVASCRIPT ДЛЯ ИСПРАВЛЕНИЯ ОШИБОК
     // ============================================
 
-    // 1. Делаем глобальные функции доступными (если они не были объявлены глобально)
     window.openModal = window.openModal || function(content, title) {
         const modal = document.getElementById('modal');
         if (!modal) return;
@@ -11097,207 +11097,67 @@ function filterTools(category) {
         }, 5000);
     };
 
-    // 2. Добавляем недостающие функции для кнопок
     window.showAllGuides = function() {
         window.showNotification('📘 Все инструкции будут доступны в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">📘 Все инструкции по нейросетям (25+)</h3>
-                <div style="display: grid; gap: 20px;">
-                    <div style="background: rgba(124,58,237,0.1); padding: 25px; border-radius: 15px;">
-                        <h4 style="color: white;">Kandinsky 4.0</h4>
-                        <p style="color: rgba(255,255,255,0.8);">Пошаговый гайд по генерации изображений 8K</p>
-                        <button class="button button-small" onclick="window.open('https://fusionbrain.ai', '_blank')">Читать инструкцию</button>
-                    </div>
-                    <div style="background: rgba(16,185,129,0.1); padding: 25px; border-radius: 15px;">
-                        <h4 style="color: white;">ChatGPT 5 Omni</h4>
-                        <p style="color: rgba(255,255,255,0.8);">Как использовать мультимодальную нейросеть</p>
-                        <button class="button button-small" onclick="window.open('https://chat.openai.com', '_blank')">Читать инструкцию</button>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '📘 Все инструкции AI Nexus 2026');
+        window.openModal(`<div style="max-width: 900px; margin: 0 auto;"><h3>Все инструкции</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '📘 Инструкции');
     };
     
     window.showAllBlogPosts = function() {
-        window.showNotification('📝 Все статьи блога будут доступны в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">📝 Все статьи блога (50+)</h3>
-                <div style="display: grid; gap: 20px;">
-                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px;">
-                        <h4 style="color: white;">🔥 Топ-10 нейросетей для создания видео в 2026</h4>
-                        <p style="color: rgba(255,255,255,0.7);">Runway Gen-3, Pika 2.0, HeyGen, Synthesia и другие</p>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '📝 Блог AI Nexus 2026');
+        window.showNotification('📝 Все статьи блога', 'info');
+        window.openModal(`<div><h3>Блог</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '📝 Блог');
     };
     
     window.showAllTestimonials = function() {
-        window.showNotification('💬 Все отзывы будут доступны в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">💬 Все отзывы пользователей (500+)</h3>
-                <div style="max-height: 500px; overflow-y: auto;">
-                    <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 15px; margin-bottom: 15px;">
-                        <p style="color: rgba(255,255,255,0.9);">"Отличный сайт! Нашел промокод на ChatGPT 5, сэкономил 30$."</p>
-                        <div style="margin-top: 10px; color: var(--primary-light);">— Алексей, Москва</div>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '💬 Отзывы пользователей');
+        window.showNotification('💬 Все отзывы', 'info');
+        window.openModal(`<div><h3>Отзывы</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '💬 Отзывы');
     };
     
     window.showAllEvents = function() {
-        window.showNotification('📅 Все события будут доступны в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">📅 Все AI события 2026 (30+)</h3>
-                <div style="display: grid; gap: 20px;">
-                    <div style="background: rgba(124,58,237,0.1); padding: 20px; border-radius: 15px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <h4 style="color: white;">20 марта</h4>
-                            <span class="badge badge-free">Бесплатно</span>
-                        </div>
-                        <p style="color: rgba(255,255,255,0.8);">Вебинар «ChatGPT-5 в бизнесе»</p>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '📅 Календарь AI событий 2026');
+        window.showNotification('📅 Все события', 'info');
+        window.openModal(`<div><h3>События</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '📅 События');
     };
     
     window.showFullGlossary = function() {
-        window.showNotification('📚 Полный глоссарий будет доступен в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">📚 Полный глоссарий AI терминов (100+)</h3>
-                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px;">
-                    <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px;">
-                        <strong style="color: var(--primary-light);">LLM</strong>
-                        <p style="color: rgba(255,255,255,0.7);">Large Language Model - большая языковая модель</p>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '📚 Глоссарий AI терминов');
+        window.showNotification('📚 Глоссарий', 'info');
+        window.openModal(`<div><h3>Глоссарий</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '📚 Глоссарий');
     };
     
     window.filterRanking = function(category) {
-        window.showNotification(`Фильтр рейтинга: ${category === 'all' ? 'все категории' : category}`, 'info');
+        window.showNotification(`Фильтр: ${category}`, 'info');
     };
     
     window.showFullRanking = function() {
-        window.showNotification('🏆 Полный рейтинг из 100 нейросетей откроется в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 1000px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">🏆 Топ-100 нейросетей 2026</h3>
-                <div style="overflow-x: auto;">
-                    <table style="width: 100%; border-collapse: collapse;">
-                        <thead>
-                            <tr style="border-bottom: 2px solid var(--primary);">
-                                <th style="padding: 10px;">#</th>
-                                <th style="padding: 10px;">Название</th>
-                                <th style="padding: 10px;">Категория</th>
-                                <th style="padding: 10px;">Рейтинг</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td style="padding: 10px;">1</td><td style="padding: 10px;">Яндекс GPT 2.0 Pro</td><td style="padding: 10px;">Текст</td><td style="text-align: center;">4.9 ★</td></tr>
-                            <tr><td style="padding: 10px;">2</td><td style="padding: 10px;">Kandinsky 4.0 Ultra</td><td style="padding: 10px;">Изображения</td><td style="text-align: center;">4.8 ★</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '🏆 Топ-100 нейросетей 2026');
+        window.showNotification('🏆 Полный рейтинг', 'info');
+        window.openModal(`<div><h3>Топ-100 нейросетей</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '🏆 Рейтинг');
     };
     
     window.showAllCourses = function() {
-        window.showNotification('📚 Все курсы будут доступны в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">📚 Все курсы и вебинары (20+)</h3>
-                <div style="display: grid; gap: 20px;">
-                    <div style="background: rgba(124,58,237,0.1); padding: 20px; border-radius: 15px;">
-                        <h4 style="color: white;">Введение в нейросети</h4>
-                        <p style="color: rgba(255,255,255,0.7);">Бесплатный курс для начинающих • 5 часов</p>
-                        <button class="button button-small">Начать</button>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '📚 Обучение AI 2026');
+        window.showNotification('📚 Все курсы', 'info');
+        window.openModal(`<div><h3>Курсы</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '📚 Курсы');
     };
     
     window.showAllJobs = function() {
-        window.showNotification('💼 Все вакансии будут доступны в новом окне', 'info');
-        window.openModal(`
-            <div style="max-width: 900px; margin: 0 auto;">
-                <h3 style="color: var(--primary); margin-bottom: 30px;">💼 Все вакансии в AI (25+)</h3>
-                <div style="display: grid; gap: 20px;">
-                    <div style="background: rgba(124,58,237,0.1); padding: 20px; border-radius: 15px;">
-                        <div style="display: flex; justify-content: space-between;">
-                            <h4 style="color: white;">ML Engineer</h4>
-                            <span style="color: #10b981;">от 400,000 ₽</span>
-                        </div>
-                        <p style="color: rgba(255,255,255,0.7);">Яндекс, Москва / удалённо</p>
-                        <button class="button button-small">Откликнуться</button>
-                    </div>
-                </div>
-                <div style="text-align: center; margin-top: 30px;">
-                    <button class="button" onclick="window.closeModal()">Закрыть</button>
-                </div>
-            </div>
-        `, '💼 Вакансии в AI 2026');
+        window.showNotification('💼 Вакансии', 'info');
+        window.openModal(`<div><h3>Вакансии</h3><button class="button" onclick="window.closeModal()">Закрыть</button></div>`, '💼 Вакансии');
     };
     
     window.loadMoreNews = function() {
-        window.showNotification('📰 Загружаем еще новости...', 'info');
-        setTimeout(() => {
-            window.showNotification('✅ Добавлено 5 новых новостей', 'success');
-        }, 1000);
+        window.showNotification('📰 Загружаем...', 'info');
+        setTimeout(() => window.showNotification('✅ Добавлено 5 новостей', 'success'), 1000);
     };
     
-    // 3. Исправляем ссылку на Yandex GPT в промокоде
-    document.querySelectorAll('a[href="https://yandex.cloud/ru/services/yandexgpt"]').forEach(link => {
-        link.href = 'https://yandex.cloud/ru/services/yandexgpt'; // Оставляем как есть, но можно заменить на другую, если нужно
-        // Если нужно заменить на другую ссылку:
-        // link.href = 'https://yandex.cloud/ru/services/yandexgpt';
-    });
-    
-    // 4. Добавляем функцию для закрытия модального окна по клику на фон
     document.addEventListener('click', function(e) {
         const modal = document.getElementById('modal');
-        if (e.target === modal) {
-            window.closeModal();
-        }
+        if (e.target === modal) window.closeModal();
     });
     
-    console.log('✅ Все дополнительные функции загружены и исправлены!');
+    console.log('✅ Дополнительные функции загружены');
+</script>
+
 <script>
 // ===== ЖЁСТКИЙ ФИКС ПРОКРУТКИ ДЛЯ МОБИЛЬНЫХ =====
 (function() {
     if (window.innerWidth <= 768) {
-        // Принудительно убираем все блокировки прокрутки
         document.body.style.overflow = 'auto';
         document.body.style.overflowY = 'auto';
         document.body.style.overflowX = 'hidden';
@@ -11308,14 +11168,12 @@ function filterTools(category) {
         document.documentElement.style.overflowX = 'hidden';
         document.documentElement.style.height = 'auto';
         
-        // Отключаем touch-action: none у всех элементов
         document.querySelectorAll('*').forEach(function(el) {
             if (el.style.touchAction === 'none') {
                 el.style.touchAction = 'auto';
             }
         });
         
-        // Исправляем все iframe
         document.querySelectorAll('iframe').forEach(function(iframe) {
             iframe.setAttribute('scrolling', 'yes');
             iframe.style.height = 'auto';
@@ -11324,14 +11182,12 @@ function filterTools(category) {
             iframe.style.overflow = 'visible';
         });
         
-        // Исправляем виджет VK
         var vkWidget = document.getElementById('vk_groups');
         if (vkWidget) {
             vkWidget.style.overflow = 'visible';
             vkWidget.style.height = 'auto';
         }
         
-        // Убираем position: fixed у шапки на мобильных (если мешает)
         var header = document.querySelector('.header');
         if (header) {
             header.style.position = 'relative';
@@ -11341,5 +11197,6 @@ function filterTools(category) {
     }
 })();
 </script>
+
 </body>
 </html>
