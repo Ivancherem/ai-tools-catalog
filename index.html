@@ -11132,6 +11132,53 @@ function filterTools(category) {
     });
     
     console.log('✅ Все дополнительные функции загружены и исправлены!');
+<script>
+// ===== ЖЁСТКИЙ ФИКС ПРОКРУТКИ ДЛЯ МОБИЛЬНЫХ =====
+(function() {
+    if (window.innerWidth <= 768) {
+        // Принудительно убираем все блокировки прокрутки
+        document.body.style.overflow = 'auto';
+        document.body.style.overflowY = 'auto';
+        document.body.style.overflowX = 'hidden';
+        document.body.style.position = 'relative';
+        document.body.style.height = 'auto';
+        document.documentElement.style.overflow = 'auto';
+        document.documentElement.style.overflowY = 'auto';
+        document.documentElement.style.overflowX = 'hidden';
+        document.documentElement.style.height = 'auto';
+        
+        // Отключаем touch-action: none у всех элементов
+        document.querySelectorAll('*').forEach(function(el) {
+            if (el.style.touchAction === 'none') {
+                el.style.touchAction = 'auto';
+            }
+        });
+        
+        // Исправляем все iframe
+        document.querySelectorAll('iframe').forEach(function(iframe) {
+            iframe.setAttribute('scrolling', 'yes');
+            iframe.style.height = 'auto';
+            iframe.style.minHeight = '450px';
+            iframe.style.maxWidth = '100%';
+            iframe.style.overflow = 'visible';
+        });
+        
+        // Исправляем виджет VK
+        var vkWidget = document.getElementById('vk_groups');
+        if (vkWidget) {
+            vkWidget.style.overflow = 'visible';
+            vkWidget.style.height = 'auto';
+        }
+        
+        // Убираем position: fixed у шапки на мобильных (если мешает)
+        var header = document.querySelector('.header');
+        if (header) {
+            header.style.position = 'relative';
+        }
+        
+        console.log('✅ Мобильный жёсткий фикс применён');
+    }
+})();
 </script>
 </body>
 </html>
