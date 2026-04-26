@@ -4117,7 +4117,67 @@
         background: none !important;
     }
 }
+    /* ===== ЖЁСТКИЙ ФИКС ДЛЯ КАРТЫ РЕСУРСОВ ===== */
+@media (max-width: 768px) {
+    .sitemap {
+        padding: 30px 15px !important;
+        overflow: visible !important;
+        height: auto !important;
+    }
     
+    .sitemap-grid {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+        height: auto !important;
+    }
+    
+    .sitemap-category {
+        width: 100% !important;
+        margin: 0 0 15px 0 !important;
+        padding: 15px !important;
+        height: auto !important;
+        overflow: visible !important;
+    }
+    
+    .sitemap-links {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 8px !important;
+    }
+    
+    .sitemap-links li {
+        width: 100% !important;
+        margin: 0 !important;
+    }
+    
+    .sitemap-links a {
+        display: flex !important;
+        align-items: center !important;
+        gap: 10px !important;
+        padding: 10px 12px !important;
+        font-size: 13px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+    
+    .sitemap-stats {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+        padding-top: 20px !important;
+    }
+    
+    .sitemap-stat {
+        width: 100% !important;
+    }
+    
+    .sitemap-category:hover,
+    .sitemap-links a:hover {
+        transform: none !important;
+        transition: none !important;
+    }
+}
     </style>
 </head>
 <body class="dark-theme">
