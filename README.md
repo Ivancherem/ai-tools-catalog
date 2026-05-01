@@ -1,3 +1,29 @@
+<!-- ===== БЛОК ДЛЯ ПРИВЛЕЧЕНИЯ ПОСЕТИТЕЛЕЙ ===== -->
+
+<p align="center">
+  <a href="https://ai-toolkit.ru">
+    <img src="https://img.shields.io/badge/🌐-ОТКРЫТЬ_САЙТ-7c3aed?style=for-the-badge&logo=google-chrome&logoColor=white">
+  </a>
+  <a href="https://t.me/ai_toolkit_partner09">
+    <img src="https://img.shields.io/badge/📢-TELEGRAM_КАНАЛ-0088cc?style=for-the-badge&logo=telegram&logoColor=white">
+  </a>
+  <a href="https://vk.com/ai_cherem7">
+    <img src="https://img.shields.io/badge/📘-VK_СООБЩЕСТВО-4C75A3?style=for-the-badge&logo=vk&logoColor=white">
+  </a>
+</p>
+
+<div align="center">
+
+⭐ **Если этот каталог полезен — [поставьте звезду](https://github.com/Ivancherem/ai-tools-catalog)** ⭐  
+*Это поможет другим находить актуальные промокоды*
+
+</div>
+
+> **🔍 Репозиторий найдут по запросам:**  
+> *промокоды нейросетей 2026, Kandinsky 4.0 промокод, Midjourney V8 рабочий промокод, Яндекс GPT 2.0 бесплатно, ChatGPT 5 промокод, GitHub Copilot скидка 40%, GigaChat Pro партнёрка, Runway Gen-3 скидка, Suno AI промокод, Claude 4 бесплатно, Gemini 2.0 промокод, Perplexity AI прокод, Leonardo.ai бесплатно, Reg.ru партнёрка, Яндекс.Директ комиссия, Яндекс.Маркет партнёрский код, заработок на нейросетях 2026*
+
+---
+
 # 🧠 AI HUB 2026 — Мега-каталог нейросетей
 
 **Крупнейший русскоязычный каталог AI-инструментов с рабочими промокодами и партнёрскими программами**
@@ -5,6 +31,7 @@
 [![Версия](https://img.shields.io/badge/Версия-2026.4-blue)](https://ai-toolkit.ru)
 [![Лицензия](https://img.shields.io/badge/Лицензия-MIT-green)](LICENSE)
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-orange)](https://ivancherem.github.io/ai-tools-catalog/)
+[![Обновлено](https://img.shields.io/badge/Обновлено-01.05.2026-brightgreen)](https://github.com/Ivancherem/ai-tools-catalog/commits/main)
 
 ---
 
@@ -47,6 +74,18 @@
 
 ---
 
+## 📅 Последние обновления
+
+| Дата | Что добавили |
+|------|---------------|
+| 01.05.2026 | Обновлены промокоды на ChatGPT 5 и Midjourney V8 |
+| 30.04.2026 | Добавлен раздел сравнения нейросетей |
+| 29.04.2026 | Новый промокод: `PERPLEXITY30` — 30 дней Pro |
+| 28.04.2026 | Обновлен файл sitemap.xml и robots.txt |
+| 27.04.2026 | Добавлена страница "Все партнёрские программы" |
+
+---
+
 ## 🛠️ Что вы найдёте на сайте
 
 | Раздел | Описание |
@@ -72,15 +111,25 @@
 
 ---
 
-## 📞 Контакты
+## ❓ Частые вопросы (FAQ)
 
-| Канал | Ссылка |
-|-------|--------|
-| 📧 **Email** | `contact@ai-toolkit.ru` |
-| 🤖 **Telegram Бот** | [@NeuraAI_Assistant_bot](https://t.me/NeuraAI_Assistant_bot) |
-| 📢 **Telegram Канал** | [@ai_toolkit_partner09](https://t.me/ai_toolkit_partner09) |
-| 📘 **VK Сообщество** | [vk.com/ai_cherem7](https://vk.com/ai_cherem7) |
-| 🐙 **GitHub** | [Ivancherem/ai-tools-catalog](https://github.com/Ivancherem/ai-tools-catalog) |
+**Q: Промокод не работает?**  
+A: Все промокоды проверены в апреле 2026. Если не работает — [откройте Issue](https://github.com/Ivancherem/ai-tools-catalog/issues) (кнопка выше). Обновим в течение 24 часов.
+
+**Q: Как часто обновляются промокоды?**  
+A: Ежедневно в 00:00 МСК. Подпишитесь на Telegram-канал — получайте первыми.
+
+**Q: Хочу разместить свою партнёрскую ссылку**  
+A: Напишите на email `partner@ai-toolkit.ru` или откройте Issue с меткой `партнёрство`.
+
+**Q: Могу ли я скопировать каталог к себе?**  
+A: Да, лицензия MIT разрешает. Поставьте звёзду и укажите ссылку на оригинал.
+
+**Q: Сайт работает без VPN?**  
+A: Да, все российские нейросети (Яндекс GPT, Kandinsky, GigaChat) доступны без VPN.
+
+**Q: Как начать зарабатывать на партнёрках?**  
+A: Перейдите в раздел сайта «Партнёрские программы», зарегистрируйтесь по нашим ссылкам и размещайте их в своих каналах.
 
 ---
 
@@ -95,6 +144,21 @@
 
 ---
 
+## 🤝 Как внести вклад (Contributing)
+
+Хотите добавить новый промокод или нейросеть?
+
+1. Fork репозитория
+2. Создайте ветку: `git checkout -b feature/new-promocode`
+3. Внесите изменения в `promos.json` или `index.html`
+4. Сделайте commit: `git commit -m 'Добавлен промокод на XXX'`
+5. Push: `git push origin feature/new-promocode`
+6. Откройте Pull Request
+
+Или просто [откройте Issue](https://github.com/Ivancherem/ai-tools-catalog/issues) с меткой `новый промокод`.
+
+---
+
 ## 📄 Лицензия
 
 Проект распространяется под лицензией **MIT**.
@@ -106,5 +170,7 @@
 **© 2026 AI HUB 2026 | [ai-toolkit.ru](https://ai-toolkit.ru)**
 
 *Ваш надёжный гид в мире искусственного интеллекта*
+
+[⬆ Наверх](#-ai-hub-2026--мега-каталог-нейросетей)
 
 </div>
