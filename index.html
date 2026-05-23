@@ -4602,23 +4602,58 @@ console.log('✅ Все функции для кнопок загружены!')
                     </span>
                 </div>
             </div>
-            <!-- ЯКОРЬ ДЛЯ ПОИСКА -->
-<span id="search" style="position: relative; top: -100px; display: block;"></span>
-
-<!-- НОВЫЙ БЛОК ПОИСКА ОТ ЯНДЕКСА -->
-<div style="margin: 60px 0 30px; text-align: center;">
-    <h2 style="font-size: 2.5rem; margin-bottom: 20px; background: linear-gradient(90deg, #7c3aed, #3b82f6, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">🔍 Поиск в интернете</h2>
-    <p style="color: rgba(255,255,255,0.7); margin-bottom: 30px;">Ищите информацию по всему интернету прямо на нашем сайте</p>
+            <!-- 
+    Яндекс.Поиск для сайта ai-toolkit.ru
+    Работает сразу, без регистрации и настроек
+-->
+<div style="margin: 40px auto; max-width: 800px; padding: 30px; background: rgba(124,58,237,0.08); border-radius: 30px; border: 1px solid rgba(124,58,237,0.3);">
     
-    <!-- ===== СЮДА ВСТАВЬТЕ ПЕРВЫЙ КОД (ФОРМА ПОИСКА) ОТ ЯНДЕКСА ===== -->
-    <!-- Он выглядит как тег <div> c несколькими вложенными <input> и <button> -->
-    <!-- Код, который вы скопировали на 5-м шаге настроек -->
+    <div style="text-align: center; margin-bottom: 25px;">
+        <h2 style="font-size: 2rem; margin: 0 0 10px 0; background: linear-gradient(135deg, #7c3aed, #3b82f6); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            🔍 Яндекс.Поиск
+        </h2>
+        <p style="color: #94a3b8; margin: 0;">Найдётся всё, что вы ищете</p>
+    </div>
     
-    <!-- ===== СЮДА ВСТАВЬТЕ ВТОРОЙ КОД (РЕЗУЛЬТАТЫ ПОИСКА) ОТ ЯНДЕКСА ===== -->
-    <!-- Он будет выглядеть как пустой <div id="ya-site-results"> или что-то подобное -->
+    <form action="https://yandex.ru/search/" method="get" target="_blank" style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <input type="text" 
+               name="text" 
+               required
+               placeholder="Например: нейросети 2026, Kandinsky 4.0 промокод..."
+               style="flex: 1; min-width: 200px; padding: 16px 24px; 
+                      background: rgba(255,255,255,0.07); 
+                      border: 1px solid rgba(124,58,237,0.4); 
+                      border-radius: 50px; 
+                      color: white; 
+                      font-size: 1rem;
+                      outline: none;
+                      transition: all 0.3s;">
+        
+        <button type="submit" 
+                style="padding: 16px 32px; 
+                       background: linear-gradient(135deg, #7c3aed, #3b82f6); 
+                       border: none; 
+                       border-radius: 50px; 
+                       color: white; 
+                       font-weight: 600;
+                       font-size: 1rem;
+                       cursor: pointer;
+                       transition: transform 0.2s, box-shadow 0.2s;
+                       display: flex;
+                       align-items: center;
+                       gap: 8px;">
+            <span>🔍</span> Найти
+        </button>
+    </form>
     
-    <p style="color: rgba(255,255,255,0.5); margin-top: 20px; font-size: 0.9rem;">
-        Результаты поиска предоставлены Яндексом
+    <div style="display: flex; justify-content: center; gap: 20px; margin-top: 20px; flex-wrap: wrap;">
+        <span style="color: #64748b; font-size: 0.8rem;">🔹 Поиск по всему интернету</span>
+        <span style="color: #64748b; font-size: 0.8rem;">🔹 Результаты на Яндексе</span>
+        <span style="color: #64748b; font-size: 0.8rem;">🔹 Работает без VPN</span>
+    </div>
+    
+    <p style="text-align: center; margin-top: 20px; font-size: 0.7rem; color: #475569;">
+        © Яндекс • Результаты поиска открываются в новой вкладке
     </p>
 </div>
             <!-- СЕКЦИЯ ПРОМОКОДОВ 2026 -->
