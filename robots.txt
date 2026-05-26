@@ -1,11 +1,8 @@
 User-agent: Yandex
 Disallow:
-
 User-agent: Googlebot
 Disallow:
-
 User-agent: *
 Disallow:
-
 Host: ai-toolkit.ru
 Sitemap: https://ai-toolkit.ru/sitemap.xml
