@@ -10959,6 +10959,101 @@ function filterTools(category) {
     }
 })();
 </script>
+// Страница "О проекте"
+window.showAboutPage = function() {
+    window.openModal(`
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #7c3aed; margin-bottom: 25px;">📌 О проекте AI Nexus 2026</h2>
+            <div style="background: rgba(124,58,237,0.1); padding: 25px; border-radius: 20px; margin-bottom: 25px;">
+                <h3 style="color: white;">Кто мы</h3>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                    AI Nexus 2026 — это информационный портал, посвящённый современным технологиям 
+                    искусственного интеллекта. Мы собираем и публикуем актуальную информацию о нейросетях, 
+                    AI-инструментах и способах их применения в реальных задачах.
+                </p>
+            </div>
+            <div style="background: rgba(16,185,129,0.1); padding: 25px; border-radius: 20px; margin-bottom: 25px;">
+                <h3 style="color: white;">Наша миссия</h3>
+                <p style="color: rgba(255,255,255,0.9); line-height: 1.8;">
+                    Помочь пользователям из России и СНГ ориентироваться в мире искусственного интеллекта, 
+                    находить проверенные инструменты и эффективно использовать их для работы, творчества и бизнеса.
+                </p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📌 О проекте');
+};
 
+// Страница "Контакты"
+window.showContactsPage = function() {
+    window.openModal(`
+        <div style="max-width: 700px; margin: 0 auto;">
+            <h2 style="color: #7c3aed; margin-bottom: 25px;">📞 Контакты</h2>
+            <div style="background: rgba(124,58,237,0.1); padding: 30px; border-radius: 20px;">
+                <div style="margin-bottom: 20px;">
+                    <i class="fas fa-envelope" style="width: 40px;"></i>
+                    <strong>Email:</strong> partner@ai-nexus.ru
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <i class="fab fa-telegram" style="width: 40px;"></i>
+                    <strong>Telegram:</strong> @NeuraAI_Assistant_bot
+                </div>
+                <div>
+                    <i class="fab fa-vk" style="width: 40px;"></i>
+                    <strong>ВКонтакте:</strong> vk.com/ai_cherem7
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '📞 Контакты');
+};
+
+// Страница "Политика конфиденциальности"
+window.showPrivacyPage = function() {
+    window.openModal(`
+        <div style="max-width: 800px; margin: 0 auto;">
+            <h2 style="color: #7c3aed; margin-bottom: 25px;">🔒 Политика конфиденциальности</h2>
+            <div style="background: rgba(255,255,255,0.05); padding: 25px; border-radius: 20px; line-height: 1.8;">
+                <p style="color: rgba(255,255,255,0.9);"><strong>1. Общие положения</strong><br>
+                Настоящая политика обработки персональных данных составлена в соответствии с требованиями 
+                Федерального закона от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
+                <p style="color: rgba(255,255,255,0.9); margin-top: 20px;"><strong>2. Какие данные мы собираем</strong><br>
+                - Имя и контактный email (при отправке формы обратной связи)<br>
+                - Анонимные данные о посещениях (через Яндекс.Метрику)</p>
+                <p style="color: rgba(255,255,255,0.9); margin-top: 20px;"><strong>3. Контакты</strong><br>
+                По вопросам обработки данных: <strong>partner@ai-nexus.ru</strong></p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="button" onclick="window.closeModal()">Закрыть</button>
+            </div>
+        </div>
+    `, '🔒 Политика конфиденциальности');
+};
+
+// Добавляем ссылки в футер
+document.addEventListener('DOMContentLoaded', function() {
+    const footerBottom = document.querySelector('.footer-bottom');
+    if (footerBottom) {
+        const linksDiv = document.createElement('div');
+        linksDiv.style.cssText = 'display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 20px;';
+        linksDiv.innerHTML = `
+            <a href="#" onclick="window.showAboutPage(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none;">
+                <i class="fas fa-info-circle"></i> О проекте
+            </a>
+            <a href="#" onclick="window.showContactsPage(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none;">
+                <i class="fas fa-envelope"></i> Контакты
+            </a>
+            <a href="#" onclick="window.showPrivacyPage(); return false;" style="color: rgba(255,255,255,0.7); text-decoration: none;">
+                <i class="fas fa-shield-alt"></i> Политика конфиденциальности
+            </a>
+        `;
+        footerBottom.insertBefore(linksDiv, footerBottom.firstChild);
+    }
+});
+</script>
 </body>
 </html>
