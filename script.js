@@ -19,7 +19,7 @@ const AFFILIATE_CONFIG = {
     // Контакты
     contacts: {
         telegram: "https://t.me/ai_toolkit_partner09",
-        vk: "https://vk.com/ai_cherem7",
+        vk: "https://vk.com/ai_promokody",
         email: "cherem.7@yandex.ru"
     }
 };
