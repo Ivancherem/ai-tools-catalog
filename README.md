@@ -21,7 +21,7 @@
 | Сервис | Ссылка |
 |--------|--------|
 | 🌍 **Сайт** | [ai-toolkit.ru](https://ai-toolkit.ru) |
-| 📘 **Сообщество ВКонтакте** | [vk.com/ai_cherem7](https://vk.com/ai_cherem7) |
+| 📘 **Сообщество ВКонтакте** | [vk.com/ai_promokody](https://vk.com/ai_promokody) |
 | 🤖 **Телеграм-бот** | [@NeuraAI_Assistant_bot](https://t.me/NeuraAI_Assistant_bot) |
 | 📢 **Телеграм-канал** | [@ai_toolkit_partner09](https://t.me/ai_toolkit_partner09) |
 | 💻 **GitHub** | [ai-tools-catalog](https://github.com/Ivancherem/ai-tools-catalog) |
